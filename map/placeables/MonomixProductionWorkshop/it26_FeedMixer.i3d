@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="iso-8859-1"?>
+<i3D name="it26_FeedMixer.i3d" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+    <Asset>
+        <Export program="GIANTS Editor 64bit" version="10.0.13"/>
+    </Asset>
+    <Files>
+        <File fileId="21" filename="FS22/data/shared/reflectorsTrailers_vmask.dds"/>
+        <File fileId="2" filename="textures/kuhnIT26_normal.dds"/>
+        <File fileId="3" filename="textures/kuhnIT26_vmask.dds"/>
+        <File fileId="4" filename="$data/shaders/vehicleShader.xml"/>
+        <File fileId="22" filename="$data/shared/assets/assetLibraryDecals_diffuse.dds"/>
+        <File fileId="23" filename="$data/shared/assets/assetLibraryDecals_normal.dds"/>
+        <File fileId="20" filename="$data/shared/default_normal.dds"/>
+        <File fileId="26" filename="$data/shared/default_vmask.dds"/>
+        <File fileId="6" filename="$data/shared/detailLibrary/flat_normal.png"/>
+        <File fileId="16" filename="$data/shared/detailLibrary/metallic/clear_diffuse.png"/>
+        <File fileId="24" filename="$data/shared/detailLibrary/metallic/clear_specular.png"/>
+        <File fileId="25" filename="$data/shared/detailLibrary/metallic/rough_specular.png"/>
+        <File fileId="15" filename="$data/shared/detailLibrary/metallic/silverBumpy_normal.png"/>
+        <File fileId="14" filename="$data/shared/detailLibrary/metallic/silverBumpy_specular.png"/>
+        <File fileId="13" filename="$data/shared/detailLibrary/metallic/silverScratched_diffuse.png"/>
+        <File fileId="12" filename="$data/shared/detailLibrary/metallic/silverScratched_specular.png"/>
+        <File fileId="7" filename="$data/shared/detailLibrary/nonMetallic/metal/metalPainted_diffuse.png"/>
+        <File fileId="5" filename="$data/shared/detailLibrary/nonMetallic/metal/metalPainted_specular.png"/>
+        <File fileId="18" filename="$data/shared/detailLibrary/nonMetallic/plastic/plasticPainted_diffuse.png"/>
+        <File fileId="17" filename="$data/shared/detailLibrary/nonMetallic/plastic/plasticPainted_specular.png"/>
+        <File fileId="19" filename="$data/vehicles/kuhn/ra142/ra142Decals_diffuse.dds"/>
+    </Files>
+    <Materials>
+        <Material name="assetLibraryDecals_mat_metalPainted" materialId="5" alphaBlending="true" customShaderId="4" customShaderVariation="vmaskUV2">
+            <Texture fileId="22"/>
+            <Normalmap fileId="23"/>
+            <Glossmap fileId="21"/>
+            <Custommap name="detailSpecular" fileId="5"/>
+            <Custommap name="detailNormal" fileId="6"/>
+            <Custommap name="detailDiffuse" fileId="7"/>
+        </Material>
+        <Material name="decals_noAlpha_mat_metalPainted" materialId="7" customShaderId="4" customShaderVariation="vmaskUV2">
+            <Texture fileId="19"/>
+            <Normalmap fileId="20"/>
+            <Glossmap fileId="26"/>
+            <Custommap name="detailSpecular" fileId="5"/>
+            <Custommap name="detailNormal" fileId="6"/>
+            <Custommap name="detailDiffuse" fileId="7"/>
+        </Material>
+        <Material name="decalsMain_mat_metalPainted" materialId="8" alphaBlending="true" customShaderId="4" customShaderVariation="vmaskUV2">
+            <Texture fileId="19"/>
+            <Normalmap fileId="20"/>
+            <Glossmap fileId="21"/>
+            <Custommap name="detailSpecular" fileId="5"/>
+            <Custommap name="detailNormal" fileId="6"/>
+            <Custommap name="detailDiffuse" fileId="7"/>
+        </Material>
+        <Material name="lambert1" materialId="9" diffuseColor="0.494118 0.494118 0.494118 1"/>
+        <Material name="mixer_mat_chrome" materialId="10" diffuseColor="0.494118 0.494118 0.494118 1" customShaderId="4">
+            <Normalmap fileId="2"/>
+            <Glossmap fileId="3"/>
+            <Custommap name="detailSpecular" fileId="24"/>
+            <Custommap name="detailNormal" fileId="6"/>
+            <Custommap name="detailDiffuse" fileId="16"/>
+        </Material>
+        <Material name="mixer_mat_metalPainted" materialId="11" diffuseColor="0.494118 0.494118 0.494118 1" customShaderId="4">
+            <Normalmap fileId="2"/>
+            <Glossmap fileId="3"/>
+            <Custommap name="detailSpecular" fileId="5"/>
+            <Custommap name="detailNormal" fileId="6"/>
+            <Custommap name="detailDiffuse" fileId="7"/>
+            <CustomParameter name="colorScale" value="0.2674 0.0052 0.0043"/>
+        </Material>
+        <Material name="mixer_mat_metalPaintedBlack" materialId="12" diffuseColor="0.494118 0.494118 0.494118 1" customShaderId="4">
+            <Normalmap fileId="2"/>
+            <Glossmap fileId="3"/>
+            <Custommap name="detailSpecular" fileId="5"/>
+            <Custommap name="detailNormal" fileId="6"/>
+            <Custommap name="detailDiffuse" fileId="7"/>
+            <CustomParameter name="colorScale" value="0.012 0.012 0.012"/>
+        </Material>
+        <Material name="mixer_mat_plasticPainted" materialId="13" diffuseColor="0.494118 0.494118 0.494118 1" customShaderId="4">
+            <Normalmap fileId="2"/>
+            <Glossmap fileId="3"/>
+            <Custommap name="detailSpecular" fileId="17"/>
+            <Custommap name="detailNormal" fileId="6"/>
+            <Custommap name="detailDiffuse" fileId="18"/>
+            <CustomParameter name="colorScale" value="0.2674 0.0052 0.0043"/>
+        </Material>
+        <Material name="mixer_mat_plasticPaintedBlack" materialId="14" diffuseColor="0.494118 0.494118 0.494118 1" customShaderId="4">
+            <Normalmap fileId="2"/>
+            <Glossmap fileId="3"/>
+            <Custommap name="detailSpecular" fileId="17"/>
+            <Custommap name="detailNormal" fileId="6"/>
+            <Custommap name="detailDiffuse" fileId="18"/>
+            <CustomParameter name="colorScale" value="0.012 0.012 0.012"/>
+        </Material>
+        <Material name="mixer_mat_silverBumpy" materialId="17" diffuseColor="0.494118 0.494118 0.494118 1" customShaderId="4">
+            <Normalmap fileId="2"/>
+            <Glossmap fileId="3"/>
+            <Custommap name="detailSpecular" fileId="14"/>
+            <Custommap name="detailNormal" fileId="15"/>
+            <Custommap name="detailDiffuse" fileId="16"/>
+            <CustomParameter name="colorScale" value="0.7379 0.7454 0.7529"/>
+        </Material>
+        <Material name="mixer_mat_silverRough" materialId="18" diffuseColor="0.494118 0.494118 0.494118 1" customShaderId="4">
+            <Normalmap fileId="2"/>
+            <Glossmap fileId="3"/>
+            <Custommap name="detailSpecular" fileId="25"/>
+            <Custommap name="detailNormal" fileId="6"/>
+            <Custommap name="detailDiffuse" fileId="16"/>
+            <CustomParameter name="colorScale" value="0.7379 0.7454 0.7529"/>
+        </Material>
+        <Material name="mixer_mat_silverScratched" materialId="19" diffuseColor="0.494118 0.494118 0.494118 1" customShaderId="4">
+            <Normalmap fileId="2"/>
+            <Glossmap fileId="3"/>
+            <Custommap name="detailSpecular" fileId="12"/>
+            <Custommap name="detailNormal" fileId="6"/>
+            <Custommap name="detailDiffuse" fileId="13"/>
+        </Material>
+    </Materials>
+    <Shapes externalShapesFile="it26_FeedMixer.i3d.shapes"/>
+    <Scene>
+        <Shape name="it26_FeedMixer_main_component1" shapeId="1" dynamic="true" compound="true" collisionFilterGroup="0x10004" collisionFilterMask="0xfe3ffb83" clipDistance="300" nodeId="70" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="9">
+            <Shape name="hl26_frame_vis" translation="0 -0.5 0" shapeId="2" clipDistance="300" nodeId="71" castsShadows="true" receiveShadows="true" materialIds="11,19">
+                <TransformGroup name="drums" nodeId="86">
+                    <TransformGroup name="mainDrum" translation="-0.19 1.86404 1.699" nodeId="87">
+                        <Shape name="hl26_mainDrum" translation="0 0 1.778" shapeId="3" clipDistance="300" nodeId="88" castsShadows="true" receiveShadows="true" materialIds="11,17,12"/>
+                    </TransformGroup>
+                    <TransformGroup name="drumTop" translation="0.885 2.315 0.000933228" nodeId="89">
+                        <Shape name="hl26_topDrum" translation="0 0 3.72" shapeId="4" clipDistance="300" nodeId="90" castsShadows="true" receiveShadows="true" materialIds="11,17,12"/>
+                    </TransformGroup>
+                    <TransformGroup name="drumBottom" translation="0.953 1.734 0.011" nodeId="91">
+                        <Shape name="hl26_bottomDrum" translation="0 0 3.72" shapeId="5" clipDistance="300" nodeId="92" castsShadows="true" receiveShadows="true" materialIds="11,17,12"/>
+                    </TransformGroup>
+                    <Shape name="hl26_fan_vis" translation="1.166 2.26611 -2.89763" shapeId="6" clipDistance="300" nodeId="93" castsShadows="true" receiveShadows="true" materialIds="13"/>
+                </TransformGroup>
+                <TransformGroup name="door" translation="1.4 2.53 3.005" rotation="9.057 90 0" nodeId="94">
+                    <TransformGroup name="bottomDoor" translation="0 -1.143 0.146102" rotation="-120 0 0" nodeId="95">
+                        <TransformGroup name="hydraulicBottomDoorRef" translation="-0.538729 -0.0309282 0.115773" rotation="65.517 -0.000828892 180" nodeId="96"/>
+                        <Shape name="decals" translation="0.000303098 -0.000922783 0.228302" shapeId="7" clipDistance="50" nodeId="97" castsShadows="true" receiveShadows="true" decalLayer="1" materialIds="8"/>
+                        <Shape name="boltsDecals" translation="0.000173195 -0.104415 0.161194" shapeId="8" clipDistance="30" nodeId="98" castsShadows="true" receiveShadows="true" decalLayer="1" materialIds="5"/>
+                        <Shape name="hl26_bottomDoor" translation="0.005 1.57373e-17 0" rotation="110.945 -0 2.03555e-13" shapeId="9" clipDistance="300" nodeId="99" castsShadows="true" receiveShadows="true" materialIds="17,12"/>
+                    </TransformGroup>
+                    <TransformGroup name="topDoor" translation="0 -0.43 -2.58304e-16" nodeId="100">
+                        <TransformGroup name="topDoorArmRef" translation="0.000198335 -0.000376541 -0.0316698" rotation="19.9531 -87.186 92.5505" nodeId="101"/>
+                        <Shape name="hl26_topDoor" translation="0 -0.0299426 -0.0338" shapeId="10" clipDistance="300" nodeId="102" castsShadows="true" receiveShadows="true" materialIds="11"/>
+                    </TransformGroup>
+                    <TransformGroup name="topDoorArm" translation="-0.489 -0.179 -0.024" rotation="111.364 92.812 92.6113" nodeId="103">
+                        <TransformGroup name="topDoorArmPart" translation="-2.46198e-13 2.91323e-15 0.526653" rotation="104.204 180.003 0" nodeId="104">
+                            <Shape name="hl26_topDoorArmPart" translation="0.0336407 -0.000351175 0.000672168" rotation="-85.2613 6.20121 6.44099e-07" shapeId="11" clipDistance="300" nodeId="105" castsShadows="true" receiveShadows="true" materialIds="11,17"/>
+                        </TransformGroup>
+                        <TransformGroup name="hydraulicTopDoorArmRef" translation="0.00019304 0.00237881 -0.228835" nodeId="106"/>
+                        <Shape name="hl26_topDoorArm" translation="-0.0282139 -0.000928311 0.000361226" rotation="-96.1394 -71.2763 90.5166" shapeId="12" clipDistance="300" nodeId="107" castsShadows="true" receiveShadows="true" materialIds="11,17"/>
+                    </TransformGroup>
+                    <TransformGroup name="hydraulicTopDoorArm" translation="-0.679 -0.818 -0.00873561" rotation="91.766 -0.042 -177.843" nodeId="108">
+                        <TransformGroup name="hydraulicTopDoorArmPunch" translation="0.00025221 -0.001 0.293296" nodeId="109">
+                            <Shape name="hl26_hydraulicTopDoorArmPunch" translation="-0.000500918 0.0414553 -0.28797" rotation="82.5441 2.21692 -179.645" shapeId="13" clipDistance="300" nodeId="110" castsShadows="true" receiveShadows="true" materialIds="10,12"/>
+                        </TransformGroup>
+                        <TransformGroup name="hydraulicTopDoorArmBone" translation="-0.0140552 -0.0475151 0.105728" rotation="87.8248 -7.28476 90.301" nodeId="111"/>
+                        <Shape name="hl26_hydraulicTopDoorArm" translation="0.000720513 0.0404624 0.00528883" rotation="82.3698 2.15768 178.914" shapeId="14" clipDistance="300" nodeId="112" castsShadows="true" receiveShadows="true" materialIds="17,12"/>
+                    </TransformGroup>
+                    <TransformGroup name="hydraulicBottomDoor" translation="-0.53826 -0.535 -0.0647037" rotation="70.2 -0.003 0.000448331" nodeId="113">
+                        <TransformGroup name="hydraulicBottomDoorPunch" translation="3.40045e-06 0 0.137479" nodeId="114">
+                            <Shape name="hl26_hydraulicBottomDoorPunch" translation="0 -0.00137633 -0.136394" rotation="-80 -0 0" shapeId="15" clipDistance="300" nodeId="115" castsShadows="true" receiveShadows="true" materialIds="10,17,12"/>
+                        </TransformGroup>
+                        <TransformGroup name="hydraulicBottomDoorBone" translation="0.0120737 -0.0254884 0.188221" rotation="-89.9994 -9.98366 89.997" nodeId="116"/>
+                        <Shape name="hl26_hydraulicBottomDoor" translation="-1.12914e-13 0.00243088 0.000482906" rotation="-79.4598 -5.21102e-11 1.87597e-09" shapeId="16" clipDistance="300" nodeId="117" castsShadows="true" receiveShadows="true" materialIds="17,12"/>
+                    </TransformGroup>
+                    <TransformGroup name="topDoorArmRefFrame" translation="-0.489 -0.179 -0.024" rotation="61.2549 92.8124 92.6113" nodeId="118"/>
+                    <TransformGroup name="hydraulicBottomDoorRefFrame" translation="0.000469578 -1.14309 0.146102" nodeId="119"/>
+                    <TransformGroup name="hydraulicTopDoorArmRefFrame" translation="-0.679461 -0.817568 -0.00873561" rotation="91.7662 4.96962e-17 -179.192" nodeId="120"/>
+                    <TransformGroup name="tipSoundLinkNode" translation="0 -0.617356 0.188656" nodeId="121"/>
+                </TransformGroup>
+                <TransformGroup name="fillVolume" nodeId="156">
+                    <Shape name="fillVolume" shapeId="17" clipDistance="300" nodeId="157" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="9"/>
+                </TransformGroup>
+                <TransformGroup name="effects" nodeId="168">
+                    <TransformGroup name="unloadEffectFrontLeft" translation="0.270225 0.8 2.95" nodeId="169"/>
+                </TransformGroup>
+                <TransformGroup name="visuals" nodeId="170">
+                    <Shape name="hl26_vis" shapeId="18" clipDistance="300" nodeId="171" castsShadows="true" receiveShadows="true" materialIds="11,14,19,17,12,18">
+                        <Shape name="decals_noAlpha" translation="-0.781727 1.85061 3.85524" shapeId="19" clipDistance="50" nodeId="172" castsShadows="true" receiveShadows="true" materialIds="7"/>
+                    </Shape>
+                </TransformGroup>
+                <TransformGroup name="worldBone" translation="0.01 0 0" nodeId="181"/>
+            </Shape>
+            <TransformGroup name="collisions" nodeId="182">
+                <Shape name="colPartRight" translation="0 -0.319 0.595" shapeId="20" visibility="false" compoundChild="true" collisionFilterGroup="0x10004" collisionFilterMask="0xfe3ffb83" density="0.001" nodeId="183" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="9"/>
+                <Shape name="colPartLeft" translation="0 -0.319 0.595" shapeId="21" visibility="false" compoundChild="true" collisionFilterGroup="0x10004" collisionFilterMask="0xfe3ffb83" density="0.001" nodeId="184" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="9"/>
+                <Shape name="colPartBottom" shapeId="22" visibility="false" compoundChild="true" collisionFilterGroup="0x10004" collisionFilterMask="0xfe3ffb83" density="0.001" nodeId="185" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="9"/>
+                <Shape name="colPartFront1" translation="0 -0.319 1.77261" shapeId="23" visibility="false" compoundChild="true" collisionFilterGroup="0x10004" collisionFilterMask="0xfe3ffb83" density="0.001" nodeId="186" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="9"/>
+                <Shape name="colPartFront2" translation="0 1.09606 3.90908" shapeId="24" visibility="false" compoundChild="true" collisionFilterGroup="0x10004" collisionFilterMask="0xfe3ffb83" density="0.001" nodeId="187" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="9"/>
+                <Shape name="colPartBack1" translation="0 1.37495 -2.94421" shapeId="25" visibility="false" compoundChild="true" collisionFilterGroup="0x10004" collisionFilterMask="0xfe3ffb83" density="0.001" nodeId="188" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="9"/>
+            </TransformGroup>
+            <TransformGroup name="skinnedMeshes" nodeId="189">
+                <Shape name="hoses" shapeId="26" clipDistance="300" nodeId="190" castsShadows="true" receiveShadows="true" skinBindNodeIds="111 116 181" materialIds="11"/>
+            </TransformGroup>
+        </Shape>
+    </Scene>
+    <UserAttributes>
+        <UserAttribute nodeId="111">
+            <Attribute name="liw" type="boolean" value="false"/>
+        </UserAttribute>
+        <UserAttribute nodeId="116">
+            <Attribute name="liw" type="boolean" value="false"/>
+        </UserAttribute>
+        <UserAttribute nodeId="181">
+            <Attribute name="liw" type="boolean" value="false"/>
+        </UserAttribute>
+    </UserAttributes>
+</i3D>

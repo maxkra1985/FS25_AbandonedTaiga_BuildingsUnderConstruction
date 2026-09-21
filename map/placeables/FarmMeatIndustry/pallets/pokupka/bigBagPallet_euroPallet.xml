@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="pallet" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../shared/xml/schema/vehicle.xsd">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+
+    <parentFile xmlFilename="map/placeables/FarmMeatIndustry/pallets/pokupka/euroPallet.xml">
+        <attributes>
+            <set path="vehicle.storeData.name" value="$l10n_fillType_euroPallet"/>
+            <set path="vehicle.storeData.image" value="map/placeables/FarmMeatIndustry/pallets/pokupka/store_euroPallet.png"/>
+            <set path="vehicle.storeData.price" value="500"/>
+            <set path="vehicle.storeData.brand" value="NONE"/>
+            <set path="vehicle.storeData.financeCategory" value="OTHER"/>
+            <set path="vehicle.storeData.functions.function" value="$l10n_function_spices"/>
+
+            <set path="vehicle.fillUnit.fillUnitConfigurations.fillUnitConfiguration(0).fillUnits.fillUnit#fillTypes" value="EUROPALLET"/>
+            <set path="vehicle.fillUnit.fillUnitConfigurations.fillUnitConfiguration(0).fillUnits.fillUnit#startFillType" value="EUROPALLET"/>
+            <set path="vehicle.fillUnit.fillUnitConfigurations.fillUnitConfiguration(0).fillUnits.fillUnit#capacity" value="1000"/>
+            <set path="vehicle.fillUnit.fillUnitConfigurations.fillUnitConfiguration(0).fillUnits.fillUnit#startFillLevel" value="1000"/>
+         </attributes>
+    </parentFile>
+
+    <!-- ONLY FOR ICON GENERATION -->
+    <storeData>
+        <name>$l10n_fillType_euroPallet</name>
+        <image>map/placeables/FarmMeatIndustry/pallets/pokupka/store_euroPallet.png</image>
+        <brand>NONE</brand>
+        <category>pallets</category>
+        <vertexBufferMemoryUsage>0</vertexBufferMemoryUsage>
+        <indexBufferMemoryUsage>0</indexBufferMemoryUsage>
+        <textureMemoryUsage>0</textureMemoryUsage>
+        <audioMemoryUsage>0</audioMemoryUsage>
+        <instanceVertexBufferMemoryUsage>0</instanceVertexBufferMemoryUsage>
+        <instanceIndexBufferMemoryUsage>0</instanceIndexBufferMemoryUsage>
+    </storeData>
+</vehicle>

@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../shared/xml/schema/fillTypes.xsd">
+	<fillTypes>
+		<!--==========================================================================================================================-->
+		<!-- СКЛАДИРУЕМАЯ ДРЕВЕСИНА -->
+		<!--==========================================================================================================================-->
+		<fillType name="WOOD_INPUT" title="$l10n_fillType_wood" showOnPriceTable="false" unitShort="$l10n_unit_literShort">
+			<physics massPerLiter ="0.7" maxPhysicalSurfaceAngle="38" />
+			<economy pricePerLiter="1.0" />
+			<image   hud          ="$dataS/menu/hud/fillTypes/hud_fill_treeSaplings.png" />
+		</fillType>
+
+		<!--==========================================================================================================================-->
+		<!-- МЯСОПЕРЕРАБАТЫВАЮЩИЙ КОМПЛЕКС -->
+		<!--==========================================================================================================================-->
+		<!-- Конвертируемые туши в килограммы мяса -->
+		<fillType name="COW_INPUT" title="$l10n_fillType_cowInput" showOnPriceTable="false" unitShort="kg">
+			<physics massPerLiter="1.0" maxPhysicalSurfaceAngle="0"/>
+			<economy pricePerLiter="0"/>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_cow.png"/>
+		</fillType>
+		<fillType name="PIG_INPUT" title="$l10n_fillType_pigInput" showOnPriceTable="false" unitShort="kg">
+			<physics massPerLiter="1.0" maxPhysicalSurfaceAngle="0"/>
+			<economy pricePerLiter="0"/>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_pig.png"/>
+		</fillType>
+		<fillType name="SHEEP_INPUT" title="$l10n_fillType_sheepInput" showOnPriceTable="false" unitShort="kg">
+			<physics massPerLiter="1.0" maxPhysicalSurfaceAngle="0"/>
+			<economy pricePerLiter="0"/>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_sheep.png"/>
+		</fillType>
+		<fillType name="CHICKEN_INPUT" title="$l10n_fillType_chickenInput" showOnPriceTable="false" unitShort="kg">
+			<physics massPerLiter="1.0" maxPhysicalSurfaceAngle="0"/>
+			<economy pricePerLiter="0"/>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_chicken.png"/>
+		</fillType>
+		<!--==========================================================================================================================-->
+		<!-- Разделанное мясо -->
+		<fillType name="BEEF" title="$l10n_fillType_beef" showOnPriceTable="true" unitShort="$l10n_unit_literShort">
+			<physics massPerLiter="0.15" maxPhysicalSurfaceAngle="38"/>
+			<economy pricePerLiter="2.17">
+				<factors>
+					<factor period="1" value="1.07"/>
+					<factor period="2" value="0.99"/>
+					<factor period="3" value="0.94"/>
+					<factor period="4" value="0.85"/>
+					<factor period="5" value="0.81"/>
+					<factor period="6" value="0.86"/>
+					<factor period="7" value="0.99"/>
+					<factor period="8" value="1.08"/>
+					<factor period="9" value="1.13"/>
+					<factor period="10" value="1.21"/>
+					<factor period="11" value="1.08"/>
+					<factor period="12" value="1.00"/>
+				</factors>
+			</economy>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_beef.dds"/>
+			<pallet filename="map/placeables/FarmMeatIndustry/pallets/beefBoxPallet.xml"/>
+		</fillType>
+		<fillType name="CHICKENMEAT" title="$l10n_fillType_chickenmeat" showOnPriceTable="true" unitShort="$l10n_unit_literShort">
+			<physics massPerLiter="0.15" maxPhysicalSurfaceAngle="38"/>
+			<economy pricePerLiter="2.07">
+				<factors>
+					<factor period="1" value="1.00"/>
+					<factor period="2" value="1.07"/>
+					<factor period="3" value="0.99"/>
+					<factor period="4" value="0.94"/>
+					<factor period="5" value="0.85"/>
+					<factor period="6" value="0.81"/>
+					<factor period="7" value="0.86"/>
+					<factor period="8" value="0.99"/>
+					<factor period="9" value="1.08"/>
+					<factor period="10" value="1.13"/>
+					<factor period="11" value="1.21"/>
+					<factor period="12" value="1.08"/>
+				</factors>
+			</economy>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_chickenmeat.dds"/>
+			<pallet filename="map/placeables/FarmMeatIndustry/pallets/chickenBoxPallet.xml"/>
+		</fillType>
+		<fillType name="PORK" title="$l10n_fillType_porc" showOnPriceTable="true" unitShort="$l10n_unit_literShort">
+			<physics massPerLiter="0.15" maxPhysicalSurfaceAngle="38"/>
+			<economy pricePerLiter="2.2">
+				<factors>
+					<factor period="1" value="1.12"/>
+					<factor period="2" value="1.04"/>
+					<factor period="3" value="0.93"/>
+					<factor period="4" value="0.85"/>
+					<factor period="5" value="0.79"/>
+					<factor period="6" value="0.79"/>
+					<factor period="7" value="0.86"/>
+					<factor period="8" value="0.96"/>
+					<factor period="9" value="1.08"/>
+					<factor period="10" value="1.16"/>
+					<factor period="11" value="1.22"/>
+					<factor period="12" value="1.21"/>
+				</factors>
+			</economy>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_porc.dds"/>
+			<pallet filename="map/placeables/FarmMeatIndustry/pallets/porkBoxPallet.xml"/>
+		</fillType>
+		<fillType name="MUTTON" title="$l10n_fillType_mutton" showOnPriceTable="true" unitShort="$l10n_unit_literShort">
+			<physics massPerLiter="0.15" maxPhysicalSurfaceAngle="38"/>
+			<economy pricePerLiter="2.17">
+				<factors>
+					<factor period="1" value="1.20"/>
+					<factor period="2" value="1.17"/>
+					<factor period="3" value="1.05"/>
+					<factor period="4" value="0.87"/>
+					<factor period="5" value="0.94"/>
+					<factor period="6" value="0.99"/>
+					<factor period="7" value="1.10"/>
+					<factor period="8" value="1.11"/>
+					<factor period="9" value="1.06"/>
+					<factor period="10" value="0.65"/>
+					<factor period="11" value="0.74"/>
+					<factor period="12" value="1.12"/>
+				</factors>
+			</economy>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_mutton.dds"/>
+			<pallet filename="map/placeables/FarmMeatIndustry/pallets/muttonBoxPallet.xml"/>
+		</fillType>
+		<!--==========================================================================================================================-->
+		<!-- Отходы -->
+		<fillType name="MEATOBR" title="$l10n_fillType_meatobr" showOnPriceTable="true" isBulkType="true" unitShort="$l10n_unit_literShort">
+			<physics massPerLiter="0.78" maxPhysicalSurfaceAngle="15"/>
+			<economy pricePerLiter="0.21">
+				<factors>
+					<factor period="1" value="1.00"/>
+					<factor period="2" value="1.07"/>
+					<factor period="3" value="0.99"/>
+					<factor period="4" value="0.94"/>
+					<factor period="5" value="0.85"/>
+					<factor period="6" value="0.81"/>
+					<factor period="7" value="0.86"/>
+					<factor period="8" value="0.99"/>
+					<factor period="9" value="1.08"/>
+					<factor period="10" value="1.13"/>
+					<factor period="11" value="1.21"/>
+					<factor period="12" value="1.08"/>
+				</factors>
+			</economy>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_meatobr.png"/>
+			<pallet filename="map/placeables/FarmMeatIndustry/pallets/othody/meatobr.xml"/>
+		</fillType>
+		<fillType name="KOSTI" title="$l10n_fillType_kosti" showOnPriceTable="true" isBulkType="true" unitShort="$l10n_unit_literShort">
+			<physics massPerLiter="0.78" maxPhysicalSurfaceAngle="15"/>
+			<economy pricePerLiter="0.18">
+				<factors>
+					<factor period="1" value="1.12"/>
+					<factor period="2" value="1.08"/>
+					<factor period="3" value="1.04"/>
+					<factor period="4" value="1.14"/>
+					<factor period="5" value="1.31"/>
+					<factor period="6" value="0.98"/>
+					<factor period="7" value="0.88"/>
+					<factor period="8" value="0.71"/>
+					<factor period="9" value="0.61"/>
+					<factor period="10" value="0.92"/>
+					<factor period="11" value="1.33"/>
+					<factor period="12" value="0.98"/>
+				</factors>
+			</economy>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_kosti.png"/>
+			<pallet filename="map/placeables/FarmMeatIndustry/pallets/othody/kosti.xml"/>
+		</fillType>
+		<fillType name="KROW" title="$l10n_fillType_krow" showOnPriceTable="true" isBulkType="true" unitShort="$l10n_unit_literShort">
+			<physics massPerLiter="0.78" maxPhysicalSurfaceAngle="15"/>
+			<economy pricePerLiter="0.21">
+				<factors>
+					<factors>
+						<factor period="1" value="0.99"/>
+						<factor period="2" value="1.05"/>
+						<factor period="3" value="1.16"/>
+						<factor period="4" value="1.15"/>
+						<factor period="5" value="1.14"/>
+						<factor period="6" value="1.13"/>
+						<factor period="7" value="0.87"/>
+						<factor period="8" value="0.81"/>
+						<factor period="9" value="0.77"/>
+						<factor period="10" value="0.87"/>
+						<factor period="11" value="0.74"/>
+						<factor period="12" value="0.64"/>
+					</factors>
+				</factors>
+			</economy>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_krow.png"/>
+			<pallet filename="map/placeables/FarmMeatIndustry/pallets/othody/krow.xml"/>
+		</fillType>
+		<fillType name="SALO" title="$l10n_fillType_salo" showOnPriceTable="true" isBulkType="true" unitShort="$l10n_unit_literShort">
+			<physics massPerLiter="0.78" maxPhysicalSurfaceAngle="15"/>
+			<economy pricePerLiter="0.21">
+				<factors>
+					<factor period="1" value="1.20"/>
+					<factor period="2" value="1.17"/>
+					<factor period="3" value="1.05"/>
+					<factor period="4" value="0.87"/>
+					<factor period="5" value="0.94"/>
+					<factor period="6" value="0.99"/>
+					<factor period="7" value="1.10"/>
+					<factor period="8" value="1.11"/>
+					<factor period="9" value="1.06"/>
+					<factor period="10" value="0.65"/>
+					<factor period="11" value="0.74"/>
+					<factor period="12" value="1.12"/>
+				</factors>
+			</economy>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_salo.png"/>
+			<pallet filename="map/placeables/FarmMeatIndustry/pallets/othody/salo.xml"/>
+		</fillType>
+		<!--==========================================================================================================================-->
+		<!-- Расходники -->
+		<fillType name="EUROPALLET" title="$l10n_fillType_euroPallet" showOnPriceTable="false" unitShort="$l10n_unit_literShort">
+			<physics massPerLiter="0.15" maxPhysicalSurfaceAngle="38"/>
+			<economy pricePerLiter="0.7"/>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_euroPallet.dds"/>
+			<pallet filename="map/placeables/FarmMeatIndustry/pallets/pokupka/euroPallet.xml"/>
+		</fillType>
+		<fillType name="SPICES" title="$l10n_fillType_Spices" showOnPriceTable="false" unitShort="$l10n_unit_literShort">
+			<physics massPerLiter="0.15" maxPhysicalSurfaceAngle="38"/>
+			<economy pricePerLiter="0.7"/>
+			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_spices.dds"/>
+			<pallet filename="map/placeables/FarmMeatIndustry/pallets/pokupka/spicesBagsPallet.xml"/>
+		</fillType>
+	</fillTypes>
+	<fillTypeCategories>
+		<fillTypeCategory name="SELLINGSTATION_PRODUCTS">BEEF CHICKENMEAT PORK MUTTON MEATOBR KOSTI KROW SALO</fillTypeCategory>
+		<fillTypeCategory name="SELLINGSTATION_PRODUCTSFOOD">BEEF CHICKENMEAT PORK MUTTON MEATOBR KOSTI KROW SALO</fillTypeCategory>
+	</fillTypeCategories>
+</map>

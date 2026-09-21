@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<i3D name="corrugatedSheet_Merged.i3d" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+  <Asset>
+    <Export program="GIANTS Editor 64bit" version="10.0.13"/>
+  </Asset>
+
+  <Files>
+    <File fileId="1" filename="$data/shared/default_height.dds"/>
+    <File fileId="2" filename="$data/shared/groundHeightNoise.dds"/>
+  </Files>
+
+
+  <Materials>
+    <Material name="UnnamedMaterial" materialId="5">
+      <Texture fileId="1"/>
+      <Glossmap fileId="2"/>
+    </Material>
+  </Materials>
+
+
+  <Shapes externalShapesFile="corrugatedSheet_Merged.i3d.shapes">
+  </Shapes>
+
+  <Scene>
+    <Shape name="corrugatedSheet" translation="-7.6403 5.30275 1.5" rotation="-30 90 0" scale="1.5 0.005 5" shapeId="1" nodeId="9" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="5"/>
+  </Scene>
+
+</i3D>

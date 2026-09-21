@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="101">
+	<author>MaxKra1985</author>
+	<version>0.3.0.0</version>
+
+	<title>
+		<ru>Комплект проектов возводимых домов, производств, загонов для животных.</ru>
+		<en>A set of projects for erected houses, production facilities, and animal pens.</en>
+		<de>Eine Reihe von Projekten für errichtete Häuser, Produktionsanlagen und Tiergehege.</de>
+	</title>
+
+	<description>
+		<ru>Оформление любого проекта на строительство составляет 100$. Далее ваша задача подвозить требуемые инструменты и стройматериалы.</ru>
+		<en>The registration fee for any construction project is $100. Your next responsibility is to supply the required tools and building materials.</en>
+		<de>Die Anmeldegebühr für jedes Bauprojekt beträgt 100 US-Dollar. Ihre nächste Aufgabe ist die Bereitstellung der benötigten Werkzeuge und Baumaterialien.</de>
+	</description>
+
+	<iconFilename>ConstructibleBuildings.dds</iconFilename>
+	<multiplayer supported="true"/>
+
+	<fillTypes filename="newFillTypes.xml" />
+
+
+	<extraSourceFiles>
+		<sourceFile filename="scripts/WoodElevatorStorageInfo.lua"/>
+		<sourceFile filename="scripts/BunkerFillPlanes.lua"/>
+		
+		<!-- МЯСОПЕРЕРАБАТЫВАЮЩИЙ КОМПЛЕКС -->
+		<sourceFile filename="scripts/FarmMeatIndustry/PlaceableMeatAnimalInput.lua"/>
+		<sourceFile filename="scripts/FarmMeatIndustry/AnimalScreenTrailerMeatPlant.lua"/>
+		<sourceFile filename="scripts/FarmMeatIndustry/MeatAnimalCondition.lua"/>
+		<sourceFile filename="scripts/FarmMeatIndustry/effects/SequencedParticleEffect.lua"/>
+		<sourceFile filename="scripts/FarmMeatIndustry/events/MeatAnimalMoveEvent.lua"/>
+	</extraSourceFiles>
+
+	<brands>
+		<brand name="ConstructibleBuildings" title="$l10n_ConstructibleBuildings" image="brandConstructibleBuildings.dds"/>
+	</brands>
+
+	<storeItems>
+		<!-- ЗАГОНЫ ДЛЯ ЖИВОТНЫХ -->
+		<storeItem xmlFilename="map/placeables/fakeFence/fakeFence.xml"/>
+		<storeItem xmlFilename="map/placeables/OutdoorChickenCoop/OutdoorChickenCoop.xml"/>
+		<!--storeItem xmlFilename="map/placeables/SheepBarn/sheepBarn.xml"/-->
+		<storeItem xmlFilename="map/placeables/SheepBarn/sheepBarnWithPump.xml"/>
+		<!-- ТОЧКИ ПРОИЗВОДСТВА -->
+		<storeItem xmlFilename="map/placeables/SawMillBig/constructibleSawmill.xml"/>
+		<storeItem xmlFilename="map/placeables/PulpPaperProduction/PulpPaperProduction.xml"/>
+		<!-- СКЛАДЫ, БУНКЕРЫ И ХРАНИЛИЩА -->
+		<storeItem xmlFilename="map/placeables/Storage/Storage.xml"/>
+		<storeItem xmlFilename="map/placeables/WoodStorageDistributor/WoodStorageDistributor.xml"/>
+		<storeItem xmlFilename="map/placeables/SiloPit/bunkerSiloLargeShort.xml"/>
+		<storeItem xmlFilename="map/placeables/WoodElevator/WoodElevator.xml"/>
+		<!-- ИНСТРУМЕНТЫ -->
+		<storeItem xmlFilename="map/placeables/RepairWorkshop/RepairWorkshop.xml"/>
+		<!-- МЯСОПЕРЕРАБАТЫВАЮЩИЙ КОМПЛЕКС -->
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/animalSlaughterhouse.xml"/>
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/beefBoxPallet.xml" />
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/chickenBoxPallet.xml" />
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/porkBoxPallet.xml" />
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/muttonBoxPallet.xml" />
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/othody/meatobr.xml" />
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/othody/kosti.xml" />
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/othody/krow.xml" />
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/othody/salo.xml" />
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/pokupka/spicesBagsPallet.xml" />
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/pokupka/bigBagPallet_spicesPallet.xml" />
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/pokupka/multiPurchaseBigBag_spicesPallet.xml" />
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/pokupka/euroPallet.xml" />
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/pokupka/bigBagPallet_euroPallet.xml" />
+		<storeItem xmlFilename="map/placeables/FarmMeatIndustry/pallets/pokupka/multiPurchaseBigBag_euroPallet.xml" />
+	</storeItems>
+
+	<placeableTypes>
+		<!-- constructibleChickenHusbandry - строимый курятник -->
+		<type name="constructibleChickenHusbandry" parent="constructible" filename="$dataS/scripts/placeables/Placeable.lua">
+			<specialization name="husbandry" />
+			<specialization name="husbandryAnimals" />
+			<specialization name="husbandryFood" />
+			<specialization name="husbandryPallets" />
+		</type>
+		<!-- constructibleSheepHusbandry - строимая овчарня -->
+		<type name="constructibleSheepHusbandry" parent="constructible" filename="$dataS/scripts/placeables/Placeable.lua">
+			<specialization name="husbandry" />
+			<specialization name="husbandryAnimals" />
+			<specialization name="husbandryFood" />
+			<specialization name="husbandryWater" />
+			<specialization name="husbandryPallets" />
+			<!--specialization name="husbandryMeadow"/>
+			<specialization name="husbandryFence"/-->
+		</type>
+		<!-- constructibleSawmill - строимая лесопилка -->
+		<!-- constructibleSawmill - строимая лесопилка -->
+		<type name="constructibleProductionPoint" parent="constructible" filename="$dataS/scripts/placeables/Placeable.lua">
+			<specialization name="productionPoint" />
+		</type>
+		<!-- constructibleStorage - строимый склад -->
+		<type name="constructibleStorage" parent="constructible" filename="$dataS/scripts/placeables/Placeable.lua">
+			<specialization name="objectStorage"/>
+		</type>
+		<!-- constructibleBunkerSilo - строимый склад -->
+		<type name="constructibleBunkerSilo" parent="constructible" filename="$dataS/scripts/placeables/Placeable.lua">
+			<specialization name="bunkerSilo"/>
+		</type>
+		<!-- constructibleStorage - строимый склад -->
+		<type name="constructibleRepairWorkshop" parent="constructible" filename="$dataS/scripts/placeables/Placeable.lua">
+			<specialization name="workshop"/>
+		</type>
+		<!-- productionPointWithStorage - строимое производство со складом -->
+		<type name="productionPointWithStorage" parent="productionPoint" className="Placeable" filename="$dataS/scripts/placeables/Placeable.lua">
+			<specialization name="constructible"/>
+			<specialization name="objectStorage"/>
+			<specialization name="productionWarehouseSupply"/>
+			<specialization name="meatAnimalInput"/>
+		</type>
+	</placeableTypes>
+	<placeableSpecializations>
+		<specialization name="productionWarehouseSupply" className="PlaceableProductionWarehouseSupply" filename="scripts/PlaceableProductionWarehouseSupply.lua"/>
+		<specialization name="meatAnimalInput" className="PlaceableMeatAnimalInput" filename="scripts/FarmMeatIndustry/PlaceableMeatAnimalInput.lua"/>
+	</placeableSpecializations>
+
+	<dependencies>
+		<dependency>FS25_AbandonedTaiga_4x</dependency>
+	</dependencies>
+
+	<l10n>
+		<text name="OutdoorChickenCoop">
+			<ru>Курятник с открытым загоном</ru>
+			<en>Chicken coop with open run</en>
+			<de>Hühnerstall mit Auslauf</de>
+		</text>
+		<text name="SheepBarn">
+			<ru>Овчарня</ru>
+			<en>Sheepfold</en>
+			<de>Schafstall</de>
+		</text>
+		<text name="SheepBarnWithPump">
+			<ru>Овчарня с насосом и накопителем воды</ru>
+			<en>Sheepfold with a pump and water storage tank</en>
+			<de>Schafstall mit Pumpe und Wasserspeicher</de>
+		</text>
+		<text name="BigSawMill">
+			<ru>Большая лесопилка</ru>
+			<en>Large sawmill</en>
+			<de>Großes Sägewerk</de>
+		</text>
+		<text name="fillType_firewood">
+			<ru>Дрова</ru>
+			<en>Firewood</en>
+			<de>Brennholz</de>
+		</text>
+		<text name="Storage">
+			<ru>Большой склад</ru>
+			<en>Large warehouse</en>
+			<de>Großes Lager</de>
+		</text>
+		<text name="PulpPaperProduction">
+			<ru>Целлюлозно-бумажное производство</ru>
+			<en>Pulp and paper production</en>
+			<de>Zellstoff- und Papierproduktion</de>
+		</text>
+		<text name="RepairWorkshop">
+			<ru>Ремонтная мастерская</ru>
+			<en>Repair shop</en>
+			<de>Reparaturwerkstatt</de>
+		</text>
+		<text name="WoodStorageDistributor">
+			<ru>Логистический склад древесины.</ru>
+			<en>Logistics warehouse for timber.</en>
+			<de>Logistiklager für Holz.</de>
+		</text>
+		<text name="function_woodd">
+			<ru>Склад древесины, который распределяет древесину по производствам. ВНИМАНИЕ: после размещения древесины на склад её нельзя будет забрать.</ru>
+			<en>Wood storage facility that distributes the wood to production. PLEASE NOTE: once wood has been stored, it cannot be removed.</en>
+			<de>Holzlager das das Holz in die Produktionen verteilt. ACHTUNG, einmal eingelagertes Holz bekommt man nicht mehr heraus.</de>
+		</text>
+		<text name="fillType_Wood">
+			<ru>Древесина</ru>
+			<en>Wood</en>
+			<de>Holz</de>
+		</text>
+		<text name="fillType_WoodInput">
+			<ru>Древесина</ru>
+			<en>Wood</en>
+			<de>Holz</de>
+		</text>
+		<text name="woodElevator_storageUsage">
+			<ru>Заполнено</ru>
+			<en>Storage used</en>
+			<de>Belegt</de>
+		</text>
+
+		<!--==========================================================================================================================-->
+		<!-- МЯСОПЕРЕРАБАТЫВАЮЩИЙ КОМПЛЕКС -->
+		<!--==========================================================================================================================-->
+		<text name="storeItem_animalSlaughterhouse">
+			<ru>Забойный цех</ru>
+			<en>Slaughterhouse</en>
+			<de>Schlachthof</de>
+		</text>
+
+		<text name="fillType_cowInput">
+			<ru>Корова</ru>
+			<en>Cow</en>
+			<de>Kuh</de>
+		</text>
+		<text name="fillType_pigInput">
+			<ru>Свинья</ru>
+			<en>Pig</en>
+			<de>Schwein</de>
+		</text>
+		<text name="fillType_sheepInput">
+			<ru>Овца</ru>
+			<en>Sheep</en>
+			<de>Schaf</de>
+		</text>
+		<text name="fillType_chickenInput">
+			<ru>Курица/петух</ru>
+			<en>Chicken/rooster</en>
+			<de>Huhn/Hahn</de>
+		</text>
+		
+		<text name="fillType_beef">
+			<ru>Говядина</ru>
+			<en>Beef</en>
+			<de>Rindfleisch</de>
+		</text>
+		<text name="fillType_chickenmeat">
+			<ru>Филе куриное</ru>
+			<en>Chickenmeat</en>
+			<de>Hühnerfleisch</de>
+		</text>
+		<text name="fillType_porc">
+			<ru>Свинина</ru>
+			<en>Porc</en>
+			<de>Schwein</de>
+		</text>
+		<text name="fillType_mutton">
+			<ru>Баранина</ru>
+			<en>Mutton</en>
+			<de>Hammel</de>
+		</text>
+
+		<text name="fillType_meatobr">
+			<ru>Мясные обрезки</ru>
+			<en>Meat trimmings</en>
+			<de>Fleischabschnitte</de>
+		</text>
+		<text name="fillType_kosti">
+			<ru>Кости</ru>
+			<en>Bones</en>
+			<de>Bones</de>
+		</text>
+		<text name="fillType_krow">
+			<ru>Кровь</ru>
+			<en>Blood</en>
+			<de>Blut</de>
+		</text>
+		<text name="fillType_salo">
+			<ru>Сало</ru>
+			<en>Bacon</en>
+			<de>Speck</de>
+		</text>
+		<text name="fillType_kostim">
+			<ru>Мясо-костная мука</ru>
+			<en>Meat and bone meal</en>
+			<de>Fleisch- und Knochenmehl</de>
+		</text>
+		<text name="fillType_euroPallet">
+			<ru>Пустой паллет</ru>
+			<en>Empty pallet</en>
+			<de>Leere Palette</de>
+		</text>
+		<text name="fillType_Spices">
+			<ru>Смесь специй</ru>
+			<en>Spice Blend</en>
+			<de>Gewürzmischung</de>
+		</text>
+		<text name="fillType_tehgir">
+			<ru>Техжир</ru>
+			<en>Inedible fat</en>
+			<de>Ungenießbares Fett</de>
+		</text>
+	</l10n>
+
+</modDesc>

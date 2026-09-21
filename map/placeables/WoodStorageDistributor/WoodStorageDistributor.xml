@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<placeable type="constructibleProductionPoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../shared/xml/schema/placeable.xsd">
+	<storeData>
+		<name>$l10n_WoodStorageDistributor</name>
+		<functions>
+			<function>$l10n_function_woodd</function>
+		</functions>
+		<image>map/placeables/WoodStorageDistributor/store_WoodStorageDistributor.dds</image>
+		<price>100</price>
+		<showInStore>true</showInStore>
+		<canBeSold>true</canBeSold>
+		<dailyUpkeep>1</dailyUpkeep>
+		<lifetime>1000</lifetime>
+		<rotation>0</rotation>
+		<brand>ConstructibleBuildings</brand>
+		<species>PLACEABLE</species>
+		<category>storages</category>
+		<brush>
+			<type>placeable</type>
+			<category>ConstructibleBuildings</category>
+			<tab>constructiblesStorage</tab>
+		</brush>
+	</storeData>
+
+	<base>
+		<filename>map/placeables/WoodStorageDistributor/WoodStorageDistributor.i3d</filename>
+		<canBeRenamed>true</canBeRenamed>
+		<canBeDeleted>true</canBeDeleted>
+		<boughtWithFarmland>true</boughtWithFarmland>
+	</base>
+
+	<placement useRandomYRotation="false" useManualYRotation="true" >
+		<testAreas>
+			<testArea startNode="testAreaStart01" endNode="testAreaEnd01" />
+		</testAreas>
+		<sounds>
+			<place template="smallImp" />
+		</sounds>
+	</placement>
+
+	<clearAreas>
+		<clearArea startNode="clearAreaStart01" widthNode="clearAreaWidth01" heightNode="clearAreaHeight01"/>
+	</clearAreas>
+
+	<leveling requireLeveling="true" maxSmoothDistance="1" maxSlope="75" maxEdgeAngle="30" >
+		<levelAreas>
+			<levelArea startNode="levelAreaStart01" widthNode="levelAreaWidth01" heightNode="levelAreaHeight01" />
+			<levelArea startNode="levelAreaStart02" widthNode="levelAreaWidth02" heightNode="levelAreaHeight02" />
+		</levelAreas>
+		<paintAreas>
+			<paintArea startNode="levelAreaStart01" widthNode="levelAreaWidth01" heightNode="levelAreaHeight01" groundType="gravel"/>
+		</paintAreas>
+	</leveling>
+
+	<indoorAreas>
+		<indoorArea startNode="indoorAreaStart01" widthNode="indoorAreaWidth01" heightNode="indoorAreaHeight01" />
+	</indoorAreas>
+
+	<tipOcclusionUpdateAreas>
+		<tipOcclusionUpdateArea startNode="tipOcclusionUpdateAreaStart01" endNode="tipOcclusionUpdateAreaEnd01" />
+	</tipOcclusionUpdateAreas>
+
+	<ai>
+		<updateAreas>
+			<updateArea startNode="tipOcclusionUpdateAreaStart01" endNode="tipOcclusionUpdateAreaEnd01" />
+		</updateAreas>
+	</ai>
+
+	<infoTrigger triggerNode="infoTrigger"/>
+
+	<hotspots>
+		<hotspot type="UNLOADING_PALLET"	linkNode="constructibleUnloadTriggerMarker"	teleportNode="constructibleUnloadTriggerMarker" />
+		<hotspot type="PRODUCTION_POINT"	linkNode="unloadTriggerMarker"				teleportNode="playerTriggerMarker" />
+	</hotspots>
+
+
+	<triggerMarkers>
+		<triggerMarker node="playerTriggerMarker"							adjustToGround="true" filename="$data/shared/assets/marker/markerIconWrench.i3d"/>
+		<triggerMarker node="unloadTriggerMarker"							adjustToGround="true" filename="$data/shared/assets/marker/markerIconUnload.i3d"/>
+		<triggerMarker node="woodSellActivationTriggerMarker"				adjustToGround="true" filename="$data/shared/assets/marker/markerIconExclamationMark.i3d" />
+		<triggerMarker node="constructibleWoodSellActivationTriggerMarker"	adjustToGround="true" filename="$data/shared/assets/marker/markerIconExclamationMark.i3d" />
+	</triggerMarkers>
+
+	<productionPoint>
+		<productions>
+			<production id="wood" name="$l10n_fillType_Wood" cyclesPerHour="200000" costsPerActiveHour="0">
+				<inputs>
+					<input fillType="WOOD_INPUT" amount="1" />
+				</inputs>
+				<outputs>
+					<output fillType="WOOD" amount="1" />
+				</outputs>
+			</production>
+		</productions>
+
+		<storage isExtension="false" fillLevelSyncThreshold="50">
+			<capacity fillType="WOOD_INPUT" capacity="500000" />
+			<capacity fillType="WOOD" capacity="1000000" />
+			<fillPlane node="logs" fillType="WOOD" minY="-2.88" maxY="0"/>
+		</storage>
+
+		<sellingStation node="WoodStorage" supportsExtension="false" hideFromPricesMenu="true" allowMissions="false" >
+			<unloadTrigger exactFillRootNode="unloadTrigger" aiNode="unloadTriggerAINode" fillTypes="WOOD_INPUT WOOD" >
+				<fillTypeConversion incomingFillType="WOOD" outgoingFillType="WOOD_INPUT" ratio="1.0"/>
+			</unloadTrigger>
+			<woodTrigger fillTypes="WOOD_INPUT WOOD" aiNode="unloadTriggerAINode" triggerNode="woodTrigger" autoUnload="false" activationTriggerNode="woodSellTrigger">
+				<fillTypeConversion incomingFillType="WOOD" outgoingFillType="WOOD_INPUT" ratio="1.0"/>
+			</woodTrigger>
+		</sellingStation>
+		
+		<loadingStation>
+			<loadTrigger triggerNode="loadingTrigger" fillLitersPerSecond="1" dischargeNode="dischargeNode" fillTypes="WOOD" aiNode="aiNodeLoading">
+			</loadTrigger>
+		</loadingStation>
+
+		<playerTrigger node="playerTrigger" />
+	</productionPoint>
+
+	<constructible>
+		<stateMachine>
+			<states>
+				<state name="SETUP" class="ConstructibleStateBuilding" >
+					<toggleMesh node="triggers"			active="false"	updatePhysics="false"/>
+					<toggleMesh node="WoodStorage"		active="false"	updatePhysics="false"/>
+
+					<toggleMesh node="supports1"		active="false"	updatePhysics="false"/>
+					<toggleMesh node="supports2"		active="false"	updatePhysics="false"/>
+					<toggleMesh node="supports3"		active="false"	updatePhysics="false"/>
+					<toggleMesh node="supports4"		active="false"	updatePhysics="false"/>
+					<toggleMesh node="lightSupports"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="logs"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="lighting"			active="false"	updatePhysics="false"/>
+
+					<toggleMesh node="ConstructibleSellingStation"	active="true"	updatePhysics="true"/>
+					<toggleMesh node="sawhorseLogSaw"	active="true"	updatePhysics="true"/>
+					<toggleMesh node="logPiles"			active="false"	updatePhysics="false"/>
+					<toggleHotspot index="1" isVisible="true" />
+					<toggleHotspot index="2" isVisible="false" />
+					<input fillType="INSTRUMENT"		amount="10"		usagePerHour="10"/>
+					<input fillType="WOOD"				amount="1000"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_1" class="ConstructibleStateBuilding" >
+					<toggleMesh node="supports1"		active="true"	updatePhysics="true"/>
+					<toggleMesh node="logPiles"			active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"		amount="10"		usagePerHour="10"/>
+					<input fillType="WOOD"				amount="1000"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_2" class="ConstructibleStateBuilding" >
+					<toggleMesh node="supports2"		active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"		amount="10"		usagePerHour="10"/>
+					<input fillType="WOOD"				amount="1000"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_3" class="ConstructibleStateBuilding" >
+					<toggleMesh node="supports3"		active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"		amount="10"		usagePerHour="10"/>
+					<input fillType="WOOD"				amount="1000"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_4" class="ConstructibleStateBuilding" >
+					<toggleMesh node="supports4"		active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"		amount="10"		usagePerHour="10" />
+					<input fillType="WOOD"				amount="1000"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_5" class="ConstructibleStateBuilding" >
+					<toggleMesh node="lightSupports"	active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"		amount="10"		usagePerHour="10" />
+					<input fillType="WOOD"				amount="1000"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="FINALIZE" class="ConstructibleStateFinalize" >
+					<toggleMesh node="lighting"			active="true"	updatePhysics="true"/>
+					<toggleMesh node="logs"				active="true"	updatePhysics="true"/>
+					<toggleMesh node="ConstructibleSellingStation"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="warningStripes01"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="triggers"			active="true"	updatePhysics="true"/>
+					<toggleMesh node="WoodStorage"		active="true"	updatePhysics="true"/>
+					<toggleHotspot index="1" isVisible="false" />
+					<toggleHotspot index="2" isVisible="true" />
+				</state>
+
+				<state name="DONE" class="ConstructibleState" isPreviewState="true"/>
+			</states>
+
+			<transitions>
+				<transition from="SETUP"		to="BUILDING_1"/>
+				<transition from="BUILDING_1"	to="BUILDING_2"/>
+				<transition from="BUILDING_2"	to="BUILDING_3"/>
+				<transition from="BUILDING_3"	to="BUILDING_4"/>
+				<transition from="BUILDING_4"	to="BUILDING_5"/>
+				<transition from="BUILDING_5"	to="FINALIZE"/>
+				<transition from="FINALIZE"		to="DONE" />
+			</transitions>
+		</stateMachine>
+
+		<sellingStation node="ConstructibleSellingStation" supportsExtension="false" allowMissions="false" appearsOnStats="false">
+			<palletTrigger	triggerNode="constructiblePalletTrigger"	aiNode="constructibleUnloadTriggerAINode"	fillTypes="INSTRUMENT" />
+			<woodTrigger	triggerNode="constructibleWoodTrigger"		aiNode="constructibleUnloadTriggerAINode"	fillTypes="WOOD"	activationTriggerNode="constructibleWoodSellActivationTrigger"/>
+		</sellingStation>
+
+		<storage isExtension="false" fillLevelSyncThreshold="50">		<!-- ВРЕМЯ     6 -->
+			<capacity fillType="INSTRUMENT"		capacity="65" />			<!-- ВСЕГО     60 - поддоны инструмента -->
+			<capacity fillType="WOOD"			capacity="6100" />			<!-- ВСЕГО  6 000 - ДРЕВЕСИНА -->
+		</storage>
+	</constructible>
+
+	<i3dMappings>
+		<!-- areas -->
+		<i3dMapping id="testAreaStart01" node="0>0|0|0" />
+		<i3dMapping id="testAreaEnd01" node="0>0|0|0|0" />
+		<i3dMapping id="clearAreaStart01" node="0>0|1|0" />
+		<i3dMapping id="clearAreaWidth01" node="0>0|1|0|0" />
+		<i3dMapping id="clearAreaHeight01" node="0>0|1|0|1" />
+		<i3dMapping id="levelAreaStart01" node="0>0|2|0" />
+		<i3dMapping id="levelAreaWidth01" node="0>0|2|0|0" />
+		<i3dMapping id="levelAreaHeight01" node="0>0|2|0|1" />
+		<i3dMapping id="levelAreaStart02" node="0>0|2|1" />
+		<i3dMapping id="levelAreaWidth02" node="0>0|2|1|0" />
+		<i3dMapping id="levelAreaHeight02" node="0>0|2|1|1" />
+		<i3dMapping id="indoorAreaStart01" node="0>0|3|0" />
+		<i3dMapping id="indoorAreaWidth01" node="0>0|3|0|0" />
+		<i3dMapping id="indoorAreaHeight01" node="0>0|3|0|1" />
+		<i3dMapping id="tipOcclusionUpdateAreaStart01" node="0>0|4|0" />
+		<i3dMapping id="tipOcclusionUpdateAreaEnd01" node="0>0|4|0|0" />
+
+		<!-- triggers/markers -->
+		<i3dMapping id="triggers" node="0>1" />
+		<i3dMapping id="infoTrigger" node="0>1|0" />
+		<i3dMapping id="unloadTriggerMarker" node="0>1|1" />
+		<i3dMapping id="unloadTriggerAINode" node="0>1|2" />
+		<i3dMapping id="playerTriggerMarker" node="0>1|3" />
+		<i3dMapping id="woodSellTriggerMarker" node="0>2|3|0" />
+		<i3dMapping id="woodSellActivationTriggerMarker" node="0>2|3|1" />
+		<i3dMapping id="constructibleUnloadTriggerMarker" node="0>4|2" />
+		<i3dMapping id="constructibleWoodSellActivationTriggerMarker" node="0>4|6" />
+
+		<!-- distributor -->
+		<i3dMapping id="WoodStorage" node="0>2" />
+		<i3dMapping id="playerTrigger" node="0>2|0" />
+		<i3dMapping id="unloadTrigger" node="0>2|1" />
+		<i3dMapping id="woodTrigger" node="0>2|2" />
+		<i3dMapping id="woodSellTrigger" node="0>2|3" />
+
+		<!-- hidden loading station -->
+		<i3dMapping id="loadingTrigger" node="0>5|0" />
+		<i3dMapping id="dischargeNode" node="0>5|1" />
+		<i3dMapping id="aiNodeLoading" node="0>5|2" />
+
+		<!-- constructible -->
+		<i3dMapping id="ConstructibleSellingStation" node="0>4" />
+		<i3dMapping id="warningStripes01" node="0>4|0|0" />
+		<i3dMapping id="constructiblePalletTrigger" node="0>4|1" />
+		<i3dMapping id="constructibleUnloadTriggerAINode" node="0>4|3" />
+		<i3dMapping id="constructibleWoodTrigger" node="0>4|4" />
+		<i3dMapping id="constructibleWoodSellActivationTrigger" node="0>4|5" />
+		<i3dMapping id="sawhorseLogSaw" node="0>4|9|0" />
+		<i3dMapping id="logPiles" node="0>4|9|1" />
+
+		<!-- visual -->
+		<i3dMapping id="supports1" node="0>3|0|0" />
+		<i3dMapping id="supports2" node="0>3|0|1" />
+		<i3dMapping id="supports3" node="0>3|0|2" />
+		<i3dMapping id="supports4" node="0>3|0|3" />
+		<i3dMapping id="lightSupports" node="0>3|1" />
+		<i3dMapping id="logs" node="0>3|2" />
+		<i3dMapping id="lighting" node="0>3|3" />
+	</i3dMappings>
+</placeable>

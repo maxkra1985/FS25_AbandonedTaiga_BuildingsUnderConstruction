@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<i3D name="fakeFence.i3d" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+  <Asset>
+    <Export program="GIANTS Editor 64bit" version="10.0.3"/>
+  </Asset>
+
+  <Files>
+    <File fileId="2" filename="$data/placeables/brandless/fences/husbandries/cowFence/cowFence_diffuse.png"/>
+    <File fileId="3" filename="$data/placeables/brandless/fences/husbandries/cowFence/cowFence_normal.png"/>
+    <File fileId="4" filename="$data/placeables/brandless/fences/husbandries/cowFence/cowFence_specular.png"/>
+    <File fileId="5" filename="$data/shaders/placeableShader.xml"/>
+  </Files>
+
+
+  <Materials>
+    <Material name="cowFence_mat" materialId="6" customShaderId="5">
+      <Texture fileId="2"/>
+      <Normalmap fileId="3"/>
+      <Glossmap fileId="4"/>
+    </Material>
+    <Material name="cowFence_mat2" materialId="7" customShaderId="5" customShaderVariation="vertexOffset">
+      <Texture fileId="2"/>
+      <Normalmap fileId="3"/>
+      <Glossmap fileId="4"/>
+    </Material>
+    <Material name="lambert1" materialId="5" diffuseColor="0.501961 0.501961 0.501961 1">
+    </Material>
+  </Materials>
+
+
+  <Shapes externalShapesFile="fakeFence.i3d.shapes">
+  </Shapes>
+
+  <Scene>
+    <TransformGroup name="pole01" nodeId="13">
+      <Shape name="col" shapeId="1" visibility="false" nodeId="14" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="5"/>
+      <Shape name="visual" shapeId="2" visibility="false" clipDistance="120" nodeId="15" castsShadows="true" receiveShadows="true" materialIds="6"/>
+    </TransformGroup>
+    <TransformGroup name="panel01" nodeId="16">
+      <Shape name="col" shapeId="3" visibility="false" nodeId="17" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="5"/>
+      <Shape name="visual" shapeId="4" visibility="false" clipDistance="120" nodeId="18" castsShadows="true" receiveShadows="true" materialIds="7"/>
+    </TransformGroup>
+  </Scene>
+
+</i3D>

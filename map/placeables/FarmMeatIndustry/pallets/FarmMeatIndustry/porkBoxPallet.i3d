@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<i3D name="porkBoxPallet.i3d" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+  <Asset>
+    <Export program="GIANTS Editor 64bit" version="10.0.3"/>
+  </Asset>
+
+  <Files>
+    <File fileId="4" filename="porkBox_diffuse.dds"/>
+  </Files>
+
+
+  <Materials>
+    <Material name="beefBox_mat" materialId="5">
+      <Texture fileId="4"/>
+    </Material>
+    <Material name="beefBox_mat" materialId="6" diffuseColor="1 1 1 1">
+    </Material>
+    <Material name="lambert1" materialId="7" diffuseColor="0.501961 0.501961 0.501961 1">
+    </Material>
+    <Material name="lambert1" materialId="8" diffuseColor="0.8 0.8 0.8 1" specularColor="0.8 1 0.8">
+    </Material>
+  </Materials>
+
+
+  <Shapes externalShapesFile="porkBoxPallet.i3d.shapes">
+  </Shapes>
+
+  <Scene>
+    <Shape name="beefBoxPallet_component1" shapeId="1" dynamic="true" compound="true" collisionFilterGroup="0x10004" collisionFilterMask="0xfe3ffb83" staticFriction="1" dynamicFriction="1" density="0.0001" clipDistance="150" nodeId="15" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="8">
+      <Shape name="dynamicMountTrigger" translation="0 0.090475 0" shapeId="2" kinematic="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x20000" nodeId="16" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="7"/>
+      <TransformGroup name="content" nodeId="17">
+        <Shape name="beefBox21" translation="-0.397783 0.219 6.06906e-09" rotation="-1.82123e-06 8.16063e-13 180" scale="1 0.94 1" shapeId="3" nodeId="18" castsShadows="true" receiveShadows="true" materialIds="5">
+          <Shape name="beefBox_Tension01" rotation="-1.82123e-06 8.16063e-13 0" shapeId="4" nodeId="19" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="6"/>
+        </Shape>
+        <Shape name="beefBox21" translation="0.198 0.219 -0.197" rotation="-180 -90 3.17828e-05" scale="1 0.94 1" shapeId="3" nodeId="20" castsShadows="true" receiveShadows="true" materialIds="5">
+          <Shape name="beefBox_Tension01" rotation="-1.82123e-06 8.16063e-13 0" shapeId="4" nodeId="21" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="6"/>
+        </Shape>
+        <Shape name="beefBox21" translation="0.198 0.219 0.198148" rotation="1.75253e-05 -90 180" scale="1 0.94 1" shapeId="3" nodeId="22" castsShadows="true" receiveShadows="true" materialIds="5">
+          <Shape name="beefBox_Tension01" rotation="-1.82123e-06 8.16063e-13 0" shapeId="4" nodeId="23" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="6"/>
+        </Shape>
+        <Shape name="beefBox21" translation="0.396986 0.36 0.00134666" rotation="-180 0 4.44166e-06" scale="1 0.94 1" shapeId="3" nodeId="24" castsShadows="true" receiveShadows="true" materialIds="5">
+          <Shape name="beefBox_Tension01" rotation="-1.82123e-06 8.16063e-13 0" shapeId="4" nodeId="25" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="6"/>
+        </Shape>
+        <Shape name="beefBox21" translation="-0.198 0.36 -0.197" rotation="7.1979e-10 90 -180" scale="1 0.94 1" shapeId="3" nodeId="26" castsShadows="true" receiveShadows="true" materialIds="5">
+          <Shape name="beefBox_Tension01" rotation="-1.82123e-06 8.16063e-13 0" shapeId="4" nodeId="27" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="6"/>
+        </Shape>
+        <Shape name="beefBox21" translation="-0.198 0.36 0.198148" rotation="-6.68606e-11 90 180" scale="1 0.94 1" shapeId="3" nodeId="28" castsShadows="true" receiveShadows="true" materialIds="5">
+          <Shape name="beefBox_Tension01" rotation="-1.82123e-06 8.16063e-13 0" shapeId="4" nodeId="29" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="6"/>
+        </Shape>
+        <Shape name="beefBox21" translation="-0.397783 0.497 1.21249e-08" rotation="-1.82123e-06 8.16063e-13 180" scale="1 0.94 1" shapeId="3" nodeId="30" castsShadows="true" receiveShadows="true" materialIds="5">
+          <Shape name="beefBox_Tension01" rotation="-1.82123e-06 8.16063e-13 0" shapeId="4" nodeId="31" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="6"/>
+        </Shape>
+        <Shape name="beefBox21" translation="0.198 0.497 -0.197" rotation="-180 -90 3.17828e-05" scale="1 0.94 1" shapeId="3" nodeId="32" castsShadows="true" receiveShadows="true" materialIds="5">
+          <Shape name="beefBox_Tension01" rotation="-1.82123e-06 8.16063e-13 0" shapeId="4" nodeId="33" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="6"/>
+        </Shape>
+        <Shape name="beefBox21" translation="0.198 0.497 0.198148" rotation="1.75253e-05 -90 180" scale="1 0.94 1" shapeId="3" nodeId="34" castsShadows="true" receiveShadows="true" materialIds="5">
+          <Shape name="beefBox_Tension01" rotation="-1.82123e-06 8.16063e-13 0" shapeId="4" nodeId="35" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="6"/>
+        </Shape>
+      </TransformGroup>
+      <TransformGroup name="collisions" clipDistance="10" nodeId="36">
+        <Shape name="floorCollision01" translation="0.3 0 0" shapeId="5" compoundChild="true" collisionFilterGroup="0x10000" collisionFilterMask="0xfe3dfb83" staticFriction="1" dynamicFriction="1" density="0.0001" nodeId="37" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="7"/>
+        <Shape name="floorCollision02" translation="-0.3 0 0" shapeId="5" compoundChild="true" collisionFilterGroup="0x10000" collisionFilterMask="0xfe3dfb83" staticFriction="1" dynamicFriction="1" density="0.0001" nodeId="38" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="7"/>
+      </TransformGroup>
+    </Shape>
+  </Scene>
+
+</i3D>

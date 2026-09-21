@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<placeable type="constructibleRepairWorkshop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../shared/xml/schema/placeable.xsd">
+	<storeData>
+		<name>$l10n_RepairWorkshop</name>
+		<image>map/placeables/RepairWorkshop/RepairWorkshop.dds</image>
+		<price>100</price>
+		<functions>
+			<function>Возводимая мастерская.</function>
+			<function>Для её возведения требуются инструменты, цемент, железо, брёвна, доски, длинные доски, металл, кровельные панели и гвозди.</function>
+			<function>Оформление проекта на строительство данной мастерской составляет 100$.</function>
+		</functions>
+		<dailyUpkeep>1</dailyUpkeep>
+		<canBeSold>true</canBeSold>
+		<showInStore>true</showInStore>
+		<lifetime>1000</lifetime>
+		<rotation>0</rotation>
+		<brand>ConstructibleBuildings</brand>
+		<species>PLACEABLE</species>
+		<category>placeableMisc</category>
+		<brush>
+			<type>placeable</type>
+			<category>ConstructibleBuildings</category>
+			<tab>constructiblesTools</tab>
+		</brush>
+		<vertexBufferMemoryUsage>364544</vertexBufferMemoryUsage>
+		<indexBufferMemoryUsage>107008</indexBufferMemoryUsage>
+		<textureMemoryUsage>8781824</textureMemoryUsage>
+		<audioMemoryUsage>0</audioMemoryUsage>
+		<instanceVertexBufferMemoryUsage>0</instanceVertexBufferMemoryUsage>
+		<instanceIndexBufferMemoryUsage>0</instanceIndexBufferMemoryUsage>
+	</storeData>
+
+	<base>
+		<filename>map/placeables/RepairWorkshop/RepairWorkshop.i3d</filename>
+		<canBeRenamed>true</canBeRenamed>
+		<canBeDeleted>true</canBeDeleted>
+		<boughtWithFarmland>true</boughtWithFarmland>
+	</base>
+
+	<placement useRandomYRotation="false" useManualYRotation="true" >
+		<testAreas>
+			<testArea startNode="testArea1Start" endNode="testArea1End" />
+		</testAreas>
+		<sounds>
+			<place template="smallImp"/>
+		</sounds>
+	</placement>
+
+	<clearAreas>
+		<clearArea startNode="clearArea1Start" widthNode="clearArea1Width" heightNode="clearArea1Height"/>
+	</clearAreas>
+
+	<leveling requireLeveling="true" maxSmoothDistance="3" maxSlope="75" maxEdgeAngle="30">
+		<levelAreas>
+			<levelArea startNode="levelArea1Start" widthNode="levelArea1Width" heightNode="levelArea1Height" groundType="asphalt"/>
+		</levelAreas>
+	</leveling>
+
+	<indoorAreas>
+		<indoorArea startNode="indoorArea1Start" widthNode="indoorArea1Width" heightNode="indoorArea1Height"/>
+	</indoorAreas>
+
+	<tipOcclusionUpdateAreas>
+		<tipOcclusionUpdateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End" />
+	</tipOcclusionUpdateAreas>
+
+	<ai>
+		<updateAreas>
+			<updateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End" />
+		</updateAreas>
+	</ai>
+
+	<triggerMarkers>
+		<triggerMarker node="markerWrench" filename="$data/shared/assets/marker/markerIconWrench.i3d" />
+		<triggerMarker node="warningStripes_01"/>
+		<triggerMarker node="warningStripes_02"/>
+		<triggerMarker node="warningStripes01"/>
+		<triggerMarker node="woodSellActivationTriggerMarker" adjustToGround="true" filename="$data/shared/assets/marker/markerIconExclamationMark.i3d" />
+	</triggerMarkers>
+
+	<hotspots>
+		<hotspot type="UNLOADING_PALLET"	linkNode="constructibleUnloadTriggerMarker"	teleportNode="constructibleUnloadTriggerMarker" />
+		<hotspot type="SHOP"				linkNode="vehicleTrigger"					teleportNode="playerTrigger"/>
+	</hotspots>
+
+	<infoTrigger triggerNode="infoTrigger"/>
+
+	<workshop>
+		<sellingPoint playerTriggerNode="playerTrigger" iconNode="markerWrench" sellTriggerNode="vehicleTrigger" ownWorkshop="true" mobileWorkshop="false" />
+	</workshop>
+
+	<animatedObjects>
+		<animatedObject saveId="rollingDoor1" >
+			<animation duration="5">
+				<part node="rollingDoor1">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 3.4 0"/>
+				</part>
+				<part node="rollingDoor1ColPartBottom">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 3.4 0"/>
+				</part>
+				<part node="rollingDoor1ColPartTop">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="0.5" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 1.7 0"/>
+				</part>
+				<shader node="rollingDoor1" parameterName="visibilityCutThreshold">
+					<keyFrame time="0.0" values="0 - - -" />
+					<keyFrame time="1.0" values="0.94 - - -" />
+				</shader>
+			</animation>
+			<controls triggerNode="rollingDoor1Trigger" posAction="ACTIVATE_HANDTOOL" posText="action_openGate" negText="action_closeGate" />
+			<sounds>
+				<moving linkNode="rollingDoor1Base" template="rollingGarageDoor" />
+				<posEnd linkNode="rollingDoor1Base" template="slidingGateMetalOpen" />
+				<negEnd linkNode="rollingDoor1Base" template="slidingGateMetalClose" />
+			</sounds>
+		</animatedObject>
+	</animatedObjects>
+
+	<constructible>
+		<stateMachine>
+			<states>
+				<state name="SETUP" StateName="Заливка фундамента" class="ConstructibleStateBuilding" >
+					<toggleMesh node="workshop"			active="false"	updatePhysics="false"/>
+					<toggleMesh node="ConstructibleSellingStation"	active="true"	updatePhysics="true"/>
+					<toggleMesh node="warningStripes01"	active="true"	updatePhysics="true"/>
+					<toggleMesh node="cementMixer01"	active="true"	updatePhysics="true"/>
+					<toggleMesh node="sawhorseLogSaw"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="boardAndBeams"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="foundation"		active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse01"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse02"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse03"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse04"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse05"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse06"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse07"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse08"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse09"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse10"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse11"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse12"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse13"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse14"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="blockhouse15"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="lathings01"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="lathings02"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="roof"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="furniture"			active="false"	updatePhysics="false"/>
+					<toggleHotspot index="1" isVisible="true" />
+					<toggleHotspot index="2" isVisible="false" />
+					<input fillType="INSTRUMENT"		amount="165"		usagePerHour="56"/>			<!-- начинаем заливать фундамент -->
+					<input fillType="CEMENT"			amount="4995"	usagePerHour="1667"/>
+					<input fillType="BUILDING_METAL"	amount="4995"	usagePerHour="1667"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_1" StateName="Укладка венцов сруба" class="ConstructibleStateBuilding" >
+					<toggleMesh node="foundation"		active="true"	updatePhysics="true"/>		<!-- фундамент залит -->
+					<toggleMesh node="cementMixer01"	active="false"	updatePhysics="false"/>		<!-- бетономешалка не нужна -->
+					<toggleMesh node="sawhorseLogSaw"	active="true"	updatePhysics="true"/>		<!-- отображаем пилу -->
+					<input fillType="INSTRUMENT"		amount="195"	usagePerHour="40"/>			<!-- пилим дерево на первые три сруба -->
+					<input fillType="WOOD"				amount="5000"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_2" StateName="Укладка венцов сруба" class="ConstructibleStateBuilding" >
+					<toggleMesh node="blockhouse01"		active="true"	updatePhysics="true"/>		<!-- Сруб №1 установлен -->
+					<toggleMesh node="blockhouse02"		active="true"	updatePhysics="true"/>		<!-- Сруб №2 установлен -->
+					<toggleMesh node="blockhouse03"		active="true"	updatePhysics="true"/>		<!-- Сруб №3 установлен -->
+					<input fillType="INSTRUMENT"		amount="195"	usagePerHour="40"/>			<!-- пилим дерево на первые 4,5,6,7 срубы -->
+					<input fillType="WOOD"				amount="5000"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_3" StateName="Укладка венцов сруба" class="ConstructibleStateBuilding" >
+					<toggleMesh node="blockhouse04"		active="true"	updatePhysics="true"/>		<!-- Сруб №4 установлен -->
+					<toggleMesh node="blockhouse05"		active="true"	updatePhysics="true"/>		<!-- Сруб №5 установлен -->
+					<toggleMesh node="blockhouse06"		active="true"	updatePhysics="true"/>		<!-- Сруб №6 установлен -->
+					<toggleMesh node="blockhouse07"		active="true"	updatePhysics="true"/>		<!-- Сруб №7 установлен -->
+					<input fillType="INSTRUMENT"		amount="235"	usagePerHour="40"/>			<!-- пилим дерево на первые 8,9,10,11,12 срубы -->
+					<input fillType="WOOD"				amount="6000"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_4" StateName="Укладка венцов фронтонов и стропил" class="ConstructibleStateBuilding" >
+					<toggleMesh node="blockhouse08"		active="true"	updatePhysics="true"/>		<!-- Сруб №8 установлен -->
+					<toggleMesh node="blockhouse09"		active="true"	updatePhysics="true"/>		<!-- Сруб №9 установлен -->
+					<toggleMesh node="blockhouse10"		active="true"	updatePhysics="true"/>		<!-- Сруб №10 установлен -->
+					<toggleMesh node="blockhouse11"		active="true"	updatePhysics="true"/>		<!-- Сруб №11 установлен -->
+					<toggleMesh node="blockhouse12"		active="true"	updatePhysics="true"/>		<!-- Сруб №12 установлен -->
+					<toggleMesh node="sawhorseLogSaw"	active="true"	updatePhysics="true"/>		<!-- отображаем обрезки досок -->
+					<input fillType="INSTRUMENT"		amount="235"	usagePerHour="40"/>			<!-- пилим дерево на первые 13,14,15 срубы -->
+					<input fillType="WOOD"				amount="6000"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_5" StateName="Монтаж обрешётки" class="ConstructibleStateBuilding" >
+					<toggleMesh node="blockhouse13"		active="true"	updatePhysics="true"/>		<!-- Сруб №13 установлен -->
+					<toggleMesh node="blockhouse14"		active="true"	updatePhysics="true"/>		<!-- Сруб №14 (стропила) установлен -->
+					<toggleMesh node="blockhouse15"		active="true"	updatePhysics="true"/>		<!-- Сруб №15 (фронтоны) установлен -->
+					<toggleMesh node="boardAndBeams"	active="true"	updatePhysics="true"/>		<!-- обрезки досок и балок -->
+					<input fillType="INSTRUMENT"		amount="49"		usagePerHour="50"/>			<!-- набиваем обрешётку -->
+					<input fillType="PLANKS"			amount="1995"	usagePerHour="2000"/>
+					<input fillType="BOARDS"			amount="995"	usagePerHour="1000"/>
+					<input fillType="NAILS"		amount="57"	usagePerHour="60"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_6" StateName="Монтаж кровли" class="ConstructibleStateBuilding" >
+					<toggleMesh node="lathings01"		active="true"	updatePhysics="true"/>		<!-- обрешётка набита -->
+					<toggleMesh node="lathings02"		active="true"	updatePhysics="true"/>		<!-- обрешётка набита -->
+					<input fillType="INSTRUMENT"		amount="99"		usagePerHour="50"/>			<!-- укладываем крышу -->
+					<input fillType="ROOFPLATES"		amount="3995"	usagePerHour="2000"/>
+					<input fillType="NAILS"		amount="57"	usagePerHour="30"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_7" StateName="Укладка венцов сруба" class="ConstructibleStateBuilding" >
+					<toggleMesh node="roof"				active="true"	updatePhysics="true"/>		<!-- крыша уложена -->
+					<input fillType="INSTRUMENT"		amount="295"	usagePerHour="100"/>		<!-- устанавливаем роллет, инструменты, шкафы, окна -->
+					<input fillType="METAL"				amount="2995"	usagePerHour="1000"/>
+					<input fillType="BOARDS"			amount="995"	usagePerHour="333"/>
+					<input fillType="NAILS"		amount="27"	usagePerHour="10"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="FINALIZE" StateName="Монтаж оборудования" class="ConstructibleStateFinalize" >
+					<toggleMesh node="furniture"		active="true"	updatePhysics="true"/>
+					<toggleMesh node="workshop"			active="true"	updatePhysics="true"/>
+					<toggleMesh node="ConstructibleSellingStation"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="warningStripes01"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="sawhorseLogSaw"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="boardAndBeams"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="cementMixer01"	active="false"	updatePhysics="false"/>
+					<toggleHotspot index="1" isVisible="false" />
+					<toggleHotspot index="2" isVisible="true" />
+				</state>
+
+				<state name="DONE" class="ConstructibleState" isPreviewState="true"/>
+			</states>
+
+			<transitions>
+				<transition from="SETUP"		to="BUILDING_1"/>
+				<transition from="BUILDING_1"	to="BUILDING_2"/>
+				<transition from="BUILDING_2"	to="BUILDING_3"/>
+				<transition from="BUILDING_3"	to="BUILDING_4"/>
+				<transition from="BUILDING_4"	to="BUILDING_5"/>
+				<transition from="BUILDING_5"	to="BUILDING_6"/>
+				<transition from="BUILDING_6"	to="BUILDING_7"/>
+				<transition from="BUILDING_7"	to="FINALIZE"/>
+				<transition from="FINALIZE"		to="DONE" />
+			</transitions>
+		</stateMachine>
+
+		<sellingStation node="ConstructibleSellingStation" supportsExtension="false" allowMissions="true" appearsOnStats="false">
+			<palletTrigger	triggerNode="constructiblePalletTrigger"	aiNode="constructibleUnloadTriggerAINode"	fillTypes="INSTRUMENT BOARDS PLANKS BUILDING_METAL CEMENT ROOFPLATES METAL NAILS" />
+			<woodTrigger	triggerNode="ConstructibleWoodTrigger"		aiNode="constructibleUnloadTriggerAINode"	fillTypes="WOOD"	activationTriggerNode="ConstructibleWoodSellActivationTrigger"/>
+		</sellingStation>
+
+		<storage isExtension="false" fillLevelSyncThreshold="50">		<!-- ВРЕМЯ     31 -->
+			<capacity fillType="INSTRUMENT"		capacity="1500" />			<!-- ВСЕГО  1 500 - поддоны инструмента -->
+			<capacity fillType="CEMENT"			capacity="5000" />
+			<capacity fillType="BUILDING_METAL"	capacity="5000" />			<!-- ВСЕГО  5 000 - мешки цемента-->
+			<capacity fillType="WOOD"			capacity="10000" />			<!-- ВСЕГО 22 000 - дерево -->
+			<capacity fillType="PLANKS"			capacity="2000" />			<!-- ВСЕГО  2 000 - длинные доски -->
+			<capacity fillType="BOARDS"			capacity="2000" />			<!-- ВСЕГО  2 000 - доски -->
+			<capacity fillType="ROOFPLATES"		capacity="4000" />			<!-- ВСЕГО  4 000 - кровельная панель -->
+			<capacity fillType="METAL"			capacity="3000" />
+			<capacity fillType="NAILS"			capacity="150" />			<!-- ВСЕГО  3 000 - металл листовой -->
+		</storage>
+	</constructible>
+
+
+	<i3dMappings>
+		<!-- AREAS -->
+		<i3dMapping id="testArea1Start" node="0>0|0|0" />
+		<i3dMapping id="testArea1End" node="0>0|0|0|0" />
+		<i3dMapping id="clearArea1Start" node="0>0|1|0" />
+		<i3dMapping id="clearArea1Width" node="0>0|1|0|0" />
+		<i3dMapping id="clearArea1Height" node="0>0|1|0|1" />
+		<i3dMapping id="levelArea1Start" node="0>0|2|0" />
+		<i3dMapping id="levelArea1Width" node="0>0|2|0|0" />
+		<i3dMapping id="levelArea1Height" node="0>0|2|0|1" />
+		<i3dMapping id="indoorArea1Start" node="0>0|3|0" />
+		<i3dMapping id="indoorArea1Width" node="0>0|3|0|0" />
+		<i3dMapping id="indoorArea1Height" node="0>0|3|0|1" />
+		<i3dMapping id="tipOcclusionUpdateArea1Start" node="0>0|4|0" />
+		<i3dMapping id="tipOcclusionUpdateArea1End" node="0>0|4|0|0" />
+
+		<!-- ТРИГГЕРЫ -->
+		<i3dMapping id="playerTrigger" node="0>2|0" />
+		<i3dMapping id="markerWrench" node="0>2|0|0" />
+		<i3dMapping id="warningStripes_01" node="0>2|1" />
+		<i3dMapping id="warningStripes_02" node="0>2|1|0" />
+		<i3dMapping id="warningStripes01" node="0>3|0|0" />
+		<i3dMapping id="vehicleTrigger" node="0>2|2" />
+		<i3dMapping id="constructibleUnloadTriggerMarker"	node="0>3|2" />
+		<i3dMapping id="woodSellActivationTriggerMarker"	node="0>3|6" />
+		<i3dMapping id="infoTrigger"	node="0>2|3" />
+
+		<!-- ДВЕРИ -->
+		<i3dMapping id="rollingDoor1Base" node="0>1|19|16" />
+		<i3dMapping id="rollingDoor1" node="0>1|19|16|0" />
+		<i3dMapping id="rollingDoor1ColPartBottom" node="0>1|19|16|1" />
+		<i3dMapping id="rollingDoor1ColPartTop" node="0>1|19|16|2" />
+		<i3dMapping id="rollingDoor1Trigger" node="0>1|19|16|3" />
+
+		<!-- СТРОИТЕЛЬСТВО -->
+		<i3dMapping id="workshop" node="0>2" />
+		<i3dMapping id="ConstructibleSellingStation" node="0>3" />
+		<i3dMapping id="constructiblePalletTrigger" node="0>3|1" />
+		<i3dMapping id="constructibleUnloadTriggerAINode" node="0>3|3" />
+		<i3dMapping id="ConstructibleWoodTrigger" node="0>3|4" />
+		<i3dMapping id="ConstructibleWoodSellActivationTrigger" node="0>3|5" />
+		<i3dMapping id="cementMixer01" node="0>3|10|0" />
+		<i3dMapping id="sawhorseLogSaw" node="0>3|10|1" />
+		<i3dMapping id="boardAndBeams" node="0>3|10|2" />
+		<i3dMapping id="foundation" node="0>1|0" />
+		<i3dMapping id="blockhouse01" node="0>1|1" />
+		<i3dMapping id="blockhouse02" node="0>1|2" />
+		<i3dMapping id="blockhouse03" node="0>1|3" />
+		<i3dMapping id="blockhouse04" node="0>1|4" />
+		<i3dMapping id="blockhouse05" node="0>1|5" />
+		<i3dMapping id="blockhouse06" node="0>1|6" />
+		<i3dMapping id="blockhouse07" node="0>1|7" />
+		<i3dMapping id="blockhouse08" node="0>1|8" />
+		<i3dMapping id="blockhouse09" node="0>1|9" />
+		<i3dMapping id="blockhouse10" node="0>1|10" />
+		<i3dMapping id="blockhouse11" node="0>1|11" />
+		<i3dMapping id="blockhouse12" node="0>1|12" />
+		<i3dMapping id="blockhouse13" node="0>1|13" />
+		<i3dMapping id="blockhouse14" node="0>1|14" />
+		<i3dMapping id="blockhouse15" node="0>1|15" />
+		<i3dMapping id="lathings01" node="0>1|16" />
+		<i3dMapping id="lathings02" node="0>1|17" />
+		<i3dMapping id="roof" node="0>1|18" />
+		<i3dMapping id="furniture" node="0>1|19" />
+
+
+
+
+	</i3dMappings>
+</placeable>

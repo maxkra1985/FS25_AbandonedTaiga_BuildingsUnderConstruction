@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="iso-8859-1"?>
+<i3D name="salo.i3d" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+    <Asset>
+        <Export program="GIANTS Editor 64bit" version="10.0.3"/>
+    </Asset>
+    <Files>
+        <File fileId="7" filename="salo_diffuse.dds"/>
+        <File fileId="4" filename="plasticBox_diffuse.dds"/>
+        <File fileId="5" filename="plasticBox_normal.dds"/>
+        <File fileId="6" filename="plasticBox_specular.dds"/>
+        <File fileId="8" filename="$data/shared/default_normal.dds"/>
+        <File fileId="9" filename="$data/shared/default_specular.dds"/>
+    </Files>
+    <Materials>
+        <Material name="lambert1" materialId="5" diffuseColor="0.501961 0.501961 0.501961 1"/>
+        <Material name="lambert1" materialId="33" diffuseColor="0.8 0.8 0.8 1" specularColor="0.8 1 0.8"/>
+        <Material name="meat2_mat" materialId="86">
+            <Texture fileId="7"/>
+            <Normalmap fileId="8"/>
+            <Glossmap fileId="9"/>
+        </Material>
+        <Material name="meat_mat" materialId="204" diffuseColor="0.8 0.8 0.8 1" specularColor="0.6 1 0"/>
+        <Material name="plasticBox01_mat" materialId="154">
+            <Texture fileId="4"/>
+            <Normalmap fileId="5"/>
+            <Glossmap fileId="6"/>
+        </Material>
+        <Material name="plasticBox01_mat" materialId="203" diffuseColor="1 0.8 0.8 1" specularColor="0.6 1 0"/>
+    </Materials>
+    <Shapes externalShapesFile="salo.i3d.shapes"/>
+    <Scene>
+        <Shape name="beefBoxPallet_component1" shapeId="1" dynamic="true" compound="true" collisionFilterGroup="0x10004" collisionFilterMask="0xfe3ffb83" staticFriction="1" dynamicFriction="1" density="0.0001" clipDistance="150" nodeId="40" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="33">
+            <Shape name="dynamicMountTrigger" translation="0 0.090475 0" shapeId="2" kinematic="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x20000" nodeId="41" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="5"/>
+            <TransformGroup name="content" nodeId="42">
+                <Shape name="palette01" scale="1 0.96 1" shapeId="3" nodeId="172" castsShadows="true" receiveShadows="true" materialIds="154,86">
+                    <Shape name="palette01_Tension01" shapeId="4" nodeId="176" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="203,204"/>
+                </Shape>
+                <Shape name="palette01" translation="0 0 -0.404" scale="1 0.96 1" shapeId="3" nodeId="188" castsShadows="true" receiveShadows="true" materialIds="154,86">
+                    <Shape name="palette01_Tension01" shapeId="4" nodeId="205" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="203,204"/>
+                </Shape>
+                <Shape name="palette01" translation="-0.404 0 -0.404" scale="1 0.96 1" shapeId="3" nodeId="190" castsShadows="true" receiveShadows="true" materialIds="154,86">
+                    <Shape name="palette01_Tension01" shapeId="4" nodeId="206" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="203,204"/>
+                </Shape>
+                <Shape name="palette01" translation="-0.404 0 0" scale="1 0.96 1" shapeId="3" nodeId="192" castsShadows="true" receiveShadows="true" materialIds="154,86">
+                    <Shape name="palette01_Tension01" shapeId="4" nodeId="207" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="203,204"/>
+                </Shape>
+                <Shape name="palette01" translation="-0.808 0 -0.404" scale="1 0.96 1" shapeId="3" nodeId="199" castsShadows="true" receiveShadows="true" materialIds="154,86">
+                    <Shape name="palette01_Tension01" shapeId="4" nodeId="208" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="203,204"/>
+                </Shape>
+                <Shape name="palette01" translation="-0.808 0 0" scale="1 0.96 1" shapeId="3" nodeId="201" castsShadows="true" receiveShadows="true" materialIds="154,86">
+                    <Shape name="palette01_Tension01" shapeId="4" nodeId="209" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="203,204"/>
+                </Shape>
+                <Shape name="palette01" translation="0 0.252187 0" scale="1 0.96 1" shapeId="3" nodeId="210" castsShadows="true" receiveShadows="true" materialIds="154,86">
+                    <Shape name="palette01_Tension01" shapeId="4" nodeId="211" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="203,204"/>
+                </Shape>
+                <Shape name="palette01" translation="0 0.252187 -0.404" scale="1 0.96 1" shapeId="3" nodeId="212" castsShadows="true" receiveShadows="true" materialIds="154,86">
+                    <Shape name="palette01_Tension01" shapeId="4" nodeId="213" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="203,204"/>
+                </Shape>
+                <Shape name="palette01" translation="-0.404 0.252187 -0.404" scale="1 0.96 1" shapeId="3" nodeId="214" castsShadows="true" receiveShadows="true" materialIds="154,86">
+                    <Shape name="palette01_Tension01" shapeId="4" nodeId="215" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="203,204"/>
+                </Shape>
+                <Shape name="palette01" translation="-0.404 0.252187 0" scale="1 0.96 1" shapeId="3" nodeId="216" castsShadows="true" receiveShadows="true" materialIds="154,86">
+                    <Shape name="palette01_Tension01" shapeId="4" nodeId="217" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="203,204"/>
+                </Shape>
+                <Shape name="palette01" translation="-0.808 0.252187 -0.404" scale="1 0.96 1" shapeId="3" nodeId="218" castsShadows="true" receiveShadows="true" materialIds="154,86">
+                    <Shape name="palette01_Tension01" shapeId="4" nodeId="219" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="203,204"/>
+                </Shape>
+                <Shape name="palette01" translation="-0.808 0.252187 0" scale="1 0.96 1" shapeId="3" nodeId="220" castsShadows="true" receiveShadows="true" materialIds="154,86">
+                    <Shape name="palette01_Tension01" shapeId="4" nodeId="221" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="203,204"/>
+                </Shape>
+            </TransformGroup>
+            <TransformGroup name="collisions" clipDistance="10" nodeId="67">
+                <Shape name="floorCollision01" translation="0.3 0 0" shapeId="5" compoundChild="true" collisionFilterGroup="0x10000" collisionFilterMask="0xfe3dfb83" staticFriction="1" dynamicFriction="1" density="0.0001" nodeId="68" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="5"/>
+                <Shape name="floorCollision02" translation="-0.3 0 0" shapeId="5" compoundChild="true" collisionFilterGroup="0x10000" collisionFilterMask="0xfe3dfb83" staticFriction="1" dynamicFriction="1" density="0.0001" nodeId="69" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="5"/>
+            </TransformGroup>
+        </Shape>
+    </Scene>
+</i3D>

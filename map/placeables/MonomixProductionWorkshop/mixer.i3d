@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="iso-8859-1"?>
+<i3D name="mixer.i3d" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+    <Asset>
+        <Export program="GIANTS Editor 64bit" version="10.0.13"/>
+    </Asset>
+    <Files>
+        <File fileId="2" filename="textures/mixer_normal.dds"/>
+        <File fileId="3" filename="textures/mixer_specular.dds"/>
+        <File fileId="4" filename="$data/shaders/vehicleShader.xml"/>
+        <File fileId="15" filename="$data/shared/assets/assetLibraryDecals_diffuse.dds"/>
+        <File fileId="16" filename="$data/shared/assets/assetLibraryDecals_normal.dds"/>
+        <File fileId="17" filename="$data/shared/assets/assetLibraryDecals_vmask.dds"/>
+        <File fileId="14" filename="$data/shared/detailLibrary/calibrated/calibratedPaint_diffuse.dds"/>
+        <File fileId="13" filename="$data/shared/detailLibrary/calibrated/calibratedPaint_normal.dds"/>
+        <File fileId="12" filename="$data/shared/detailLibrary/calibrated/calibratedPaint_specular.dds"/>
+        <File fileId="19" filename="$data/shared/detailLibrary/flat_normal.dds"/>
+        <File fileId="20" filename="$data/shared/detailLibrary/metallic/clear_diffuse.dds"/>
+        <File fileId="18" filename="$data/shared/detailLibrary/metallic/clear_specular.dds"/>
+        <File fileId="6" filename="$data/shared/detailLibrary/nonMetallic/metal/metalPaintedRough_normal.dds"/>
+        <File fileId="7" filename="$data/shared/detailLibrary/nonMetallic/metal/metalPainted_diffuse.dds"/>
+        <File fileId="5" filename="$data/shared/detailLibrary/nonMetallic/metal/metalPainted_specular.dds"/>
+        <File fileId="1" filename="$data/shared/white_diffuse.dds"/>
+    </Files>
+    <Materials>
+        <Material name="colorBlue" materialId="8" customShaderId="4">
+            <Texture fileId="1"/>
+            <Normalmap fileId="2"/>
+            <Glossmap fileId="3"/>
+            <Custommap name="detailSpecular" fileId="12"/>
+            <Custommap name="detailNormal" fileId="13"/>
+            <Custommap name="detailDiffuse" fileId="14"/>
+            <CustomParameter name="colorScale" value="0.9 0.9 0.9"/>
+        </Material>
+        <Material name="lambert1" materialId="18" diffuseColor="0.494118 0.494118 0.494118 1" customShaderId="4"/>
+        <Material name="paintedMetalBlack" materialId="20" customShaderId="4">
+            <Texture fileId="1"/>
+            <Normalmap fileId="2"/>
+            <Glossmap fileId="3"/>
+            <Custommap name="detailSpecular" fileId="5"/>
+            <Custommap name="detailNormal" fileId="6"/>
+            <Custommap name="detailDiffuse" fileId="7"/>
+            <CustomParameter name="colorScale" value="0.02 0.02 0.02"/>
+        </Material>
+        <Material name="screws" materialId="25" alphaBlending="true" customShaderId="4">
+            <Texture fileId="15"/>
+            <Normalmap fileId="16"/>
+            <Glossmap fileId="17"/>
+            <Custommap name="detailSpecular" fileId="18"/>
+            <Custommap name="detailNormal" fileId="19"/>
+            <Custommap name="detailDiffuse" fileId="20"/>
+        </Material>
+    </Materials>
+    <Shapes externalShapesFile="mixer.i3d.shapes"/>
+    <Scene>
+        <Shape name="mixer" translation="-0.0825588 3.68619 -0.520692" shapeId="1" nodeId="112" castsShadows="true" receiveShadows="true" materialIds="20,8">
+            <Shape name="mixerScrews" translation="-0.00344119 -0.000360012 -0.000308037" rotation="-6.83019e-06 -0 0" shapeId="2" clipDistance="30" nodeId="113" castsShadows="true" receiveShadows="true" materialIds="25"/>
+            <Shape name="colPart01" translation="0.0399224 -0.369423 0.0727315" rotation="-79.613 1.16194e-05 155.955" scale="0.758196 0.758196 0.758196" shapeId="3" compoundChild="true" collisionFilterGroup="0x203002" collisionFilterMask="0x203002" density="0.001" nodeId="114" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="18"/>
+        </Shape>
+    </Scene>
+</i3D>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="pallet" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../shared/xml/schema/vehicle.xsd">
+	<annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+
+	<storeData>
+		<name>$l10n_fillType_krow</name>
+		<image>$data/store/store_empty.png</image>
+		<price>1120</price>
+		<category>pallets</category>
+		<brand>NONE</brand>
+		<showInStore>false</showInStore>
+		<canBeSold>false</canBeSold>
+		<financeCategory>OTHER</financeCategory>
+		<vertexBufferMemoryUsage>731136</vertexBufferMemoryUsage>
+		<indexBufferMemoryUsage>147968</indexBufferMemoryUsage>
+		<textureMemoryUsage>458752</textureMemoryUsage>
+		<instanceVertexBufferMemoryUsage>0</instanceVertexBufferMemoryUsage>
+		<instanceIndexBufferMemoryUsage>0</instanceIndexBufferMemoryUsage>
+
+		<storeIconRendering>
+			<settings centerIcon="true" cameraXRot="-15" cameraYRot="35"/>
+		</storeIconRendering>
+		<audioMemoryUsage>0</audioMemoryUsage>
+	</storeData>
+
+	<base>
+		<typeDesc>$l10n_typeDesc_pallet</typeDesc>
+		<filename>map/placeables/FarmMeatIndustry/pallets/othody/krow.i3d</filename>
+		<size width="1.3" length="0.9" height="0.58" />
+		<canBeReset>false</canBeReset>
+		<components maxMass="400">
+			<component centerOfMass="0 0.1 0" solverIterationCount="10" mass="60"/>
+		</components>
+		<showInVehicleMenu>false</showInVehicleMenu>
+		<mapHotspot available="false" />
+		<input allowed="false"/>
+	</base>
+
+	<fillUnit>
+		<fillUnitConfigurations>
+			<fillUnitConfiguration>
+				<fillUnits>
+					<fillUnit unitTextOverride="$l10n_unit_literShort" fillTypes="KROW" capacity="500" ignoreFillLimit="true"/>
+				</fillUnits>
+			</fillUnitConfiguration>
+		</fillUnitConfigurations>
+	</fillUnit>
+
+	<pallet fillUnitIndex="1">
+
+		<content>
+			<object node="beefBox01" tensionBeltNode="beefBoxes_Tension01"/>
+			<object node="beefBox02" tensionBeltNode="beefBoxes_Tension02"/>
+			<object node="beefBox03" tensionBeltNode="beefBoxes_Tension03"/>
+			<object node="beefBox04" tensionBeltNode="beefBoxes_Tension04"/>
+			<object node="beefBox05" tensionBeltNode="beefBoxes_Tension05"/>
+			<object node="beefBox06" tensionBeltNode="beefBoxes_Tension06"/>
+			
+		</content>
+
+		<sounds>
+			<unload template="palletsFillPlastic" pitchScale="0.8" />
+		</sounds>
+	</pallet>
+
+	<dynamicMount triggerNode="dynamicMountTrigger" triggerForceAcceleration="4" additionalMountDistance="0.5" jointTransY="0.11" jointLimitToRotY="true"/>
+
+	<i3dMappings>
+		<i3dMapping id="beefBoxPallet_component1" node="0>" />
+		<i3dMapping id="dynamicMountTrigger" node="0>0" />
+		<i3dMapping id="beefBox01" node="0>1|0" />
+		<i3dMapping id="beefBoxes_Tension01" node="0>1|0|0" />
+		<i3dMapping id="beefBox02" node="0>1|1" />
+		<i3dMapping id="beefBoxes_Tension02" node="0>1|1|0" />
+		<i3dMapping id="beefBox03" node="0>1|2" />
+		<i3dMapping id="beefBoxes_Tension03" node="0>1|2|0" />
+		<i3dMapping id="beefBox04" node="0>1|3" />
+		<i3dMapping id="beefBoxes_Tension04" node="0>1|3|0" />
+		<i3dMapping id="beefBox05" node="0>1|4" />
+		<i3dMapping id="beefBoxes_Tension05" node="0>1|4|0" />
+		<i3dMapping id="beefBox06" node="0>1|5" />
+		<i3dMapping id="beefBoxes_Tension06" node="0>1|5|0" />
+	</i3dMappings>
+</vehicle>

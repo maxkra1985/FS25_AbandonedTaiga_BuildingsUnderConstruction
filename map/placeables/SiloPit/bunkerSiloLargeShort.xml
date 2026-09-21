@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<placeable type="constructibleBunkerSilo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../shared/xml/schema/placeable.xsd">
+	<storeData>
+		<name>
+			<ru>Большой бетонный силос 12м x 50м</ru>
+			<en>Large Concrete Silo 12m x 50m</en>
+			<de>Beton Block Silo Groß Kurz 12m x 50m</de>
+		</name>
+		<functions>
+			<function>$l10n_function_bunkerSilo</function>
+		</functions>
+		<image>map/placeables/SiloPit/store_bunkerSiloLargeShort.dds</image>
+		<price>100</price>
+		<showInStore>true</showInStore>
+		<canBeSold>true</canBeSold>
+		<dailyUpkeep>120</dailyUpkeep>
+		<lifetime>1000</lifetime>
+		<rotation>0</rotation>
+		<brand>ConstructibleBuildings</brand>
+		<species>PLACEABLE</species>
+		<category>storages</category>
+		<brush>
+			<type>placeable</type>
+			<category>ConstructibleBuildings</category>
+			<tab>constructiblesStorage</tab>
+		</brush>
+		<storeIconRendering>
+			<settings cameraXRot="-25" advancedBoundingBox="true"/>
+		</storeIconRendering>
+		<vertexBufferMemoryUsage>13312</vertexBufferMemoryUsage>
+		<indexBufferMemoryUsage>3584</indexBufferMemoryUsage>
+		<textureMemoryUsage>1114112</textureMemoryUsage>
+		<audioMemoryUsage>0</audioMemoryUsage>
+		<instanceVertexBufferMemoryUsage>0</instanceVertexBufferMemoryUsage>
+		<instanceIndexBufferMemoryUsage>0</instanceIndexBufferMemoryUsage>
+	</storeData>
+	
+	<base>
+		<filename>map/placeables/SiloPit/bunkerSiloLargeShort.i3d</filename>
+		<canBeRenamed>true</canBeRenamed>
+		<canBeDeleted>true</canBeDeleted>
+		<boughtWithFarmland>true</boughtWithFarmland>
+	</base>
+
+	<placement useRandomYRotation="false" useManualYRotation="true">
+		<testAreas>
+			<testArea startNode="testAreaStart01" endNode="testAreaEnd01"/>
+		</testAreas>
+		<sounds>
+			<place template="largeImp"/>
+		</sounds>
+	</placement>
+
+	<clearAreas>
+		<clearArea startNode="clearAreaStart01" widthNode="clearAreaWidth01" heightNode="clearAreaHeight01"/>
+	</clearAreas>
+
+	<leveling requireLeveling="true" maxSmoothDistance="10" maxSlope="75" maxEdgeAngle="30">
+		<levelAreas>
+			<levelArea startNode="levelAreaStart01" widthNode="levelAreaWidth01" heightNode="levelAreaHeight01" groundType="concrete"/>
+		</levelAreas>
+	</leveling>
+
+	<indoorAreas/>
+
+	<tipOcclusionUpdateAreas>
+		<tipOcclusionUpdateArea startNode="tipOcclusionUpdateAreaStart01" endNode="tipOcclusionUpdateAreaEnd01"/>
+	</tipOcclusionUpdateAreas>
+
+	<ai>
+		<updateAreas>
+			<updateArea startNode="tipOcclusionUpdateAreaStart01" endNode="tipOcclusionUpdateAreaEnd01"/>
+		</updateAreas>
+	</ai>
+
+	<bunkerSilo isExtendable="true" siloToSiloDistance="13" snapDistance="20" acceptedFillTypes="chaff grass_windrow dryGrass_windrow sugarbeet_cut potato" inputFillType="chaff" outputFillType="silage" distanceToCompactedFillLevel="100" openingLength="5">
+		<area startNode="siloAreaStart" widthNode="siloAreaWidth" heightNode="siloAreaHeight"/>
+		<innerArea startNode="siloInnerAreaStart" widthNode="siloInnerAreaWidth" heightNode="siloInnerAreaHeight"/>
+		<interactionTrigger node="siloAreaTrigger"/>
+		<wallLeft node="Left" />
+		<wallRight node="Right" />
+	</bunkerSilo>
+
+	<hotspots>
+		<hotspot type="UNLOADING_PALLET"	linkNode="constructibleUnloadTriggerMarker"	teleportNode="constructibleUnloadTriggerMarker" />
+	</hotspots>
+
+	<infoTrigger triggerNode="infoTrigger"/>
+
+	<constructible>
+		<stateMachine>
+			<states>
+				<state name="SETUP" StateName="Монтаж арматуры" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_01"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_02"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_03_formwork"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_03"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_04_formwork"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_04"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_05_formwork"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_05"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_06_formwork"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_06"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_07_formwork"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_07"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_08_formwork"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_08"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="light"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="ConstructibleSellingStation"	active="true"	updatePhysics="true"/>
+					<toggleHotspot index="1" isVisible="true" />
+					<input fillType="INSTRUMENT"			amount="98"		usagePerHour="50"/>
+					<input fillType="BUILDING_METAL"		amount="4490"	usagePerHour="2250"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_1" StateName="Монтаж арматуры" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_01"				active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"			amount="98"		usagePerHour="50"/>
+					<input fillType="BUILDING_METAL"		amount="4490"	usagePerHour="2250"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_2" StateName="Монтаж опалубки" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_02"				active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"			amount="98"		usagePerHour="100"/>
+					<input fillType="PLANKS"				amount="998"	usagePerHour="1000"/>
+					<input fillType="BOARDS"				amount="998"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_3" StateName="Заливка бетона" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_03_formwork"	active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"			amount="98"		usagePerHour="33"/>
+					<input fillType="CEMENT"				amount="4990"	usagePerHour="1667"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_4" StateName="Монтаж опалубки" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_03_formwork"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_03"				active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"			amount="98"		usagePerHour="100"/>
+					<input fillType="PLANKS"				amount="998"	usagePerHour="1000"/>
+					<input fillType="BOARDS"				amount="998"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_5" StateName="Заливка бетона" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_04_formwork"	active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"			amount="98"		usagePerHour="33"/>
+					<input fillType="CEMENT"				amount="4990"	usagePerHour="1667"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_6" StateName="Монтаж опалубки" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_04_formwork"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_04"				active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"			amount="98"		usagePerHour="100"/>
+					<input fillType="PLANKS"				amount="998"	usagePerHour="1000"/>
+					<input fillType="BOARDS"				amount="998"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_7" StateName="Заливка бетона" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_05_formwork"	active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"			amount="98"		usagePerHour="33"/>
+					<input fillType="CEMENT"				amount="4890"	usagePerHour="1667"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_8" StateName="Монтаж опалубки" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_05_formwork"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_05"				active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"			amount="98"		usagePerHour="100"/>
+					<input fillType="PLANKS"				amount="998"	usagePerHour="1000"/>
+					<input fillType="BOARDS"				amount="998"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_9" StateName="Заливка бетона" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_06_formwork"	active="true"	updatePhysics="true"/>
+					<toggleMesh node="phase_01"				active="false"	updatePhysics="false"/>
+					<input fillType="INSTRUMENT"			amount="98"		usagePerHour="33"/>
+					<input fillType="CEMENT"				amount="4990"	usagePerHour="1667"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_10" StateName="Монтаж опалубки" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_06_formwork"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_06"				active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"			amount="99"		usagePerHour="100"/>
+					<input fillType="PLANKS"				amount="998"	usagePerHour="1000"/>
+					<input fillType="BOARDS"				amount="998"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_11" StateName="Заливка бетона" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_07_formwork"	active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"			amount="99"		usagePerHour="33"/>
+					<input fillType="CEMENT"				amount="4990"	usagePerHour="1667"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_12" StateName="Монтаж опалубки" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_07_formwork"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_07"				active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"			amount="99"		usagePerHour="100"/>
+					<input fillType="PLANKS"				amount="998"	usagePerHour="1000"/>
+					<input fillType="BOARDS"				amount="998"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_13" StateName="Заливка бетона" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_08_formwork"	active="true"	updatePhysics="true"/>
+					<toggleMesh node="phase_02"				active="false"	updatePhysics="false"/>
+					<input fillType="INSTRUMENT"			amount="99"		usagePerHour="33"/>
+					<input fillType="CEMENT"				amount="4890"	usagePerHour="1667"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_14" StateName="Монтаж освещения" class="ConstructibleStateBuilding" >
+					<toggleMesh node="phase_08_formwork"	active="false"	updatePhysics="false"/>
+					<toggleMesh node="phase_08"				active="true"	updatePhysics="true"/>
+					<input fillType="INSTRUMENT"			amount="99"		usagePerHour="100"/>
+					<input fillType="BUILDING_METAL"		amount="990"	usagePerHour="1000"/>
+					<input fillType="CEMENT"				amount="190"	usagePerHour="200"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="FINALIZE" class="ConstructibleStateFinalize" >
+					<toggleMesh node="light"				active="true"	updatePhysics="true"/>
+					<toggleMesh node="ConstructibleSellingStation"	active="false"	updatePhysics="false"/>
+					<toggleHotspot index="1" isVisible="false" />
+				</state>
+
+				<state name="DONE" class="ConstructibleState" isPreviewState="true"/>
+			</states>
+
+			<transitions>
+				<transition from="SETUP"		to="BUILDING_1"/>
+				<transition from="BUILDING_1"	to="BUILDING_2"/>
+				<transition from="BUILDING_2"	to="BUILDING_3"/>
+				<transition from="BUILDING_3"	to="BUILDING_4"/>
+				<transition from="BUILDING_4"	to="BUILDING_5"/>
+				<transition from="BUILDING_5"	to="BUILDING_6"/>
+				<transition from="BUILDING_6"	to="BUILDING_7"/>
+				<transition from="BUILDING_7"	to="BUILDING_8"/>
+				<transition from="BUILDING_8"	to="BUILDING_9"/>
+				<transition from="BUILDING_9"	to="BUILDING_10"/>
+				<transition from="BUILDING_10"	to="BUILDING_11"/>
+				<transition from="BUILDING_11"	to="BUILDING_12"/>
+				<transition from="BUILDING_12"	to="BUILDING_13"/>
+				<transition from="BUILDING_13"	to="BUILDING_14"/>
+				<transition from="BUILDING_14"	to="FINALIZE"/>
+				<transition from="FINALIZE"		to="DONE" />
+			</transitions>
+		</stateMachine>
+
+		<sellingStation node="ConstructibleSellingStation" supportsExtension="false" allowMissions="false" appearsOnStats="false">
+			<palletTrigger	triggerNode="constructiblePalletTrigger"	aiNode="constructibleUnloadTriggerAINode"	fillTypes="INSTRUMENT BUILDING_METAL PLANKS BOARDS CEMENT" />
+		</sellingStation>
+
+		<storage isExtension="false" fillLevelSyncThreshold="50">				<!-- ВРЕМЯ     27 -->
+			<capacity fillType="INSTRUMENT"			capacity="1500" />			<!-- ВСЕГО  1 500 - поддоны инструмента -->
+			<capacity fillType="BUILDING_METAL"		capacity="5000" />			<!-- ВСЕГО 10 000 - СТРОИТЕЛЬНОЕ ЖЕЛЕЗО -->
+			<capacity fillType="PLANKS"				capacity="5000" />			<!-- ВСЕГО  6 000 - ДЛИННЫЕ ДОСКИ -->
+			<capacity fillType="BOARDS"				capacity="5000" />			<!-- ВСЕГО  6 000 - ДОСКИ -->
+			<capacity fillType="CEMENT"				capacity="5000" />			<!-- ВСЕГО 30 000 - МЕШКИ ЦЕМЕНТА -->
+		</storage>
+	</constructible>
+
+	<i3dMappings>
+		<i3dMapping id="clearAreaStart01" node="0>0|0"/>
+		<i3dMapping id="clearAreaWidth01" node="0>0|0|0"/>
+		<i3dMapping id="clearAreaHeight01" node="0>0|0|1"/>
+		<i3dMapping id="levelAreaStart01" node="0>1|0"/>
+		<i3dMapping id="levelAreaWidth01" node="0>1|0|0"/>
+		<i3dMapping id="levelAreaHeight01" node="0>1|0|1"/>
+		<i3dMapping id="testAreaStart01" node="0>2|0"/>
+		<i3dMapping id="testAreaEnd01" node="0>2|0|0"/>
+		<i3dMapping id="tipOcclusionUpdateAreaStart01" node="0>3|0"/>
+		<i3dMapping id="tipOcclusionUpdateAreaEnd01" node="0>3|0|0"/>
+		<i3dMapping id="siloAreaStart" node="0>4|0|0"/>
+		<i3dMapping id="siloAreaWidth" node="0>4|0|1"/>
+		<i3dMapping id="siloAreaHeight" node="0>4|0|2"/>
+		<i3dMapping id="siloAreaTrigger" node="0>4|0|3"/>
+		<i3dMapping id="siloInnerAreaStart" node="0>4|1|0"/>
+		<i3dMapping id="siloInnerAreaWidth" node="0>4|1|1"/>
+		<i3dMapping id="siloInnerAreaHeight" node="0>4|1|2"/>
+		<i3dMapping id="Left" node="0>6|0"/>
+		<i3dMapping id="Right" node="0>6|1"/>
+
+		<!-- СТРОИТЕЛЬСТВО -->
+		<i3dMapping id="phase_01" node="0>6|0"/>
+		<i3dMapping id="phase_02" node="0>6|1"/>
+		<i3dMapping id="phase_03_formwork" node="0>6|2"/>
+		<i3dMapping id="phase_03" node="0>6|3"/>
+		<i3dMapping id="phase_04_formwork" node="0>6|4"/>
+		<i3dMapping id="phase_04" node="0>6|5"/>
+		<i3dMapping id="phase_05_formwork" node="0>6|6"/>
+		<i3dMapping id="phase_05" node="0>6|7"/>
+		<i3dMapping id="phase_06_formwork" node="0>6|8"/>
+		<i3dMapping id="phase_06" node="0>6|9"/>
+		<i3dMapping id="phase_07_formwork" node="0>6|10"/>
+		<i3dMapping id="phase_07" node="0>6|11"/>
+		<i3dMapping id="phase_08_formwork" node="0>6|12"/>
+		<i3dMapping id="phase_08" node="0>6|13"/>
+		<i3dMapping id="light" node="0>6|14"/>
+		<i3dMapping id="ConstructibleSellingStation" node="0>7"/>
+		<i3dMapping id="constructiblePalletTrigger" node="0>7|1"/>
+		<i3dMapping id="constructibleUnloadTriggerMarker" node="0>7|2"/>
+		<i3dMapping id="constructibleUnloadTriggerAINode" node="0>7|3"/>
+		<i3dMapping id="infoTrigger" node="0>7|4"/>
+	</i3dMappings>
+</placeable>

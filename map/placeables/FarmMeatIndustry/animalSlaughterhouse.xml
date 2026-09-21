@@ -1,0 +1,892 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<placeable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" type="productionPointWithStorage" xsi:noNamespaceSchemaLocation="../../../../../shared/xml/schema/placeable.xsd">
+	<storeData>
+		<name>$l10n_storeItem_animalSlaughterhouse</name>
+		<functions>
+			<function>Строящийся забойный цех со встроенным морозильным складом поддонов.</function>
+		</functions>
+		<image>map/placeables/FarmMeatIndustry/store_animalSlaughterhouse.dds</image>
+		<price>100</price>
+		<canBeSold>true</canBeSold>
+		<showInStore>true</showInStore>
+		<dailyUpkeep>0</dailyUpkeep>
+		<lifetime>1000</lifetime>
+		<rotation>0</rotation>
+		<brand>ConstructibleBuildings</brand>
+		<species>placeable</species>
+		<category>productionPoints</category>
+		<brush>
+			<type>placeable</type>
+			<category>ConstructibleBuildings</category>
+			<tab>constructiblesProductionPoint</tab>
+		</brush>
+	</storeData>
+	<base>
+		<filename>map/placeables/FarmMeatIndustry/animalSlaughterhouse.i3d</filename>
+		<canBeRenamed>true</canBeRenamed>
+		<canBeDeleted>true</canBeDeleted>
+		<boughtWithFarmland>true</boughtWithFarmland>
+	</base>
+	<placement useRandomYRotation="false" useManualYRotation="true">
+		<testAreas>
+			<testArea startNode="testArea1Start" endNode="testArea1End"/>
+		</testAreas>
+		<sounds>
+			<place template="medImp"/>
+		</sounds>
+	</placement>
+	<clearAreas>
+		<clearArea startNode="clearArea1Start" widthNode="clearArea1Width" heightNode="clearArea1Height"/>
+	</clearAreas>
+	<leveling requireLeveling="true" maxSmoothDistance="3" maxSlope="75" maxEdgeAngle="30">
+		<levelAreas>
+			<levelArea startNode="levelArea1Start" widthNode="levelArea1Width" heightNode="levelArea1Height" groundType="gravel"/>
+		</levelAreas>
+	</leveling>
+	<indoorAreas>
+		<indoorArea startNode="indoorArea1Start" widthNode="indoorArea1Width" heightNode="indoorArea1Height"/>
+	</indoorAreas>
+	<tipOcclusionUpdateAreas>
+		<tipOcclusionUpdateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End"/>
+	</tipOcclusionUpdateAreas>
+	<ai>
+		<updateAreas>
+			<updateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End"/>
+		</updateAreas>
+	</ai>
+	<infoTrigger triggerNode="infoTrigger"/>
+	<meatAnimalInput triggerNode="animalTrigger" moveButtonText="button_moveAnimal" unloadConfirmationText="message_unloadAnimalConfirmation" unloadSuccessText="message_unloadAnimalSuccess">
+		<animal type="COW" fillType="COW_INPUT" healthWeightPenalty="0.45" foodWeightPenalty="0.50" minWeightFactor="0.05" healthYieldPenalty="0.08" foodYieldPenalty="0.12" minYieldFactor="0.75">
+			<weight age="0" kg="45"/>
+			<weight age="6" kg="220"/>
+			<weight age="12" kg="400"/>
+			<weight age="18" kg="580"/>
+			<weight age="24" kg="650"/>
+			<weight age="36" kg="700"/>
+			<weight age="48" kg="725"/>
+			<weight age="60" kg="740"/>
+			<subType name="COW_SWISS_BROWN" scale="0.950"/>
+			<subType name="COW_HOLSTEIN" scale="1.000"/>
+			<subType name="COW_ANGUS" scale="1.080"/>
+			<subType name="COW_LIMOUSIN" scale="1.120"/>
+			<subType name="COW_WATERBUFFALO" scale="1.150"/>
+			<subType name="COW_HIGHLAND_CATTLE" scale="0.900"/>
+			<output fillType="BEEF" conditionAffected="true"/>
+			<output fillType="KOSTI" conditionAffected="false"/>
+			<output fillType="KROW" conditionAffected="false"/>
+		</animal>
+		<animal type="PIG" fillType="PIG_INPUT" healthWeightPenalty="0.45" foodWeightPenalty="0.50" minWeightFactor="0.05" healthYieldPenalty="0.10" foodYieldPenalty="0.15" minYieldFactor="0.72">
+			<weight age="0" kg="8"/>
+			<weight age="3" kg="45"/>
+			<weight age="6" kg="110"/>
+			<weight age="12" kg="180"/>
+			<weight age="18" kg="225"/>
+			<weight age="24" kg="245"/>
+			<weight age="36" kg="260"/>
+			<weight age="48" kg="270"/>
+			<weight age="60" kg="250"/>
+			<subType name="PIG_LANDRACE" scale="1.000"/>
+			<subType name="PIG_BLACK_PIED" scale="0.950"/>
+			<subType name="PIG_BERKSHIRE" scale="0.900"/>
+			<output fillType="PORK" conditionAffected="true"/>
+			<output fillType="KOSTI" conditionAffected="false"/>
+			<output fillType="SALO" conditionAffected="true"/>
+		</animal>
+		<animal type="SHEEP" fillType="SHEEP_INPUT" healthWeightPenalty="0.45" foodWeightPenalty="0.50" minWeightFactor="0.05" healthYieldPenalty="0.08" foodYieldPenalty="0.12" minYieldFactor="0.78">
+			<weight age="0" kg="5"/>
+			<weight age="3" kg="25"/>
+			<weight age="8" kg="55"/>
+			<weight age="18" kg="75"/>
+			<weight age="24" kg="80"/>
+			<weight age="36" kg="86"/>
+			<weight age="48" kg="90"/>
+			<weight age="60" kg="84"/>
+			<subType name="SHEEP_LANDRACE" scale="1.000"/>
+			<subType name="SHEEP_STEINSCHAF" scale="0.950"/>
+			<subType name="SHEEP_SWISS_MOUNTAIN" scale="1.100"/>
+			<subType name="SHEEP_BLACK_WELSH" scale="0.850"/>
+			<output fillType="MUTTON" conditionAffected="true"/>
+			<output fillType="KOSTI" conditionAffected="false"/>
+			<output fillType="WOOL" conditionAffected="false"/>
+		</animal>
+		<animal type="CHICKEN" fillType="CHICKEN_INPUT" healthWeightPenalty="0.45" foodWeightPenalty="0.50" minWeightFactor="0.05" healthYieldPenalty="0.08" foodYieldPenalty="0.15" minYieldFactor="0.75">
+			<weight age="0" kg="0.15"/>
+			<weight age="1" kg="0.60"/>
+			<weight age="3" kg="1.50"/>
+			<weight age="6" kg="2.30"/>
+			<weight age="12" kg="2.60"/>
+			<weight age="18" kg="2.72"/>
+			<weight age="24" kg="2.78"/>
+			<weight age="36" kg="2.55"/>
+			<weight age="48" kg="2.25"/>
+			<weight age="60" kg="1.95"/>
+			<subType name="CHICKEN" scale="1.000"/>
+			<subType name="CHICKEN_ROOSTER" scale="1.350"/>
+			<output fillType="CHICKENMEAT" conditionAffected="true"/>
+			<output fillType="KOSTI" conditionAffected="false"/>
+		</animal>
+	</meatAnimalInput>
+
+	<productionPoint isFinalized="false">
+		<productions sharedThroughputCapacity="true">
+			<production id="cow" name="$l10n_fillType_beef" cyclesPerHour="3" costsPerActiveHour="10">
+				<inputs>
+					<input fillType="COW_INPUT" amount="100"/>
+					<input fillType="EUROPALLET" amount="8"/>
+					<input fillType="CARTONROLL" amount="8"/>
+					<!--inputBoost fillType="CUTTING_TOOL" amountPerCycle="1" bonus="0.10"/-->
+					<inputBoost fillType="WATER" amountPerCycle="17" bonus="0.1"/>
+				</inputs>
+				<outputs>
+					<output fillType="BEEF" amount="80"/>
+					<output fillType="KOSTI" amount="15"/>
+					<output fillType="KROW" amount="10"/>
+				</outputs>
+				<activeVisuals>
+					<visual node="beefVisNodes_output1"/>
+					<visual node="beefVisNodes_output2"/>
+				</activeVisuals>
+			</production>
+			<production id="pig" name="$l10n_fillType_porc" cyclesPerHour="1.8" costsPerActiveHour="10">
+				<inputs>
+					<input fillType="PIG_INPUT" amount="100"/>
+					<input fillType="EUROPALLET" amount="9"/>
+					<input fillType="CARTONROLL" amount="9"/>
+					<!--inputBoost fillType="CUTTING_TOOL" amountPerCycle="1" bonus="0.10"/-->
+					<inputBoost fillType="WATER" amountPerCycle="28" bonus="0.1"/>
+				</inputs>
+				<outputs>
+					<output fillType="PORK" amount="85"/>
+					<output fillType="KOSTI" amount="15"/>
+					<output fillType="SALO" amount="15"/>
+					<output fillType="KROW" amount="10"/>
+				</outputs>
+				<activeVisuals>
+					<visual node="porkVisNodes_output1"/>
+					<visual node="porkVisNodes_output2"/>
+					<visual node="porkVisNodes_output3"/>
+					<visual node="porkVisNodes_output4"/>
+				</activeVisuals>
+			</production>
+			<production id="sheep" name="$l10n_fillType_mutton" cyclesPerHour="1.75" costsPerActiveHour="10">
+				<inputs>
+					<input fillType="SHEEP_INPUT" amount="100"/>
+					<input fillType="EUROPALLET" amount="10"/>
+					<input fillType="CARTONROLL" amount="10"/>
+					<!--inputBoost fillType="CUTTING_TOOL" amountPerCycle="1" bonus="0.10"/-->
+					<inputBoost fillType="WATER" amountPerCycle="50" bonus="0.10"/>
+				</inputs>
+				<outputs>
+					<output fillType="MUTTON" amount="105"/>
+					<output fillType="KOSTI" amount="15"/>
+					<output fillType="WOOL" amount="15"/>
+					<output fillType="KROW" amount="10"/>
+				</outputs>
+				<activeVisuals>
+					<visual node="sheepVisNodes_output1"/>
+					<visual node="sheepVisNodes_output2"/>
+				</activeVisuals>
+			</production>
+			<production id="chicken" name="$l10n_fillType_chickenmeat" cyclesPerHour="0.5" costsPerActiveHour="10">
+				<inputs>
+					<input fillType="CHICKEN_INPUT" amount="100"/>
+					<input fillType="EUROPALLET" amount="10"/>
+					<input fillType="CARTONROLL" amount="10"/>
+					<!--inputBoost fillType="CUTTING_TOOL" amountPerCycle="1" bonus="0.10"/-->
+					<inputBoost fillType="WATER" amountPerCycle="70" bonus="0.10"/>
+				</inputs>
+				<outputs>
+					<output fillType="CHICKENMEAT" amount="140"/>
+					<output fillType="KOSTI" amount="40"/>
+					<output fillType="KROW" amount="3"/>
+				</outputs>
+				<activeVisuals>
+					<visual node="poultryVisNodes_output1"/>
+					<visual node="poultryVisNodes_output2"/>
+				</activeVisuals>
+			</production>
+		</productions>
+		<storage isExtension="false" fillLevelSyncThreshold="5">
+			<capacity fillType="COW_INPUT" capacity="40000"/>
+			<capacity fillType="PIG_INPUT" capacity="25000"/>
+			<capacity fillType="SHEEP_INPUT" capacity="20000"/>
+			<capacity fillType="CHICKEN_INPUT" capacity="6000"/>
+			<capacity fillType="EUROPALLET" capacity="12000"/>
+			<capacity fillType="CARTONROLL" capacity="12000"/>
+			<!--capacity fillType="CUTTING_TOOL" capacity="1000"/-->
+			<capacity fillType="WATER" capacity="40000"/>
+			<capacity fillType="BEEF" capacity="40000"/>
+			<capacity fillType="PORK" capacity="40000"/>
+			<capacity fillType="MUTTON" capacity="40000"/>
+			<capacity fillType="CHICKENMEAT" capacity="40000"/>
+			<capacity fillType="KOSTI" capacity="10000"/>
+			<capacity fillType="KROW" capacity="5000"/>
+			<capacity fillType="SALO" capacity="5000"/>
+			<capacity fillType="WOOL" capacity="5000"/>
+		</storage>
+		<sellingStation node="sellingStation" appearsOnStats="true" allowMissions="false" supportsExtension="false" hideFromPricesMenu="true">
+			<supportedFillTypes>
+				<fillType name="WATER"/>
+				<fillType name="EUROPALLET"/>
+				<fillType name="CARTONROLL"/>
+				<!--fillType name="CUTTING_TOOL"/-->
+			</supportedFillTypes>
+			<unloadTrigger exactFillRootNode="exactFillRootNodeWater" aiNode="unloadTriggerAINodeWater" fillTypes="WATER"/>
+			<palletTrigger triggerNode="palletTrigger" aiNode="unloadTriggerAINode" fillTypes="EUROPALLET CARTONROLL"/>
+		</sellingStation>
+		<palletSpawner node="palletSpawner">
+			<spawnPlaces>
+				<spawnPlace startNode="spawnSpaceStart01" endNode="spawnSpaceEnd01"/>
+				<spawnPlace startNode="spawnSpaceStart02" endNode="spawnSpaceEnd02"/>
+				<spawnPlace startNode="spawnSpaceStart03" endNode="spawnSpaceEnd03"/>
+				<spawnPlace startNode="spawnSpaceStart04" endNode="spawnSpaceEnd04"/>
+			</spawnPlaces>
+		</palletSpawner>
+		<playerTrigger node="playerTrigger"/>
+		<animationNodes>
+			<animationNode node="rotor01" rotSpeed="500" rotAxis="3"/>
+			<animationNode node="rotor02" rotSpeed="500" rotAxis="3"/>
+			<animationNode node="rotor03" rotSpeed="500" rotAxis="3"/>
+			<animationNode node="rotor04" rotSpeed="500" rotAxis="3"/>
+		</animationNodes>
+		<sounds>
+			<idle file="$data/placeables/brandless/productionPointsGeneric/paperFactory/sounds/paperFactoryIdle.wav" linkNode="productionPoint" loops="0" innerRadius="7" outerRadius="40" supportsReverb="false"/>
+			<active file="$data/placeables/brandless/productionPointsGeneric/paperFactory/sounds/paperFactoryWork.wav" linkNode="productionPoint" loops="0" innerRadius="7" outerRadius="40" supportsReverb="false"/>
+		</sounds>
+	</productionPoint>
+	<objectStorage isExtension="true" supportsExtension="false" supportsBales="false" supportsPallets="true" capacity="120" maxUnloadAmount="25" maxLength="8.5" maxWidth="6" maxHeight="4.0" fillTypes="BEEF PORK MUTTON CHICKENMEAT KOSTI KROW WOOL SALO">
+		<playerTrigger node="storagePlayerTrigger"/>
+		<objectTrigger node="objectTrigger"/>
+		<spawnAreas>
+			<spawnArea startNode="spawnAreaStart01" endNode="spawnAreaEnd01" maxHeight="3"/>
+			<spawnArea startNode="spawnAreaStart02" endNode="spawnAreaEnd02" maxHeight="3"/>
+		</spawnAreas>
+		<storageAreas>
+			<storageArea startNode="storageAreaStart_Row1_part01" endNode="storageAreaEnd_Row1_part01" maxHeight="1.3"/>
+			<storageArea startNode="storageAreaStart_Row1_part02" endNode="storageAreaEnd_Row1_part02" maxHeight="1.3"/>
+			<storageArea startNode="storageAreaStart_Row1_part03" endNode="storageAreaEnd_Row1_part03" maxHeight="1.3"/>
+			<storageArea startNode="storageAreaStart_Row2_part01" endNode="storageAreaEnd_Row2_part01" maxHeight="1.3"/>
+			<storageArea startNode="storageAreaStart_Row2_part02" endNode="storageAreaEnd_Row2_part02" maxHeight="1.3"/>
+			<storageArea startNode="storageAreaStart_Row2_part03" endNode="storageAreaEnd_Row2_part03" maxHeight="1.3"/>
+			<storageArea startNode="storageAreaStart_Row3_part01" endNode="storageAreaEnd_Row3_part01" maxHeight="1.3"/>
+			<storageArea startNode="storageAreaStart_Row3_part02" endNode="storageAreaEnd_Row3_part02" maxHeight="1.3"/>
+			<storageArea startNode="storageAreaStart_Row3_part03" endNode="storageAreaEnd_Row3_part03" maxHeight="1.3"/>
+			<storageArea startNode="storageAreaStart_Row4_part01" endNode="storageAreaEnd_Row4_part01" maxHeight="1.3"/>
+			<storageArea startNode="storageAreaStart_Row4_part02" endNode="storageAreaEnd_Row4_part02" maxHeight="1.3"/>
+			<storageArea startNode="storageAreaStart_Row4_part03" endNode="storageAreaEnd_Row4_part03" maxHeight="1.3"/>
+		</storageAreas>
+	</objectStorage>
+	<triggerMarkers>
+		<triggerMarker node="constructibleUnloadTriggerMarker" adjustToGround="true" filename="$data/shared/assets/marker/markerIconPallet.i3d"/>
+		<triggerMarker node="playerTriggerMarker" adjustToGround="false" filename="$data/shared/assets/marker/markerIconWrench.i3d"/>
+		<triggerMarker node="unloadTriggerMarkerWater" adjustToGround="true" filename="$data/shared/assets/marker/markerIconWater.i3d"/>
+		<triggerMarker node="unloadTriggerMarkerpalletTrigger" adjustToGround="true" filename="$data/shared/assets/marker/markerIconUnload.i3d"/>
+		<triggerMarker node="markerAnimals" adjustToGround="true" filename="$data/shared/assets/marker/markerIconAnimals.i3d"/>
+		<triggerMarker node="storagePlayerTriggerMarker" adjustToGround="false" filename="$data/shared/assets/marker/markerIconPallet.i3d"/>
+	</triggerMarkers>
+	<hotspots>
+		<hotspot type="UNLOADING_PALLET" linkNode="constructibleUnloadTriggerMarker" teleportNode="constructibleUnloadTriggerMarker"/>
+		<hotspot type="PRODUCTION_POINT" linkNode="playerTriggerMarker" teleportNode="playerTriggerMarker"/>
+	</hotspots>
+	<animatedObjects>
+		<animatedObject saveId="rollingDoor01">
+			<animation duration="5">
+				<part node="rollingDoor1">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 3.4 0"/>
+				</part>
+				<part node="rollingDoor1ColBottom">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 3.4 0"/>
+				</part>
+				<part node="rollingDoor1ColTop">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="0.5" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 1.7 0"/>
+				</part>
+				<shader node="rollingDoor1" parameterName="visibilityCutThreshold">
+					<keyFrame time="0.0" values="0 - - -"/>
+					<keyFrame time="1.0" values="0.94 - - -"/>
+				</shader>
+			</animation>
+			<controls triggerNode="rollingDoor1Trigger" posAction="ACTIVATE_HANDTOOL" posText="action_openGate" negText="action_closeGate"/>
+			<sounds>
+				<moving linkNode="rollingDoor1Base" template="rollingGarageDoor"/>
+				<posEnd linkNode="rollingDoor1Base" template="slidingGateMetalOpen"/>
+				<negEnd linkNode="rollingDoor1Base" template="slidingGateMetalClose"/>
+			</sounds>
+		</animatedObject>
+		<animatedObject saveId="rollingDoor02">
+			<animation duration="5">
+				<part node="rollingDoor2">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 3.4 0"/>
+				</part>
+				<part node="rollingDoor2ColBottom">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 3.4 0"/>
+				</part>
+				<part node="rollingDoor2ColTop">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="0.5" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 1.7 0"/>
+				</part>
+				<shader node="rollingDoor2" parameterName="visibilityCutThreshold">
+					<keyFrame time="0.0" values="0 - - -"/>
+					<keyFrame time="1.0" values="0.94 - - -"/>
+				</shader>
+			</animation>
+			<controls triggerNode="rollingDoor2Trigger" posAction="ACTIVATE_HANDTOOL" posText="action_openGate" negText="action_closeGate"/>
+			<sounds>
+				<moving linkNode="rollingDoor2Base" template="rollingGarageDoor"/>
+				<posEnd linkNode="rollingDoor2Base" template="slidingGateMetalOpen"/>
+				<negEnd linkNode="rollingDoor2Base" template="slidingGateMetalClose"/>
+			</sounds>
+		</animatedObject>
+		<animatedObject saveId="rollingDoor03">
+			<animation duration="5">
+				<part node="rollingDoor3">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 3.4 0"/>
+				</part>
+				<part node="rollingDoor3ColBottom">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 3.4 0"/>
+				</part>
+				<part node="rollingDoor3ColTop">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="0.5" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 1.7 0"/>
+				</part>
+				<shader node="rollingDoor3" parameterName="visibilityCutThreshold">
+					<keyFrame time="0.0" values="0 - - -"/>
+					<keyFrame time="1.0" values="0.94 - - -"/>
+				</shader>
+			</animation>
+			<controls triggerNode="rollingDoor3Trigger" posAction="ACTIVATE_HANDTOOL" posText="action_openGate" negText="action_closeGate"/>
+			<sounds>
+				<moving linkNode="rollingDoor3Base" template="rollingGarageDoor"/>
+				<posEnd linkNode="rollingDoor3Base" template="slidingGateMetalOpen"/>
+				<negEnd linkNode="rollingDoor3Base" template="slidingGateMetalClose"/>
+			</sounds>
+		</animatedObject>
+		<animatedObject saveId="rollingDoor04">
+			<animation duration="5">
+				<part node="rollingDoor4">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 3.4 0"/>
+				</part>
+				<part node="rollingDoor4ColBottom">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 3.4 0"/>
+				</part>
+				<part node="rollingDoor4ColTop">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="0.5" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 1.7 0"/>
+				</part>
+				<shader node="rollingDoor4" parameterName="visibilityCutThreshold">
+					<keyFrame time="0.0" values="0 - - -"/>
+					<keyFrame time="1.0" values="0.94 - - -"/>
+				</shader>
+			</animation>
+			<controls triggerNode="rollingDoor4Trigger" posAction="ACTIVATE_HANDTOOL" posText="action_openGate" negText="action_closeGate"/>
+			<sounds>
+				<moving linkNode="rollingDoor4Base" template="rollingGarageDoor"/>
+				<posEnd linkNode="rollingDoor4Base" template="slidingGateMetalOpen"/>
+				<negEnd linkNode="rollingDoor4Base" template="slidingGateMetalClose"/>
+			</sounds>
+		</animatedObject>
+		<animatedObject saveId="slidingDoor">
+			<animation duration="3.5">
+				<part node="slidingDoor2">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 0 -7"/>
+				</part>
+			</animation>
+			<controls triggerNode="slidingDoor2Trigger" posAction="ACTIVATE_HANDTOOL" posText="action_openGate" negText="action_closeGate"/>
+			<sounds>
+				<moving linkNode="slidingDoor2Sound" template="slidingGateWoodLoop"/>
+				<posEnd linkNode="slidingDoor2Sound" template="woodDoorOpen"/>
+				<negEnd linkNode="slidingDoor2Sound" template="woodDoorClose"/>
+			</sounds>
+		</animatedObject>
+		<animatedObject saveId="drzwiWew">
+			<animation duration="1.2">
+				<part node="drzwiWewDoorLeaf">
+					<keyFrame time="0.0" rotation="0 0 0"/>
+					<keyFrame time="1.0" rotation="0 105 0"/>
+				</part>
+			</animation>
+			<controls triggerNode="drzwiWewTrigger" posAction="ACTIVATE_HANDTOOL" posText="action_openDoor" negText="action_closeDoor"/>
+			<sounds>
+				<moving linkNode="drzwiWewDoorLeaf" template="woodDoorSqueaksSmall" pitchScale="0.8"/>
+				<posEnd linkNode="drzwiWewDoorLeaf" template="woodDoorOpen"/>
+				<negEnd linkNode="drzwiWewDoorLeaf" template="woodDoorCloseRandom"/>
+			</sounds>
+		</animatedObject>
+	</animatedObjects>
+	<constructible>
+		<stateMachine>
+			<states>
+				<state name="SETUP" class="ConstructibleStateBuilding" StateName="Монтаж арматуры">
+					<toggleMesh node="productionPoint" active="false" updatePhysics="true"/>
+					<toggleMesh node="sellingStation" active="false" updatePhysics="true"/>
+					<toggleMesh node="freezerWarehouse" active="false" updatePhysics="true"/>
+					<toggleMesh node="buildingCollision" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_01" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_02" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_03" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_04" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_05" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_06" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_07" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_08" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_09" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_10" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_11" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_12" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_13" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_14" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_15" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_16" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_17" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_18" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_19" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_01_props" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_02_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_03_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_04_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_05_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_06_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_07_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_08_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_09_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_10_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_11_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_12_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_13_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_14_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_15_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_16_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_17_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_18_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="constructibleSellingStation" active="true" updatePhysics="true"/>
+					<toggleHotspot index="1" isVisible="true"/>
+					<toggleHotspot index="2" isVisible="false"/>
+					<input fillType="INSTRUMENT" amount="55" usagePerHour="18.333333"/>
+					<input fillType="BUILDING_METAL" amount="4998" usagePerHour="1666"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_1" class="ConstructibleStateBuilding" StateName="Монтаж опалубки">
+					<toggleMesh node="phase_01" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_01_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_02_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="54" usagePerHour="9"/>
+					<input fillType="BOARDS" amount="996" usagePerHour="166"/>
+					<input fillType="PLANKS" amount="1998" usagePerHour="333"/>
+					<input fillType="NAILS" amount="50" usagePerHour="8.333333"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_2" class="ConstructibleStateBuilding" StateName="Заливка фундамента">
+					<toggleMesh node="phase_02" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_02_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_03_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="55" usagePerHour="11"/>
+					<input fillType="CEMENT" amount="2995" usagePerHour="599"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_3" class="ConstructibleStateBuilding" StateName="Заливка фундамента">
+					<toggleMesh node="phase_03" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_03_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_04_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="55" usagePerHour="11"/>
+					<input fillType="CEMENT" amount="2995" usagePerHour="599"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_4" class="ConstructibleStateBuilding" StateName="Заливка фундамента">
+					<toggleMesh node="phase_04" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_04_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_05_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="55" usagePerHour="11"/>
+					<input fillType="CEMENT" amount="2995" usagePerHour="559"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_5" class="ConstructibleStateBuilding" StateName="Укладка венцов сруба">
+					<toggleMesh node="phase_05" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_01" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_02" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_01_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_02_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_05_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_06_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="55" usagePerHour="13.75"/>
+					<input fillType="WOODBEAM" amount="4996" usagePerHour="1249"/>
+					<input fillType="NAILS" amount="48" usagePerHour="12"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_6" class="ConstructibleStateBuilding" StateName="Укладка венцов сруба">
+					<toggleMesh node="phase_06" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_06_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_07_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="55" usagePerHour="13.75"/>
+					<input fillType="WOODBEAM" amount="4996" usagePerHour="1249"/>
+					<input fillType="NAILS" amount="48" usagePerHour="12"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_7" class="ConstructibleStateBuilding" StateName="Укладка венцов сруба">
+					<toggleMesh node="phase_07" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_07_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_08_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="52" usagePerHour="13"/>
+					<input fillType="WOODBEAM" amount="4996" usagePerHour="1249"/>
+					<input fillType="NAILS" amount="48" usagePerHour="12"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_8" class="ConstructibleStateBuilding" StateName="Укладка венцов сруба">
+					<toggleMesh node="phase_08" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_08_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_09_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="52" usagePerHour="13"/>
+					<input fillType="WOODBEAM" amount="4996" usagePerHour="1249"/>
+					<input fillType="NAILS" amount="50" usagePerHour="12.5"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_9" class="ConstructibleStateBuilding" StateName="Укладка венцов сруба">
+					<toggleMesh node="phase_09" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_09_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_10_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="52" usagePerHour="13"/>
+					<input fillType="WOODBEAM" amount="4996" usagePerHour="1249"/>
+					<input fillType="NAILS" amount="48" usagePerHour="12"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_10" class="ConstructibleStateBuilding" StateName="Укладка венцов сруба">
+					<toggleMesh node="phase_10" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_10_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_11_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="52" usagePerHour="13"/>
+					<input fillType="WOODBEAM" amount="4996" usagePerHour="1249"/>
+					<input fillType="NAILS" amount="48" usagePerHour="12"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_11" class="ConstructibleStateBuilding" StateName="Укладка венцов сруба">
+					<toggleMesh node="phase_11" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_11_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_12_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="55" usagePerHour="13.75"/>
+					<input fillType="WOODBEAM" amount="4996" usagePerHour="1249"/>
+					<input fillType="NAILS" amount="48" usagePerHour="12"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_12" class="ConstructibleStateBuilding" StateName="Набивка обрешётки крыши">
+					<toggleMesh node="phase_12" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_12_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_13_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="54" usagePerHour="9"/>
+					<input fillType="BOARDS" amount="1998" usagePerHour="333"/>
+					<input fillType="PLANKS" amount="6996" usagePerHour="1166"/>
+					<input fillType="NAILS" amount="48" usagePerHour="8"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_13" class="ConstructibleStateBuilding" StateName="Укладка кровли">
+					<toggleMesh node="phase_13" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_13_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_14_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="110" usagePerHour="18.333333"/>
+					<input fillType="METAL" amount="6996" usagePerHour="1166"/>
+					<input fillType="NAILS" amount="39" usagePerHour="6.5"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_14" class="ConstructibleStateBuilding" StateName="Монтаж электрики">
+					<toggleMesh node="phase_14" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_14_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_15_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="110" usagePerHour="22"/>
+					<input fillType="METAL" amount="995" usagePerHour="199"/>
+					<input fillType="FURNITURE" amount="995" usagePerHour="199"/>
+					<input fillType="NAILS" amount="20" usagePerHour="4"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_15" class="ConstructibleStateBuilding" StateName="Монтаж металлоконструкций">
+					<toggleMesh node="phase_15" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_15_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_16_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="165" usagePerHour="27.5"/>
+					<input fillType="METAL" amount="1998" usagePerHour="333"/>
+					<input fillType="BUILDING_METAL" amount="2994" usagePerHour="449"/>
+					<input fillType="NAILS" amount="20" usagePerHour="3.333333"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_16" class="ConstructibleStateBuilding" StateName="Монтаж окон и дверей">
+					<toggleMesh node="phase_16" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_16_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_17_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="110" usagePerHour="27.5"/>
+					<input fillType="BOARDS" amount="996" usagePerHour="249"/>
+					<input fillType="METAL" amount="1996" usagePerHour="449"/>
+					<input fillType="FURNITURE" amount="996" usagePerHour="249"/>
+					<input fillType="NAILS" amount="48" usagePerHour="12"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_17" class="ConstructibleStateBuilding" StateName="Монтаж мебели">
+					<toggleMesh node="phase_17" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_17_props" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_18_props" active="true" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="20" usagePerHour="5"/>
+					<input fillType="FURNITURE" amount="3996" usagePerHour="999"/>
+					<input fillType="NAILS" amount="10" usagePerHour="2.5"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_18" class="ConstructibleStateBuilding" StateName="Завершение строительства">
+					<toggleMesh node="phase_18" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_18_props" active="false" updatePhysics="true"/>
+					<input fillType="INSTRUMENT" amount="20" usagePerHour="5"/>
+					<input fillType="BOARDS" amount="996" usagePerHour="249"/>
+					<input fillType="FURNITURE" amount="996" usagePerHour="249"/>
+					<input fillType="NAILS" amount="10" usagePerHour="2.5"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="FINALIZE" class="ConstructibleStateFinalize">
+					<toggleMesh node="phase_19" active="true" updatePhysics="true"/>
+					<toggleMesh node="buildingCollision" active="true" updatePhysics="true"/>
+					<toggleMesh node="productionPoint" active="true" updatePhysics="true"/>
+					<toggleMesh node="sellingStation" active="true" updatePhysics="true"/>
+					<toggleMesh node="freezerWarehouse" active="true" updatePhysics="true"/>
+					<toggleMesh node="constructibleSellingStation" active="false" updatePhysics="true"/>
+					<toggleHotspot index="1" isVisible="false"/>
+					<toggleHotspot index="2" isVisible="true"/>
+				</state>
+				<state name="DONE" class="ConstructibleState" isPreviewState="true"/>
+			</states>
+			<transitions>
+				<transition from="SETUP" to="BUILDING_1"/>
+				<transition from="BUILDING_1" to="BUILDING_2"/>
+				<transition from="BUILDING_2" to="BUILDING_3"/>
+				<transition from="BUILDING_3" to="BUILDING_4"/>
+				<transition from="BUILDING_4" to="BUILDING_5"/>
+				<transition from="BUILDING_5" to="BUILDING_6"/>
+				<transition from="BUILDING_6" to="BUILDING_7"/>
+				<transition from="BUILDING_7" to="BUILDING_8"/>
+				<transition from="BUILDING_8" to="BUILDING_9"/>
+				<transition from="BUILDING_9" to="BUILDING_10"/>
+				<transition from="BUILDING_10" to="BUILDING_11"/>
+				<transition from="BUILDING_11" to="BUILDING_12"/>
+				<transition from="BUILDING_12" to="BUILDING_13"/>
+				<transition from="BUILDING_13" to="BUILDING_14"/>
+				<transition from="BUILDING_14" to="BUILDING_15"/>
+				<transition from="BUILDING_15" to="BUILDING_16"/>
+				<transition from="BUILDING_16" to="BUILDING_17"/>
+				<transition from="BUILDING_17" to="BUILDING_18"/>
+				<transition from="BUILDING_18" to="FINALIZE"/>
+				<transition from="FINALIZE" to="DONE"/>
+			</transitions>
+		</stateMachine>
+		<sellingStation node="constructibleSellingStation" supportsExtension="false" allowMissions="true" appearsOnStats="false">
+			<palletTrigger triggerNode="constructiblePalletTrigger" aiNode="constructibleUnloadTriggerAINode" fillTypes="INSTRUMENT BOARDS PLANKS BUILDING_METAL CEMENT WOODBEAM METAL FURNITURE NAILS" deleteLitersPerSecond="200"/>
+		</sellingStation>
+		<storage isExtension="false" fillLevelSyncThreshold="50">
+			<!--Total duration: 87 h. Final totals rounded to pallet capacities / 1000 L rule requested by the author.-->
+			<capacity fillType="INSTRUMENT" capacity="1250"/>
+			<capacity fillType="BUILDING_METAL" capacity="8000"/>
+			<capacity fillType="BOARDS" capacity="5000"/>
+			<capacity fillType="PLANKS" capacity="9000"/>
+			<capacity fillType="NAILS" capacity="600"/>
+			<capacity fillType="CEMENT" capacity="9000"/>
+			<capacity fillType="WOODBEAM" capacity="35000"/>
+			<capacity fillType="METAL" capacity="12000"/>
+			<capacity fillType="FURNITURE" capacity="7000"/>
+		</storage>
+	</constructible>
+	<i3dMappings>
+		<i3dMapping id="testArea1Start" node="1>0|0|0"/>
+		<i3dMapping id="testArea1End" node="1>0|0|0|0"/>
+		<i3dMapping id="clearArea1Start" node="1>0|1|0"/>
+		<i3dMapping id="clearArea1Width" node="1>0|1|0|0"/>
+		<i3dMapping id="clearArea1Height" node="1>0|1|0|1"/>
+		<i3dMapping id="levelArea1Start" node="1>0|2|0"/>
+		<i3dMapping id="levelArea1Width" node="1>0|2|0|0"/>
+		<i3dMapping id="levelArea1Height" node="1>0|2|0|1"/>
+		<i3dMapping id="indoorArea1Start" node="1>0|3|0"/>
+		<i3dMapping id="indoorArea1Width" node="1>0|3|0|0"/>
+		<i3dMapping id="indoorArea1Height" node="1>0|3|0|1"/>
+		<i3dMapping id="tipOcclusionUpdateArea1Start" node="1>0|4|0"/>
+		<i3dMapping id="tipOcclusionUpdateArea1End" node="1>0|4|0|0"/>
+		<i3dMapping id="infoTrigger" node="1>2"/>
+		<i3dMapping id="sellingStation" node="1>3"/>
+		<i3dMapping id="productionPoint" node="1>4"/>
+		<i3dMapping id="freezerWarehouse" node="1>5"/>
+		<i3dMapping id="constructibleSellingStation" node="1>6"/>
+		<i3dMapping id="animalTrigger" node="1>3|0|0"/>
+		<i3dMapping id="unloadTriggerAnimal" node="1>3|0|2"/>
+		<i3dMapping id="unloadTriggerAINodeAnimal" node="1>3|0|3"/>
+		<i3dMapping id="markerAnimals" node="1>3|0|4"/>
+		<i3dMapping id="palletTrigger" node="1>3|1|0"/>
+		<i3dMapping id="unloadTriggerAINode" node="1>3|1|1"/>
+		<i3dMapping id="unloadTriggerMarkerpalletTrigger" node="1>3|1|2"/>
+		<i3dMapping id="exactFillRootNodeWater" node="1>3|2|0"/>
+		<i3dMapping id="unloadTriggerMarkerWater" node="1>3|2|1"/>
+		<i3dMapping id="unloadTriggerAINodeWater" node="1>3|2|2"/>
+		<i3dMapping id="playerTrigger" node="1>4|0"/>
+		<i3dMapping id="playerTriggerMarker" node="1>4|0|0"/>
+		<i3dMapping id="palletSpawner" node="1>4|1"/>
+		<i3dMapping id="spawnSpaceStart01" node="1>4|1|0|0"/>
+		<i3dMapping id="spawnSpaceEnd01" node="1>4|1|0|0|0"/>
+		<i3dMapping id="spawnSpaceStart02" node="1>4|1|0|1"/>
+		<i3dMapping id="spawnSpaceEnd02" node="1>4|1|0|1|0"/>
+		<i3dMapping id="spawnSpaceStart03" node="1>4|1|0|2"/>
+		<i3dMapping id="spawnSpaceEnd03" node="1>4|1|0|2|0"/>
+		<i3dMapping id="spawnSpaceStart04" node="1>4|1|0|3"/>
+		<i3dMapping id="spawnSpaceEnd04" node="1>4|1|0|3|0"/>
+		<i3dMapping id="poultryVisNodes_output1" node="1>4|2"/>
+		<i3dMapping id="poultryVisNodes_output2" node="1>4|3"/>
+		<i3dMapping id="beefVisNodes_output1" node="1>4|4"/>
+		<i3dMapping id="beefVisNodes_output2" node="1>4|5"/>
+		<i3dMapping id="porkVisNodes_output1" node="1>4|6"/>
+		<i3dMapping id="porkVisNodes_output2" node="1>4|7"/>
+		<i3dMapping id="porkVisNodes_output3" node="1>4|8"/>
+		<i3dMapping id="porkVisNodes_output4" node="1>4|9"/>
+		<i3dMapping id="sheepVisNodes_output1" node="1>4|10"/>
+		<i3dMapping id="sheepVisNodes_output2" node="1>4|11"/>
+		<i3dMapping id="objectTrigger" node="1>5|1"/>
+		<i3dMapping id="storagePlayerTrigger" node="1>5|2"/>
+		<i3dMapping id="storagePlayerTriggerMarker" node="1>5|2|0"/>
+		<i3dMapping id="spawnAreaStart01" node="1>5|0|0"/>
+		<i3dMapping id="spawnAreaEnd01" node="1>5|0|0|0"/>
+		<i3dMapping id="spawnAreaStart02" node="1>5|0|1"/>
+		<i3dMapping id="spawnAreaEnd02" node="1>5|0|1|0"/>
+		<i3dMapping id="storageAreaStart_Row1_part01" node="1>5|0|2"/>
+		<i3dMapping id="storageAreaEnd_Row1_part01" node="1>5|0|2|0"/>
+		<i3dMapping id="storageAreaStart_Row1_part02" node="1>5|0|3"/>
+		<i3dMapping id="storageAreaEnd_Row1_part02" node="1>5|0|3|0"/>
+		<i3dMapping id="storageAreaStart_Row1_part03" node="1>5|0|4"/>
+		<i3dMapping id="storageAreaEnd_Row1_part03" node="1>5|0|4|0"/>
+		<i3dMapping id="storageAreaStart_Row2_part01" node="1>5|0|5"/>
+		<i3dMapping id="storageAreaEnd_Row2_part01" node="1>5|0|5|0"/>
+		<i3dMapping id="storageAreaStart_Row2_part02" node="1>5|0|6"/>
+		<i3dMapping id="storageAreaEnd_Row2_part02" node="1>5|0|6|0"/>
+		<i3dMapping id="storageAreaStart_Row2_part03" node="1>5|0|7"/>
+		<i3dMapping id="storageAreaEnd_Row2_part03" node="1>5|0|7|0"/>
+		<i3dMapping id="storageAreaStart_Row3_part01" node="1>5|0|8"/>
+		<i3dMapping id="storageAreaEnd_Row3_part01" node="1>5|0|8|0"/>
+		<i3dMapping id="storageAreaStart_Row3_part02" node="1>5|0|9"/>
+		<i3dMapping id="storageAreaEnd_Row3_part02" node="1>5|0|9|0"/>
+		<i3dMapping id="storageAreaStart_Row3_part03" node="1>5|0|10"/>
+		<i3dMapping id="storageAreaEnd_Row3_part03" node="1>5|0|10|0"/>
+		<i3dMapping id="storageAreaStart_Row4_part01" node="1>5|0|11"/>
+		<i3dMapping id="storageAreaEnd_Row4_part01" node="1>5|0|11|0"/>
+		<i3dMapping id="storageAreaStart_Row4_part02" node="1>5|0|12"/>
+		<i3dMapping id="storageAreaEnd_Row4_part02" node="1>5|0|12|0"/>
+		<i3dMapping id="storageAreaStart_Row4_part03" node="1>5|0|13"/>
+		<i3dMapping id="storageAreaEnd_Row4_part03" node="1>5|0|13|0"/>
+		<i3dMapping id="constructiblePalletTrigger" node="1>6|1"/>
+		<i3dMapping id="constructibleUnloadTriggerMarker" node="1>6|2"/>
+		<i3dMapping id="constructibleUnloadTriggerAINode" node="1>6|3"/>
+		<i3dMapping id="phase_01_props" node="1>1|0|0"/>
+		<i3dMapping id="phase_02_props" node="1>1|0|1"/>
+		<i3dMapping id="phase_03_props" node="1>1|0|2"/>
+		<i3dMapping id="phase_04_props" node="1>1|0|3"/>
+		<i3dMapping id="phase_05_props" node="1>1|0|4"/>
+		<i3dMapping id="phase_06_props" node="1>1|0|5"/>
+		<i3dMapping id="phase_07_props" node="1>1|0|6"/>
+		<i3dMapping id="phase_08_props" node="1>1|0|7"/>
+		<i3dMapping id="phase_09_props" node="1>1|0|8"/>
+		<i3dMapping id="phase_10_props" node="1>1|0|9"/>
+		<i3dMapping id="phase_11_props" node="1>1|0|10"/>
+		<i3dMapping id="phase_12_props" node="1>1|0|11"/>
+		<i3dMapping id="phase_13_props" node="1>1|0|12"/>
+		<i3dMapping id="phase_14_props" node="1>1|0|13"/>
+		<i3dMapping id="phase_15_props" node="1>1|0|14"/>
+		<i3dMapping id="phase_16_props" node="1>1|0|15"/>
+		<i3dMapping id="phase_17_props" node="1>1|0|16"/>
+		<i3dMapping id="phase_18_props" node="1>1|0|17"/>
+		<i3dMapping id="phase_01" node="1>1|1"/>
+		<i3dMapping id="phase_02" node="1>1|2"/>
+		<i3dMapping id="phase_03" node="1>1|3"/>
+		<i3dMapping id="phase_04" node="1>1|4"/>
+		<i3dMapping id="phase_05" node="1>1|5"/>
+		<i3dMapping id="phase_06" node="1>1|6"/>
+		<i3dMapping id="phase_07" node="1>1|7"/>
+		<i3dMapping id="phase_08" node="1>1|8"/>
+		<i3dMapping id="phase_09" node="1>1|9"/>
+		<i3dMapping id="phase_10" node="1>1|10"/>
+		<i3dMapping id="phase_11" node="1>1|11"/>
+		<i3dMapping id="phase_12" node="1>1|12"/>
+		<i3dMapping id="phase_13" node="1>1|13"/>
+		<i3dMapping id="phase_14" node="1>1|14"/>
+		<i3dMapping id="phase_15" node="1>1|15"/>
+		<i3dMapping id="phase_16" node="1>1|16"/>
+		<i3dMapping id="phase_17" node="1>1|17"/>
+		<i3dMapping id="phase_18" node="1>1|18"/>
+		<i3dMapping id="phase_19" node="1>1|19"/>
+		<i3dMapping id="buildingCollision" node="1>1|20"/>
+		<i3dMapping id="rotor01" node="1>1|15|6|2"/>
+		<i3dMapping id="rotor02" node="1>1|15|7|2"/>
+		<i3dMapping id="rotor03" node="1>1|15|8|2"/>
+		<i3dMapping id="rotor04" node="1>1|15|9|2"/>
+		<i3dMapping id="rollingDoor1Base" node="1>1|17|0|2"/>
+		<i3dMapping id="rollingDoor1" node="1>1|17|0|2|0"/>
+		<i3dMapping id="rollingDoor1ColBottom" node="1>1|17|0|2|1"/>
+		<i3dMapping id="rollingDoor1ColTop" node="1>1|17|0|2|2"/>
+		<i3dMapping id="rollingDoor1Trigger" node="1>1|17|0|2|3"/>
+		<i3dMapping id="rollingDoor2Base" node="1>1|17|1|2"/>
+		<i3dMapping id="rollingDoor2" node="1>1|17|1|2|0"/>
+		<i3dMapping id="rollingDoor2ColBottom" node="1>1|17|1|2|1"/>
+		<i3dMapping id="rollingDoor2ColTop" node="1>1|17|1|2|2"/>
+		<i3dMapping id="rollingDoor2Trigger" node="1>1|17|1|2|3"/>
+		<i3dMapping id="rollingDoor3Base" node="1>1|17|2|2"/>
+		<i3dMapping id="rollingDoor3" node="1>1|17|2|2|0"/>
+		<i3dMapping id="rollingDoor3ColBottom" node="1>1|17|2|2|1"/>
+		<i3dMapping id="rollingDoor3ColTop" node="1>1|17|2|2|2"/>
+		<i3dMapping id="rollingDoor3Trigger" node="1>1|17|2|2|3"/>
+		<i3dMapping id="rollingDoor4Base" node="1>1|17|3|2"/>
+		<i3dMapping id="rollingDoor4" node="1>1|17|3|2|0"/>
+		<i3dMapping id="rollingDoor4ColBottom" node="1>1|17|3|2|1"/>
+		<i3dMapping id="rollingDoor4ColTop" node="1>1|17|3|2|2"/>
+		<i3dMapping id="rollingDoor4Trigger" node="1>1|17|3|2|3"/>
+		<i3dMapping id="drzwiWew" node="1>1|17|4"/>
+		<i3dMapping id="slidingDoor2" node="1>1|17|5|0"/>
+		<i3dMapping id="slidingDoor2Trigger" node="1>1|17|5|1"/>
+		<i3dMapping id="slidingDoor2Sound" node="1>1|17|5|2"/>
+		<i3dMapping id="drzwiWewDoorLeaf" node="1>1|17|4|0"/>
+		<i3dMapping id="drzwiWewTrigger" node="1>1|17|4|2"/>
+	</i3dMappings>
+</placeable>

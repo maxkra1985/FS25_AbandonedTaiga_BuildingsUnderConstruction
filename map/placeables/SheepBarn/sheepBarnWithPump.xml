@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<placeable type="constructibleSheepHusbandry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../shared/xml/schema/placeable.xsd">
+	<storeData>
+		<name>$l10n_SheepBarnWithPump</name>
+		<image>map/placeables/SheepBarn/store_sheepBarn.dds</image>
+		<functions>
+			<function>Возводимая овчарня на 250 голов.</function>
+			<function>Для её возведения требуются инструменты, деревянные балки, доски, длинные доски, кровельные панели, строительное и листовое железо, гвозди.</function>
+			<function>Оформление проекта на строительство данной овчарни составляет 100$.</function>
+		</functions>
+		<lifetime>1000</lifetime>
+		<price>100</price>
+		<canBeSold>true</canBeSold>
+		<showInStore>true</showInStore>
+		<rotation>0</rotation>
+		<brand>ConstructibleBuildings</brand>
+		<dailyUpkeep>0</dailyUpkeep>
+		<species>placeable</species>
+		<category>animalpens</category>
+		<brush>
+			<type>placeable</type>
+			<category>ConstructibleBuildings</category>
+			<tab>constructiblesHusbandry</tab>
+		</brush>
+		<storeIconRendering>
+			<objectBundle>
+				<object filename="map/placeables/SheepBarn/sheepBarn.i3d">
+					<node node="4"/>
+				</object>
+			</objectBundle>
+		</storeIconRendering>
+		<vertexBufferMemoryUsage>372736</vertexBufferMemoryUsage>
+		<indexBufferMemoryUsage>88576</indexBufferMemoryUsage>
+		<textureMemoryUsage>6094848</textureMemoryUsage>
+		<audioMemoryUsage>0</audioMemoryUsage>
+		<instanceVertexBufferMemoryUsage>0</instanceVertexBufferMemoryUsage>
+		<instanceIndexBufferMemoryUsage>0</instanceIndexBufferMemoryUsage>
+	</storeData>
+
+	<base>
+		<filename>map/placeables/SheepBarn/sheepBarn.i3d</filename>
+		<canBeRenamed>true</canBeRenamed>
+		<canBeDeleted>true</canBeDeleted>
+		<boughtWithFarmland>true</boughtWithFarmland>
+
+	</base>
+
+	<placement useRandomYRotation="false" useManualYRotation="true">
+		<testAreas>
+			<testArea startNode="testArea1Start" endNode="testArea1End" />
+		</testAreas>
+		<sounds>
+			<place template="largeImp" />
+			<placeLayered template="sheepLayer" />
+		</sounds>
+	</placement>
+
+	<clearAreas>
+		<clearArea startNode="clearArea1Start" widthNode="clearArea1Width" heightNode="clearArea1Height"/>
+		<clearArea startNode="clearArea2Start" widthNode="clearArea2Width" heightNode="clearArea2Height"/>
+	</clearAreas>
+
+	<leveling requireLeveling="true" maxSmoothDistance="10" maxSlope="75" maxEdgeAngle="20">
+		<levelAreas>
+			<levelArea startNode="levelArea1Start" widthNode="levelArea1Width" heightNode="levelArea1Height" groundType="dirt"/>
+		</levelAreas>
+	</leveling>
+
+	<foliageAreas>
+		<foliageArea startNode="foliageArea1Start" widthNode="foliageArea1Width" heightNode="foliageArea1Height" decoFoliage="grassShort" />
+		<foliageArea startNode="foliageArea2Start" widthNode="foliageArea2Width" heightNode="foliageArea2Height" decoFoliage="grassShort" />
+		<foliageArea startNode="foliageArea3Start" widthNode="foliageArea3Width" heightNode="foliageArea3Height" decoFoliage="grassShort" />
+	</foliageAreas>
+
+	<indoorAreas>
+		<indoorArea startNode="indoorArea1Start" widthNode="indoorArea1Width" heightNode="indoorArea1Height"/>
+		<indoorArea startNode="indoorArea2Start" widthNode="indoorArea2Width" heightNode="indoorArea2Height"/>
+	</indoorAreas>
+
+	<tipOcclusionUpdateAreas>
+		<tipOcclusionUpdateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End" />
+	</tipOcclusionUpdateAreas>
+
+	<ai>
+		<updateAreas>
+			<updateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End" />
+		</updateAreas>
+	</ai>
+
+	<triggerMarkers>
+		<triggerMarker node="markerFoodLeft" filename="$data/shared/assets/marker/markerIconFood.i3d" adjustToGround="true" />
+		<triggerMarker node="markerFoodRight" filename="$data/shared/assets/marker/markerIconFood.i3d"  adjustToGround="true"/>
+		<triggerMarker node="markerAnimals" filename="$data/shared/assets/marker/markerIconAnimals.i3d" adjustToGround="true"/>
+		<triggerMarker node="markerBale" filename="$data/shared/assets/marker/markerIconBales.i3d" adjustToGround="true"/>
+	</triggerMarkers>
+
+	<hotspots>
+		<hotspot type="UNLOADING_PALLET"	linkNode="unloadTriggerMarker"	teleportNode="unloadTriggerMarker" />
+		<hotspot type="SHEEP"												teleportNode="teleportNode" />
+	</hotspots>
+
+	<animatedObjects>
+		<animatedObject saveId="door01" >
+			<animation duration="2.5">
+				<part node="door01">
+					<keyFrame time="0.0" rotation="0 0 0"/>
+					<keyFrame time="1.0" rotation="0 -115 0"/>
+				</part>
+			</animation>
+			<controls triggerNode="door01Trigger" posAction="ACTIVATE_HANDTOOL" posText="action_openDoor" negText="action_closeDoor" />
+			<sounds>
+				<moving linkNode="door01" template="woodDoorSqueaksSmall" pitchScale="0.8"/>
+				<posEnd linkNode="door01" template="woodDoorOpen" />
+				<negEnd linkNode="door01" template="woodDoorCloseRandom" />
+			</sounds>
+		</animatedObject>
+	</animatedObjects>
+
+	<infoTrigger triggerNode="infoTrigger" />
+
+	<husbandry saveId="Animals_SHEEP" hasStatistics="false">
+		<water automaticWaterSupply="true" >
+			<waterPlaces>
+				<waterPlace node="waterPlace01" />
+				<waterPlace node="waterPlace02" />
+				<waterPlace node="waterPlace03" />
+				<waterPlace node="waterPlace04" />
+				<waterPlace node="waterPlace05" />
+				<waterPlace node="waterPlace06" />
+			</waterPlaces>
+		</water>
+
+		<animals type="SHEEP" maxNumAnimals="250" maxNumVisualAnimals="250">
+			<navigation rootNode="navigationRootNode" filename="map/placeables/SheepBarn/NavMesh.i3d" />
+			<loadingTrigger node="animalLoadingTrigger" />
+		</animals>
+
+		<food capacity="60000" >
+			<foodPlane node="fillVolumeFood" minY="-0.47" maxY="-0.1" changeVisibility="true" defaultFillType="DRYGRASS_WINDROW" />
+			<unloadTrigger exactFillRootNode="exactFillRootNodeFood"/>
+			<baleTrigger triggerNode="baleTrigger"/>
+			<foodPlaces>
+				<foodPlace node="foodPlace01" />
+				<foodPlace node="foodPlace02" />
+				<foodPlace node="foodPlace03" />
+				<foodPlace node="foodPlace04" />
+				<foodPlace node="foodPlace05" />
+				<foodPlace node="foodPlace06" />
+				<foodPlace node="foodPlace07" />
+				<foodPlace node="foodPlace08" />
+				<foodPlace node="foodPlace09" />
+			</foodPlaces>
+		</food>
+
+		<pallets>
+			<palletSpawner fillTypes="WOOL GOATMILK" maxNumPallets="35">
+				<palletTrigger node="palletTrigger" />
+				<spawnPlaces>
+					<spawnPlace startNode="palletArea1Start" endNode="palletArea1End" />
+					<spawnPlace startNode="palletArea2Start" endNode="palletArea2End" />
+					<spawnPlace startNode="palletArea3Start" endNode="palletArea3End" />
+					<spawnPlace startNode="palletArea4Start" endNode="palletArea4End" />
+					<spawnPlace startNode="palletArea5Start" endNode="palletArea5End" />
+					<spawnPlace startNode="palletArea6Start" endNode="palletArea6End" />
+					<spawnPlace startNode="palletArea7Start" endNode="palletArea7End" />
+					<spawnPlace startNode="palletArea8Start" endNode="palletArea8End" />
+					<spawnPlace startNode="palletArea9Start" endNode="palletArea9End" />
+					<spawnPlace startNode="palletArea10Start" endNode="palletArea10End" />
+				</spawnPlaces>
+			</palletSpawner>
+		</pallets>
+	</husbandry>
+
+	<constructible>
+		<stateMachine>
+			<states>
+				<state name="SETUP" StateName="Установка опор каркаса" class="ConstructibleStateBuilding" >
+					<toggleMesh node="fenceNodes"			active="false"	updatePhysics="false"/>
+					<toggleMesh node="husbandry"			active="false"	updatePhysics="false"/>
+					<toggleMesh node="supportPillars"		active="false"	updatePhysics="false"/>
+					<toggleMesh node="crossMounts"			active="false"	updatePhysics="false"/>
+					<toggleMesh node="walls"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="floorBeams"			active="false"	updatePhysics="false"/>
+					<toggleMesh node="rafters"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="lathings"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="roofs"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="water"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="pumpTankStation"		active="false"	updatePhysics="false"/>
+					<toggleMesh node="fences"				active="false"	updatePhysics="false"/>
+					<toggleMesh node="furniture"			active="false"	updatePhysics="false"/>
+					<toggleHotspot index="1" isVisible="true" />
+					<toggleHotspot index="2" isVisible="false" />
+					<input fillType="INSTRUMENT"			amount="99"		usagePerHour="33"/>			<!-- начинаем ставить столбы каркаса -->
+					<input fillType="WOODBEAM"				amount="2998"	usagePerHour="1000"/>
+					<input fillType="NAILS"				amount="57"	usagePerHour="20"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_1" StateName="Монтаж каркаса" class="ConstructibleStateBuilding" >
+					<toggleMesh node="supportPillars"		active="true"	updatePhysics="true"/>		<!-- столбы каркаса установлены -->
+					<input fillType="INSTRUMENT"			amount="99"		usagePerHour="33"/>			<!-- устанавливаем поперечные крепления -->
+					<input fillType="WOODBEAM"				amount="2998"	usagePerHour="1000"/>
+					<input fillType="NAILS"				amount="57"	usagePerHour="20"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_2" StateName="Обшивка стен каркаса" class="ConstructibleStateBuilding" >
+					<toggleMesh node="crossMounts"			active="true"	updatePhysics="true"/>		<!-- поперечины установлены -->
+					<input fillType="INSTRUMENT"			amount="149"	usagePerHour="30"/>			<!-- обиваем стены досками -->
+					<input fillType="PLANKS"				amount="4998"	usagePerHour="1000"/>
+					<input fillType="BOARDS"				amount="998"	usagePerHour="200"/>
+					<input fillType="NAILS"				amount="97"	usagePerHour="20"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_3" StateName="Укладываем балки перекрытия" class="ConstructibleStateBuilding" >
+					<toggleMesh node="walls"				active="true"	updatePhysics="true"/>		<!-- стены обшиты -->
+					<input fillType="INSTRUMENT"			amount="99"		usagePerHour="33"/>			<!-- укладываем балки перекрытия -->
+					<input fillType="WOODBEAM"				amount="2998"	usagePerHour="1000"/>
+					<input fillType="NAILS"				amount="57"	usagePerHour="20"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_4" StateName="Монтаж стропил" class="ConstructibleStateBuilding" >
+					<toggleMesh node="floorBeams"			active="true"	updatePhysics="true"/>		<!-- перекрытия установлены -->
+					<input fillType="INSTRUMENT"			amount="49"		usagePerHour="50"/>			<!-- устанавливаем стропила -->
+					<input fillType="WOODBEAM"				amount="2998"	usagePerHour="3000"/>
+					<input fillType="NAILS"				amount="47"	usagePerHour="50"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_5" StateName="Набивка обрешётки" class="ConstructibleStateBuilding" >
+					<toggleMesh  node="rafters"				active="true"	updatePhysics="true"/>		<!-- стропила установлены -->
+					<input fillType="INSTRUMENT"			amount="49"		usagePerHour="50"/>			<!-- набиваем обрешётку -->
+					<input fillType="PLANKS"				amount="998"	usagePerHour="1000"/>
+					<input fillType="BOARDS"				amount="998"	usagePerHour="1000"/>
+					<input fillType="NAILS"				amount="77"	usagePerHour="80"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_6" StateName="Монтаж кровли" class="ConstructibleStateBuilding" >
+					<toggleMesh node="lathings"		active="true"	updatePhysics="true"/>				<!-- обрешётка набита -->
+					<input fillType="INSTRUMENT"			amount="99"		usagePerHour="50"/>			<!-- укладываем крышу -->
+					<input fillType="ROOFPLATES"			amount="4995"	usagePerHour="2500"/>
+					<input fillType="NAILS"				amount="47"	usagePerHour="24"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_7" StateName="Монтаж ёмкостей воды" class="ConstructibleStateBuilding" >
+					<toggleMesh node="roofs"				active="true"	updatePhysics="true"/>		<!-- крыша уложена -->
+					<input fillType="INSTRUMENT"			amount="99"		usagePerHour="50"/>			<!-- устанавливаем ёмкости с водой -->
+					<input fillType="METAL"					amount="1995"	usagePerHour="1000"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_8" StateName="Монтаж водного насоса" class="ConstructibleStateBuilding" >
+					<toggleMesh node="water"				active="true"	updatePhysics="true"/>		<!-- ёмкости с водой установлены -->
+					<input fillType="INSTRUMENT"			amount="99"		usagePerHour="50"/>			<!-- устанавливаем насос с бочкой -->
+					<input fillType="METAL"					amount="1995"	usagePerHour="1000"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_9" StateName="Установка ограждения" class="ConstructibleStateBuilding" >
+					<toggleMesh node="pumpTankStation"		active="true"	updatePhysics="true"/>		<!-- насос с бочкой установлены -->
+					<input fillType="INSTRUMENT"			amount="99"		usagePerHour="50"/>			<!-- устанавливаем забор -->
+					<input fillType="BOARDS"				amount="4998"	usagePerHour="2500"/>
+					<input fillType="NAILS"				amount="77"	usagePerHour="40"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="BUILDING_10" StateName="Обустройство постройки" class="ConstructibleStateBuilding" >
+					<toggleMesh node="fences"				active="true"	updatePhysics="true"/>	<!-- установили забор -->
+					<input fillType="INSTRUMENT"			amount="49"		usagePerHour="50"/>		<!-- готовимся к финалу, завершаем стройку -->
+					<input fillType="BUILDING_METAL"		amount="999"	usagePerHour="1000"/>
+					<input fillType="BOARDS"				amount="998"	usagePerHour="1000"/>
+					<input fillType="NAILS"				amount="57"	usagePerHour="60"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+
+				<state name="FINALIZE" class="ConstructibleStateFinalize" >
+					<toggleMesh node="furniture"			active="true"	updatePhysics="true"/>
+					<toggleMesh node="husbandry"			active="true"	updatePhysics="true"/>
+					<toggleMesh node="ConstructibleSellingStation"	active="false"	updatePhysics="true"/>
+					<toggleHotspot index="1" isVisible="false" />
+					<toggleHotspot index="2" isVisible="true" />
+				</state>
+
+				<state name="DONE" class="ConstructibleState" isPreviewState="true"/>
+			</states>
+
+			<transitions>
+				<transition from="SETUP"		to="BUILDING_1"/>
+				<transition from="BUILDING_1"	to="BUILDING_2"/>
+				<transition from="BUILDING_2"	to="BUILDING_3"/>
+				<transition from="BUILDING_3"	to="BUILDING_4"/>
+				<transition from="BUILDING_4"	to="BUILDING_5"/>
+				<transition from="BUILDING_5"	to="BUILDING_6"/>
+				<transition from="BUILDING_6"	to="BUILDING_7"/>
+				<transition from="BUILDING_7"	to="BUILDING_8"/>
+				<transition from="BUILDING_8"	to="BUILDING_9"/>
+				<transition from="BUILDING_9"	to="BUILDING_10"/>
+				<transition from="BUILDING_10"	to="FINALIZE"/>
+				<transition from="FINALIZE"		to="DONE" />
+			</transitions>
+		</stateMachine>
+
+		<sellingStation node="constructiblesSellingStation" supportsExtension="false" allowMissions="true" appearsOnStats="false">
+			<palletTrigger	triggerNode="ConstructiblePalletTrigger"	aiNode="unloadTriggerAINode"	fillTypes="INSTRUMENT WOODBEAM BOARDS PLANKS ROOFPLATES BUILDING_METAL METAL NAILS" />
+		</sellingStation>
+
+		<storage isExtension="false" fillLevelSyncThreshold="50">		<!-- ВРЕМЯ     23 -->
+			<capacity fillType="INSTRUMENT"		capacity="1000" />		<!-- ВСЕГО  1 000 -->
+			<capacity fillType="WOODBEAM"		capacity="5000" />		<!-- ВСЕГО 12 000 -->
+			<capacity fillType="BOARDS"			capacity="5000" />		<!-- ВСЕГО  8 000 -->
+			<capacity fillType="PLANKS"			capacity="5000" />		<!-- ВСЕГО  6 000 -->
+			<capacity fillType="ROOFPLATES"		capacity="5000" />		<!-- ВСЕГО  5 000 -->
+			<capacity fillType="BUILDING_METAL"	capacity="1000" />		<!-- ВСЕГО  1 000 -->
+			<capacity fillType="METAL"			capacity="4000" />
+			<capacity fillType="NAILS"			capacity="600" />		<!-- ВСЕГО  4 000 -->
+		</storage>
+	</constructible>
+
+	<i3dMappings>
+		<!-- AREAS -->
+		<i3dMapping id="testArea1Start" node="0>0|0|0" />
+		<i3dMapping id="testArea1End" node="0>0|0|0|0" />
+		<i3dMapping id="clearArea1Start" node="0>0|1|0" />
+		<i3dMapping id="clearArea1Width" node="0>0|1|0|0" />
+		<i3dMapping id="clearArea1Height" node="0>0|1|0|1" />
+		<i3dMapping id="clearArea2Start" node="0>0|1|1" />
+		<i3dMapping id="clearArea2Width" node="0>0|1|1|0" />
+		<i3dMapping id="clearArea2Height" node="0>0|1|1|1" />
+		<i3dMapping id="levelArea1Start" node="0>0|2|0" />
+		<i3dMapping id="levelArea1Width" node="0>0|2|0|0" />
+		<i3dMapping id="levelArea1Height" node="0>0|2|0|1" />
+		<i3dMapping id="foliageArea1Start" node="0>0|2|1"/>
+		<i3dMapping id="foliageArea1Width" node="0>0|2|1|0"/>
+		<i3dMapping id="foliageArea1Height" node="0>0|2|1|1"/>
+		<i3dMapping id="foliageArea2Start" node="0>0|2|2"/>
+		<i3dMapping id="foliageArea2Width" node="0>0|2|2|0"/>
+		<i3dMapping id="foliageArea2Height" node="0>0|2|2|1"/>
+		<i3dMapping id="foliageArea3Start" node="0>0|2|3"/>
+		<i3dMapping id="foliageArea3Width" node="0>0|2|3|0"/>
+		<i3dMapping id="foliageArea3Height" node="0>0|2|3|1"/>
+		<i3dMapping id="indoorArea1Start" node="0>0|3|0" />
+		<i3dMapping id="indoorArea1Width" node="0>0|3|0|0" />
+		<i3dMapping id="indoorArea1Height" node="0>0|3|0|1" />
+		<i3dMapping id="indoorArea2Start" node="0>0|3|1" />
+		<i3dMapping id="indoorArea2Width" node="0>0|3|1|0" />
+		<i3dMapping id="indoorArea2Height" node="0>0|3|1|1" />
+		<i3dMapping id="tipOcclusionUpdateArea1Start" node="0>0|4|0" />
+		<i3dMapping id="tipOcclusionUpdateArea1End" node="0>0|4|0|0" />
+		<!-- MARKERS -->
+		<i3dMapping id="markerFoodLeft" node="0>1|0|0" />
+		<i3dMapping id="markerFoodRight" node="0>1|0|1" />
+		<i3dMapping id="markerAnimals" node="0>1|0|2" />
+		<i3dMapping id="markerBale" node="0>1|0|3" />
+		<i3dMapping id="markerWater" node="0>1|0|4"/>
+		<!-- HUSBANDRY -->
+		<i3dMapping id="teleportNode" node="0>1|1" />
+		<i3dMapping id="infoTrigger" node="0>1|2" />
+		<i3dMapping id="waterStorage" node="0>2|8|8" />
+		<i3dMapping id="waterPlane" node="0>2|8|0" />
+		<i3dMapping id="waterPlace01" node="0>2|8|0|0" />
+		<i3dMapping id="waterPlace02" node="0>2|8|0|1" />
+		<i3dMapping id="waterPlace03" node="0>2|8|0|2" />
+		<i3dMapping id="waterPlace04" node="0>2|8|0|3" />
+		<i3dMapping id="waterPlace05" node="0>2|8|0|4" />
+		<i3dMapping id="waterPlace06" node="0>2|8|0|5" />
+		<i3dMapping id="waterTank" node="0>2|8|7" />
+		<i3dMapping id="exactFillRootNodeWater" node="0>1|4|0" />
+		<i3dMapping id="navigationRootNode" node="0>1|7" />
+		<i3dMapping id="navigationMeshShape" node="0>1|7|0" />
+		<i3dMapping id="animalLoadingTrigger" node="0>1|9" />
+		<i3dMapping id="fillVolumeFood" node="0>1|3|0" />
+		<i3dMapping id="exactFillRootNodeFood" node="0>1|3|1" />
+		<i3dMapping id="baleTrigger" node="0>1|3|2" />
+		<i3dMapping id="foodPlace01" node="0>1|3|3" />
+		<i3dMapping id="foodPlace02" node="0>1|3|4" />
+		<i3dMapping id="foodPlace03" node="0>1|3|5" />
+		<i3dMapping id="foodPlace04" node="0>1|3|6" />
+		<i3dMapping id="foodPlace05" node="0>1|3|7" />
+		<i3dMapping id="foodPlace06" node="0>1|3|8" />
+		<i3dMapping id="foodPlace07" node="0>1|3|9" />
+		<i3dMapping id="foodPlace08" node="0>1|3|10" />
+		<i3dMapping id="foodPlace09" node="0>1|3|11" />
+		<i3dMapping id="palletTrigger" node="0>1|6|0" />
+		<i3dMapping id="palletArea1Start" node="0>1|6|1" />
+		<i3dMapping id="palletArea1End" node="0>1|6|1|0" />
+		<i3dMapping id="palletArea2Start" node="0>1|6|2" />
+		<i3dMapping id="palletArea2End" node="0>1|6|2|0" />
+		<i3dMapping id="palletArea3Start" node="0>1|6|3" />
+		<i3dMapping id="palletArea3End" node="0>1|6|3|0" />
+		<i3dMapping id="palletArea4Start" node="0>1|6|4" />
+		<i3dMapping id="palletArea4End" node="0>1|6|4|0" />
+		<i3dMapping id="palletArea5Start" node="0>1|6|5" />
+		<i3dMapping id="palletArea5End" node="0>1|6|5|0" />
+		<i3dMapping id="palletArea6Start" node="0>1|6|6" />
+		<i3dMapping id="palletArea6End" node="0>1|6|6|0" />
+		<i3dMapping id="palletArea7Start" node="0>1|6|7" />
+		<i3dMapping id="palletArea7End" node="0>1|6|7|0" />
+		<i3dMapping id="palletArea8Start" node="0>1|6|8" />
+		<i3dMapping id="palletArea8End" node="0>1|6|8|0" />
+		<i3dMapping id="palletArea9Start" node="0>1|6|9" />
+		<i3dMapping id="palletArea9End" node="0>1|6|9|0" />
+		<i3dMapping id="palletArea10Start" node="0>1|6|10" />
+		<i3dMapping id="palletArea10End" node="0>1|6|10|0" />
+
+		<i3dMapping id="husbandry" node="0>1" />
+		<i3dMapping id="supportPillars" node="0>2|0"/>
+		<i3dMapping id="crossMounts" node="0>2|2"/>
+		<i3dMapping id="walls" node="0>2|3"/>
+		<i3dMapping id="floorBeams" node="0>2|4"/>
+		<i3dMapping id="rafters" node="0>2|5"/>
+		<i3dMapping id="lathings" node="0>2|6"/>
+		<i3dMapping id="roofs" node="0>2|7"/>
+		<i3dMapping id="water" node="0>2|8"/>
+		<i3dMapping id="pumpTankStation" node="0>2|9"/>
+		<i3dMapping id="fences" node="0>2|10"/>
+		<i3dMapping id="furniture" node="0>2|11"/>
+
+		<i3dMapping id="door01" node="0>2|11|0|3|0" />
+		<i3dMapping id="door01Trigger" node="0>2|11|0|3|1" />
+
+		<i3dMapping id="fenceNodes" node="0>3|6" />
+		<i3dMapping id="fenceNode1" node="0>3|6|0" />
+		<i3dMapping id="fenceNode2" node="0>3|6|1" />
+		<i3dMapping id="fenceNode3" node="0>3|6|2" />
+		<i3dMapping id="fenceNode4" node="0>3|6|3" />
+		<i3dMapping id="fenceNode5" node="0>3|6|4" />
+
+		<!-- CONSTRUCTIBLES -->
+		<i3dMapping id="ConstructibleSellingStation" node="0>3" />
+		<i3dMapping id="ConstructiblePalletTrigger" node="0>3|1" />
+		<i3dMapping id="unloadTriggerMarker" node="0>3|2" />
+		<i3dMapping id="unloadTriggerAINode" node="0>3|3" />
+	</i3dMappings>
+</placeable>
