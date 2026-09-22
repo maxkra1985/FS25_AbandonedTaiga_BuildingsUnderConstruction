@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<placeable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" type="monomixProductionPoint" xsi:noNamespaceSchemaLocation="../../../../../shared/xml/schema/placeable.xsd">
+<placeable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" type="productionPointWithStorage" xsi:noNamespaceSchemaLocation="../../../../../shared/xml/schema/placeable.xsd">
 	<storeData>
 		<name>$l10n_storeItem_MonomixProductionWorkshop</name>
 		<functions>

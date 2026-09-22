@@ -96,11 +96,6 @@
 		<type name="constructibleProductionPoint" parent="constructible" filename="$dataS/scripts/placeables/Placeable.lua">
 			<specialization name="productionPoint" />
 		</type>
-		<!-- monomixProductionPoint - строимое производство моносмеси со складом тюков -->
-		<type name="monomixProductionPoint" parent="productionPoint" className="Placeable" filename="$dataS/scripts/placeables/Placeable.lua">
-			<specialization name="constructible"/>
-			<specialization name="objectStorage"/>
-		</type>
 		<!-- constructibleStorage - строимый склад -->
 		<type name="constructibleStorage" parent="constructible" filename="$dataS/scripts/placeables/Placeable.lua">
 			<specialization name="objectStorage"/>
