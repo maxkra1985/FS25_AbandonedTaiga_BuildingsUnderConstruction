@@ -6,15 +6,15 @@
   </Asset>
 
   <Files>
-    <File fileId="8" filename="../PulpPaperProduction/textures/DeskiOld1024.dds"/>
-    <File fileId="13" filename="../PulpPaperProduction/textures/mauzer2_albedo.dds"/>
-    <File fileId="14" filename="../PulpPaperProduction/textures/mauzer_normal.dds"/>
-    <File fileId="15" filename="../PulpPaperProduction/textures/mauzer_specular.dds"/>
-    <File fileId="62" filename="../PulpPaperProduction/textures/towerLight5000Decals_diffuse.png"/>
-    <File fileId="64" filename="../PulpPaperProduction/textures/towerLight5000Decals_vmask.png"/>
-    <File fileId="29" filename="../PulpPaperProduction/textures/towerLight5000_normal.png"/>
-    <File fileId="30" filename="../PulpPaperProduction/textures/towerLight5000_vmask.png"/>
-    <File fileId="9" filename="../PulpPaperProduction/textures/woodTexture512.dds"/>
+    <File fileId="8" filename="../textures/DeskiOld1024.dds"/>
+    <File fileId="13" filename="../textures/mauzer2_albedo.dds"/>
+    <File fileId="14" filename="../textures/mauzer_normal.dds"/>
+    <File fileId="15" filename="../textures/mauzer_specular.dds"/>
+    <File fileId="62" filename="../textures/towerLight5000Decals_diffuse.dds"/>
+    <File fileId="64" filename="../textures/towerLight5000Decals_vmask.dds"/>
+    <File fileId="29" filename="../textures/towerLight5000_normal.dds"/>
+    <File fileId="30" filename="../textures/towerLight5000_vmask.dds"/>
+    <File fileId="9" filename="../textures/woodTexture512.dds"/>
     <File fileId="20" filename="concrete.dds"/>
     <File fileId="83" filename="passportSiloPit.dds"/>
     <File fileId="39" filename="$data/maps/mapEU/textures/concreteGeneric_diffuse.dds"/>

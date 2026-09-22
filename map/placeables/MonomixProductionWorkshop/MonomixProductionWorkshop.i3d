@@ -9,9 +9,9 @@
     <File fileId="150" filename="../FarmMeatIndustry/textures/cabinetWorkbench2_diffuse.png"/>
     <File fileId="151" filename="../FarmMeatIndustry/textures/cabinetWorkbench2_normal.png"/>
     <File fileId="152" filename="../FarmMeatIndustry/textures/cabinetWorkbench2_specular.png"/>
-    <File fileId="58" filename="../FarmMeatIndustry/textures/electricalSet_diffuse.png"/>
-    <File fileId="59" filename="../FarmMeatIndustry/textures/electricalSet_normal.png"/>
-    <File fileId="60" filename="../FarmMeatIndustry/textures/electricalSet_specular.png"/>
+    <File fileId="58" filename="../textures/electricalSet_diffuse.dds"/>
+    <File fileId="59" filename="../textures/electricalSet_normal.dds"/>
+    <File fileId="60" filename="../textures/electricalSet_specular.dds"/>
     <File fileId="210" filename="../FarmMeatIndustry/textures/gardenSink04_diffuse.png"/>
     <File fileId="211" filename="../FarmMeatIndustry/textures/gardenSink04_normal.png"/>
     <File fileId="212" filename="../FarmMeatIndustry/textures/gardenSink04_specular.png"/>
@@ -23,12 +23,12 @@
     <File fileId="153" filename="../FarmMeatIndustry/textures/objekti/fireExtinguisherBox_diffuse.dds"/>
     <File fileId="154" filename="../FarmMeatIndustry/textures/objekti/fireExtinguisherBox_normal.dds"/>
     <File fileId="155" filename="../FarmMeatIndustry/textures/objekti/fireExtinguisherBox_specular.dds"/>
-    <File fileId="61" filename="../FarmMeatIndustry/textures/propsDecals_diffuse.png"/>
-    <File fileId="62" filename="../FarmMeatIndustry/textures/propsDecals_specular.png"/>
+    <File fileId="61" filename="../textures/propsDecals_diffuse.dds"/>
+    <File fileId="62" filename="../textures/propsDecals_specular.dds"/>
     <File fileId="142" filename="../FarmMeatIndustry/textures/woodenShippingCrates_diffuse.png"/>
     <File fileId="143" filename="../FarmMeatIndustry/textures/woodenShippingCrates_normal.png"/>
     <File fileId="144" filename="../FarmMeatIndustry/textures/woodenShippingCrates_specular.png"/>
-    <File fileId="13" filename="textures/DeskiOld1024.dds"/>
+    <File fileId="13" filename="../textures/DeskiOld1024.dds"/>
     <File fileId="74" filename="textures/GIANTS Engine 8_mask.dds"/>
     <File fileId="205" filename="textures/ads.dds"/>
     <File fileId="127" filename="textures/black.dds"/>
@@ -53,13 +53,13 @@
     <File fileId="257" filename="textures/hay_static_diffuse.dds"/>
     <File fileId="259" filename="textures/hay_static_gloss.dds"/>
     <File fileId="258" filename="textures/hay_static_normal.dds"/>
-    <File fileId="192" filename="textures/interiorPropsUS_diffuse.png"/>
-    <File fileId="193" filename="textures/interiorPropsUS_normal.png"/>
-    <File fileId="194" filename="textures/interiorPropsUS_specular.png"/>
+    <File fileId="192" filename="../textures/interiorPropsUS_diffuse.dds"/>
+    <File fileId="193" filename="../textures/interiorPropsUS_normal.dds"/>
+    <File fileId="194" filename="../textures/interiorPropsUS_specular.dds"/>
     <File fileId="82" filename="textures/kuhnIT26_normal.dds"/>
     <File fileId="83" filename="textures/kuhnIT26_vmask.dds"/>
     <File fileId="80" filename="textures/logos.png"/>
-    <File fileId="222" filename="textures/metal_dark_diffuse.dds"/>
+    <File fileId="222" filename="../textures/metal_dark_diffuse.dds"/>
     <File fileId="224" filename="textures/monoMixSign_diffuse.dds"/>
     <File fileId="226" filename="textures/monoMixSign_gloss.dds"/>
     <File fileId="225" filename="textures/monoMixSign_normal.dds"/>
@@ -76,26 +76,26 @@
     <File fileId="265" filename="textures/straw_static_gloss.dds"/>
     <File fileId="264" filename="textures/straw_static_normal.dds"/>
     <File fileId="75" filename="textures/vehicleShader.xml"/>
-    <File fileId="14" filename="textures/woodTexture512.dds"/>
-    <File fileId="219" filename="textures/wood_dark_diffuse.dds"/>
-    <File fileId="220" filename="textures/wood_dark_normal.dds"/>
-    <File fileId="34" filename="textures/wood_endgrain.png"/>
-    <File fileId="36" filename="textures/wood_longitudinal.png"/>
-    <File fileId="41" filename="textures/wood_longitudinal_1m.png"/>
-    <File fileId="37" filename="textures/wood_longitudinal_2m.png"/>
-    <File fileId="32" filename="textures/wood_longitudinal_3m.png"/>
+    <File fileId="14" filename="../textures/woodTexture512.dds"/>
+    <File fileId="219" filename="../textures/wood_dark_diffuse.dds"/>
+    <File fileId="220" filename="../textures/wood_dark_normal.dds"/>
+    <File fileId="34" filename="../textures/wood_endgrain.dds"/>
+    <File fileId="36" filename="../textures/wood_longitudinal.dds"/>
+    <File fileId="41" filename="../textures/wood_longitudinal_1m.dds"/>
+    <File fileId="37" filename="../textures/wood_longitudinal_2m.dds"/>
+    <File fileId="32" filename="../textures/wood_longitudinal_3m.dds"/>
     <File fileId="255" filename="../PulpPaperProduction/passport_PulpPaperProduction.dds"/>
     <File fileId="21" filename="../PulpPaperProduction/textures/beton05_specular.dds"/>
     <File fileId="20" filename="../PulpPaperProduction/textures/betonold2x_normal.dds"/>
     <File fileId="19" filename="../PulpPaperProduction/textures/betonold_diffuse.dds"/>
-    <File fileId="25" filename="../PulpPaperProduction/textures/mauzer2_albedo.dds"/>
-    <File fileId="26" filename="../PulpPaperProduction/textures/mauzer_normal.dds"/>
-    <File fileId="27" filename="../PulpPaperProduction/textures/mauzer_specular.dds"/>
-    <File fileId="243" filename="../PulpPaperProduction/textures/towerLight5000Decals_diffuse.png"/>
-    <File fileId="244" filename="../PulpPaperProduction/textures/towerLight5000Decals_vmask.png"/>
-    <File fileId="165" filename="../PulpPaperProduction/textures/towerLight5000_normal.png"/>
-    <File fileId="166" filename="../PulpPaperProduction/textures/towerLight5000_vmask.png"/>
-    <File fileId="42" filename="../PulpPaperProduction/textures/wood1024_diffuse.dds"/>
+    <File fileId="25" filename="../textures/mauzer2_albedo.dds"/>
+    <File fileId="26" filename="../textures/mauzer_normal.dds"/>
+    <File fileId="27" filename="../textures/mauzer_specular.dds"/>
+    <File fileId="243" filename="../textures/towerLight5000Decals_diffuse.dds"/>
+    <File fileId="244" filename="../textures/towerLight5000Decals_vmask.dds"/>
+    <File fileId="165" filename="../textures/towerLight5000_normal.dds"/>
+    <File fileId="166" filename="../textures/towerLight5000_vmask.dds"/>
+    <File fileId="42" filename="../textures/wood1024_diffuse.dds"/>
     <File fileId="133" filename="../WoodElevator/textures/DmuchawaSilosNiebieski_diffuse.dds"/>
     <File fileId="134" filename="../WoodElevator/textures/DmuchawaSilos_normal.dds"/>
     <File fileId="135" filename="../WoodElevator/textures/DmuchawaSilos_specular.dds"/>

@@ -50,7 +50,7 @@
     <File fileId="26" filename="textures/Boards2_diffuse.dds"/>
     <File fileId="33" filename="textures/Boards2_height.dds"/>
     <File fileId="27" filename="textures/Boards2_normal.dds"/>
-    <File fileId="23" filename="textures/DeskiBig.dds"/>
+    <File fileId="23" filename="../textures/DeskiBig.dds"/>
     <File fileId="47" filename="textures/bucketWood02_diffuse.png"/>
     <File fileId="48" filename="textures/bucketWood02_normal.png"/>
     <File fileId="49" filename="textures/bucketWood02_specular.png"/>
@@ -70,12 +70,12 @@
     <File fileId="45" filename="textures/shovelGreen_normal.png"/>
     <File fileId="46" filename="textures/shovelGreen_specular.png"/>
     <File fileId="43" filename="textures/straw0111111_diffuse.dds"/>
-    <File fileId="5" filename="textures/wood1024_diffuse.dds"/>
-    <File fileId="38" filename="textures/woodBright_diffuse.dds"/>
-    <File fileId="13" filename="textures/woodPlanks064_diffuse.dds"/>
+    <File fileId="5" filename="../textures/wood1024_diffuse.dds"/>
+    <File fileId="38" filename="../textures/woodBright_diffuse.dds"/>
+    <File fileId="13" filename="../textures/woodPlanks064_diffuse.dds"/>
     <File fileId="12" filename="textures/woodPlanks512_diffuse.dds"/>
-    <File fileId="39" filename="textures/wood_normal.dds"/>
-    <File fileId="40" filename="textures/wood_specular.dds"/>
+    <File fileId="39" filename="../textures/wood_normal.dds"/>
+    <File fileId="40" filename="../textures/wood_specular.dds"/>
   </Files>
 
 

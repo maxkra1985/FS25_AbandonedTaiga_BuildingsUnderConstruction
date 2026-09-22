@@ -173,9 +173,9 @@
     <File fileId="175" filename="textures/color_pole3.dds"/>
     <File fileId="176" filename="textures/color_pole_normal.dds"/>
     <File fileId="177" filename="textures/color_pole_specular.dds"/>
-    <File fileId="124" filename="textures/electricalSet_diffuse.png"/>
-    <File fileId="125" filename="textures/electricalSet_normal.png"/>
-    <File fileId="126" filename="textures/electricalSet_specular.png"/>
+    <File fileId="124" filename="../textures/electricalSet_diffuse.dds"/>
+    <File fileId="125" filename="../textures/electricalSet_normal.dds"/>
+    <File fileId="126" filename="../textures/electricalSet_specular.dds"/>
     <File fileId="111" filename="textures/infoDryingChamber.dds"/>
     <File fileId="70" filename="textures/infoWarning.dds"/>
     <File fileId="10" filename="textures/info_storageWoodProduction.dds"/>
@@ -191,12 +191,12 @@
     <File fileId="182" filename="textures/paraChoqueLanterna_mask.dds"/>
     <File fileId="229" filename="textures/passportSawmill.dds"/>
     <File fileId="199" filename="textures/plowSoilPieces_diffuse.dds"/>
-    <File fileId="127" filename="textures/propsDecals_diffuse.png"/>
-    <File fileId="128" filename="textures/propsDecals_specular.png"/>
-    <File fileId="213" filename="textures/towerLight5000Decals_diffuse.png"/>
-    <File fileId="214" filename="textures/towerLight5000Decals_vmask.png"/>
-    <File fileId="203" filename="textures/towerLight5000_normal.png"/>
-    <File fileId="204" filename="textures/towerLight5000_vmask.png"/>
+    <File fileId="127" filename="../textures/propsDecals_diffuse.dds"/>
+    <File fileId="128" filename="../textures/propsDecals_specular.dds"/>
+    <File fileId="213" filename="../textures/towerLight5000Decals_diffuse.dds"/>
+    <File fileId="214" filename="../textures/towerLight5000Decals_vmask.dds"/>
+    <File fileId="203" filename="../textures/towerLight5000_normal.dds"/>
+    <File fileId="204" filename="../textures/towerLight5000_vmask.dds"/>
     <File fileId="198" filename="textures/trailerGranelWood_mask.png"/>
     <File fileId="201" filename="textures/trailerGranel_mask.dds"/>
     <File fileId="183" filename="textures/trailerParts_mask.dds"/>
@@ -210,12 +210,12 @@
     <File fileId="200" filename="textures/truck_red_diffuse.dds"/>
     <File fileId="181" filename="textures/truck_specular.dds"/>
     <File fileId="179" filename="textures/truck_white_diffuse.dds"/>
-    <File fileId="133" filename="textures/waterBottle_diffuse.png"/>
-    <File fileId="134" filename="textures/waterBottle_normal.png"/>
-    <File fileId="135" filename="textures/waterBottle_specular.png"/>
-    <File fileId="130" filename="textures/waterDispenser_diffuse.png"/>
-    <File fileId="131" filename="textures/waterDispenser_normal.png"/>
-    <File fileId="132" filename="textures/waterDispenser_specular.png"/>
+    <File fileId="133" filename="../textures/waterBottle_diffuse.dds"/>
+    <File fileId="134" filename="../textures/waterBottle_normal.dds"/>
+    <File fileId="135" filename="../textures/waterBottle_specular.dds"/>
+    <File fileId="130" filename="../textures/waterDispenser_diffuse.dds"/>
+    <File fileId="131" filename="../textures/waterDispenser_normal.dds"/>
+    <File fileId="132" filename="../textures/waterDispenser_specular.dds"/>
     <File fileId="191" filename="textures/window_diffuse.dds"/>
   </Files>
 

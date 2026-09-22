@@ -6,20 +6,20 @@
   </Asset>
 
   <Files>
-    <File fileId="61" filename="../PulpPaperProduction/textures/DeskiOld1024.dds"/>
+    <File fileId="61" filename="../textures/DeskiOld1024.dds"/>
     <File fileId="100" filename="../PulpPaperProduction/textures/meta.dds"/>
     <File fileId="101" filename="../PulpPaperProduction/textures/meta_normal.dds"/>
-    <File fileId="77" filename="../PulpPaperProduction/textures/towerLight5000_normal.png"/>
-    <File fileId="78" filename="../PulpPaperProduction/textures/towerLight5000_vmask.png"/>
-    <File fileId="99" filename="../PulpPaperProduction/textures/wood1024_diffuse.dds"/>
-    <File fileId="62" filename="../PulpPaperProduction/textures/woodTexture512.dds"/>
-    <File fileId="29" filename="../RepairWorkshop/textures/mauzer2_albedo.dds"/>
-    <File fileId="30" filename="../RepairWorkshop/textures/mauzer_normal.dds"/>
-    <File fileId="31" filename="../RepairWorkshop/textures/mauzer_specular.dds"/>
-    <File fileId="234" filename="../RepairWorkshop/textures/towerLight5000Decals_diffuse.png"/>
-    <File fileId="235" filename="../RepairWorkshop/textures/towerLight5000Decals_vmask.png"/>
-    <File fileId="218" filename="../RepairWorkshop/textures/towerLight5000_normal.png"/>
-    <File fileId="219" filename="../RepairWorkshop/textures/towerLight5000_vmask.png"/>
+    <File fileId="77" filename="../textures/towerLight5000_normal.dds"/>
+    <File fileId="78" filename="../textures/towerLight5000_vmask.dds"/>
+    <File fileId="99" filename="../textures/wood1024_diffuse.dds"/>
+    <File fileId="62" filename="../textures/woodTexture512.dds"/>
+    <File fileId="29" filename="../textures/mauzer2_albedo.dds"/>
+    <File fileId="30" filename="../textures/mauzer_normal.dds"/>
+    <File fileId="31" filename="../textures/mauzer_specular.dds"/>
+    <File fileId="234" filename="../textures/towerLight5000Decals_diffuse.dds"/>
+    <File fileId="235" filename="../textures/towerLight5000Decals_vmask.dds"/>
+    <File fileId="218" filename="../textures/towerLight5000_normal.dds"/>
+    <File fileId="219" filename="../textures/towerLight5000_vmask.dds"/>
     <File fileId="217" filename="passport_WoodElevator.dds"/>
     <File fileId="93" filename="textures/003_2_025H.dds"/>
     <File fileId="91" filename="textures/003_4H.dds"/>
@@ -27,8 +27,8 @@
     <File fileId="178" filename="textures/03_specular.dds"/>
     <File fileId="176" filename="textures/BigCowshed_diffuse.dds"/>
     <File fileId="177" filename="textures/BigCowshed_normal.dds"/>
-    <File fileId="90" filename="textures/DeskiBig.dds"/>
-    <File fileId="88" filename="textures/DeskiBig1024.dds"/>
+    <File fileId="90" filename="../textures/DeskiBig.dds"/>
+    <File fileId="88" filename="../textures/DeskiBig1024.dds"/>
     <File fileId="89" filename="textures/DeskiBig_0125H.dds"/>
     <File fileId="87" filename="textures/DeskiBig_025H.dds"/>
     <File fileId="112" filename="textures/DeskiBig_2w_025H_90d.dds"/>
@@ -71,9 +71,9 @@
     <File fileId="192" filename="textures/darkWood_diffuse.png"/>
     <File fileId="194" filename="textures/darkWood_gloss.png"/>
     <File fileId="193" filename="textures/darkWood_normal.png"/>
-    <File fileId="161" filename="textures/electricalMeter_diffuse.png"/>
-    <File fileId="162" filename="textures/electricalMeter_normal.png"/>
-    <File fileId="163" filename="textures/electricalMeter_specular.png"/>
+    <File fileId="161" filename="../textures/electricalMeter_diffuse.dds"/>
+    <File fileId="162" filename="../textures/electricalMeter_normal.dds"/>
+    <File fileId="163" filename="../textures/electricalMeter_specular.dds"/>
     <File fileId="36" filename="textures/euroPallet01_diffuse.png"/>
     <File fileId="37" filename="textures/euroPallet01_normal.png"/>
     <File fileId="38" filename="textures/euroPallet01_specular.png"/>
@@ -108,8 +108,8 @@
     <File fileId="9" filename="textures/props/metalTrashSet_diffuse.png"/>
     <File fileId="10" filename="textures/props/metalTrashSet_normal.png"/>
     <File fileId="11" filename="textures/props/metalTrashSet_specular.png"/>
-    <File fileId="3" filename="textures/props/propsDecals_diffuse.png"/>
-    <File fileId="4" filename="textures/props/propsDecals_specular.png"/>
+    <File fileId="3" filename="../textures/propsDecals_diffuse.dds"/>
+    <File fileId="4" filename="../textures/propsDecals_specular.dds"/>
     <File fileId="17" filename="textures/rebar_diffuse.dds"/>
     <File fileId="18" filename="textures/rebar_normal.dds"/>
     <File fileId="19" filename="textures/rebar_specular.dds"/>

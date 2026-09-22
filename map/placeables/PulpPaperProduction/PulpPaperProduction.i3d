@@ -7,9 +7,9 @@
 
   <Files>
     <File fileId="146" filename="passport_PulpPaperProduction.dds"/>
-    <File fileId="21" filename="textures/DeskiBig.dds"/>
-    <File fileId="22" filename="textures/DeskiBig1024.dds"/>
-    <File fileId="7" filename="textures/DeskiOld1024.dds"/>
+    <File fileId="21" filename="../textures/DeskiBig.dds"/>
+    <File fileId="22" filename="../textures/DeskiBig1024.dds"/>
+    <File fileId="7" filename="../textures/DeskiOld1024.dds"/>
     <File fileId="11" filename="textures/beton05_specular.dds"/>
     <File fileId="19" filename="textures/betonold2x_normal.dds"/>
     <File fileId="9" filename="textures/betonold_diffuse.dds"/>
@@ -17,23 +17,23 @@
     <File fileId="10" filename="textures/betonold_normal.dds"/>
     <File fileId="40" filename="textures/concrete_height.dds"/>
     <File fileId="41" filename="textures/concrete_normal.dds"/>
-    <File fileId="23" filename="textures/dodachu_diffuse.dds"/>
-    <File fileId="91" filename="textures/mauzer2_albedo.dds"/>
-    <File fileId="92" filename="textures/mauzer_normal.dds"/>
-    <File fileId="93" filename="textures/mauzer_specular.dds"/>
+    <File fileId="23" filename="../textures/dodachu_diffuse.dds"/>
+    <File fileId="91" filename="../textures/mauzer2_albedo.dds"/>
+    <File fileId="92" filename="../textures/mauzer_normal.dds"/>
+    <File fileId="93" filename="../textures/mauzer_specular.dds"/>
     <File fileId="17" filename="textures/meta.dds"/>
     <File fileId="18" filename="textures/meta_normal.dds"/>
-    <File fileId="126" filename="textures/towerLight5000Decals_diffuse.png"/>
-    <File fileId="127" filename="textures/towerLight5000Decals_vmask.png"/>
-    <File fileId="102" filename="textures/towerLight5000_normal.png"/>
-    <File fileId="103" filename="textures/towerLight5000_vmask.png"/>
-    <File fileId="20" filename="textures/wood1024_diffuse.dds"/>
-    <File fileId="48" filename="textures/woodBright_diffuse.dds"/>
+    <File fileId="126" filename="../textures/towerLight5000Decals_diffuse.dds"/>
+    <File fileId="127" filename="../textures/towerLight5000Decals_vmask.dds"/>
+    <File fileId="102" filename="../textures/towerLight5000_normal.dds"/>
+    <File fileId="103" filename="../textures/towerLight5000_vmask.dds"/>
+    <File fileId="20" filename="../textures/wood1024_diffuse.dds"/>
+    <File fileId="48" filename="../textures/woodBright_diffuse.dds"/>
     <File fileId="60" filename="textures/woodChips.dds"/>
-    <File fileId="47" filename="textures/woodPlanks064_diffuse.dds"/>
-    <File fileId="8" filename="textures/woodTexture512.dds"/>
-    <File fileId="49" filename="textures/wood_normal.dds"/>
-    <File fileId="50" filename="textures/wood_specular.dds"/>
+    <File fileId="47" filename="../textures/woodPlanks064_diffuse.dds"/>
+    <File fileId="8" filename="../textures/woodTexture512.dds"/>
+    <File fileId="49" filename="../textures/wood_normal.dds"/>
+    <File fileId="50" filename="../textures/wood_specular.dds"/>
     <File fileId="88" filename="$data/maps/mapEU/textures/props/cementMixer01_diffuse.png"/>
     <File fileId="89" filename="$data/maps/mapEU/textures/props/cementMixer01_normal.png"/>
     <File fileId="90" filename="$data/maps/mapEU/textures/props/cementMixer01_specular.png"/>

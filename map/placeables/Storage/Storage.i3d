@@ -7,12 +7,12 @@
 
   <Files>
     <File fileId="95" filename="passportStorage.dds"/>
-    <File fileId="11" filename="textures/DeskiBig.dds"/>
-    <File fileId="15" filename="textures/dodachu_diffuse.dds"/>
-    <File fileId="69" filename="textures/towerLight5000Decals_diffuse.png"/>
-    <File fileId="70" filename="textures/towerLight5000Decals_vmask.png"/>
-    <File fileId="45" filename="textures/towerLight5000_normal.png"/>
-    <File fileId="46" filename="textures/towerLight5000_vmask.png"/>
+    <File fileId="11" filename="../textures/DeskiBig.dds"/>
+    <File fileId="15" filename="../textures/dodachu_diffuse.dds"/>
+    <File fileId="69" filename="../textures/towerLight5000Decals_diffuse.dds"/>
+    <File fileId="70" filename="../textures/towerLight5000Decals_vmask.dds"/>
+    <File fileId="45" filename="../textures/towerLight5000_normal.dds"/>
+    <File fileId="46" filename="../textures/towerLight5000_vmask.dds"/>
     <File fileId="36" filename="$data/maps/mapEU/textures/props/fluorescentLight03.i3d"/>
     <File fileId="86" filename="$data/maps/mapEU/textures/props/handSawAlpha_diffuse.png"/>
     <File fileId="87" filename="$data/maps/mapEU/textures/props/handSawAlpha_normal.png"/>

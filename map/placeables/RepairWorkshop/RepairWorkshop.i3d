@@ -14,17 +14,17 @@
     <File fileId="74" filename="textures/ToolBox5UV.dds"/>
     <File fileId="71" filename="textures/ToolBox_specular.dds"/>
     <File fileId="1" filename="textures/concrete.dds"/>
-    <File fileId="12" filename="textures/dodachu_diffuse.dds"/>
+    <File fileId="12" filename="../textures/dodachu_diffuse.dds"/>
     <File fileId="25" filename="textures/electricGenerator_diffuse.dds"/>
     <File fileId="26" filename="textures/electricGenerator_normal.dds"/>
     <File fileId="27" filename="textures/electricGenerator_specular.dds"/>
-    <File fileId="133" filename="textures/mauzer2_albedo.dds"/>
-    <File fileId="134" filename="textures/mauzer_normal.dds"/>
-    <File fileId="135" filename="textures/mauzer_specular.dds"/>
-    <File fileId="116" filename="textures/towerLight5000Decals_diffuse.png"/>
-    <File fileId="117" filename="textures/towerLight5000Decals_vmask.png"/>
-    <File fileId="92" filename="textures/towerLight5000_normal.png"/>
-    <File fileId="93" filename="textures/towerLight5000_vmask.png"/>
+    <File fileId="133" filename="../textures/mauzer2_albedo.dds"/>
+    <File fileId="134" filename="../textures/mauzer_normal.dds"/>
+    <File fileId="135" filename="../textures/mauzer_specular.dds"/>
+    <File fileId="116" filename="../textures/towerLight5000Decals_diffuse.dds"/>
+    <File fileId="117" filename="../textures/towerLight5000Decals_vmask.dds"/>
+    <File fileId="92" filename="../textures/towerLight5000_normal.dds"/>
+    <File fileId="93" filename="../textures/towerLight5000_vmask.dds"/>
     <File fileId="130" filename="$data/maps/mapEU/textures/props/cementMixer01_diffuse.png"/>
     <File fileId="131" filename="$data/maps/mapEU/textures/props/cementMixer01_normal.png"/>
     <File fileId="132" filename="$data/maps/mapEU/textures/props/cementMixer01_specular.png"/>
