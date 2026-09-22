@@ -1,17 +1,7 @@
 --[[
-    FS25 - ProductionFillVolumes
-    Version 1.0.0.0
-
-    Visual controller for multiple complex fill volumes driven by the same
-    ProductionPoint Storage fill type.
-
-    The source I3D Shape is used as a closed volume for GIANTS'
-    createFillPlaneShape(). The generated fill plane follows the real Storage
-    fill level without translating or scaling the source mesh.
-
-    If dynamic fill-plane creation fails for a particular source Shape, the
-    source Shape is made renderable and used as a simple full-volume fallback.
-    The fallback can be tied to a production id through #fallbackProductionId.
+    Визуализация сложных fillVolume для ProductionPoint.
+    Основной режим повторяет штатный FS25 FillVolume: createFillPlaneShape + fillPlaneAdd.
+    Резервный режим показывает исходную Shape целиком только при включённом производстве.
 ]]
 
 ProductionFillVolumes = ProductionFillVolumes or {}
@@ -22,6 +12,7 @@ PFV.LOG_PREFIX = "[ProductionFillVolumes]"
 PFV.hooksInstalled = PFV.hooksInstalled or false
 PFV.placeablesByProductionPoint = PFV.placeablesByProductionPoint or setmetatable({}, {__mode = "k"})
 
+-- Регистрирует XML-параметры визуальных объёмов внутри ProductionPoint Storage.
 local function registerProductionFillVolumeXMLPaths(schema, productionPath)
     local key = productionPath .. ".storage.productionFillVolume(?)"
 
@@ -56,6 +47,7 @@ local function registerProductionFillVolumeXMLPaths(schema, productionPath)
     )
 end
 
+-- Подключает XML-параметры к обычному и конфигурируемому ProductionPoint.
 function PFV:registerXMLPaths(schema, basePath)
     registerProductionFillVolumeXMLPaths(
         schema,
@@ -70,6 +62,7 @@ function PFV:registerXMLPaths(schema, basePath)
     )
 end
 
+-- Возвращает фактический XML-путь ProductionPoint с учётом выбранной конфигурации.
 function PFV:getProductionKey(placeable)
     local configurationId = 1
 
@@ -94,6 +87,7 @@ function PFV:getProductionKey(placeable)
     return "placeable.productionPoint"
 end
 
+-- Возвращает или создаёт внутреннее состояние визуальных объёмов placeable.
 function PFV:getState(placeable, create)
     if placeable.productionFillVolumesState == nil and create then
         placeable.productionFillVolumesState = {
@@ -108,6 +102,7 @@ function PFV:getState(placeable, create)
     return placeable.productionFillVolumesState
 end
 
+-- Преобразует имя fillType в индекс и диагностирует ошибочную настройку XML.
 function PFV:getFillTypeIndex(name, placeable, key)
     if name == nil or name == "" then
         return nil
@@ -129,6 +124,7 @@ function PFV:getFillTypeIndex(name, placeable, key)
     return fillTypeId
 end
 
+-- Читает productionFillVolume из XML и сохраняет ссылки на исходные Shape.
 function PFV:loadPlaceable(placeable)
     if placeable == nil
         or placeable.xmlFile == nil
@@ -215,10 +211,6 @@ function PFV:loadPlaceable(placeable)
                     tostring(index),
                     tostring(placeable.configFileName)
                 )
-            else
-                -- Never show the source container itself unless fallback mode
-                -- is explicitly activated after dynamic generation fails.
-                setVisibility(entry.node, false)
             end
 
             if entry.node ~= nil
@@ -243,74 +235,33 @@ function PFV:loadPlaceable(placeable)
     self:connectStorage(placeable)
 end
 
-function PFV:assignFillPlaneMaterial(node, fillTypeId)
+
+-- Назначает штатный fillPlane-материал и текстуру указанного fillType.
+function PFV:assignFillPlaneMaterial(node, fillTypeId, isCustomShape)
     if node == nil or node == 0 then
         return false
     end
 
-    if FillPlaneUtil ~= nil
-        and FillPlaneUtil.assignDefaultMaterialsFromTerrain ~= nil
-        and FillPlaneUtil.setFillType ~= nil then
-
-        FillPlaneUtil.assignDefaultMaterialsFromTerrain(
-            node,
-            g_terrainNode
-        )
-
-        FillPlaneUtil.setFillType(
-            node,
-            fillTypeId
-        )
-
-        return true
-    end
-
-    -- Compatibility fallback using the same base material setup that the
-    -- vehicle FillVolume specialization uses.
-    local fillPlaneMaterial =
-        g_materialManager ~= nil
-        and g_materialManager:getBaseMaterialByName("fillPlane")
-        or nil
-
-    if fillPlaneMaterial == nil then
+    if FillPlaneUtil == nil
+        or FillPlaneUtil.assignDefaultMaterialsFromTerrain == nil
+        or FillPlaneUtil.setFillType == nil then
         return false
     end
 
-    setMaterial(
-        node,
-        fillPlaneMaterial,
-        0
-    )
-
-    if g_fillTypeManager.assignFillTypeTextureArrays ~= nil then
-        g_fillTypeManager:assignFillTypeTextureArrays(
-            node,
-            true,
-            true,
-            true
-        )
+    if not FillPlaneUtil.assignDefaultMaterialsFromTerrain(node, g_terrainNode) then
+        return false
     end
 
-    local textureArrayIndex =
-        g_fillTypeManager:getTextureArrayIndexByFillTypeIndex(
-            fillTypeId
-        )
+    FillPlaneUtil.setFillType(node, fillTypeId)
 
-    if textureArrayIndex ~= nil then
-        setShaderParameter(
-            node,
-            "fillTypeId",
-            textureArrayIndex - 1,
-            0,
-            0,
-            0,
-            false
-        )
+    if isCustomShape then
+        setShaderParameter(node, "isCustomShape", 1, 0, 0, 0, false)
     end
 
     return true
 end
 
+-- Готовит исходную Shape для резервного отображения полного объёма.
 function PFV:prepareFallback(entry)
     if entry.fallbackPrepared then
         return true
@@ -320,17 +271,13 @@ function PFV:prepareFallback(entry)
         return false
     end
 
-    -- Source fillVolume Shapes are normally exported as nonRenderable.
-    -- FS25 exposes a runtime setter, so no I3D geometry edit is needed.
-    setIsNonRenderable(
-        entry.node,
-        false
-    )
+    setIsNonRenderable(entry.node, false)
 
     local materialAssigned =
         self:assignFillPlaneMaterial(
             entry.node,
-            entry.visualFillTypeId
+            entry.visualFillTypeId,
+            true
         )
 
     if not materialAssigned then
@@ -341,16 +288,13 @@ function PFV:prepareFallback(entry)
         )
     end
 
-    setVisibility(
-        entry.node,
-        false
-    )
-
+    setVisibility(entry.node, false)
     entry.fallbackPrepared = true
 
     return true
 end
 
+-- Создаёт штатный динамический fill plane внутри сложной исходной Shape.
 function PFV:createDynamicVolume(placeable, entry)
     if entry.dynamicAttempted then
         return entry.dynamicNode ~= nil
@@ -396,21 +340,20 @@ function PFV:createDynamicVolume(placeable, entry)
 
     entry.capacity = capacity
 
-    -- Flat surface: complex container shape controls the cross-section while
-    -- the generated fill plane changes its own geometry with volume.
+    -- Создаём горизонтальную поверхность; сложную форму стенок задаёт исходная Shape.
     local dynamicNode =
         createFillPlaneShape(
             entry.node,
             "productionFillPlane",
             capacity,
-            0.25,        -- deltaMax
-            0,           -- maxSurfaceAngle
-            0,           -- maxPhysicalSurfaceAngle
-            0.05,        -- maxSurfaceDistanceError
-            0.5,         -- maxSubDivEdgeLength
-            1.0,         -- syncMaxSubDivEdgeLength
-            true,        -- createSidePlanes
-            false        -- retessellateTop
+            1,
+            0,
+            0,
+            0.05,
+            0.9,
+            1.35,
+            true,
+            false
         )
 
     if dynamicNode == nil or dynamicNode == 0 then
@@ -426,20 +369,17 @@ function PFV:createDynamicVolume(placeable, entry)
         return false
     end
 
-    link(
-        entry.node,
-        dynamicNode
-    )
+    -- Base Shape остаётся nonRenderable и видимой: её visibility наследует дочерний fill plane.
+    link(entry.node, dynamicNode)
+    setVisibility(dynamicNode, false)
 
-    setVisibility(
-        dynamicNode,
-        false
-    )
-
-    self:assignFillPlaneMaterial(
-        dynamicNode,
-        entry.visualFillTypeId
-    )
+    if not self:assignFillPlaneMaterial(dynamicNode, entry.visualFillTypeId, false) then
+        Logging.warning(
+            "%s unable to assign fill material to dynamic node created from '%s'",
+            self.LOG_PREFIX,
+            tostring(getName(entry.node))
+        )
+    end
 
     entry.dynamicNode = dynamicNode
     entry.dynamicFailed = false
@@ -457,6 +397,7 @@ function PFV:createDynamicVolume(placeable, entry)
     return true
 end
 
+-- Синхронизирует геометрию динамического fill plane с фактическим уровнем Storage.
 function PFV:setDynamicLevel(entry, fillLevel)
     if entry.dynamicNode == nil
         or entry.capacity <= 0 then
@@ -474,21 +415,20 @@ function PFV:setDynamicLevel(entry, fillLevel)
         targetLevel - entry.currentLevel
 
     if math.abs(delta) > 0.01 then
-        -- Same generic no-fillInfo path used by GIANTS fill-volume code:
-        -- add/remove material around the fill-plane origin and let the engine
-        -- solve the surface inside the complex source volume.
+        -- Повторяем штатный алгоритм FillVolume для плоской поверхности: область 10x10 м.
+        local areaSize = 10
         local x, y, z =
             localToWorld(
                 entry.dynamicNode,
+                -areaSize * 0.5,
                 0,
-                0,
-                0
+                -areaSize * 0.5
             )
 
         local d1x, d1y, d1z =
             localDirectionToWorld(
                 entry.dynamicNode,
-                1,
+                areaSize,
                 0,
                 0
             )
@@ -498,12 +438,12 @@ function PFV:setDynamicLevel(entry, fillLevel)
                 entry.dynamicNode,
                 0,
                 0,
-                1
+                areaSize
             )
 
         local steps =
             math.clamp(
-                math.floor(math.abs(delta) / 400),
+                math.floor(delta / 400),
                 1,
                 25
             )
@@ -534,6 +474,7 @@ function PFV:setDynamicLevel(entry, fillLevel)
     )
 end
 
+-- Проверяет, включён ли рецепт, управляющий резервным отображением.
 function PFV:isFallbackProductionActive(state, productionId)
     if state == nil
         or state.productionPoint == nil
@@ -542,18 +483,10 @@ function PFV:isFallbackProductionActive(state, productionId)
         return false
     end
 
-    local activeProductions =
-        state.productionPoint.activeProductions or {}
-
-    for _, production in ipairs(activeProductions) do
-        if production.id == productionId then
-            return true
-        end
-    end
-
-    return false
+    return state.productionPoint:getIsProductionEnabled(productionId)
 end
 
+-- Обновляет динамический или резервный визуальный режим всех объёмов placeable.
 function PFV:updatePlaceable(placeable)
     local state =
         self:getState(placeable, false)
@@ -563,12 +496,9 @@ function PFV:updatePlaceable(placeable)
         return
     end
 
-    local isFinalized = true
-
-    if state.productionPoint ~= nil
-        and state.productionPoint.isFinalized == false then
-        isFinalized = false
-    end
+    local isFinalized =
+        state.productionPoint == nil
+        or state.productionPoint.isFinalized ~= false
 
     for _, entry in ipairs(state.volumes) do
         if entry.dynamicNode ~= nil then
@@ -585,12 +515,6 @@ function PFV:updatePlaceable(placeable)
                     false
                 )
             end
-
-            -- Dynamic mode never renders the source container.
-            setVisibility(
-                entry.node,
-                false
-            )
         elseif entry.dynamicFailed then
             local fallbackVisible =
                 isFinalized
@@ -605,8 +529,8 @@ function PFV:updatePlaceable(placeable)
             )
         end
     end
-end
 
+-- Подключает визуальные объёмы к ProductionPoint Storage и его событиям изменения уровня.
 function PFV:connectStorage(placeable)
     local state =
         self:getState(placeable, false)
@@ -704,6 +628,7 @@ function PFV:connectStorage(placeable)
     )
 end
 
+-- Отписывается от Storage и удаляет созданные движком динамические Shape.
 function PFV:deletePlaceable(placeable)
     local state =
         self:getState(placeable, false)
@@ -741,6 +666,7 @@ function PFV:deletePlaceable(placeable)
         nil
 end
 
+-- Устанавливает хуки один раз при загрузке sourceFile из modDesc.xml.
 function PFV:installHooks()
     if self.hooksInstalled then
         return
@@ -815,8 +741,7 @@ function PFV:installHooks()
             end
         )
 
-    -- Fallback mode follows the production enable/disable state immediately,
-    -- without a polling update loop.
+    -- Резервный режим реагирует сразу на включение и выключение рецепта.
     if ProductionPoint ~= nil
         and ProductionPoint.setProductionState ~= nil then
 
