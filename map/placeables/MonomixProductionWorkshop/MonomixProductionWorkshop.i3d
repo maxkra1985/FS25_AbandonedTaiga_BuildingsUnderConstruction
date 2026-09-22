@@ -6,23 +6,23 @@
   </Asset>
 
   <Files>
-    <File fileId="150" filename="../FarmMeatIndustry/textures/cabinetWorkbench2_diffuse.png"/>
-    <File fileId="151" filename="../FarmMeatIndustry/textures/cabinetWorkbench2_normal.png"/>
-    <File fileId="152" filename="../FarmMeatIndustry/textures/cabinetWorkbench2_specular.png"/>
-    <File fileId="210" filename="../FarmMeatIndustry/textures/gardenSink04_diffuse.png"/>
-    <File fileId="211" filename="../FarmMeatIndustry/textures/gardenSink04_normal.png"/>
-    <File fileId="212" filename="../FarmMeatIndustry/textures/gardenSink04_specular.png"/>
-    <File fileId="197" filename="../FarmMeatIndustry/textures/objekti/AC3.dds"/>
-    <File fileId="206" filename="../FarmMeatIndustry/textures/objekti/Calvier1.dds"/>
-    <File fileId="199" filename="../FarmMeatIndustry/textures/objekti/Paper_1_color.dds"/>
-    <File fileId="198" filename="../FarmMeatIndustry/textures/objekti/bobs.dds"/>
-    <File fileId="204" filename="../FarmMeatIndustry/textures/objekti/computerMonitorCIH_diffuse.dds"/>
-    <File fileId="153" filename="../FarmMeatIndustry/textures/objekti/fireExtinguisherBox_diffuse.dds"/>
-    <File fileId="154" filename="../FarmMeatIndustry/textures/objekti/fireExtinguisherBox_normal.dds"/>
-    <File fileId="155" filename="../FarmMeatIndustry/textures/objekti/fireExtinguisherBox_specular.dds"/>
-    <File fileId="142" filename="../FarmMeatIndustry/textures/woodenShippingCrates_diffuse.png"/>
-    <File fileId="143" filename="../FarmMeatIndustry/textures/woodenShippingCrates_normal.png"/>
-    <File fileId="144" filename="../FarmMeatIndustry/textures/woodenShippingCrates_specular.png"/>
+    <File fileId="150" filename="../textures/cabinetWorkbench2_diffuse.dds"/>
+    <File fileId="151" filename="../textures/cabinetWorkbench2_normal.dds"/>
+    <File fileId="152" filename="../textures/cabinetWorkbench2_specular.dds"/>
+    <File fileId="210" filename="../textures/gardenSink04_diffuse.dds"/>
+    <File fileId="211" filename="../textures/gardenSink04_normal.dds"/>
+    <File fileId="212" filename="../textures/gardenSink04_specular.dds"/>
+    <File fileId="197" filename="../textures/AC3.dds"/>
+    <File fileId="206" filename="../textures/Calvier1.dds"/>
+    <File fileId="199" filename="../textures/Paper_1_color.dds"/>
+    <File fileId="198" filename="../textures/bobs.dds"/>
+    <File fileId="204" filename="../textures/computerMonitorCIH_diffuse.dds"/>
+    <File fileId="153" filename="../textures/fireExtinguisherBox_diffuse.dds"/>
+    <File fileId="154" filename="../textures/fireExtinguisherBox_normal.dds"/>
+    <File fileId="155" filename="../textures/fireExtinguisherBox_specular.dds"/>
+    <File fileId="142" filename="../textures/woodenShippingCrates_diffuse.dds"/>
+    <File fileId="143" filename="../textures/woodenShippingCrates_normal.dds"/>
+    <File fileId="144" filename="../textures/woodenShippingCrates_specular.dds"/>
     <File fileId="255" filename="MonomixProductionWorkshop_passport.dds"/>
     <File fileId="74" filename="textures/GIANTS Engine 8_mask.dds"/>
     <File fileId="205" filename="textures/ads.dds"/>
@@ -67,31 +67,31 @@
     <File fileId="265" filename="textures/straw_static_gloss.dds"/>
     <File fileId="264" filename="textures/straw_static_normal.dds"/>
     <File fileId="75" filename="textures/vehicleShader.xml"/>
-    <File fileId="21" filename="../PulpPaperProduction/textures/beton05_specular.dds"/>
-    <File fileId="20" filename="../PulpPaperProduction/textures/betonold2x_normal.dds"/>
-    <File fileId="19" filename="../PulpPaperProduction/textures/betonold_diffuse.dds"/>
-    <File fileId="133" filename="../WoodElevator/textures/DmuchawaSilosNiebieski_diffuse.dds"/>
-    <File fileId="134" filename="../WoodElevator/textures/DmuchawaSilos_normal.dds"/>
-    <File fileId="135" filename="../WoodElevator/textures/DmuchawaSilos_specular.dds"/>
-    <File fileId="218" filename="../WoodElevator/textures/Posters/06_moving_machinery.dds"/>
-    <File fileId="71" filename="../WoodElevator/textures/cableStraightVentilatorGrid_diffuse.png"/>
-    <File fileId="72" filename="../WoodElevator/textures/cableStraightVentilatorGrid_specular.png"/>
-    <File fileId="68" filename="../WoodElevator/textures/cableStraightVentilator_diffuse.png"/>
-    <File fileId="69" filename="../WoodElevator/textures/cableStraightVentilator_normal.png"/>
-    <File fileId="70" filename="../WoodElevator/textures/cableStraightVentilator_specular.png"/>
-    <File fileId="7" filename="../WoodElevator/textures/cargoBox01_diffuse.dds"/>
-    <File fileId="8" filename="../WoodElevator/textures/cargoBox01_normal.dds"/>
-    <File fileId="9" filename="../WoodElevator/textures/cargoBox01_specular.dds"/>
-    <File fileId="159" filename="../WoodElevator/textures/grainDividerSET_diffuse.png"/>
-    <File fileId="162" filename="../WoodElevator/textures/grainDividerSET_mask.png"/>
-    <File fileId="160" filename="../WoodElevator/textures/grainDividerSET_normal.png"/>
-    <File fileId="161" filename="../WoodElevator/textures/grainDividerSET_specular.png"/>
-    <File fileId="46" filename="../WoodElevator/textures/metalPallet_diffuse.png"/>
-    <File fileId="47" filename="../WoodElevator/textures/metalPallet_normal.png"/>
-    <File fileId="48" filename="../WoodElevator/textures/metalPallet_specular.png"/>
-    <File fileId="10" filename="../WoodElevator/textures/rebar_diffuse.dds"/>
-    <File fileId="11" filename="../WoodElevator/textures/rebar_normal.dds"/>
-    <File fileId="12" filename="../WoodElevator/textures/rebar_specular.dds"/>
+    <File fileId="21" filename="../textures/beton05_specular.dds"/>
+    <File fileId="20" filename="../textures/betonold2x_normal.dds"/>
+    <File fileId="19" filename="../textures/betonold_diffuse.dds"/>
+    <File fileId="133" filename="../textures/DmuchawaSilosNiebieski_diffuse.dds"/>
+    <File fileId="134" filename="../textures/DmuchawaSilos_normal.dds"/>
+    <File fileId="135" filename="../textures/DmuchawaSilos_specular.dds"/>
+    <File fileId="218" filename="../textures/06_moving_machinery.dds"/>
+    <File fileId="71" filename="../textures/cableStraightVentilatorGrid_diffuse.dds"/>
+    <File fileId="72" filename="../textures/cableStraightVentilatorGrid_specular.dds"/>
+    <File fileId="68" filename="../textures/cableStraightVentilator_diffuse.dds"/>
+    <File fileId="69" filename="../textures/cableStraightVentilator_normal.dds"/>
+    <File fileId="70" filename="../textures/cableStraightVentilator_specular.dds"/>
+    <File fileId="7" filename="../textures/cargoBox01_diffuse.dds"/>
+    <File fileId="8" filename="../textures/cargoBox01_normal.dds"/>
+    <File fileId="9" filename="../textures/cargoBox01_specular.dds"/>
+    <File fileId="159" filename="../textures/grainDividerSET_diffuse.dds"/>
+    <File fileId="162" filename="../textures/grainDividerSET_mask.dds"/>
+    <File fileId="160" filename="../textures/grainDividerSET_normal.dds"/>
+    <File fileId="161" filename="../textures/grainDividerSET_specular.dds"/>
+    <File fileId="46" filename="../textures/metalPallet_diffuse.dds"/>
+    <File fileId="47" filename="../textures/metalPallet_normal.dds"/>
+    <File fileId="48" filename="../textures/metalPallet_specular.dds"/>
+    <File fileId="10" filename="../textures/rebar_diffuse.dds"/>
+    <File fileId="11" filename="../textures/rebar_normal.dds"/>
+    <File fileId="12" filename="../textures/rebar_specular.dds"/>
     <File fileId="13" filename="../textures/DeskiOld1024.dds"/>
     <File fileId="58" filename="../textures/electricalSet_diffuse.dds"/>
     <File fileId="59" filename="../textures/electricalSet_normal.dds"/>

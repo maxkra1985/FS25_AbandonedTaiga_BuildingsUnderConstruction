@@ -10,9 +10,9 @@
     <File fileId="21" filename="../textures/DeskiBig.dds"/>
     <File fileId="22" filename="../textures/DeskiBig1024.dds"/>
     <File fileId="7" filename="../textures/DeskiOld1024.dds"/>
-    <File fileId="11" filename="textures/beton05_specular.dds"/>
-    <File fileId="19" filename="textures/betonold2x_normal.dds"/>
-    <File fileId="9" filename="textures/betonold_diffuse.dds"/>
+    <File fileId="11" filename="../textures/beton05_specular.dds"/>
+    <File fileId="19" filename="../textures/betonold2x_normal.dds"/>
+    <File fileId="9" filename="../textures/betonold_diffuse.dds"/>
     <File fileId="16" filename="textures/betonold_height.dds"/>
     <File fileId="10" filename="textures/betonold_normal.dds"/>
     <File fileId="40" filename="textures/concrete_height.dds"/>
