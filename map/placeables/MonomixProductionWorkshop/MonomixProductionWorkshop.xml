@@ -181,16 +181,16 @@
 			<animation duration="5">
 				<part node="rollingDoor1">
 					<keyFrame time="0.0" translation="0 0 0"/>
-					<keyFrame time="1.0" translation="0 3.4 0"/>
+					<keyFrame time="1.0" translation="0 3.8 0"/>
 				</part>
 				<part node="rollingDoor1ColPartBottom">
 					<keyFrame time="0.0" translation="0 0 0"/>
-					<keyFrame time="1.0" translation="0 3.4 0"/>
+					<keyFrame time="1.0" translation="0 3.8 0"/>
 				</part>
 				<part node="rollingDoor1ColPartTop">
 					<keyFrame time="0.0" translation="0 0 0"/>
 					<keyFrame time="0.5" translation="0 0 0"/>
-					<keyFrame time="1.0" translation="0 1.7 0"/>
+					<keyFrame time="1.0" translation="0 1.9 0"/>
 				</part>
 				<shader node="rollingDoor1" parameterName="visibilityCutThreshold">
 					<keyFrame time="0.0" values="0 - - -"/>
@@ -210,11 +210,11 @@
 			<animation duration="2.5">
 				<part node="frontGateLeftDoor">
 					<keyFrame time="0.0" rotation="0 0 0"/>
-					<keyFrame time="1.0" rotation="0 -100 0"/>
+					<keyFrame time="1.0" rotation="0 90 0"/>
 				</part>
 				<part node="frontGateRightDoor">
 					<keyFrame time="0.0" rotation="0 0 0"/>
-					<keyFrame time="1.0" rotation="0 100 0"/>
+					<keyFrame time="1.0" rotation="0 -90 0"/>
 				</part>
 			</animation>
 			<controls triggerNode="frontGateTrigger" posAction="ACTIVATE_HANDTOOL" posText="action_openGate" negText="action_closeGate"/>
@@ -225,11 +225,11 @@
 			<animation duration="2.5">
 				<part node="rearGateLeftDoor">
 					<keyFrame time="0.0" rotation="0 0 0"/>
-					<keyFrame time="1.0" rotation="0 -100 0"/>
+					<keyFrame time="1.0" rotation="0 90 0"/>
 				</part>
 				<part node="rearGateRightDoor">
 					<keyFrame time="0.0" rotation="0 0 0"/>
-					<keyFrame time="1.0" rotation="0 100 0"/>
+					<keyFrame time="1.0" rotation="0 -90 0"/>
 				</part>
 			</animation>
 			<controls triggerNode="rearGateTrigger" posAction="ACTIVATE_HANDTOOL" posText="action_openGate" negText="action_closeGate"/>
@@ -248,6 +248,22 @@
 				<moving linkNode="singleDoorLeaf" template="woodDoorSqueaksSmall" pitchScale="0.8"/>
 				<posEnd linkNode="singleDoorLeaf" template="woodDoorOpen"/>
 				<negEnd linkNode="singleDoorLeaf" template="woodDoorCloseRandom"/>
+			</sounds>
+		</animatedObject>
+
+		<!-- Одиночная распашная дверь в администрацию. -->
+		<animatedObject saveId="monomixSingleDoor2">
+			<animation duration="1.2">
+				<part node="singleDoor2Leaf">
+					<keyFrame time="0.0" rotation="0 0 0"/>
+					<keyFrame time="1.0" rotation="0 105 0"/>
+				</part>
+			</animation>
+			<controls triggerNode="singleDoor2Trigger" posAction="ACTIVATE_HANDTOOL" posText="action_openDoor" negText="action_closeDoor"/>
+			<sounds>
+				<moving linkNode="singleDoor2Leaf" template="woodDoorSqueaksSmall" pitchScale="0.8"/>
+				<posEnd linkNode="singleDoor2Leaf" template="woodDoorOpen"/>
+				<negEnd linkNode="singleDoor2Leaf" template="woodDoorCloseRandom"/>
 			</sounds>
 		</animatedObject>
 	</animatedObjects>
@@ -536,14 +552,16 @@
 		<i3dMapping id="rollingDoor1ColPartBottom" node="0>1|37|38|2|1"/>
 		<i3dMapping id="rollingDoor1ColPartTop" node="0>1|37|38|2|2"/>
 		<i3dMapping id="rollingDoor1Trigger" node="0>1|37|38|2|3"/>
-		<i3dMapping id="frontGateTrigger" node="0>1|37|40|0|0"/>
-		<i3dMapping id="frontGateLeftDoor" node="0>1|37|40|1"/>
-		<i3dMapping id="frontGateRightDoor" node="0>1|37|40|2"/>
-		<i3dMapping id="rearGateTrigger" node="0>1|37|41|0|0"/>
-		<i3dMapping id="rearGateLeftDoor" node="0>1|37|41|1"/>
-		<i3dMapping id="rearGateRightDoor" node="0>1|37|41|2"/>
-		<i3dMapping id="singleDoorTrigger" node="0>1|37|42|0|0"/>
-		<i3dMapping id="singleDoorLeaf" node="0>1|37|42|1"/>
+		<i3dMapping id="frontGateTrigger" node="0>1|37|39|0|0"/>
+		<i3dMapping id="frontGateLeftDoor" node="0>1|37|39|1"/>
+		<i3dMapping id="frontGateRightDoor" node="0>1|37|39|2"/>
+		<i3dMapping id="rearGateTrigger" node="0>1|37|40|0|0"/>
+		<i3dMapping id="rearGateLeftDoor" node="0>1|37|40|1"/>
+		<i3dMapping id="rearGateRightDoor" node="0>1|37|40|2"/>
+		<i3dMapping id="singleDoorTrigger" node="0>1|37|41|0|0"/>
+		<i3dMapping id="singleDoorLeaf" node="0>1|37|41|1"/>
+		<i3dMapping id="singleDoor2Trigger" node="0>1|37|42|0|0"/>
+		<i3dMapping id="singleDoor2Leaf" node="0>1|37|42|1"/>
 
 		<!-- СТАДИИ СТРОИТЕЛЬСТВА -->
 		<i3dMapping id="phase_01" node="0>1|0"/>
