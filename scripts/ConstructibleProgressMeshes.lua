@@ -21,6 +21,8 @@
 ConstructibleProgressMeshes = ConstructibleProgressMeshes or {}
 
 local CPM = ConstructibleProgressMeshes
+CPM.VERSION = "0.3.0"
+
 local PROGRESS_EPSILON = 0.0000001
 
 
@@ -127,10 +129,15 @@ end
 
 
 -- Определяет, входит ли процент прогресса в диапазон progressStepMin/progressStepMax.
--- Диапазоны сделаны полуоткрытыми: [min, max), кроме max=100, где 100 включён.
--- Это исключает одновременное отображение соседних диапазонов на общей границе.
+-- При 0% все диапазонные props скрыты. После начала расхода диапазоны полуоткрытые:
+-- [min, max), кроме max=100, где 100 включён. Это исключает наложение соседних диапазонов.
 local function isProgressInRange(progress, stepMin, stepMax)
     local percent = clampProgress(progress) * 100
+
+    -- При полном отсутствии расхода материалов не показываем ни один временный props.
+    if percent <= PROGRESS_EPSILON then
+        return false
+    end
 
     if stepMax >= 100 then
         return percent >= stepMin and percent <= stepMax + PROGRESS_EPSILON
@@ -280,10 +287,10 @@ end
 function CPM.loadState(state, xmlFile, key)
     state.progressToggleMeshes = {}
 
-    local stateProgressFillTypeName = xmlFile:getValue(key .. "#progressFillType")
+    local stateProgressFillTypeName = xmlFile:getString(key .. "#progressFillType")
 
     for _, progressKey in xmlFile:iterator(key .. ".toggleProgressMesh") do
-        local node = xmlFile:getValue(
+        local node = xmlFile:getNode(
             progressKey .. "#node",
             nil,
             state.constructible.components,
@@ -293,11 +300,11 @@ function CPM.loadState(state, xmlFile, key)
         if node ~= nil then
             local entry = {
                 node = node,
-                active = xmlFile:getValue(progressKey .. "#active", true),
-                updatePhysics = xmlFile:getValue(progressKey .. "#updatePhysics", false),
-                progressStepByStep = xmlFile:getValue(progressKey .. "#progressStepByStep", false),
-                progressStepMin = xmlFile:getValue(progressKey .. "#progressStepMin", 0),
-                progressStepMax = xmlFile:getValue(progressKey .. "#progressStepMax", 100),
+                active = xmlFile:getBool(progressKey .. "#active", true),
+                updatePhysics = xmlFile:getBool(progressKey .. "#updatePhysics", false),
+                progressStepByStep = xmlFile:getBool(progressKey .. "#progressStepByStep", false),
+                progressStepMin = xmlFile:getFloat(progressKey .. "#progressStepMin", 0),
+                progressStepMax = xmlFile:getFloat(progressKey .. "#progressStepMax", 100),
                 children = {},
                 childVisibility = {},
                 disabled = false
@@ -350,7 +357,7 @@ function CPM.loadState(state, xmlFile, key)
                 end
             end
 
-            local progressFillTypeName = xmlFile:getValue(
+            local progressFillTypeName = xmlFile:getString(
                 progressKey .. "#progressFillType",
                 stateProgressFillTypeName
             )
@@ -387,6 +394,49 @@ function CPM.loadState(state, xmlFile, key)
 
     -- До активации состояния его строительные и временные элементы не должны быть видимы.
     resetProgressMeshes(state)
+end
+
+
+-- Загружает toggleProgressMesh для всех ConstructibleStateBuilding уже после того,
+-- как штатный PlaceableConstructible создал stateMachine. Используются raw XML getters,
+-- поэтому работа не зависит от того, успел ли мод зарегистрировать дополнительные schema paths.
+function CPM.loadPlaceableStates(constructible)
+    if constructible == nil or constructible.xmlFile == nil then
+        return
+    end
+
+    local spec = constructible.spec_constructible
+
+    if spec == nil or spec.stateMachine == nil then
+        return
+    end
+
+    local loadedStates = 0
+    local loadedEntries = 0
+
+    for stateIndex, stateKey in constructible.xmlFile:iterator(
+        "placeable.constructible.stateMachine.states.state"
+    ) do
+        local state = spec.stateMachine[stateIndex]
+
+        if state ~= nil and state:isa(ConstructibleStateBuilding) then
+            CPM.loadState(state, constructible.xmlFile, stateKey)
+            loadedStates = loadedStates + 1
+            loadedEntries = loadedEntries + #state.progressToggleMeshes
+        end
+    end
+
+    if loadedEntries > 0 then
+        Logging.info(
+            "ConstructibleProgressMeshes v%s: configured %d entries in %d state(s) for '%s' (propertyState=%s, stateIndex=%s)",
+            CPM.VERSION,
+            loadedEntries,
+            loadedStates,
+            tostring(constructible.configFileName),
+            tostring(constructible.propertyState),
+            tostring(spec.stateIndex)
+        )
+    end
 end
 
 
@@ -483,10 +533,22 @@ function CPM.install()
         )
     end
 
-    local superLoad = ConstructibleStateBuilding.load
-    ConstructibleStateBuilding.load = function(state, xmlFile, key)
-        superLoad(state, xmlFile, key)
-        CPM.loadState(state, xmlFile, key)
+    -- Штатный onLoad сначала полностью создаёт stateMachine. Только после этого
+    -- разбираем наши дополнительные XML-элементы и восстанавливаем preview при необходимости.
+    if PlaceableConstructible ~= nil
+        and PlaceableConstructible.onLoad ~= nil
+        and not PlaceableConstructible.progressMeshesOnLoadInstalled then
+
+        PlaceableConstructible.progressMeshesOnLoadInstalled = true
+
+        PlaceableConstructible.onLoad =
+            Utils.appendedFunction(
+                PlaceableConstructible.onLoad,
+                function(constructible, savegame)
+                    CPM.loadPlaceableStates(constructible)
+                    CPM.synchronizeStateMachineVisuals(constructible)
+                end
+            )
     end
 
     local superActivate = ConstructibleStateBuilding.activate
@@ -526,6 +588,17 @@ function CPM.install()
 
         -- Неактивное состояние при сбросе не должно показывать даже диапазон 0..N.
         resetProgressMeshes(state)
+    end
+
+    local superUpdate = ConstructibleStateBuilding.update
+    ConstructibleStateBuilding.update = function(state, dt)
+        superUpdate(state, dt)
+
+        -- Штатный update расходует inputs последовательно. Здесь пересчитываем визуал
+        -- ещё раз после обработки всех материалов, чтобы итоговый процент кадра был точным.
+        if getIsCurrentState(state) then
+            updateProgressMeshes(state, false, true)
+        end
     end
 
     local superUpdateRemainingAmount = ConstructibleStateBuilding.updateRemainingAmount
@@ -575,7 +648,7 @@ function CPM.install()
             )
     end
 
-    Logging.info("ConstructibleProgressMeshes: installed")
+    Logging.info("ConstructibleProgressMeshes v%s: installed", CPM.VERSION)
 end
 
 
