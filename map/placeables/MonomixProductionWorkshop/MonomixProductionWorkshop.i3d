@@ -1901,7 +1901,7 @@
           </Shape>
           <Shape name="roundedSquareLog_1m" translation="8.75724 0.1 2.78892" rotation="0 32.5321 0" shapeId="24" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="1294" castsShadows="true" receiveShadows="true" materialIds="123,120"/>
         </TransformGroup>
-        <TransformGroup name="phase_04_props03" visibility="false" nodeId="1295">
+        <TransformGroup name="phase_04_props03" nodeId="1295">
           <Shape name="barStackMedium" lockedgroup="true" translation="-4.6174 0.250002 -3.65617" rotation="0 -34.7803 0" shapeId="18" clipDistance="80" nodeId="1296" castsShadows="true" receiveShadows="true" materialIds="15">
             <Shape name="col" translation="-0.007784 0 1e-06" shapeId="19" visibility="false" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" density="0.0001" nodeId="1297" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="68"/>
           </Shape>
@@ -2326,7 +2326,7 @@
           <Shape name="roundedSquareLog_3m" translation="-5.11877 0.350001 -14.6396" rotation="-180 23.9095 -180" shapeId="15" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="1661" castsShadows="true" receiveShadows="true" materialIds="125,120"/>
           <Shape name="roundedSquareLog_3m" translation="-1.31587 0.0999998 -30.0087" rotation="-180 -1.78136 -180" shapeId="15" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="1662" castsShadows="true" receiveShadows="true" materialIds="125,120"/>
         </TransformGroup>
-        <TransformGroup name="phase_05_props02" visibility="false" nodeId="1663">
+        <TransformGroup name="phase_05_props02" nodeId="1663">
           <Shape name="barStackMedium" lockedgroup="true" translation="-4.6174 0.250002 -3.65617" rotation="0 -34.7803 0" shapeId="18" clipDistance="80" nodeId="1664" castsShadows="true" receiveShadows="true" materialIds="15">
             <Shape name="col" translation="-0.007784 0 1e-06" shapeId="19" visibility="false" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" density="0.0001" nodeId="1665" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="68"/>
           </Shape>
