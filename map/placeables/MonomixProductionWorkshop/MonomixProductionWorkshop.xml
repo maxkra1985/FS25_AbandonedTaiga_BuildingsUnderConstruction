@@ -116,9 +116,10 @@
 
 		<!-- Общий пул 450000 л даёт BunkerFillPlanes по 150000 л на каждый из трёх физических бункеров. -->
 		<storage isExtension="false" capacity="450000" fillTypes="DRYGRASS_WINDROW SILAGE STRAW FORAGE" fillLevelSyncThreshold="50">
-			<bunkerFillPlane node="hayFillPlane" fillTypes="DRYGRASS_WINDROW" minY="-5" maxY="0"/>
-			<bunkerFillPlane node="silageFillPlane" fillTypes="SILAGE" minY="-5" maxY="0"/>
-			<bunkerFillPlane node="strawFillPlane" fillTypes="STRAW" minY="-5" maxY="0"/>
+			<!-- Текущее положение поверхности соответствует 100% (+1 м по миру); пустой бункер опускает её на 5.45 м. -->
+			<bunkerFillPlane node="hayFillPlane" fillTypes="DRYGRASS_WINDROW" minY="-5.45" maxY="0"/>
+			<bunkerFillPlane node="silageFillPlane" fillTypes="SILAGE" minY="-5.45" maxY="0"/>
+			<bunkerFillPlane node="strawFillPlane" fillTypes="STRAW" minY="-5.45" maxY="0"/>
 		</storage>
 
 		<sellingStation node="productionPoint" appearsOnStats="false" allowMissions="false" supportsExtension="false" hideFromPricesMenu="true" suppressWarnings="true">
