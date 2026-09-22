@@ -24,7 +24,7 @@
 ConstructibleProgressMeshes = ConstructibleProgressMeshes or {}
 
 local CPM = ConstructibleProgressMeshes
-CPM.VERSION = "0.4.0"
+CPM.VERSION = "0.5.0"
 
 local PROGRESS_EPSILON = 0.0000001
 
@@ -52,6 +52,60 @@ local function setNodeState(node, isVisible, updatePhysics)
     end
 
     setVisibility(node, isVisible)
+end
+
+
+-- Собирает Shape и все вложенные в него Shape.
+-- Такая группа является одной неделимой визуальной единицей progressStepByStep.
+local function collectShapeTree(node, shapes)
+    if getHasClassId(node, ClassIds.SHAPE) then
+        table.insert(shapes, node)
+    end
+
+    local numChildren = getNumOfChildren(node)
+
+    for childIndex = 0, numChildren - 1 do
+        collectShapeTree(getChildAt(node, childIndex), shapes)
+    end
+end
+
+
+-- Собирает визуальные единицы внутри ноды в порядке Scenegraph.
+-- TransformGroup служит только контейнером. Как только найден Shape,
+-- он становится одной единицей, а вложенные Shape входят в ту же единицу.
+local function collectShapeUnits(node, units)
+    if getHasClassId(node, ClassIds.SHAPE) then
+        local unit = {
+            root = node,
+            shapes = {}
+        }
+
+        collectShapeTree(node, unit.shapes)
+        table.insert(units, unit)
+        return
+    end
+
+    local numChildren = getNumOfChildren(node)
+
+    for childIndex = 0, numChildren - 1 do
+        collectShapeUnits(getChildAt(node, childIndex), units)
+    end
+end
+
+
+-- Переключает видимость и физику всех Shape одной визуальной единицы.
+local function setShapeUnitState(unit, isVisible, updatePhysics)
+    for _, shape in ipairs(unit.shapes) do
+        setNodeState(shape, isVisible, updatePhysics)
+    end
+end
+
+
+-- Переключает все Shape, принадлежащие одному toggleProgressMesh.
+local function setEntryShapesState(entry, isVisible)
+    for _, unit in ipairs(entry.units) do
+        setShapeUnitState(unit, isVisible, entry.updatePhysics)
+    end
 end
 
 
@@ -153,40 +207,28 @@ end
 -- Применяет прогресс к пошаговой ноде.
 -- Каждый найденный рекурсивно Shape является одним шагом строительства; вложенный Shape не разбирается дальше.
 local function applyStepByStepProgress(entry, progress, force)
-    local numChildren = #entry.children
+    local numUnits = #entry.units
 
-    if numChildren == 0 then
+    if numUnits == 0 then
         return false
     end
 
-    local visibleCount = math.floor(clampProgress(progress) * numChildren + PROGRESS_EPSILON)
-    visibleCount = math.max(0, math.min(numChildren, visibleCount))
+    local visibleCount = math.floor(clampProgress(progress) * numUnits + PROGRESS_EPSILON)
+    visibleCount = math.max(0, math.min(numUnits, visibleCount))
 
     if not force and entry.lastVisibleCount == visibleCount then
         return false
     end
 
-    -- Родительская phase-нода скрывается полностью, если по текущему прогрессу
-    -- ни один Shape не должен быть видим. Для обычного active=true это гарантирует,
-    -- что при 0% вся стадия отсутствует даже до первого изменения дочерних Shape.
-    local hasVisibleChildren
-    if entry.active then
-        hasVisibleChildren = visibleCount > 0
-    else
-        hasVisibleChildren = visibleCount < numChildren
-    end
-
-    setVisibility(entry.node, hasVisibleChildren)
-
     local changed = entry.lastVisibleCount ~= visibleCount
 
-    for index, child in ipairs(entry.children) do
+    for index, unit in ipairs(entry.units) do
         local baseVisible = index <= visibleCount
         local shouldBeVisible = entry.active and baseVisible or not baseVisible
 
-        if force or entry.childVisibility[index] ~= shouldBeVisible then
-            setNodeState(child, shouldBeVisible, entry.updatePhysics)
-            entry.childVisibility[index] = shouldBeVisible
+        if force or entry.unitVisibility[index] ~= shouldBeVisible then
+            setShapeUnitState(unit, shouldBeVisible, entry.updatePhysics)
+            entry.unitVisibility[index] = shouldBeVisible
         end
     end
 
@@ -207,7 +249,7 @@ local function applyRangeProgress(entry, progress, force)
 
     local changed = entry.lastVisibility ~= shouldBeVisible
 
-    setNodeState(entry.node, shouldBeVisible, entry.updatePhysics)
+    setEntryShapesState(entry, shouldBeVisible)
     entry.lastVisibility = shouldBeVisible
 
     return changed
@@ -280,17 +322,33 @@ local function resetProgressMeshes(state)
     end
 
     for _, entry in ipairs(state.progressToggleMeshes) do
-        if entry.progressStepByStep then
-            for index, child in ipairs(entry.children) do
-                setNodeState(child, false, entry.updatePhysics)
-                entry.childVisibility[index] = false
-            end
+        setEntryShapesState(entry, false)
 
-            setVisibility(entry.node, false)
-            entry.lastVisibleCount = nil
-        else
-            setNodeState(entry.node, false, entry.updatePhysics)
-            entry.lastVisibility = nil
+        for index = 1, #entry.units do
+            entry.unitVisibility[index] = false
+        end
+
+        entry.lastVisibleCount = 0
+        entry.lastVisibility = false
+    end
+end
+
+
+-- Устанавливает визуал полностью завершённой строительной стадии.
+-- Постоянная геометрия остаётся построенной, временные диапазонные props скрываются.
+local function finishProgressMeshes(state)
+    if state.progressToggleMeshes == nil then
+        return
+    end
+
+    for _, entry in ipairs(state.progressToggleMeshes) do
+        if not entry.disabled then
+            if entry.progressStepByStep then
+                applyStepByStepProgress(entry, 1, true)
+            else
+                setEntryShapesState(entry, false)
+                entry.lastVisibility = false
+            end
         end
     end
 end
@@ -318,41 +376,32 @@ function CPM.loadState(state, xmlFile, key)
                 progressStepByStep = xmlFile:getBool(progressKey .. "#progressStepByStep", false),
                 progressStepMin = xmlFile:getFloat(progressKey .. "#progressStepMin", 0),
                 progressStepMax = xmlFile:getFloat(progressKey .. "#progressStepMax", 100),
-                children = {},
-                childVisibility = {},
+                units = {},
+                unitVisibility = {},
+                shapeCount = 0,
                 disabled = false
             }
 
-            if entry.progressStepByStep then
-                -- TransformGroup используется только как структурный контейнер.
-                -- Шагами являются все Shape внутри ноды, собранные рекурсивно
-                -- в порядке Scenegraph: row01, затем row02 и т.д.
-                local function collectStepShapes(parentNode)
-                    local numChildren = getNumOfChildren(parentNode)
+            -- Любой toggleProgressMesh управляет конкретными Shape внутри своей ноды.
+            -- Для progressStepByStep units задают последовательность появления.
+            -- Для progressStepMin/progressStepMax все найденные Shape переключаются вместе.
+            collectShapeUnits(node, entry.units)
 
-                    for childIndex = 0, numChildren - 1 do
-                        local child = getChildAt(parentNode, childIndex)
+            for _, unit in ipairs(entry.units) do
+                entry.shapeCount = entry.shapeCount + #unit.shapes
+            end
 
-                        if getHasClassId(child, ClassIds.SHAPE) then
-                            table.insert(entry.children, child)
-                        elseif getNumOfChildren(child) > 0 then
-                            collectStepShapes(child)
-                        end
-                    end
-                end
+            if #entry.units == 0 then
+                Logging.xmlError(
+                    xmlFile,
+                    "toggleProgressMesh '%s' at '%s' contains no Shape nodes",
+                    getName(node),
+                    progressKey
+                )
+                entry.disabled = true
+            end
 
-                collectStepShapes(node)
-
-                if #entry.children == 0 then
-                    Logging.xmlError(
-                        xmlFile,
-                        "toggleProgressMesh '%s' at '%s' uses progressStepByStep but contains no Shape nodes",
-                        getName(node),
-                        progressKey
-                    )
-                    entry.disabled = true
-                end
-            else
+            if not entry.progressStepByStep then
                 if entry.progressStepMin < 0
                     or entry.progressStepMin > 100
                     or entry.progressStepMax < 0
@@ -470,7 +519,7 @@ local function applyConstructionPreviewVisuals(constructible)
                     if entry.progressStepByStep then
                         applyStepByStepProgress(entry, 1, true)
                     else
-                        setNodeState(entry.node, false, entry.updatePhysics)
+                        setEntryShapesState(entry, false)
                         entry.lastVisibility = false
                     end
                 end
@@ -507,7 +556,7 @@ function CPM.synchronizeStateMachineVisuals(constructible)
     for stateIndex, state in ipairs(spec.stateMachine) do
         if state.progressToggleMeshes ~= nil then
             if stateIndex < spec.stateIndex then
-                applyProgressValue(state, 1, true, false)
+                finishProgressMeshes(state)
             elseif stateIndex == spec.stateIndex then
                 updateProgressMeshes(state, true, false)
             else
@@ -560,7 +609,7 @@ function CPM.install()
         schema:register(
             XMLValueType.BOOL,
             basePath .. ".toggleProgressMesh(?)#progressStepByStep",
-            "Show direct child nodes one by one",
+            "Show Shape units recursively one by one",
             false
         )
         schema:register(
@@ -620,8 +669,8 @@ function CPM.install()
 
         if ownStateIndex ~= nil and targetStateIndex ~= nil then
             if targetStateIndex > ownStateIndex then
-                -- При нормальном переходе вперёд завершённая строительная часть остаётся построенной.
-                applyProgressValue(state, 1, true, false)
+                -- Постоянная часть завершённой стадии остаётся, временные props убираются.
+                finishProgressMeshes(state)
             elseif targetStateIndex < ownStateIndex then
                 -- При откате назад элементы более позднего состояния должны исчезнуть.
                 resetProgressMeshes(state)
@@ -684,14 +733,14 @@ function CPM.install()
                         for _, entry in ipairs(state.progressToggleMeshes) do
                             if entry.progressStepByStep and not entry.disabled then
                                 Logging.info(
-                                    "ConstructibleProgressMeshes v%s: finalized '%s' state=%s progress=%.4f visibleSteps=%d/%d phaseVisible=%s",
+                                    "ConstructibleProgressMeshes v%s: finalized '%s' state=%s progress=%.4f visibleUnits=%d/%d shapes=%d",
                                     CPM.VERSION,
                                     tostring(constructible.configFileName),
                                     tostring(state.name),
                                     getEntryProgress(state, entry),
                                     entry.lastVisibleCount or -1,
-                                    #entry.children,
-                                    tostring(getVisibility(entry.node))
+                                    #entry.units,
+                                    entry.shapeCount or 0
                                 )
                                 break
                             end
