@@ -24,6 +24,7 @@
 	<extraSourceFiles>
 		<sourceFile filename="scripts/WoodElevatorStorageInfo.lua"/>
 		<sourceFile filename="scripts/BunkerFillPlanes.lua"/>
+		<sourceFile filename="scripts/ConstructibleProgressMeshes.lua"/>
 		
 		<!-- МЯСОПЕРЕРАБАТЫВАЮЩИЙ КОМПЛЕКС -->
 		<sourceFile filename="scripts/FarmMeatIndustry/PlaceableMeatAnimalInput.lua"/>
@@ -46,6 +47,7 @@
 		<!-- ТОЧКИ ПРОИЗВОДСТВА -->
 		<storeItem xmlFilename="map/placeables/SawMillBig/constructibleSawmill.xml"/>
 		<storeItem xmlFilename="map/placeables/PulpPaperProduction/PulpPaperProduction.xml"/>
+		<storeItem xmlFilename="map/placeables/MonomixProductionWorkshop/MonomixProductionWorkshop.xml"/>
 		<!-- СКЛАДЫ, БУНКЕРЫ И ХРАНИЛИЩА -->
 		<storeItem xmlFilename="map/placeables/Storage/Storage.xml"/>
 		<storeItem xmlFilename="map/placeables/WoodStorageDistributor/WoodStorageDistributor.xml"/>
@@ -93,6 +95,11 @@
 		<!-- constructibleSawmill - строимая лесопилка -->
 		<type name="constructibleProductionPoint" parent="constructible" filename="$dataS/scripts/placeables/Placeable.lua">
 			<specialization name="productionPoint" />
+		</type>
+		<!-- monomixProductionPoint - строимое производство моносмеси со складом тюков -->
+		<type name="monomixProductionPoint" parent="productionPoint" className="Placeable" filename="$dataS/scripts/placeables/Placeable.lua">
+			<specialization name="constructible"/>
+			<specialization name="objectStorage"/>
 		</type>
 		<!-- constructibleStorage - строимый склад -->
 		<type name="constructibleStorage" parent="constructible" filename="$dataS/scripts/placeables/Placeable.lua">
@@ -154,6 +161,17 @@
 			<en>Large warehouse</en>
 			<de>Großes Lager</de>
 		</text>
+		<text name="storeItem_MonomixProductionWorkshop">
+			<ru>Цех производства моносмеси</ru>
+			<en>Total mixed ration workshop</en>
+			<de>Mischfutterwerkstatt</de>
+		</text>
+		<text name="function_MonomixProductionWorkshop">
+			<ru>Строящийся цех приготовления моносмеси со складом тюков и тремя бункерами сырья.</ru>
+			<en>Constructible total mixed ration workshop with bale storage and three ingredient bunkers.</en>
+			<de>Baubare Mischfutterwerkstatt mit Ballenlager und drei Rohstoffbunkern.</de>
+		</text>
+
 		<text name="PulpPaperProduction">
 			<ru>Целлюлозно-бумажное производство</ru>
 			<en>Pulp and paper production</en>

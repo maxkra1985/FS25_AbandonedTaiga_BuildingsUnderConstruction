@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<placeable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" type="monomixProductionPoint" xsi:noNamespaceSchemaLocation="../../../../../shared/xml/schema/placeable.xsd">
+	<storeData>
+		<name>$l10n_storeItem_MonomixProductionWorkshop</name>
+		<functions>
+			<function>$l10n_function_MonomixProductionWorkshop</function>
+		</functions>
+		<image>ConstructibleBuildings.dds</image>
+		<price>100</price>
+		<canBeSold>true</canBeSold>
+		<showInStore>true</showInStore>
+		<dailyUpkeep>0</dailyUpkeep>
+		<lifetime>1000</lifetime>
+		<rotation>0</rotation>
+		<brand>ConstructibleBuildings</brand>
+		<species>placeable</species>
+		<category>productionPoints</category>
+		<brush>
+			<type>placeable</type>
+			<category>ConstructibleBuildings</category>
+			<tab>constructiblesProductionPoint</tab>
+		</brush>
+	</storeData>
+
+	<base>
+		<filename>map/placeables/MonomixProductionWorkshop/MonomixProductionWorkshop.i3d</filename>
+		<canBeRenamed>true</canBeRenamed>
+		<canBeDeleted>true</canBeDeleted>
+		<boughtWithFarmland>true</boughtWithFarmland>
+	</base>
+
+	<placement useRandomYRotation="false" useManualYRotation="true">
+		<testAreas>
+			<testArea startNode="testArea1Start" endNode="testArea1End"/>
+		</testAreas>
+		<sounds>
+			<place template="medImp"/>
+		</sounds>
+	</placement>
+
+	<clearAreas>
+		<clearArea startNode="clearArea1Start" widthNode="clearArea1Width" heightNode="clearArea1Height"/>
+	</clearAreas>
+
+	<leveling requireLeveling="true" maxSmoothDistance="3" maxSlope="75" maxEdgeAngle="30">
+		<levelAreas>
+			<levelArea startNode="levelArea1Start" widthNode="levelArea1Width" heightNode="levelArea1Height" groundType="gravel"/>
+		</levelAreas>
+	</leveling>
+
+	<indoorAreas>
+		<indoorArea startNode="indoorArea1Start" widthNode="indoorArea1Width" heightNode="indoorArea1Height"/>
+	</indoorAreas>
+
+	<tipOcclusionUpdateAreas>
+		<tipOcclusionUpdateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End"/>
+	</tipOcclusionUpdateAreas>
+
+	<ai>
+		<updateAreas>
+			<updateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End"/>
+		</updateAreas>
+	</ai>
+
+	<infoTrigger triggerNode="infoTrigger"/>
+
+	<!--
+		Стартовый рецепт моносмеси: 45% сена, 45% силоса и 10% соломы.
+		Пропорции находятся внутри штатных диапазонов рецепта FORAGE FS25.
+		Производительность и ёмкости оставлены как стартовый баланс для дальнейшей настройки.
+	-->
+	<productionPoint isFinalized="false" name="$l10n_storeItem_MonomixProductionWorkshop">
+		<productions sharedThroughputCapacity="true">
+			<production id="forage" name="$l10n_fillType_forage" cyclesPerHour="10" costsPerActiveHour="20">
+				<inputs>
+					<input fillType="DRYGRASS_WINDROW" amount="450"/>
+					<input fillType="SILAGE" amount="450"/>
+					<input fillType="STRAW" amount="100"/>
+				</inputs>
+				<outputs>
+					<output fillType="FORAGE" amount="1000"/>
+				</outputs>
+			</production>
+		</productions>
+
+		<!-- Общий пул 450000 л даёт BunkerFillPlanes по 150000 л на каждый из трёх физических бункеров. -->
+		<storage isExtension="false" capacity="450000" fillTypes="DRYGRASS_WINDROW SILAGE STRAW FORAGE" fillLevelSyncThreshold="50">
+			<bunkerFillPlane node="hayFillPlane" fillTypes="DRYGRASS_WINDROW" minY="-5" maxY="0"/>
+			<bunkerFillPlane node="silageFillPlane" fillTypes="SILAGE" minY="-5" maxY="0"/>
+			<bunkerFillPlane node="strawFillPlane" fillTypes="STRAW" minY="-5" maxY="0"/>
+		</storage>
+
+		<sellingStation node="productionPoint" appearsOnStats="false" allowMissions="false" supportsExtension="false" hideFromPricesMenu="true" suppressWarnings="true">
+			<supportedFillTypes>
+				<fillType name="DRYGRASS_WINDROW"/>
+				<fillType name="SILAGE"/>
+				<fillType name="STRAW"/>
+			</supportedFillTypes>
+			<unloadTrigger exactFillRootNode="bulkHayFillRootNode" aiNode="bulkHayAiUnloadingNode" fillTypes="DRYGRASS_WINDROW"/>
+			<unloadTrigger exactFillRootNode="bulkSillageFillRootNode" aiNode="bulkSillageAiUnloadingNode" fillTypes="SILAGE"/>
+			<unloadTrigger exactFillRootNode="bulkStrawFillRootNode" aiNode="bulkStrawAiUnloadingNode" fillTypes="STRAW"/>
+		</sellingStation>
+
+		<!-- Используем существующий trigger у производственного узла как точку выдачи готовой моносмеси. -->
+		<loadingStation fillTypes="FORAGE" supportsExtension="false">
+			<loadTrigger triggerNode="forageLoadTrigger" dischargeNode="forageLoadDischargeNode" aiNode="forageLoadAiNode" fillTypes="FORAGE" fillLitersPerSecond="3000"/>
+		</loadingStation>
+
+		<playerTrigger node="playerTrigger"/>
+	</productionPoint>
+
+	<!-- Отдельный физический склад тюков сена и соломы. -->
+	<objectStorage supportsBales="true" supportsPallets="false" capacity="120" maxUnloadAmount="12" maxLength="2.5" maxWidth="2.5" maxHeight="2.5" fillTypes="DRYGRASS_WINDROW STRAW">
+		<playerTrigger node="storagePlayerTrigger"/>
+		<objectTrigger node="baleTrigger"/>
+		<spawnAreas>
+			<spawnArea startNode="baleSpawnAreaStart01" endNode="baleSpawnAreaEnd01" maxHeight="2.5"/>
+			<spawnArea startNode="baleSpawnAreaStart02" endNode="baleSpawnAreaEnd02" maxHeight="2.5"/>
+		</spawnAreas>
+		<storageAreas>
+			<storageArea startNode="baleStorageAreaStart01" endNode="baleStorageAreaEnd01" maxHeight="2.5"/>
+		</storageAreas>
+	</objectStorage>
+
+	<triggerMarkers>
+		<triggerMarker node="constructibleUnloadTriggerMarker" adjustToGround="true" filename="$data/shared/assets/marker/markerIconPallet.i3d"/>
+		<triggerMarker node="playerTriggerMarker" adjustToGround="false" filename="$data/shared/assets/marker/markerIconWrench.i3d"/>
+		<triggerMarker node="storagePlayerTriggerMarker" adjustToGround="false" filename="$data/shared/assets/marker/markerIconPallet.i3d"/>
+	</triggerMarkers>
+
+	<hotspots>
+		<hotspot type="UNLOADING_PALLET" linkNode="constructibleUnloadTriggerMarker" teleportNode="constructibleUnloadTriggerMarker"/>
+		<hotspot type="PRODUCTION_POINT" linkNode="playerTriggerMarker" teleportNode="playerTriggerMarker"/>
+	</hotspots>
+
+	<constructible>
+		<stateMachine>
+			<states>
+				<state name="SETUP" class="ConstructibleStateBuilding" StateName="Монтаж арматуры">
+					<!-- Функциональные узлы активируются только после завершения строительства. -->
+					<toggleMesh node="productionPoint" active="false" updatePhysics="true"/>
+					<toggleMesh node="baleWarehouse" active="false" updatePhysics="true"/>
+					<toggleMesh node="constructibleSellingStation" active="true" updatePhysics="true"/>
+					<toggleHotspot index="1" isVisible="true"/>
+					<toggleHotspot index="2" isVisible="false"/>
+
+					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
+					<toggleProgressMesh node="phase_01" active="true" updatePhysics="true" progressStepByStep="true"/>
+					<toggleProgressMesh node="phase_01_props01" updatePhysics="true" progressStepMin="0" progressStepMax="33.333333"/>
+					<toggleProgressMesh node="phase_01_props02" updatePhysics="true" progressStepMin="33.333333" progressStepMax="66.666667"/>
+					<toggleProgressMesh node="phase_01_props03" updatePhysics="true" progressStepMin="66.666667" progressStepMax="100"/>
+
+					<input fillType="INSTRUMENT" amount="55" usagePerHour="18.333333"/>
+					<input fillType="BUILDING_METAL" amount="5000" usagePerHour="1666.666667"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_1" class="ConstructibleStateBuilding" StateName="Монтаж опалубки">
+					<toggleMesh node="phase_01_props01" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_01_props02" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_01_props03" active="false" updatePhysics="true"/>
+
+					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
+					<toggleProgressMesh node="phase_02" active="true" updatePhysics="true" progressStepByStep="true"/>
+					<toggleProgressMesh node="phase_02_props01" updatePhysics="true" progressStepMin="0" progressStepMax="33.333333"/>
+					<toggleProgressMesh node="phase_02_props02" updatePhysics="true" progressStepMin="33.333333" progressStepMax="66.666667"/>
+					<toggleProgressMesh node="phase_02_props03" updatePhysics="true" progressStepMin="66.666667" progressStepMax="100"/>
+
+					<input fillType="INSTRUMENT" amount="54" usagePerHour="9"/>
+					<input fillType="BOARDS" amount="1000" usagePerHour="166.666667"/>
+					<input fillType="PLANKS" amount="2000" usagePerHour="333.333333"/>
+					<input fillType="NAILS" amount="50" usagePerHour="8.333333"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_2" class="ConstructibleStateBuilding" StateName="Заливка фундамента">
+					<toggleMesh node="phase_02_props01" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_02_props02" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_02_props03" active="false" updatePhysics="true"/>
+
+					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
+					<toggleProgressMesh node="phase_03" active="true" updatePhysics="true" progressStepByStep="true"/>
+					<toggleProgressMesh node="phase_03_props01" updatePhysics="true" progressStepMin="0" progressStepMax="20"/>
+					<toggleProgressMesh node="phase_03_props02" updatePhysics="true" progressStepMin="20" progressStepMax="40"/>
+					<toggleProgressMesh node="phase_03_props03" updatePhysics="true" progressStepMin="40" progressStepMax="60"/>
+					<toggleProgressMesh node="phase_03_props04" updatePhysics="true" progressStepMin="60" progressStepMax="80"/>
+					<toggleProgressMesh node="phase_03_props05" updatePhysics="true" progressStepMin="80" progressStepMax="100"/>
+
+					<input fillType="INSTRUMENT" amount="60" usagePerHour="10"/>
+					<input fillType="CEMENT" amount="9000" usagePerHour="1500"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_3" class="ConstructibleStateBuilding" StateName="Возведение стен сруба">
+					<toggleMesh node="phase_03_props01" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_03_props02" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_03_props03" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_03_props04" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_03_props05" active="false" updatePhysics="true"/>
+
+					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
+					<toggleProgressMesh node="phase_04" active="true" updatePhysics="true" progressStepByStep="true"/>
+					<toggleProgressMesh node="phase_04_props01" updatePhysics="true" progressStepMin="0" progressStepMax="25"/>
+					<toggleProgressMesh node="phase_04_props02" updatePhysics="true" progressStepMin="25" progressStepMax="50"/>
+					<toggleProgressMesh node="phase_04_props03" updatePhysics="true" progressStepMin="50" progressStepMax="75"/>
+					<toggleProgressMesh node="phase_04_props04" updatePhysics="true" progressStepMin="75" progressStepMax="100"/>
+
+					<input fillType="INSTRUMENT" amount="120" usagePerHour="10"/>
+					<input fillType="WOODBEAM" amount="18000" usagePerHour="1500"/>
+					<input fillType="NAILS" amount="150" usagePerHour="12.5"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_4" class="ConstructibleStateBuilding" StateName="Возведение фронтонов">
+					<toggleMesh node="phase_04_props01" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_04_props02" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_04_props03" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_04_props04" active="false" updatePhysics="true"/>
+
+					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
+					<toggleProgressMesh node="phase_05" active="true" updatePhysics="true" progressStepByStep="true"/>
+					<toggleProgressMesh node="phase_05_props01" updatePhysics="true" progressStepMin="0" progressStepMax="50"/>
+					<toggleProgressMesh node="phase_05_props02" updatePhysics="true" progressStepMin="50" progressStepMax="100"/>
+
+					<input fillType="INSTRUMENT" amount="80" usagePerHour="10"/>
+					<input fillType="WOODBEAM" amount="10000" usagePerHour="1250"/>
+					<input fillType="NAILS" amount="100" usagePerHour="12.5"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_5" class="ConstructibleStateBuilding" StateName="Монтаж стропильной системы">
+					<toggleMesh node="phase_05_props01" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_05_props02" active="false" updatePhysics="true"/>
+
+					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
+					<toggleProgressMesh node="phase_06" active="true" updatePhysics="true" progressStepByStep="true"/>
+					<toggleProgressMesh node="phase_06_props01" updatePhysics="true" progressStepMin="0" progressStepMax="50"/>
+					<toggleProgressMesh node="phase_06_props02" updatePhysics="true" progressStepMin="50" progressStepMax="100"/>
+
+					<input fillType="INSTRUMENT" amount="60" usagePerHour="10"/>
+					<input fillType="WOODBEAM" amount="7000" usagePerHour="1166.666667"/>
+					<input fillType="NAILS" amount="75" usagePerHour="12.5"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_6" class="ConstructibleStateBuilding" StateName="Монтаж обрешётки и кровли">
+					<toggleMesh node="phase_06_props01" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_06_props02" active="false" updatePhysics="true"/>
+
+					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
+					<toggleProgressMesh node="phase_07" active="true" updatePhysics="true" progressStepByStep="true"/>
+					<toggleProgressMesh node="phase_07_props01" updatePhysics="true" progressStepMin="0" progressStepMax="16.666667"/>
+					<toggleProgressMesh node="phase_07_props02" updatePhysics="true" progressStepMin="16.666667" progressStepMax="33.333333"/>
+					<toggleProgressMesh node="phase_07_props03" updatePhysics="true" progressStepMin="33.333333" progressStepMax="50"/>
+					<toggleProgressMesh node="phase_07_props04" updatePhysics="true" progressStepMin="50" progressStepMax="66.666667"/>
+					<toggleProgressMesh node="phase_07_props05" updatePhysics="true" progressStepMin="66.666667" progressStepMax="83.333333"/>
+					<toggleProgressMesh node="phase_07_props06" updatePhysics="true" progressStepMin="83.333333" progressStepMax="100"/>
+
+					<input fillType="INSTRUMENT" amount="100" usagePerHour="10"/>
+					<input fillType="PLANKS" amount="6000" usagePerHour="600"/>
+					<input fillType="BOARDS" amount="3000" usagePerHour="300"/>
+					<input fillType="NAILS" amount="100" usagePerHour="10"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_7" class="ConstructibleStateBuilding" StateName="Монтаж оборудования и коммуникаций">
+					<toggleMesh node="phase_07_props01" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_07_props02" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_07_props03" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_07_props04" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_07_props05" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_07_props06" active="false" updatePhysics="true"/>
+
+					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
+					<toggleProgressMesh node="phase_08" active="true" updatePhysics="true" progressStepByStep="true"/>
+					<toggleProgressMesh node="phase_08_props01" updatePhysics="true" progressStepMin="0" progressStepMax="25"/>
+					<toggleProgressMesh node="phase_08_props02" updatePhysics="true" progressStepMin="25" progressStepMax="50"/>
+					<toggleProgressMesh node="phase_08_props03" updatePhysics="true" progressStepMin="50" progressStepMax="75"/>
+					<toggleProgressMesh node="phase_08_props04" updatePhysics="true" progressStepMin="75" progressStepMax="100"/>
+
+					<input fillType="INSTRUMENT" amount="150" usagePerHour="15"/>
+					<input fillType="CEMENT" amount="3000" usagePerHour="300"/>
+					<input fillType="BUILDING_METAL" amount="5000" usagePerHour="500"/>
+					<input fillType="METAL" amount="5000" usagePerHour="500"/>
+					<sounds>
+						<active template="constructibleActive"/>
+					</sounds>
+				</state>
+				<state name="BUILDING_8" class="ConstructibleStateBuilding" StateName="Монтаж окон, дверей и оснащения">
+					<toggleMesh node="phase_08_props01" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_08_props02" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_08_props03" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_08_props04" active="false" updatePhysics="true"/>
+
+					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
+					<toggleProgressMesh node="phase_09" active="true" updatePhysics="true" progressStepByStep="true"/>
+					<toggleProgressMesh node="phase_09_props01" updatePhysics="true" progressStepMin="0" progressStepMax="50"/>
+					<toggleProgressMesh node="phase_09_props02" updatePhysics="true" progressStepMin="50" progressStepMax="100"/>
+
+					<input fillType="INSTRUMENT" amount="120" usagePerHour="15"/>
+					<input fillType="METAL" amount="3000" usagePerHour="375"/>
+					<input fillType="FURNITURE" amount="5000" usagePerHour="625"/>
+					<sounds>
+						<active template="carpenterSmallWork"/>
+					</sounds>
+				</state>
+
+				<state name="FINALIZE" class="ConstructibleStateFinalize">
+					<toggleMesh node="phase_09" active="true" updatePhysics="true"/>
+					<toggleMesh node="phase_09_props01" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_09_props02" active="false" updatePhysics="true"/>
+					<toggleMesh node="productionPoint" active="true" updatePhysics="true"/>
+					<toggleMesh node="baleWarehouse" active="true" updatePhysics="true"/>
+					<toggleMesh node="constructibleSellingStation" active="false" updatePhysics="true"/>
+					<toggleHotspot index="1" isVisible="false"/>
+					<toggleHotspot index="2" isVisible="true"/>
+				</state>
+				<state name="DONE" class="ConstructibleState" isPreviewState="true"/>
+			</states>
+
+			<transitions>
+				<transition from="SETUP" to="BUILDING_1"/>
+				<transition from="BUILDING_1" to="BUILDING_2"/>
+				<transition from="BUILDING_2" to="BUILDING_3"/>
+				<transition from="BUILDING_3" to="BUILDING_4"/>
+				<transition from="BUILDING_4" to="BUILDING_5"/>
+				<transition from="BUILDING_5" to="BUILDING_6"/>
+				<transition from="BUILDING_6" to="BUILDING_7"/>
+				<transition from="BUILDING_7" to="BUILDING_8"/>
+				<transition from="BUILDING_8" to="FINALIZE"/>
+				<transition from="FINALIZE" to="DONE"/>
+			</transitions>
+		</stateMachine>
+
+		<sellingStation node="constructibleSellingStation" supportsExtension="false" allowMissions="true" appearsOnStats="false">
+			<palletTrigger triggerNode="constructiblePalletTrigger" aiNode="constructibleUnloadTriggerAINode" fillTypes="INSTRUMENT BOARDS PLANKS BUILDING_METAL CEMENT WOODBEAM METAL FURNITURE NAILS" deleteLitersPerSecond="200"/>
+		</sellingStation>
+
+		<storage isExtension="false" fillLevelSyncThreshold="50">
+			<!-- Стартовый баланс строительства: 69 игровых часов. -->
+			<capacity fillType="INSTRUMENT" capacity="1000"/>
+			<capacity fillType="BUILDING_METAL" capacity="10000"/>
+			<capacity fillType="BOARDS" capacity="4000"/>
+			<capacity fillType="PLANKS" capacity="8000"/>
+			<capacity fillType="NAILS" capacity="500"/>
+			<capacity fillType="CEMENT" capacity="12000"/>
+			<capacity fillType="WOODBEAM" capacity="35000"/>
+			<capacity fillType="METAL" capacity="8000"/>
+			<capacity fillType="FURNITURE" capacity="5000"/>
+		</storage>
+	</constructible>
+
+
+	<i3dMappings>
+		<!-- AREAS -->
+		<i3dMapping id="testArea1Start" node="0>0|0|0"/>
+		<i3dMapping id="testArea1End" node="0>0|0|0|0"/>
+		<i3dMapping id="clearArea1Start" node="0>0|1|0"/>
+		<i3dMapping id="clearArea1Width" node="0>0|1|0|0"/>
+		<i3dMapping id="clearArea1Height" node="0>0|1|0|1"/>
+		<i3dMapping id="levelArea1Start" node="0>0|2|0"/>
+		<i3dMapping id="levelArea1Width" node="0>0|2|0|0"/>
+		<i3dMapping id="levelArea1Height" node="0>0|2|0|1"/>
+		<i3dMapping id="indoorArea1Start" node="0>0|3|0"/>
+		<i3dMapping id="indoorArea1Width" node="0>0|3|0|0"/>
+		<i3dMapping id="indoorArea1Height" node="0>0|3|0|1"/>
+		<i3dMapping id="tipOcclusionUpdateArea1Start" node="0>0|4|0"/>
+		<i3dMapping id="tipOcclusionUpdateArea1End" node="0>0|4|0|0"/>
+
+		<!-- ОСНОВНЫЕ УЗЛЫ -->
+		<i3dMapping id="infoTrigger" node="0>2"/>
+		<i3dMapping id="constructibleSellingStation" node="0>3"/>
+		<i3dMapping id="productionPoint" node="0>4"/>
+		<i3dMapping id="baleWarehouse" node="0>5"/>
+
+		<!-- СТРОИТЕЛЬНАЯ ПЛОЩАДКА -->
+		<i3dMapping id="constructiblePalletTrigger" node="0>3|1|0"/>
+		<i3dMapping id="constructibleUnloadTriggerMarker" node="0>3|1|1"/>
+		<i3dMapping id="constructibleUnloadTriggerAINode" node="0>3|1|2"/>
+
+		<!-- ПРОИЗВОДСТВО: загрузка сырья -->
+		<i3dMapping id="bulkHayFillRootNode" node="0>4|1|0"/>
+		<i3dMapping id="bulkHayUnloadLinkNode" node="0>4|1|1"/>
+		<i3dMapping id="bulkHayAiUnloadingNode" node="0>4|1|2"/>
+		<i3dMapping id="hayFillPlane" node="0>4|1|3"/>
+		<i3dMapping id="bulkSillageFillRootNode" node="0>4|2|0"/>
+		<i3dMapping id="bulkSillageUnloadLinkNode" node="0>4|2|1"/>
+		<i3dMapping id="bulkSillageAiUnloadingNode" node="0>4|2|2"/>
+		<i3dMapping id="silageFillPlane" node="0>4|2|3"/>
+		<i3dMapping id="bulkStrawFillRootNode" node="0>4|3|0"/>
+		<i3dMapping id="bulkStrawUnloadLinkNode" node="0>4|3|1"/>
+		<i3dMapping id="bulkStrawAiUnloadingNode" node="0>4|3|2"/>
+		<i3dMapping id="strawFillPlane" node="0>4|3|3"/>
+
+		<!-- ПРОИЗВОДСТВО: выдача готовой моносмеси -->
+		<i3dMapping id="forageLoadTrigger" node="0>4|0|0"/>
+		<i3dMapping id="forageLoadAiNode" node="0>4|0|1"/>
+		<i3dMapping id="forageLoadDischargeNode" node="0>4|0|2"/>
+		<i3dMapping id="playerTrigger" node="0>4|4"/>
+		<i3dMapping id="playerTriggerMarker" node="0>4|4|0"/>
+
+		<!-- СКЛАД ТЮКОВ -->
+		<i3dMapping id="baleTrigger" node="0>5|0|0"/>
+		<i3dMapping id="baleUnloadLinkNode" node="0>5|0|1"/>
+		<i3dMapping id="baleAiUnloadingNode" node="0>5|0|2"/>
+		<i3dMapping id="baleSpawnAreaStart01" node="0>5|1|0"/>
+		<i3dMapping id="baleSpawnAreaEnd01" node="0>5|1|0|0"/>
+		<i3dMapping id="baleSpawnAreaStart02" node="0>5|1|1"/>
+		<i3dMapping id="baleSpawnAreaEnd02" node="0>5|1|1|0"/>
+		<i3dMapping id="baleStorageAreaStart01" node="0>5|1|2"/>
+		<i3dMapping id="baleStorageAreaEnd01" node="0>5|1|2|0"/>
+		<i3dMapping id="storagePlayerTrigger" node="0>5|2"/>
+		<i3dMapping id="storagePlayerTriggerMarker" node="0>5|2|0"/>
+
+		<!-- СТАДИИ СТРОИТЕЛЬСТВА -->
+		<i3dMapping id="phase_01" node="0>1|0"/>
+		<i3dMapping id="phase_01_props01" node="0>1|1"/>
+		<i3dMapping id="phase_01_props02" node="0>1|2"/>
+		<i3dMapping id="phase_01_props03" node="0>1|3"/>
+		<i3dMapping id="phase_02" node="0>1|4"/>
+		<i3dMapping id="phase_02_props01" node="0>1|5"/>
+		<i3dMapping id="phase_02_props02" node="0>1|6"/>
+		<i3dMapping id="phase_02_props03" node="0>1|7"/>
+		<i3dMapping id="phase_03" node="0>1|8"/>
+		<i3dMapping id="phase_03_props01" node="0>1|9"/>
+		<i3dMapping id="phase_03_props02" node="0>1|10"/>
+		<i3dMapping id="phase_03_props03" node="0>1|11"/>
+		<i3dMapping id="phase_03_props04" node="0>1|12"/>
+		<i3dMapping id="phase_03_props05" node="0>1|13"/>
+		<i3dMapping id="phase_04" node="0>1|14"/>
+		<i3dMapping id="phase_04_props01" node="0>1|15"/>
+		<i3dMapping id="phase_04_props02" node="0>1|16"/>
+		<i3dMapping id="phase_04_props03" node="0>1|17"/>
+		<i3dMapping id="phase_04_props04" node="0>1|18"/>
+		<i3dMapping id="phase_05" node="0>1|19"/>
+		<i3dMapping id="phase_05_props01" node="0>1|20"/>
+		<i3dMapping id="phase_05_props02" node="0>1|21"/>
+		<i3dMapping id="phase_06" node="0>1|22"/>
+		<i3dMapping id="phase_06_props01" node="0>1|23"/>
+		<i3dMapping id="phase_06_props02" node="0>1|24"/>
+		<i3dMapping id="phase_07" node="0>1|25"/>
+		<i3dMapping id="phase_07_props01" node="0>1|26"/>
+		<i3dMapping id="phase_07_props02" node="0>1|27"/>
+		<i3dMapping id="phase_07_props03" node="0>1|28"/>
+		<i3dMapping id="phase_07_props04" node="0>1|29"/>
+		<i3dMapping id="phase_07_props05" node="0>1|30"/>
+		<i3dMapping id="phase_07_props06" node="0>1|31"/>
+		<i3dMapping id="phase_08" node="0>1|32"/>
+		<i3dMapping id="phase_08_props01" node="0>1|33"/>
+		<i3dMapping id="phase_08_props02" node="0>1|34"/>
+		<i3dMapping id="phase_08_props03" node="0>1|35"/>
+		<i3dMapping id="phase_08_props04" node="0>1|36"/>
+		<i3dMapping id="phase_09" node="0>1|37"/>
+		<i3dMapping id="phase_09_props01" node="0>1|38"/>
+		<i3dMapping id="phase_09_props02" node="0>1|39"/>
+	</i3dMappings>
+</placeable>
