@@ -585,14 +585,8 @@ function PFV:connectStorage(placeable)
             function(fillTypeId, delta)
                 for _, entry in ipairs(state.volumes) do
                     if entry.fillTypeId == fillTypeId then
-                        Logging.info(
-                            "%s storage changed: fillType='%s', delta=%.1f L, level=%.1f L",
-                            PFV.LOG_PREFIX,
-                            tostring(entry.fillTypeName),
-                            delta or 0,
-                            storage:getFillLevel(fillTypeId)
-                        )
-
+                        -- Storage может изменяться несколько раз в секунду во время работы производства.
+                        -- Не пишем каждое изменение в лог: listener нужен только для обновления визуального fillVolume.
                         PFV:updatePlaceable(
                             placeable
                         )
