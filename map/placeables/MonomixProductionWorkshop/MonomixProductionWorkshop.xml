@@ -147,7 +147,10 @@
 
 		<!-- Выдача готовой моносмеси использует отдельный блок loadingTriggers внутри productionPoint в I3D. -->
 		<loadingStation fillTypes="FORAGE" supportsExtension="false">
-			<loadTrigger triggerNode="forageLoadTrigger" dischargeNode="forageLoadDischargeNode" aiNode="forageLoadAiNode" fillTypes="FORAGE" fillLitersPerSecond="3000"/>
+			<loadTrigger triggerNode="forageLoadTrigger" dischargeNode="forageLoadDischargeNode" aiNode="forageLoadAiNode" fillTypes="FORAGE" fillLitersPerSecond="3000">
+				<effectNode effectClass="PipeEffect" effectNode="foragePipeEffect" materialType="pipe" materialTypeId="1" fadeTime="0.5" maxBending="0" controlPoint="3.25 0 0 0"/>
+				<effectNode effectNode="foragePipeEffectSmoke" materialType="smoke" materialTypeId="1" fadeTime="0.5"/>
+			</loadTrigger>
 		</loadingStation>
 
 		<playerTrigger node="playerTrigger"/>
@@ -516,8 +519,10 @@
 
 		<!-- ПРОИЗВОДСТВО: выдача готовой моносмеси -->
 		<i3dMapping id="forageLoadTrigger" node="0>4|5|0"/>
-		<i3dMapping id="forageLoadAiNode" node="0>4|5|3"/>
 		<i3dMapping id="forageLoadDischargeNode" node="0>4|5|1"/>
+		<i3dMapping id="foragePipeEffect" node="0>4|5|2|0"/>
+		<i3dMapping id="foragePipeEffectSmoke" node="0>4|5|2|1"/>
+		<i3dMapping id="forageLoadAiNode" node="0>4|5|3"/>
 		<i3dMapping id="playerTrigger" node="0>4|4"/>
 		<i3dMapping id="playerTriggerMarker" node="0>4|4|0"/>
 
