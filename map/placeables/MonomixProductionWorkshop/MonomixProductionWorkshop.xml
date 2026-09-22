@@ -110,7 +110,7 @@
 	</productionPoint>
 
 	<!-- Отдельный физический склад тюков сена и соломы. -->
-	<objectStorage supportsBales="true" supportsPallets="false" capacity="120" maxUnloadAmount="12" maxLength="2.5" maxWidth="2.5" maxHeight="2.5" fillTypes="DRYGRASS_WINDROW STRAW">
+	<objectStorage supportsBales="true" supportsPallets="false" capacity="120" maxUnloadAmount="50" maxLength="2.5" maxWidth="2.5" maxHeight="2.5" fillTypes="DRYGRASS_WINDROW STRAW SILAGE">
 		<playerTrigger node="storagePlayerTrigger"/>
 		<objectTrigger node="baleTrigger"/>
 		<spawnAreas>
@@ -123,9 +123,14 @@
 	</objectStorage>
 
 	<triggerMarkers>
-		<triggerMarker node="constructibleUnloadTriggerMarker" adjustToGround="true" filename="$data/shared/assets/marker/markerIconPallet.i3d"/>
-		<triggerMarker node="playerTriggerMarker" adjustToGround="false" filename="$data/shared/assets/marker/markerIconWrench.i3d"/>
-		<triggerMarker node="storagePlayerTriggerMarker" adjustToGround="false" filename="$data/shared/assets/marker/markerIconPallet.i3d"/>
+		<triggerMarker node="constructibleUnloadTriggerMarker"	adjustToGround="true"	filename="markerIcons/markerIconStroyka.i3d"/>
+		<triggerMarker node="playerTriggerMarker"				adjustToGround="false"	filename="$data/shared/assets/marker/markerIconWrench.i3d"/>
+		<triggerMarker node="palletTrigger"						adjustToGround="false"	filename="markerIcons/markerIconMineralFeedPallet.i3d"/>
+		<triggerMarker node="bulkHayUnloadLinkNode"				adjustToGround="true"	filename="markerIcons/markerIconHay.i3d"/>
+		<triggerMarker node="bulkSillageUnloadLinkNode"			adjustToGround="true"	filename="markerIcons/markerIconSilage.i3d"/>
+		<triggerMarker node="bulkStrawUnloadLinkNode"			adjustToGround="true"	filename="markerIcons/markerIconStraw.i3d"/>
+		<triggerMarker node="baleUnloadLinkNode"				adjustToGround="false"	filename="markerIcons/markerIconBaleStorage.i3d"/>
+		<triggerMarker node="storagePlayerTriggerMarker"		adjustToGround="false"	filename="$data/shared/assets/marker/markerIconWrench.i3d"/>
 	</triggerMarkers>
 
 	<hotspots>
@@ -146,12 +151,12 @@
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_01" active="true" updatePhysics="true" progressStepByStep="true"/>
-					<toggleProgressMesh node="phase_01_props01" updatePhysics="true" progressStepMin="0" progressStepMax="33.333333"/>
-					<toggleProgressMesh node="phase_01_props02" updatePhysics="true" progressStepMin="33.333333" progressStepMax="66.666667"/>
-					<toggleProgressMesh node="phase_01_props03" updatePhysics="true" progressStepMin="66.666667" progressStepMax="100"/>
+					<toggleProgressMesh node="phase_01_props01" updatePhysics="true" progressStepMin="1" progressStepMax="34"/>
+					<toggleProgressMesh node="phase_01_props02" updatePhysics="true" progressStepMin="33" progressStepMax="67"/>
+					<toggleProgressMesh node="phase_01_props03" updatePhysics="true" progressStepMin="66" progressStepMax="100"/>
 
-					<input fillType="INSTRUMENT" amount="55" usagePerHour="18.333333"/>
-					<input fillType="BUILDING_METAL" amount="5000" usagePerHour="1666.666667"/>
+					<input fillType="INSTRUMENT" amount="50" usagePerHour="17"/>
+					<input fillType="BUILDING_METAL" amount="5000" usagePerHour="1667"/>
 					<sounds>
 						<active template="constructibleActive"/>
 					</sounds>
@@ -160,14 +165,14 @@
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_02" active="true" updatePhysics="true" progressStepByStep="true"/>
-					<toggleProgressMesh node="phase_02_props01" updatePhysics="true" progressStepMin="0" progressStepMax="33.333333"/>
+					<toggleProgressMesh node="phase_02_props01" updatePhysics="true" progressStepMin="1" progressStepMax="34"/>
 					<toggleProgressMesh node="phase_02_props02" updatePhysics="true" progressStepMin="33.333333" progressStepMax="66.666667"/>
 					<toggleProgressMesh node="phase_02_props03" updatePhysics="true" progressStepMin="66.666667" progressStepMax="100"/>
 
-					<input fillType="INSTRUMENT" amount="54" usagePerHour="9"/>
-					<input fillType="BOARDS" amount="1000" usagePerHour="166.666667"/>
-					<input fillType="PLANKS" amount="2000" usagePerHour="333.333333"/>
-					<input fillType="NAILS" amount="50" usagePerHour="8.333333"/>
+					<input fillType="INSTRUMENT" amount="100" usagePerHour="50"/>
+					<input fillType="BOARDS" amount="2000" usagePerHour="1000"/>
+					<input fillType="PLANKS" amount="4000" usagePerHour="2000"/>
+					<input fillType="NAILS" amount="100" usagePerHour="50"/>
 					<sounds>
 						<active template="carpenterSmallWork"/>
 					</sounds>
@@ -176,30 +181,32 @@
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_03" active="true" updatePhysics="true" progressStepByStep="true"/>
-					<toggleProgressMesh node="phase_03_props01" updatePhysics="true" progressStepMin="0" progressStepMax="20"/>
+					<toggleProgressMesh node="phase_03_props01" updatePhysics="true" progressStepMin="1" progressStepMax="20"/>
 					<toggleProgressMesh node="phase_03_props02" updatePhysics="true" progressStepMin="20" progressStepMax="40"/>
 					<toggleProgressMesh node="phase_03_props03" updatePhysics="true" progressStepMin="40" progressStepMax="60"/>
 					<toggleProgressMesh node="phase_03_props04" updatePhysics="true" progressStepMin="60" progressStepMax="80"/>
 					<toggleProgressMesh node="phase_03_props05" updatePhysics="true" progressStepMin="80" progressStepMax="100"/>
 
 					<input fillType="INSTRUMENT" amount="60" usagePerHour="10"/>
-					<input fillType="CEMENT" amount="9000" usagePerHour="1500"/>
+					<input fillType="CEMENT" amount="15000" usagePerHour="1500"/>
 					<sounds>
 						<active template="constructibleActive"/>
 					</sounds>
 				</state>
 				<state name="BUILDING_3" class="ConstructibleStateBuilding" StateName="Возведение стен сруба">
-
+					<!-- Прячем опалубку и арматуру -->
+					<toggleMesh node="phase_01" active="false" updatePhysics="true"/>
+					<toggleMesh node="phase_02" active="false" updatePhysics="true"/>
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_04" active="true" updatePhysics="true" progressStepByStep="true"/>
-					<toggleProgressMesh node="phase_04_props01" updatePhysics="true" progressStepMin="0" progressStepMax="25"/>
-					<toggleProgressMesh node="phase_04_props02" updatePhysics="true" progressStepMin="25" progressStepMax="50"/>
-					<toggleProgressMesh node="phase_04_props03" updatePhysics="true" progressStepMin="50" progressStepMax="75"/>
-					<toggleProgressMesh node="phase_04_props04" updatePhysics="true" progressStepMin="75" progressStepMax="100"/>
+					<toggleProgressMesh node="phase_04_props01" updatePhysics="true" progressStepMin="1" progressStepMax="27"/>
+					<toggleProgressMesh node="phase_04_props02" updatePhysics="true" progressStepMin="23" progressStepMax="52"/>
+					<toggleProgressMesh node="phase_04_props03" updatePhysics="true" progressStepMin="48" progressStepMax="77"/>
+					<toggleProgressMesh node="phase_04_props04" updatePhysics="true" progressStepMin="73" progressStepMax="100"/>
 
 					<input fillType="INSTRUMENT" amount="120" usagePerHour="10"/>
-					<input fillType="WOODBEAM" amount="18000" usagePerHour="1500"/>
-					<input fillType="NAILS" amount="150" usagePerHour="12.5"/>
+					<input fillType="WOODBEAM" amount="36000" usagePerHour="3000"/>
+					<input fillType="NAILS" amount="300" usagePerHour="25"/>
 					<sounds>
 						<active template="carpenterSmallWork"/>
 					</sounds>
@@ -208,8 +215,8 @@
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_05" active="true" updatePhysics="true" progressStepByStep="true"/>
-					<toggleProgressMesh node="phase_05_props01" updatePhysics="true" progressStepMin="0" progressStepMax="50"/>
-					<toggleProgressMesh node="phase_05_props02" updatePhysics="true" progressStepMin="50" progressStepMax="100"/>
+					<toggleProgressMesh node="phase_05_props01" updatePhysics="true" progressStepMin="1" progressStepMax="55"/>
+					<toggleProgressMesh node="phase_05_props02" updatePhysics="true" progressStepMin="45" progressStepMax="100"/>
 
 					<input fillType="INSTRUMENT" amount="80" usagePerHour="10"/>
 					<input fillType="WOODBEAM" amount="10000" usagePerHour="1250"/>
@@ -222,12 +229,12 @@
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_06" active="true" updatePhysics="true" progressStepByStep="true"/>
-					<toggleProgressMesh node="phase_06_props01" updatePhysics="true" progressStepMin="0" progressStepMax="50"/>
-					<toggleProgressMesh node="phase_06_props02" updatePhysics="true" progressStepMin="50" progressStepMax="100"/>
+					<toggleProgressMesh node="phase_06_props01" updatePhysics="true" progressStepMin="1" progressStepMax="55"/>
+					<toggleProgressMesh node="phase_06_props02" updatePhysics="true" progressStepMin="45" progressStepMax="100"/>
 
-					<input fillType="INSTRUMENT" amount="60" usagePerHour="10"/>
-					<input fillType="WOODBEAM" amount="7000" usagePerHour="1166.666667"/>
-					<input fillType="NAILS" amount="75" usagePerHour="12.5"/>
+					<input fillType="INSTRUMENT" amount="60" usagePerHour="12"/>
+					<input fillType="WOODBEAM" amount="5000" usagePerHour="1000"/>
+					<input fillType="NAILS" amount="100" usagePerHour="20"/>
 					<sounds>
 						<active template="carpenterSmallWork"/>
 					</sounds>
@@ -236,17 +243,17 @@
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_07" active="true" updatePhysics="true" progressStepByStep="true"/>
-					<toggleProgressMesh node="phase_07_props01" updatePhysics="true" progressStepMin="0" progressStepMax="16.666667"/>
-					<toggleProgressMesh node="phase_07_props02" updatePhysics="true" progressStepMin="16.666667" progressStepMax="33.333333"/>
-					<toggleProgressMesh node="phase_07_props03" updatePhysics="true" progressStepMin="33.333333" progressStepMax="50"/>
-					<toggleProgressMesh node="phase_07_props04" updatePhysics="true" progressStepMin="50" progressStepMax="66.666667"/>
-					<toggleProgressMesh node="phase_07_props05" updatePhysics="true" progressStepMin="66.666667" progressStepMax="83.333333"/>
-					<toggleProgressMesh node="phase_07_props06" updatePhysics="true" progressStepMin="83.333333" progressStepMax="100"/>
+					<toggleProgressMesh node="phase_07_props01" updatePhysics="true" progressStepMin="0" progressStepMax="18"/>
+					<toggleProgressMesh node="phase_07_props02" updatePhysics="true" progressStepMin="15" progressStepMax="35"/>
+					<toggleProgressMesh node="phase_07_props03" updatePhysics="true" progressStepMin="32" progressStepMax="52"/>
+					<toggleProgressMesh node="phase_07_props04" updatePhysics="true" progressStepMin="49" progressStepMax="68"/>
+					<toggleProgressMesh node="phase_07_props05" updatePhysics="true" progressStepMin="65" progressStepMax="85"/>
+					<toggleProgressMesh node="phase_07_props06" updatePhysics="true" progressStepMin="82" progressStepMax="100"/>
 
-					<input fillType="INSTRUMENT" amount="100" usagePerHour="10"/>
-					<input fillType="PLANKS" amount="6000" usagePerHour="600"/>
+					<input fillType="INSTRUMENT" amount="200" usagePerHour="20"/>
+					<input fillType="PLANKS" amount="10000" usagePerHour="1000"/>
 					<input fillType="BOARDS" amount="3000" usagePerHour="300"/>
-					<input fillType="NAILS" amount="100" usagePerHour="10"/>
+					<input fillType="NAILS" amount="150" usagePerHour="15"/>
 					<sounds>
 						<active template="carpenterSmallWork"/>
 					</sounds>
@@ -260,10 +267,10 @@
 					<toggleProgressMesh node="phase_08_props03" updatePhysics="true" progressStepMin="50" progressStepMax="75"/>
 					<toggleProgressMesh node="phase_08_props04" updatePhysics="true" progressStepMin="75" progressStepMax="100"/>
 
-					<input fillType="INSTRUMENT" amount="150" usagePerHour="15"/>
-					<input fillType="CEMENT" amount="3000" usagePerHour="300"/>
-					<input fillType="BUILDING_METAL" amount="5000" usagePerHour="500"/>
-					<input fillType="METAL" amount="5000" usagePerHour="500"/>
+					<input fillType="INSTRUMENT" amount="450" usagePerHour="45"/>
+					<input fillType="CEMENT" amount="2000" usagePerHour="200"/>
+					<input fillType="BUILDING_METAL" amount="10000" usagePerHour="1000"/>
+					<input fillType="METAL" amount="10000" usagePerHour="1000"/>
 					<sounds>
 						<active template="constructibleActive"/>
 					</sounds>
@@ -276,7 +283,7 @@
 					<toggleProgressMesh node="phase_09_props02" updatePhysics="true" progressStepMin="50" progressStepMax="100"/>
 
 					<input fillType="INSTRUMENT" amount="120" usagePerHour="15"/>
-					<input fillType="METAL" amount="3000" usagePerHour="375"/>
+					<input fillType="METAL" amount="5000" usagePerHour="625"/>
 					<input fillType="FURNITURE" amount="5000" usagePerHour="625"/>
 					<sounds>
 						<active template="carpenterSmallWork"/>
@@ -354,6 +361,9 @@
 		<i3dMapping id="constructibleUnloadTriggerAINode" node="0>3|1|2"/>
 
 		<!-- ПРОИЗВОДСТВО: загрузка сырья -->
+		<i3dMapping id="palletTrigger" node="0>4|0|0"/>
+		<i3dMapping id="unloadTriggerPallet" node="0>4|0|1"/>
+		<i3dMapping id="unloadTriggerPalletAINode" node="0>4|0|2"/>
 		<i3dMapping id="bulkHayFillRootNode" node="0>4|1|0"/>
 		<i3dMapping id="bulkHayUnloadLinkNode" node="0>4|1|1"/>
 		<i3dMapping id="bulkHayAiUnloadingNode" node="0>4|1|2"/>
