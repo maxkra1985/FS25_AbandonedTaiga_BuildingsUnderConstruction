@@ -24,7 +24,7 @@
 ConstructibleProgressMeshes = ConstructibleProgressMeshes or {}
 
 local CPM = ConstructibleProgressMeshes
-CPM.VERSION = "0.6.0"
+CPM.VERSION = "0.7.0"
 
 local PROGRESS_EPSILON = 0.0000001
 
@@ -235,8 +235,7 @@ local function applyStepByStepProgress(entry, progress, force)
     local changed = entry.lastVisibleCount ~= visibleCount
 
     for index, unit in ipairs(entry.units) do
-        local baseVisible = index <= visibleCount
-        local shouldBeVisible = entry.active and baseVisible or not baseVisible
+        local shouldBeVisible = index <= visibleCount
 
         -- Проверяем реальное состояние Shape, а не только наше сохранённое значение.
         -- Это важно после штатного finalizePlacement/addToPhysics и при загрузке savegame.
@@ -252,8 +251,11 @@ end
 
 -- Применяет прогресс к ноде, которая целиком показывается только внутри заданного диапазона.
 local function applyRangeProgress(entry, progress, force)
-    local inRange = isProgressInRange(progress, entry.progressStepMin, entry.progressStepMax)
-    local shouldBeVisible = entry.active and inRange or not inRange
+    local shouldBeVisible = isProgressInRange(
+        progress,
+        entry.progressStepMin,
+        entry.progressStepMax
+    )
 
     local changed = entry.lastVisibility ~= shouldBeVisible
 
@@ -378,18 +380,34 @@ function CPM.loadState(state, xmlFile, key)
         )
 
         if node ~= nil then
+            local hasStepByStep = xmlFile:hasProperty(progressKey .. "#progressStepByStep")
+            local hasRangeMin = xmlFile:hasProperty(progressKey .. "#progressStepMin")
+            local hasRangeMax = xmlFile:hasProperty(progressKey .. "#progressStepMax")
+
             local entry = {
                 node = node,
+                nodeName = getName(node),
                 active = xmlFile:getBool(progressKey .. "#active", true),
                 updatePhysics = xmlFile:getBool(progressKey .. "#updatePhysics", false),
-                progressStepByStep = xmlFile:getBool(progressKey .. "#progressStepByStep", false),
+                progressStepByStep = hasStepByStep,
                 progressStepMin = xmlFile:getFloat(progressKey .. "#progressStepMin", 0),
                 progressStepMax = xmlFile:getFloat(progressKey .. "#progressStepMax", 100),
+                hasRange = hasRangeMin or hasRangeMax,
                 units = {},
                 unitVisibility = {},
                 shapeCount = 0,
                 disabled = false
             }
+
+            if not entry.progressStepByStep and not entry.hasRange then
+                Logging.xmlError(
+                    xmlFile,
+                    "toggleProgressMesh '%s' at '%s' must define progressStepByStep or progressStepMin/progressStepMax",
+                    entry.nodeName,
+                    progressKey
+                )
+                entry.disabled = true
+            end
 
             -- Любой toggleProgressMesh управляет конкретными Shape внутри своей ноды.
             -- Для progressStepByStep units задают последовательность появления.
@@ -468,6 +486,59 @@ function CPM.loadState(state, xmlFile, key)
 end
 
 
+-- Возвращает количество Shape, которые фактически видимы в Scenegraph.
+local function countActuallyVisibleShapes(entry)
+    local visible = 0
+    local total = 0
+
+    for _, unit in ipairs(entry.units) do
+        for _, shape in ipairs(unit.shapes) do
+            total = total + 1
+            if getVisibility(shape) then
+                visible = visible + 1
+            end
+        end
+    end
+
+    return visible, total
+end
+
+
+-- Пишет краткую диагностику текущей строительной стадии.
+-- Нужна для проверки реального состояния Scenegraph после размещения.
+local function logCurrentStateVisuals(constructible, reason)
+    local spec = constructible ~= nil and constructible.spec_constructible or nil
+    local state = spec ~= nil and spec.stateMachine ~= nil
+        and spec.stateMachine[spec.stateIndex] or nil
+
+    if state == nil or state.progressToggleMeshes == nil then
+        return
+    end
+
+    for index, entry in ipairs(state.progressToggleMeshes) do
+        if not entry.disabled then
+            local visibleShapes, totalShapes = countActuallyVisibleShapes(entry)
+            Logging.info(
+                "ConstructibleProgressMeshes v%s: %s state=%s entry=%d node=%s mode=%s progress=%.4f visibleShapes=%d/%d units=%d range=%.3f..%.3f active=%s",
+                CPM.VERSION,
+                tostring(reason),
+                tostring(state.name),
+                index,
+                tostring(entry.nodeName),
+                entry.progressStepByStep and "STEP" or "RANGE",
+                getEntryProgress(state, entry),
+                visibleShapes,
+                totalShapes,
+                #entry.units,
+                entry.progressStepMin,
+                entry.progressStepMax,
+                tostring(entry.active)
+            )
+        end
+    end
+end
+
+
 -- Загружает toggleProgressMesh для всех ConstructibleStateBuilding уже после того,
 -- как штатный PlaceableConstructible создал stateMachine. Используются raw XML getters,
 -- поэтому работа не зависит от того, успел ли мод зарегистрировать дополнительные schema paths.
@@ -533,6 +604,31 @@ local function applyConstructionPreviewVisuals(constructible)
                     end
                 end
             end
+        end
+    end
+end
+
+
+-- Инициализирует только что купленную стройплощадку.
+-- Сначала принудительно скрываются все Shape всех progress-фаз и props,
+-- затем текущая стадия восстанавливается по реальному remainingAmount.
+local function initializeNewConstructionVisuals(constructible)
+    local spec = constructible ~= nil and constructible.spec_constructible or nil
+
+    if spec == nil or spec.stateMachine == nil then
+        return
+    end
+
+    for _, state in ipairs(spec.stateMachine) do
+        if state.progressToggleMeshes ~= nil then
+            resetProgressMeshes(state)
+        end
+    end
+
+    if spec.stateIndex ~= nil and spec.stateIndex > 0 then
+        local currentState = spec.stateMachine[spec.stateIndex]
+        if currentState ~= nil and currentState.progressToggleMeshes ~= nil then
+            updateProgressMeshes(currentState, true, false)
         end
     end
 end
@@ -606,7 +702,7 @@ function CPM.install()
         schema:register(
             XMLValueType.BOOL,
             basePath .. ".toggleProgressMesh(?)#active",
-            "Normal or inverted visibility",
+            "Compatibility attribute; progressive visibility is always direct",
             true
         )
         schema:register(
@@ -732,29 +828,24 @@ function CPM.install()
             Utils.appendedFunction(
                 PlaceableConstructible.onFinalizePlacement,
                 function(constructible, savegame)
-                    CPM.synchronizeStateMachineVisuals(constructible)
+                    if constructible.propertyState == PlaceablePropertyState.CONSTRUCTION_PREVIEW then
+                        CPM.synchronizeStateMachineVisuals(constructible)
+                    elseif savegame == nil then
+                        initializeNewConstructionVisuals(constructible)
+                    else
+                        CPM.synchronizeStateMachineVisuals(constructible)
+                    end
+
+                    logCurrentStateVisuals(
+                        constructible,
+                        savegame == nil and "FINALIZE_NEW" or "FINALIZE_LOAD"
+                    )
 
                     local spec = constructible.spec_constructible
                     local state = spec ~= nil and spec.stateMachine ~= nil
                         and spec.stateMachine[spec.stateIndex] or nil
 
-                    if state ~= nil and state.progressToggleMeshes ~= nil then
-                        for _, entry in ipairs(state.progressToggleMeshes) do
-                            if entry.progressStepByStep and not entry.disabled then
-                                Logging.info(
-                                    "ConstructibleProgressMeshes v%s: finalized '%s' state=%s progress=%.4f visibleUnits=%d/%d shapes=%d",
-                                    CPM.VERSION,
-                                    tostring(constructible.configFileName),
-                                    tostring(state.name),
-                                    getEntryProgress(state, entry),
-                                    entry.lastVisibleCount or -1,
-                                    #entry.units,
-                                    entry.shapeCount or 0
-                                )
-                                break
-                            end
-                        end
-                    end
+                    -- Подробная диагностика текущей стадии уже записана выше.
                 end
             )
     end
@@ -795,6 +886,30 @@ function CPM.install()
                     if placeable ~= nil
                         and placeable.spec_constructible ~= nil then
                         CPM.synchronizeStateMachineVisuals(placeable)
+                    end
+                end
+            )
+    end
+
+    -- Покупка placeable завершается вызовом Placeable:onBuy() уже после finalizePlacement().
+    -- Повторная принудительная инициализация здесь закрывает любые изменения visibility,
+    -- сделанные специализациями в onBuy после штатного finalize.
+    if Placeable ~= nil
+        and Placeable.onBuy ~= nil
+        and not Placeable.progressMeshesOnBuyInstalled then
+
+        Placeable.progressMeshesOnBuyInstalled = true
+
+        Placeable.onBuy =
+            Utils.appendedFunction(
+                Placeable.onBuy,
+                function(placeable)
+                    if placeable ~= nil
+                        and placeable.spec_constructible ~= nil
+                        and placeable.propertyState ~= PlaceablePropertyState.CONSTRUCTION_PREVIEW then
+
+                        initializeNewConstructionVisuals(placeable)
+                        logCurrentStateVisuals(placeable, "AFTER_BUY")
                     end
                 end
             )
