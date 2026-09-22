@@ -71,14 +71,15 @@
 	-->
 	<productionPoint isFinalized="false" name="$l10n_storeItem_MonomixProductionWorkshop">
 		<productions sharedThroughputCapacity="true">
-			<production id="forage" name="$l10n_fillType_forage" cyclesPerHour="10" costsPerActiveHour="20">
+			<production id="forage" name="$l10n_fillType_forage" cyclesPerHour="7" costsPerActiveHour="10">
 				<inputs>
-					<input fillType="DRYGRASS_WINDROW" amount="450"/>
-					<input fillType="SILAGE" amount="450"/>
-					<input fillType="STRAW" amount="100"/>
+					<input fillType="DRYGRASS_WINDROW" amount="350"/>
+					<input fillType="SILAGE" amount="500"/>
+					<inputBoost fillType="STRAW" amountPerCycle="150" bonus="0.1765"/>
+					<inputBoost fillType="MINERAL_FEED" amountPerCycle="5" bonus="0.05"/>
 				</inputs>
 				<outputs>
-					<output fillType="FORAGE" amount="1000"/>
+					<output fillType="FORAGE" amount="850"/>
 				</outputs>
 			</production>
 		</productions>
@@ -115,7 +116,11 @@
 		</animationNodes>
 
 		<!-- Общий пул 450000 л даёт BunkerFillPlanes по 150000 л на каждый из трёх физических бункеров. -->
-		<storage isExtension="false" capacity="450000" fillTypes="DRYGRASS_WINDROW SILAGE STRAW FORAGE" fillLevelSyncThreshold="50">
+		<storage isExtension="false" capacity="450000" fillTypes="DRYGRASS_WINDROW SILAGE STRAW FORAGE MINERAL_FEED" fillLevelSyncThreshold="50">
+			<capacity fillType="DRYGRASS_WINDROW" capacity="200000"/>
+			<capacity fillType="DRYGRASS_WINDROW" capacity="200000"/>
+			<capacity fillType="DRYGRASS_WINDROW" capacity="200000"/>
+			<capacity fillType="DRYGRASS_WINDROW" capacity="200000"/>
 			<!-- Текущее положение поверхности соответствует 100% (+1 м по миру); пустой бункер опускает её на 5.45 м. -->
 			<bunkerFillPlane node="hayFillPlane" fillTypes="DRYGRASS_WINDROW" minY="-5.45" maxY="0"/>
 			<bunkerFillPlane node="silageFillPlane" fillTypes="SILAGE" minY="-5.45" maxY="0"/>
@@ -132,10 +137,12 @@
 				<fillType name="DRYGRASS_WINDROW"/>
 				<fillType name="SILAGE"/>
 				<fillType name="STRAW"/>
+				<fillType name="MINERAL_FEED"/>
 			</supportedFillTypes>
 			<unloadTrigger exactFillRootNode="bulkHayFillRootNode" aiNode="bulkHayAiUnloadingNode" fillTypes="DRYGRASS_WINDROW"/>
 			<unloadTrigger exactFillRootNode="bulkSillageFillRootNode" aiNode="bulkSillageAiUnloadingNode" fillTypes="SILAGE"/>
 			<unloadTrigger exactFillRootNode="bulkStrawFillRootNode" aiNode="bulkStrawAiUnloadingNode" fillTypes="STRAW"/>
+			<palletTrigger triggerNode="palletTrigger" aiNode="unloadTriggerPalletAINode" fillTypes="MINERAL_FEED"/>
 		</sellingStation>
 
 		<!-- Используем существующий trigger у производственного узла как точку выдачи готовой моносмеси. -->
