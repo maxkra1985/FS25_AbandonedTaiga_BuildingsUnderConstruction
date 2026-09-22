@@ -529,6 +529,7 @@ function PFV:updatePlaceable(placeable)
             )
         end
     end
+end
 
 -- Подключает визуальные объёмы к ProductionPoint Storage и его событиям изменения уровня.
 function PFV:connectStorage(placeable)
@@ -584,6 +585,14 @@ function PFV:connectStorage(placeable)
             function(fillTypeId, delta)
                 for _, entry in ipairs(state.volumes) do
                     if entry.fillTypeId == fillTypeId then
+                        Logging.info(
+                            "%s storage changed: fillType='%s', delta=%.1f L, level=%.1f L",
+                            PFV.LOG_PREFIX,
+                            tostring(entry.fillTypeName),
+                            delta or 0,
+                            storage:getFillLevel(fillTypeId)
+                        )
+
                         PFV:updatePlaceable(
                             placeable
                         )
