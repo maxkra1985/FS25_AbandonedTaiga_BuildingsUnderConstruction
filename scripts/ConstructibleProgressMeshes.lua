@@ -141,7 +141,7 @@ end
 
 
 -- Применяет прогресс к пошаговой ноде.
--- Каждый прямой дочерний узел является одним шагом строительства.
+-- Каждый найденный рекурсивно Shape является одним шагом строительства; вложенный Shape не разбирается дальше.
 local function applyStepByStepProgress(entry, progress, force)
     local numChildren = #entry.children
 
@@ -390,6 +390,35 @@ function CPM.loadState(state, xmlFile, key)
 end
 
 
+-- Приводит прогрессивный визуал всей state machine к фактическому текущему состоянию.
+-- Завершённые стадии показываются полностью, текущая восстанавливается из remainingAmount,
+-- а все будущие стадии полностью скрываются. Это особенно важно после construction preview,
+-- загрузки сохранения и первичной сетевой синхронизации.
+function CPM.synchronizeStateMachineVisuals(constructible)
+    if constructible == nil then
+        return
+    end
+
+    local spec = constructible.spec_constructible
+
+    if spec == nil or spec.stateMachine == nil or spec.stateIndex == nil or spec.stateIndex < 1 then
+        return
+    end
+
+    for stateIndex, state in ipairs(spec.stateMachine) do
+        if state.progressToggleMeshes ~= nil then
+            if stateIndex < spec.stateIndex then
+                applyProgressValue(state, 1, true, false)
+            elseif stateIndex == spec.stateIndex then
+                updateProgressMeshes(state, true, false)
+            else
+                resetProgressMeshes(state)
+            end
+        end
+    end
+end
+
+
 -- Регистрирует XML-пути и устанавливает перехватчики штатного ConstructibleStateBuilding.
 function CPM.install()
     if ConstructibleStateBuilding == nil then
@@ -508,6 +537,42 @@ function CPM.install()
         if not state.progressMeshesSuppressUpdate and getIsCurrentState(state) then
             updateProgressMeshes(state, false, true)
         end
+    end
+
+    -- После размещения штатный код может восстановить stateIndex уже после
+    -- первичной настройки Scenegraph. Повторно синхронизируем весь прогрессивный
+    -- визуал по фактическому состоянию constructible и remainingAmount.
+    if PlaceableConstructible ~= nil
+        and PlaceableConstructible.onFinalizePlacement ~= nil
+        and not PlaceableConstructible.progressMeshesFinalizeSyncInstalled then
+
+        PlaceableConstructible.progressMeshesFinalizeSyncInstalled = true
+
+        PlaceableConstructible.onFinalizePlacement =
+            Utils.appendedFunction(
+                PlaceableConstructible.onFinalizePlacement,
+                function(constructible, savegame)
+                    CPM.synchronizeStateMachineVisuals(constructible)
+                end
+            )
+    end
+
+    -- После первичного MP stream штатный код последовательно проигрывает состояния.
+    -- Финальная нормализация гарантирует, что будущие стадии не сохранят визуал
+    -- от промежуточных переходов, а текущая стадия точно соответствует remainingAmount.
+    if PlaceableConstructible ~= nil
+        and PlaceableConstructible.onReadStream ~= nil
+        and not PlaceableConstructible.progressMeshesReadStreamSyncInstalled then
+
+        PlaceableConstructible.progressMeshesReadStreamSyncInstalled = true
+
+        PlaceableConstructible.onReadStream =
+            Utils.appendedFunction(
+                PlaceableConstructible.onReadStream,
+                function(constructible, streamId, connection)
+                    CPM.synchronizeStateMachineVisuals(constructible)
+                end
+            )
     end
 
     Logging.info("ConstructibleProgressMeshes: installed")
