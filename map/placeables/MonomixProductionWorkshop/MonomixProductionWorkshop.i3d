@@ -3073,8 +3073,8 @@
             <Shape name="Cube.010" translation="1.28184 2.1948 1.64353" rotation="151.268 -9.95546e-06 170.943" shapeId="71" nodeId="2302" castsShadows="true" receiveShadows="true" materialIds="118">
               <Shape name="Cube.065" translation="0.0207862 -0.302747 0.489963" rotation="42.505 1.49914e-05 6.5378e-06" shapeId="72" nodeId="2303" castsShadows="true" receiveShadows="true" materialIds="118"/>
             </Shape>
-            <Shape name="Maindrum" translation="-0.250968 1.78534 -0.110191" shapeId="73" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2304" castsShadows="true" receiveShadows="true" materialIds="119"/>
-            <Shape name="Drumtop" translation="0.670612 2.14767 -0.143308" shapeId="74" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2305" castsShadows="true" receiveShadows="true" materialIds="119"/>
+            <Shape name="Maindrum" translation="-0.250968 1.78534 -0.110191" shapeId="73" kinematic="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2304" castsShadows="true" receiveShadows="true" materialIds="119"/>
+            <Shape name="Drumtop" translation="0.670612 2.14767 -0.143308" shapeId="74" kinematic="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2305" castsShadows="true" receiveShadows="true" materialIds="119"/>
             <Shape name="Drumbottom" translation="0.697919 1.5079 -0.150995" shapeId="75" nodeId="2306" castsShadows="true" receiveShadows="true" materialIds="119"/>
             <Shape name="screen" translation="0.0859528 2.31395 3.39398" rotation="-180 -0 -180" scale="0.734117 0.734117 0.734117" shapeId="76" nodeId="2307" castsShadows="true" receiveShadows="true" materialIds="86">
               <Shape name="detached" translation="-0.405994 -1.9029 0.800935" rotation="-4.3951e-13 -2.61969e-20 4.3951e-13" scale="0.926283 0.926283 0.930369" shapeId="77" nodeId="2308" castsShadows="true" receiveShadows="true" materialIds="116"/>
@@ -3108,10 +3108,10 @@
               <Shape name="hoses" translation="3.54319 -1.50738 -1.25989" rotation="89.1446 -89.8002 -89.1445" shapeId="93" clipDistance="300" nodeId="2335" castsShadows="true" receiveShadows="true" skinBindNodeIds="2329 2333 2334" materialIds="71"/>
             </Shape>
             <TransformGroup name="hl26_mainDrumPivot" translation="-0.19 1.36404 1.699" nodeId="2336">
-              <Shape name="hl26_mainDrum" translation="0 0 1.778" shapeId="94" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" clipDistance="300" nodeId="2337" castsShadows="true" receiveShadows="true" materialIds="71,75,72"/>
+              <Shape name="hl26_mainDrum" translation="0 0 1.778" shapeId="94" kinematic="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" clipDistance="300" nodeId="2337" castsShadows="true" receiveShadows="true" materialIds="71,75,72"/>
             </TransformGroup>
             <TransformGroup name="hl26_topDrumPivot" translation="0.885 1.815 0.000933228" nodeId="2338">
-              <Shape name="hl26_topDrum" translation="0 0 3.72" shapeId="95" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" clipDistance="300" nodeId="2339" castsShadows="true" receiveShadows="true" materialIds="71,75,72"/>
+              <Shape name="hl26_topDrum" translation="0 0 3.72" shapeId="95" kinematic="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" clipDistance="300" nodeId="2339" castsShadows="true" receiveShadows="true" materialIds="71,75,72"/>
             </TransformGroup>
             <TransformGroup name="hl26_bottomDrumPivot" translation="0.953 1.234 0.011" nodeId="2340">
               <Shape name="hl26_bottomDrum" translation="0 0 3.72" shapeId="96" clipDistance="300" nodeId="2341" castsShadows="true" receiveShadows="true" materialIds="71,75,72"/>
