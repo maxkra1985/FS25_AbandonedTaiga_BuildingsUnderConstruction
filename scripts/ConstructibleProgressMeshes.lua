@@ -16,12 +16,15 @@
 
     Если progressFillType не задан, прогресс рассчитывается по общему объёму
     израсходованных материалов состояния, аналогично штатному ConstructibleStateBuilding.
+
+    В construction preview постоянные пошаговые фазы показываются полностью,
+    а временные диапазонные props скрываются.
 ]]
 
 ConstructibleProgressMeshes = ConstructibleProgressMeshes or {}
 
 local CPM = ConstructibleProgressMeshes
-CPM.VERSION = "0.3.0"
+CPM.VERSION = "0.4.0"
 
 local PROGRESS_EPSILON = 0.0000001
 
@@ -163,7 +166,17 @@ local function applyStepByStepProgress(entry, progress, force)
         return false
     end
 
-    setVisibility(entry.node, true)
+    -- Родительская phase-нода скрывается полностью, если по текущему прогрессу
+    -- ни один Shape не должен быть видим. Для обычного active=true это гарантирует,
+    -- что при 0% вся стадия отсутствует даже до первого изменения дочерних Shape.
+    local hasVisibleChildren
+    if entry.active then
+        hasVisibleChildren = visibleCount > 0
+    else
+        hasVisibleChildren = visibleCount < numChildren
+    end
+
+    setVisibility(entry.node, hasVisibleChildren)
 
     local changed = entry.lastVisibleCount ~= visibleCount
 
@@ -440,10 +453,37 @@ function CPM.loadPlaceableStates(constructible)
 end
 
 
+-- Формирует чистую проекцию законченного объекта для construction preview.
+-- Постоянная геометрия progressStepByStep показывается полностью, а временные
+-- props с progressStepMin/progressStepMax всегда скрываются и исключаются из физики.
+local function applyConstructionPreviewVisuals(constructible)
+    local spec = constructible ~= nil and constructible.spec_constructible or nil
+
+    if spec == nil or spec.stateMachine == nil then
+        return
+    end
+
+    for _, state in ipairs(spec.stateMachine) do
+        if state.progressToggleMeshes ~= nil then
+            for _, entry in ipairs(state.progressToggleMeshes) do
+                if not entry.disabled then
+                    if entry.progressStepByStep then
+                        applyStepByStepProgress(entry, 1, true)
+                    else
+                        setNodeState(entry.node, false, entry.updatePhysics)
+                        entry.lastVisibility = false
+                    end
+                end
+            end
+        end
+    end
+end
+
+
 -- Приводит прогрессивный визуал всей state machine к фактическому текущему состоянию.
--- Завершённые стадии показываются полностью, текущая восстанавливается из remainingAmount,
--- а все будущие стадии полностью скрываются. Это особенно важно после construction preview,
--- загрузки сохранения и первичной сетевой синхронизации.
+-- В construction preview показывается законченная постоянная геометрия без временных props.
+-- Для размещённого объекта завершённые стадии показываются полностью, текущая
+-- восстанавливается из remainingAmount, а все будущие стадии полностью скрываются.
 function CPM.synchronizeStateMachineVisuals(constructible)
     if constructible == nil then
         return
@@ -451,7 +491,16 @@ function CPM.synchronizeStateMachineVisuals(constructible)
 
     local spec = constructible.spec_constructible
 
-    if spec == nil or spec.stateMachine == nil or spec.stateIndex == nil or spec.stateIndex < 1 then
+    if spec == nil or spec.stateMachine == nil then
+        return
+    end
+
+    if constructible.propertyState == PlaceablePropertyState.CONSTRUCTION_PREVIEW then
+        applyConstructionPreviewVisuals(constructible)
+        return
+    end
+
+    if spec.stateIndex == nil or spec.stateIndex < 1 then
         return
     end
 
@@ -626,6 +675,28 @@ function CPM.install()
                 PlaceableConstructible.onFinalizePlacement,
                 function(constructible, savegame)
                     CPM.synchronizeStateMachineVisuals(constructible)
+
+                    local spec = constructible.spec_constructible
+                    local state = spec ~= nil and spec.stateMachine ~= nil
+                        and spec.stateMachine[spec.stateIndex] or nil
+
+                    if state ~= nil and state.progressToggleMeshes ~= nil then
+                        for _, entry in ipairs(state.progressToggleMeshes) do
+                            if entry.progressStepByStep and not entry.disabled then
+                                Logging.info(
+                                    "ConstructibleProgressMeshes v%s: finalized '%s' state=%s progress=%.4f visibleSteps=%d/%d phaseVisible=%s",
+                                    CPM.VERSION,
+                                    tostring(constructible.configFileName),
+                                    tostring(state.name),
+                                    getEntryProgress(state, entry),
+                                    entry.lastVisibleCount or -1,
+                                    #entry.children,
+                                    tostring(getVisibility(entry.node))
+                                )
+                                break
+                            end
+                        end
+                    end
                 end
             )
     end
