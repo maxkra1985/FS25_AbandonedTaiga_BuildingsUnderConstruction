@@ -83,6 +83,37 @@
 			</production>
 		</productions>
 
+		<!--
+			Производственные механизмы. Штатный ProductionPoint запускает эти
+			RotationAnimation при включении производства и останавливает при выключении.
+		-->
+		<animationNodes>
+			<!-- Вентиляторы: все шесть роторов вращаются вокруг своей локальной оси Z. -->
+			<animationNode rotSpeed="600" rotAxis="3" turnOnFadeTime="1" turnOffFadeTime="1">
+				<node node="ventRotor01"/>
+				<node node="ventRotor02"/>
+				<node node="ventRotor03"/>
+				<node node="ventRotor04"/>
+				<node node="ventRotor05"/>
+				<node node="ventRotor06"/>
+			</animationNode>
+
+			<!-- Кормосмеситель IT26: главный барабан вращается встречно двум малым. -->
+			<animationNode rotSpeed="200" rotAxis="3" turnOnFadeTime="1" turnOffFadeTime="1">
+				<node node="it26MainDrumPivot" speedScale="-1"/>
+				<node node="it26TopDrumPivot" speedScale="1"/>
+				<node node="it26BottomDrumPivot" speedScale="1"/>
+			</animationNode>
+			<animationNode node="it26Fan" rotSpeed="600" rotAxis="1" turnOnFadeTime="1" turnOffFadeTime="1"/>
+
+			<!-- Кормосмеситель BSL Knight 3300. -->
+			<animationNode rotSpeed="200" rotAxis="3" turnOnFadeTime="1" turnOffFadeTime="1">
+				<node node="knightMainDrum" speedScale="-1"/>
+				<node node="knightTopDrum" speedScale="1"/>
+				<node node="knightBottomDrum" speedScale="1"/>
+			</animationNode>
+		</animationNodes>
+
 		<!-- Общий пул 450000 л даёт BunkerFillPlanes по 150000 л на каждый из трёх физических бункеров. -->
 		<storage isExtension="false" capacity="450000" fillTypes="DRYGRASS_WINDROW SILAGE STRAW FORAGE" fillLevelSyncThreshold="50">
 			<bunkerFillPlane node="hayFillPlane" fillTypes="DRYGRASS_WINDROW" minY="-5" maxY="0"/>
@@ -137,6 +168,83 @@
 		<hotspot type="UNLOADING_PALLET" linkNode="constructibleUnloadTriggerMarker" teleportNode="constructibleUnloadTriggerMarker"/>
 		<hotspot type="PRODUCTION_POINT" linkNode="playerTriggerMarker" teleportNode="playerTriggerMarker"/>
 	</hotspots>
+
+	<animatedObjects>
+		<!-- Подъёмные ворота. Конфигурация повторяет штатную механику rolling door. -->
+		<animatedObject saveId="monomixRollingDoor01">
+			<animation duration="5">
+				<part node="rollingDoor1">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 3.4 0"/>
+				</part>
+				<part node="rollingDoor1ColPartBottom">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 3.4 0"/>
+				</part>
+				<part node="rollingDoor1ColPartTop">
+					<keyFrame time="0.0" translation="0 0 0"/>
+					<keyFrame time="0.5" translation="0 0 0"/>
+					<keyFrame time="1.0" translation="0 1.7 0"/>
+				</part>
+				<shader node="rollingDoor1" parameterName="visibilityCutThreshold">
+					<keyFrame time="0.0" values="0 - - -"/>
+					<keyFrame time="1.0" values="0.94 - - -"/>
+				</shader>
+			</animation>
+			<controls triggerNode="rollingDoor1Trigger" posAction="ACTIVATE_HANDTOOL" posText="action_openGate" negText="action_closeGate"/>
+			<sounds>
+				<moving linkNode="rollingDoor1Base" template="rollingGarageDoor"/>
+				<posEnd linkNode="rollingDoor1Base" template="slidingGateMetalOpen"/>
+				<negEnd linkNode="rollingDoor1Base" template="slidingGateMetalClose"/>
+			</sounds>
+		</animatedObject>
+
+		<!-- Передние двустворчатые распашные ворота. -->
+		<animatedObject saveId="monomixDoubleGateFront">
+			<animation duration="2.5">
+				<part node="frontGateLeftDoor">
+					<keyFrame time="0.0" rotation="0 0 0"/>
+					<keyFrame time="1.0" rotation="0 -100 0"/>
+				</part>
+				<part node="frontGateRightDoor">
+					<keyFrame time="0.0" rotation="0 0 0"/>
+					<keyFrame time="1.0" rotation="0 100 0"/>
+				</part>
+			</animation>
+			<controls triggerNode="frontGateTrigger" posAction="ACTIVATE_HANDTOOL" posText="action_openGate" negText="action_closeGate"/>
+		</animatedObject>
+
+		<!-- Задние двустворчатые распашные ворота. -->
+		<animatedObject saveId="monomixDoubleGateRear">
+			<animation duration="2.5">
+				<part node="rearGateLeftDoor">
+					<keyFrame time="0.0" rotation="0 0 0"/>
+					<keyFrame time="1.0" rotation="0 -100 0"/>
+				</part>
+				<part node="rearGateRightDoor">
+					<keyFrame time="0.0" rotation="0 0 0"/>
+					<keyFrame time="1.0" rotation="0 100 0"/>
+				</part>
+			</animation>
+			<controls triggerNode="rearGateTrigger" posAction="ACTIVATE_HANDTOOL" posText="action_openGate" negText="action_closeGate"/>
+		</animatedObject>
+
+		<!-- Одиночная распашная дверь. -->
+		<animatedObject saveId="monomixSingleDoor">
+			<animation duration="1.2">
+				<part node="singleDoorLeaf">
+					<keyFrame time="0.0" rotation="0 0 0"/>
+					<keyFrame time="1.0" rotation="0 105 0"/>
+				</part>
+			</animation>
+			<controls triggerNode="singleDoorTrigger" posAction="ACTIVATE_HANDTOOL" posText="action_openDoor" negText="action_closeDoor"/>
+			<sounds>
+				<moving linkNode="singleDoorLeaf" template="woodDoorSqueaksSmall" pitchScale="0.8"/>
+				<posEnd linkNode="singleDoorLeaf" template="woodDoorOpen"/>
+				<negEnd linkNode="singleDoorLeaf" template="woodDoorCloseRandom"/>
+			</sounds>
+		</animatedObject>
+	</animatedObjects>
 
 	<constructible>
 		<stateMachine>
@@ -396,6 +504,36 @@
 		<i3dMapping id="baleStorageAreaEnd01" node="0>5|1|2|0"/>
 		<i3dMapping id="storagePlayerTrigger" node="0>5|2"/>
 		<i3dMapping id="storagePlayerTriggerMarker" node="0>5|2|0"/>
+
+		<!-- АНИМАЦИИ ПРОИЗВОДСТВА -->
+		<i3dMapping id="ventRotor01" node="0>1|32|8|2"/>
+		<i3dMapping id="ventRotor02" node="0>1|32|9|2"/>
+		<i3dMapping id="ventRotor03" node="0>1|32|10|2"/>
+		<i3dMapping id="ventRotor04" node="0>1|32|11|2"/>
+		<i3dMapping id="ventRotor05" node="0>1|32|12|2"/>
+		<i3dMapping id="ventRotor06" node="0>1|32|13|2"/>
+		<i3dMapping id="knightMainDrum" node="0>1|32|14|6"/>
+		<i3dMapping id="knightTopDrum" node="0>1|32|14|7"/>
+		<i3dMapping id="knightBottomDrum" node="0>1|32|14|8"/>
+		<i3dMapping id="it26MainDrumPivot" node="0>1|32|15|7"/>
+		<i3dMapping id="it26TopDrumPivot" node="0>1|32|15|8"/>
+		<i3dMapping id="it26BottomDrumPivot" node="0>1|32|15|9"/>
+		<i3dMapping id="it26Fan" node="0>1|32|15|10"/>
+
+		<!-- ДВЕРИ И ВОРОТА -->
+		<i3dMapping id="rollingDoor1Base" node="0>1|37|38|2"/>
+		<i3dMapping id="rollingDoor1" node="0>1|37|38|2|0"/>
+		<i3dMapping id="rollingDoor1ColPartBottom" node="0>1|37|38|2|1"/>
+		<i3dMapping id="rollingDoor1ColPartTop" node="0>1|37|38|2|2"/>
+		<i3dMapping id="rollingDoor1Trigger" node="0>1|37|38|2|3"/>
+		<i3dMapping id="frontGateTrigger" node="0>1|37|40|0|0"/>
+		<i3dMapping id="frontGateLeftDoor" node="0>1|37|40|1"/>
+		<i3dMapping id="frontGateRightDoor" node="0>1|37|40|2"/>
+		<i3dMapping id="rearGateTrigger" node="0>1|37|41|0|0"/>
+		<i3dMapping id="rearGateLeftDoor" node="0>1|37|41|1"/>
+		<i3dMapping id="rearGateRightDoor" node="0>1|37|41|2"/>
+		<i3dMapping id="singleDoorTrigger" node="0>1|37|42|0|0"/>
+		<i3dMapping id="singleDoorLeaf" node="0>1|37|42|1"/>
 
 		<!-- СТАДИИ СТРОИТЕЛЬСТВА -->
 		<i3dMapping id="phase_01" node="0>1|0"/>

@@ -3357,9 +3357,15 @@
               <TransformGroup name="worldBone" translation="3.5432 -2.00742 -1.25166" rotation="89.1446 -89.8002 -89.1445" nodeId="2551"/>
               <Shape name="hoses" translation="3.54319 -1.50738 -1.25989" rotation="89.1446 -89.8002 -89.1445" shapeId="105" clipDistance="300" nodeId="2552" castsShadows="true" receiveShadows="true" skinBindNodeIds="2546 2550 2551" materialIds="89"/>
             </Shape>
-            <Shape name="hl26_mainDrum" translation="-0.19 1.36404 3.477" shapeId="106" clipDistance="300" nodeId="2553" castsShadows="true" receiveShadows="true" materialIds="89,93,90"/>
-            <Shape name="hl26_topDrum" translation="0.885 1.815 3.72093" shapeId="107" clipDistance="300" nodeId="2554" castsShadows="true" receiveShadows="true" materialIds="89,93,90"/>
-            <Shape name="hl26_bottomDrum" translation="0.953 1.234 3.731" shapeId="108" clipDistance="300" nodeId="2555" castsShadows="true" receiveShadows="true" materialIds="89,93,90"/>
+            <TransformGroup name="hl26_mainDrumPivot" translation="-0.19 1.36404 1.699" nodeId="3984">
+              <Shape name="hl26_mainDrum" translation="0 0 1.778" shapeId="106" clipDistance="300" nodeId="2553" castsShadows="true" receiveShadows="true" materialIds="89,93,90"/>
+            </TransformGroup>
+            <TransformGroup name="hl26_topDrumPivot" translation="0.885 1.815 0.000933228" nodeId="3985">
+              <Shape name="hl26_topDrum" translation="0 0 3.72" shapeId="107" clipDistance="300" nodeId="2554" castsShadows="true" receiveShadows="true" materialIds="89,93,90"/>
+            </TransformGroup>
+            <TransformGroup name="hl26_bottomDrumPivot" translation="0.953 1.234 0.011" nodeId="3986">
+              <Shape name="hl26_bottomDrum" translation="0 0 3.72" shapeId="108" clipDistance="300" nodeId="2555" castsShadows="true" receiveShadows="true" materialIds="89,93,90"/>
+            </TransformGroup>
             <Shape name="hl26_fan_vis" translation="1.166 1.76611 -2.89763" shapeId="109" clipDistance="300" nodeId="2556" castsShadows="true" receiveShadows="true" materialIds="91"/>
           </TransformGroup>
           <ReferenceNode name="industrialLight02" translation="-3.0122 4.5 1.61345" rotation="-2.134e-05 6 -2.09623e-06" referenceId="105" nodeId="2563"/>
@@ -3823,21 +3829,21 @@
             <Shape name="frame" shapeId="169" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2964" castsShadows="true" receiveShadows="true" materialIds="52">
               <Shape name="gateTrigger" translation="0 1.5 0" scale="6.2 3 2.2" shapeId="170" static="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x110000" nodeId="2965" castsShadows="false" receiveShadows="false" nonRenderable="true" materialIds="52"/>
             </Shape>
-            <Shape name="leftDoor" translation="-2.879 -0.01 -0.115405" rotation="-4.16749e-07 -0 -1.70471e-05" scale="1.01 1.01012 1.01012" shapeId="171" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2966" castsShadows="true" receiveShadows="true" materialIds="51,53,54,55,56,52"/>
-            <Shape name="rightDoor" translation="2.879 -0.01 -0.115" scale="1.01 1.01 1.01" shapeId="172" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2967" castsShadows="true" receiveShadows="true" materialIds="51,55,56,53,54,52"/>
+            <Shape name="leftDoor" translation="-2.879 -0.01 -0.115405" rotation="-4.16749e-07 -0 -1.70471e-05" scale="1.01 1.01012 1.01012" shapeId="171" kinematic="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2966" castsShadows="true" receiveShadows="true" materialIds="51,53,54,55,56,52"/>
+            <Shape name="rightDoor" translation="2.879 -0.01 -0.115" scale="1.01 1.01 1.01" shapeId="172" kinematic="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2967" castsShadows="true" receiveShadows="true" materialIds="51,55,56,53,54,52"/>
           </TransformGroup>
           <TransformGroup name="doubleSwingGate_6x3" translation="0 0.25 -28.5" nodeId="2968">
             <Shape name="frame" shapeId="169" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2969" castsShadows="true" receiveShadows="true" materialIds="52">
               <Shape name="gateTrigger" translation="0 1.5 0" scale="6.2 3 2.2" shapeId="170" static="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x110000" nodeId="2970" castsShadows="false" receiveShadows="false" nonRenderable="true" materialIds="52"/>
             </Shape>
-            <Shape name="leftDoor" translation="-2.879 -0.01 -0.115405" rotation="-4.16749e-07 -0 -1.70471e-05" scale="1.01 1.01012 1.01012" shapeId="171" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2971" castsShadows="true" receiveShadows="true" materialIds="51,53,54,55,56,52"/>
-            <Shape name="rightDoor" translation="2.879 -0.01 -0.115" scale="1.01 1.01 1.01" shapeId="172" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2972" castsShadows="true" receiveShadows="true" materialIds="51,55,56,53,54,52"/>
+            <Shape name="leftDoor" translation="-2.879 -0.01 -0.115405" rotation="-4.16749e-07 -0 -1.70471e-05" scale="1.01 1.01012 1.01012" shapeId="171" kinematic="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2971" castsShadows="true" receiveShadows="true" materialIds="51,53,54,55,56,52"/>
+            <Shape name="rightDoor" translation="2.879 -0.01 -0.115" scale="1.01 1.01 1.01" shapeId="172" kinematic="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2972" castsShadows="true" receiveShadows="true" materialIds="51,55,56,53,54,52"/>
           </TransformGroup>
           <TransformGroup name="singleDoor_1_5x2" translation="-6 0.25 1.5" rotation="180 -1.86693e-05 180" nodeId="2973">
             <Shape name="frame" shapeId="173" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2974" castsShadows="true" receiveShadows="true" materialIds="52">
               <Shape name="doorTrigger" translation="0 1 4.76998e-08" scale="1.40855 2.2 1.6" shapeId="174" static="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x110000" nodeId="2975" castsShadows="false" receiveShadows="false" nonRenderable="true" materialIds="52"/>
             </Shape>
-            <Shape name="door" translation="-0.677431 0 -0.0955415" rotation="0 1.60056e-12 0" scale="1.01742 1.01742 1.01742" shapeId="175" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2976" castsShadows="true" receiveShadows="true" materialIds="51,53,54,55,56,52"/>
+            <Shape name="door" translation="-0.677431 0 -0.0955415" rotation="0 1.60056e-12 0" scale="1.01742 1.01742 1.01742" shapeId="175" kinematic="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" nodeId="2976" castsShadows="true" receiveShadows="true" materialIds="51,53,54,55,56,52"/>
           </TransformGroup>
         </TransformGroup>
         <TransformGroup name="phase_09_props01" translation="0 7.54389e-07 0" rotation="-180 -2.47933e-05 -180" nodeId="2977">
