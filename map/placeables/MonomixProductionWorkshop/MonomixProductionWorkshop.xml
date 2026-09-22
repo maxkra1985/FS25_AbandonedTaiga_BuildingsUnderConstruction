@@ -157,9 +157,6 @@
 					</sounds>
 				</state>
 				<state name="BUILDING_1" class="ConstructibleStateBuilding" StateName="Монтаж опалубки">
-					<toggleMesh node="phase_01_props01" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_01_props02" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_01_props03" active="false" updatePhysics="true"/>
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_02" active="true" updatePhysics="true" progressStepByStep="true"/>
@@ -176,9 +173,6 @@
 					</sounds>
 				</state>
 				<state name="BUILDING_2" class="ConstructibleStateBuilding" StateName="Заливка фундамента">
-					<toggleMesh node="phase_02_props01" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_02_props02" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_02_props03" active="false" updatePhysics="true"/>
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_03" active="true" updatePhysics="true" progressStepByStep="true"/>
@@ -195,11 +189,6 @@
 					</sounds>
 				</state>
 				<state name="BUILDING_3" class="ConstructibleStateBuilding" StateName="Возведение стен сруба">
-					<toggleMesh node="phase_03_props01" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_03_props02" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_03_props03" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_03_props04" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_03_props05" active="false" updatePhysics="true"/>
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_04" active="true" updatePhysics="true" progressStepByStep="true"/>
@@ -216,10 +205,6 @@
 					</sounds>
 				</state>
 				<state name="BUILDING_4" class="ConstructibleStateBuilding" StateName="Возведение фронтонов">
-					<toggleMesh node="phase_04_props01" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_04_props02" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_04_props03" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_04_props04" active="false" updatePhysics="true"/>
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_05" active="true" updatePhysics="true" progressStepByStep="true"/>
@@ -234,8 +219,6 @@
 					</sounds>
 				</state>
 				<state name="BUILDING_5" class="ConstructibleStateBuilding" StateName="Монтаж стропильной системы">
-					<toggleMesh node="phase_05_props01" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_05_props02" active="false" updatePhysics="true"/>
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_06" active="true" updatePhysics="true" progressStepByStep="true"/>
@@ -250,8 +233,6 @@
 					</sounds>
 				</state>
 				<state name="BUILDING_6" class="ConstructibleStateBuilding" StateName="Монтаж обрешётки и кровли">
-					<toggleMesh node="phase_06_props01" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_06_props02" active="false" updatePhysics="true"/>
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_07" active="true" updatePhysics="true" progressStepByStep="true"/>
@@ -271,12 +252,6 @@
 					</sounds>
 				</state>
 				<state name="BUILDING_7" class="ConstructibleStateBuilding" StateName="Монтаж оборудования и коммуникаций">
-					<toggleMesh node="phase_07_props01" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_07_props02" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_07_props03" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_07_props04" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_07_props05" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_07_props06" active="false" updatePhysics="true"/>
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_08" active="true" updatePhysics="true" progressStepByStep="true"/>
@@ -294,10 +269,6 @@
 					</sounds>
 				</state>
 				<state name="BUILDING_8" class="ConstructibleStateBuilding" StateName="Монтаж окон, дверей и оснащения">
-					<toggleMesh node="phase_08_props01" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_08_props02" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_08_props03" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_08_props04" active="false" updatePhysics="true"/>
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_09" active="true" updatePhysics="true" progressStepByStep="true"/>
@@ -313,9 +284,6 @@
 				</state>
 
 				<state name="FINALIZE" class="ConstructibleStateFinalize">
-					<toggleMesh node="phase_09" active="true" updatePhysics="true"/>
-					<toggleMesh node="phase_09_props01" active="false" updatePhysics="true"/>
-					<toggleMesh node="phase_09_props02" active="false" updatePhysics="true"/>
 					<toggleMesh node="productionPoint" active="true" updatePhysics="true"/>
 					<toggleMesh node="baleWarehouse" active="true" updatePhysics="true"/>
 					<toggleMesh node="constructibleSellingStation" active="false" updatePhysics="true"/>

@@ -8,7 +8,7 @@
     1. progressStepByStep="true"
        Все Shape внутри указанной ноды рекурсивно отображаются по одному по мере роста прогресса.\n       TransformGroup используются только для организации Scenegraph.
     2. progressStepMin / progressStepMax
-       Вся указанная нода включается только в заданном диапазоне прогресса.
+       Все Shape внутри указанной ноды включаются только в заданном диапазоне прогресса.
 
     progressFillType можно задать:
     - у state: используется как значение по умолчанию для всех toggleProgressMesh;
@@ -24,7 +24,7 @@
 ConstructibleProgressMeshes = ConstructibleProgressMeshes or {}
 
 local CPM = ConstructibleProgressMeshes
-CPM.VERSION = "0.5.0"
+CPM.VERSION = "0.6.0"
 
 local PROGRESS_EPSILON = 0.0000001
 
@@ -41,17 +41,24 @@ local function clampProgress(value)
 end
 
 
--- Изменяет видимость узла и, если требуется, синхронно меняет его физику.
-local function setNodeState(node, isVisible, updatePhysics)
-    if updatePhysics then
-        if isVisible then
-            addToPhysics(node)
-        else
-            removeFromPhysics(node)
+-- Изменяет видимость Shape и, если требуется, синхронно меняет его физику.
+-- Возвращает true, если фактическая видимость Shape отличалась от требуемой.
+local function setNodeState(node, isVisible, updatePhysics, force)
+    local visibilityChanged = getVisibility(node) ~= isVisible
+
+    if force or visibilityChanged then
+        if updatePhysics then
+            if isVisible then
+                addToPhysics(node)
+            else
+                removeFromPhysics(node)
+            end
         end
+
+        setVisibility(node, isVisible)
     end
 
-    setVisibility(node, isVisible)
+    return visibilityChanged
 end
 
 
@@ -94,18 +101,27 @@ end
 
 
 -- Переключает видимость и физику всех Shape одной визуальной единицы.
-local function setShapeUnitState(unit, isVisible, updatePhysics)
+-- Даже если кэш прогресса не изменился, фактическая visibility каждого Shape проверяется отдельно.
+local function setShapeUnitState(unit, isVisible, updatePhysics, force)
+    local changed = false
+
     for _, shape in ipairs(unit.shapes) do
-        setNodeState(shape, isVisible, updatePhysics)
+        changed = setNodeState(shape, isVisible, updatePhysics, force) or changed
     end
+
+    return changed
 end
 
 
 -- Переключает все Shape, принадлежащие одному toggleProgressMesh.
-local function setEntryShapesState(entry, isVisible)
+local function setEntryShapesState(entry, isVisible, force)
+    local changed = false
+
     for _, unit in ipairs(entry.units) do
-        setShapeUnitState(unit, isVisible, entry.updatePhysics)
+        changed = setShapeUnitState(unit, isVisible, entry.updatePhysics, force) or changed
     end
+
+    return changed
 end
 
 
@@ -216,20 +232,16 @@ local function applyStepByStepProgress(entry, progress, force)
     local visibleCount = math.floor(clampProgress(progress) * numUnits + PROGRESS_EPSILON)
     visibleCount = math.max(0, math.min(numUnits, visibleCount))
 
-    if not force and entry.lastVisibleCount == visibleCount then
-        return false
-    end
-
     local changed = entry.lastVisibleCount ~= visibleCount
 
     for index, unit in ipairs(entry.units) do
         local baseVisible = index <= visibleCount
         local shouldBeVisible = entry.active and baseVisible or not baseVisible
 
-        if force or entry.unitVisibility[index] ~= shouldBeVisible then
-            setShapeUnitState(unit, shouldBeVisible, entry.updatePhysics)
-            entry.unitVisibility[index] = shouldBeVisible
-        end
+        -- Проверяем реальное состояние Shape, а не только наше сохранённое значение.
+        -- Это важно после штатного finalizePlacement/addToPhysics и при загрузке savegame.
+        changed = setShapeUnitState(unit, shouldBeVisible, entry.updatePhysics, force) or changed
+        entry.unitVisibility[index] = shouldBeVisible
     end
 
     entry.lastVisibleCount = visibleCount
@@ -243,13 +255,10 @@ local function applyRangeProgress(entry, progress, force)
     local inRange = isProgressInRange(progress, entry.progressStepMin, entry.progressStepMax)
     local shouldBeVisible = entry.active and inRange or not inRange
 
-    if not force and entry.lastVisibility == shouldBeVisible then
-        return false
-    end
-
     local changed = entry.lastVisibility ~= shouldBeVisible
 
-    setEntryShapesState(entry, shouldBeVisible)
+    -- Диапазонные props также проверяются по фактической visibility каждого Shape.
+    changed = setEntryShapesState(entry, shouldBeVisible, force) or changed
     entry.lastVisibility = shouldBeVisible
 
     return changed
@@ -322,7 +331,7 @@ local function resetProgressMeshes(state)
     end
 
     for _, entry in ipairs(state.progressToggleMeshes) do
-        setEntryShapesState(entry, false)
+        setEntryShapesState(entry, false, true)
 
         for index = 1, #entry.units do
             entry.unitVisibility[index] = false
@@ -346,7 +355,7 @@ local function finishProgressMeshes(state)
             if entry.progressStepByStep then
                 applyStepByStepProgress(entry, 1, true)
             else
-                setEntryShapesState(entry, false)
+                setEntryShapesState(entry, false, true)
                 entry.lastVisibility = false
             end
         end
@@ -519,7 +528,7 @@ local function applyConstructionPreviewVisuals(constructible)
                     if entry.progressStepByStep then
                         applyStepByStepProgress(entry, 1, true)
                     else
-                        setEntryShapesState(entry, false)
+                        setEntryShapesState(entry, false, true)
                         entry.lastVisibility = false
                     end
                 end
@@ -764,6 +773,29 @@ function CPM.install()
                 PlaceableConstructible.onReadStream,
                 function(constructible, streamId, connection)
                     CPM.synchronizeStateMachineVisuals(constructible)
+                end
+            )
+    end
+
+    -- Placeable:finalizePlacement() сначала вызывает все specialization events и
+    -- только после них завершается полностью. Этот hook выполняется последним и ещё раз
+    -- приводит progress-геометрию к фактическому stateIndex/remainingAmount.
+    -- На клиенте до onReadStream stateIndex может быть -1; там финальная синхронизация
+    -- выполняется существующим onReadStream hook.
+    if Placeable ~= nil
+        and Placeable.finalizePlacement ~= nil
+        and not Placeable.progressMeshesPlaceableFinalizeInstalled then
+
+        Placeable.progressMeshesPlaceableFinalizeInstalled = true
+
+        Placeable.finalizePlacement =
+            Utils.appendedFunction(
+                Placeable.finalizePlacement,
+                function(placeable)
+                    if placeable ~= nil
+                        and placeable.spec_constructible ~= nil then
+                        CPM.synchronizeStateMachineVisuals(placeable)
+                    end
                 end
             )
     end
