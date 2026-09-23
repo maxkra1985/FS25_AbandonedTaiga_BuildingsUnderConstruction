@@ -1,7 +1,7 @@
 PlaceableProductionWarehouseSupply = {}
 
 PlaceableProductionWarehouseSupply.DEBUG = true
-PlaceableProductionWarehouseSupply.VERSION = "0.2.0.0"
+PlaceableProductionWarehouseSupply.VERSION = "0.2.1.0"
 PlaceableProductionWarehouseSupply.EPSILON = 0.001
 
 local function debugLog(formatString, ...)
@@ -16,6 +16,41 @@ local function normalizeFilename(filename)
     end
 
     return string.lower(string.gsub(filename, "\\", "/"))
+end
+
+-- Возвращает фактический fillType абстрактного объекта ObjectStorage.
+-- Штатный ObjectStorage хранит тюки и паллеты по-разному, поэтому сначала
+-- читаем сохранённые baleAttributes/palletAttributes, затем живой объект.
+local function getStoredObjectFillType(abstractObject)
+    if abstractObject == nil then
+        return nil
+    end
+
+    if abstractObject.baleAttributes ~= nil then
+        return abstractObject.baleAttributes.fillType
+    end
+
+    if abstractObject.palletAttributes ~= nil then
+        return abstractObject.palletAttributes.fillType
+    end
+
+    if abstractObject.getRealObject ~= nil then
+        local realObject = abstractObject:getRealObject()
+
+        if realObject ~= nil then
+            if realObject.spec_pallet ~= nil
+                and realObject.getFillUnitFillType ~= nil
+                and realObject.spec_pallet.fillUnitIndex ~= nil then
+                return realObject:getFillUnitFillType(realObject.spec_pallet.fillUnitIndex)
+            end
+
+            if realObject.getFillType ~= nil then
+                return realObject:getFillType()
+            end
+        end
+    end
+
+    return nil
 end
 
 function PlaceableProductionWarehouseSupply.prerequisitesPresent(specializations)
@@ -369,18 +404,23 @@ function PlaceableProductionWarehouseSupply:productionWarehouseSupplyFindStoredP
     local wantedPalletFilename = normalizeFilename(fillType.palletFilename)
 
     for storedIndex, abstractObject in ipairs(spec.storedObjects) do
+        -- Основной путь: штатные AbstractBaleObject и AbstractPalletObject уже
+        -- содержат фактический fillType. Это позволяет работать и с тюками,
+        -- не пытаясь ошибочно разбирать bale XML как Vehicle/pallet XML.
+        local storedFillType = getStoredObjectFillType(abstractObject)
+        if storedFillType == fillTypeIndex then
+            return abstractObject, storedIndex
+        end
+
         local xmlFilename = abstractObject:getXMLFilename()
         local normalizedObjectFilename = normalizeFilename(xmlFilename)
 
-        -- Fast and safest path: the stored object uses the pallet registered by
-        -- the requested FillType descriptor.
+        -- Резервный путь для старых/нестандартных паллет, у которых fillType
+        -- почему-либо отсутствует в абстрактном объекте.
         if wantedPalletFilename ~= nil and normalizedObjectFilename == wantedPalletFilename then
             return abstractObject, storedIndex
         end
 
-        -- Fallback for custom single-fill pallets whose XML differs from the
-        -- FillType's default palletFilename. Multi-fill containers are rejected
-        -- here because their actual contents are only known after materializing.
         local palletInfo = self:productionWarehouseSupplyGetPalletInfo(xmlFilename)
         if palletInfo ~= nil
             and palletInfo.supportedFillTypeCount == 1
@@ -480,16 +520,30 @@ function PlaceableProductionWarehouseSupply.onPalletSpawned(self, spawnedObject)
     end
 
     if spawnedObject == nil then
-        self:productionWarehouseSupplyFinishCurrentJob("stored pallet could not be materialized")
+        self:productionWarehouseSupplyFinishCurrentJob("stored object could not be materialized")
         self:productionWarehouseSupplyProcessQueue()
         return
     end
 
     local requestedFillType = job.fillTypeIndex
-    local palletAmount = 0
+    local storedAmount = 0
     local incompatibleContents = false
 
-    if spawnedObject.getFillUnits ~= nil then
+    -- Тюк: Bale не имеет getFillUnits(), поэтому читаем его собственные
+    -- getFillType()/getFillLevel(). Именно этого не хватало старой реализации.
+    if spawnedObject.getBaleAttributes ~= nil
+        and spawnedObject.getFillType ~= nil
+        and spawnedObject.getFillLevel ~= nil then
+
+        local actualFillType = spawnedObject:getFillType()
+        if actualFillType == requestedFillType then
+            storedAmount = spawnedObject:getFillLevel() or 0
+        else
+            incompatibleContents = true
+        end
+
+    -- Паллеты оставляем на прежнем пути через fill units.
+    elseif spawnedObject.getFillUnits ~= nil then
         for _, fillUnit in ipairs(spawnedObject:getFillUnits()) do
             local fillUnitIndex = fillUnit.fillUnitIndex
             local fillLevel = spawnedObject:getFillUnitFillLevel(fillUnitIndex) or 0
@@ -497,7 +551,7 @@ function PlaceableProductionWarehouseSupply.onPalletSpawned(self, spawnedObject)
             if fillLevel > PlaceableProductionWarehouseSupply.EPSILON then
                 local actualFillType = spawnedObject:getFillUnitFillType(fillUnitIndex)
                 if actualFillType == requestedFillType then
-                    palletAmount = palletAmount + fillLevel
+                    storedAmount = storedAmount + fillLevel
                 else
                     incompatibleContents = true
                 end
@@ -510,15 +564,14 @@ function PlaceableProductionWarehouseSupply.onPalletSpawned(self, spawnedObject)
     local freeCapacity = storage ~= nil and storage:getFreeCapacity(requestedFillType) or 0
 
     if not incompatibleContents
-        and palletAmount > PlaceableProductionWarehouseSupply.EPSILON
-        and freeCapacity + PlaceableProductionWarehouseSupply.EPSILON >= palletAmount then
+        and storedAmount > PlaceableProductionWarehouseSupply.EPSILON
+        and freeCapacity + PlaceableProductionWarehouseSupply.EPSILON >= storedAmount then
 
         local previousLevel = storage:getFillLevel(requestedFillType)
-        storage:setFillLevel(previousLevel + palletAmount, requestedFillType, nil)
+        storage:setFillLevel(previousLevel + storedAmount, requestedFillType, nil)
 
-        -- setFillLevel respects fillLevelSyncThreshold. A 500 l pallet with a
-        -- 1000 l threshold would otherwise remain stale on clients until a later
-        -- change, so force one normal Storage update after this hourly transfer.
+        -- setFillLevel учитывает fillLevelSyncThreshold. После автоматического
+        -- переноса принудительно отправляем обычное обновление Storage клиентам.
         if storage.isServer and storage.storageDirtyFlag ~= nil then
             storage:raiseDirtyFlags(storage.storageDirtyFlag)
         end
@@ -527,9 +580,9 @@ function PlaceableProductionWarehouseSupply.onPalletSpawned(self, spawnedObject)
         local fillTypeName = fillType ~= nil and fillType.name or tostring(requestedFillType)
 
         debugLog(
-            "transferred one pallet: %s +%.1f l (%.1f -> %.1f / target %.1f)",
+            "transferred one stored object: %s +%.1f l (%.1f -> %.1f / target %.1f)",
             fillTypeName,
-            palletAmount,
+            storedAmount,
             previousLevel,
             storage:getFillLevel(requestedFillType),
             job.target
@@ -537,23 +590,21 @@ function PlaceableProductionWarehouseSupply.onPalletSpawned(self, spawnedObject)
 
         spawnedObject:delete()
 
-        -- Do not finish yet: if one pallet was not enough, immediately take the
-        -- next matching pallet. The loop stops as soon as storage >= target.
+        -- Если одного тюка/паллеты недостаточно, очередь сразу берёт следующий.
         self:productionWarehouseSupplyProcessQueue()
         return
     end
 
-    -- Safety path: never destroy a pallet we could not confidently transfer.
-    -- Put it back into the ObjectStorage and stop this resource until next hour.
+    -- При любой неоднозначности объект не уничтожаем, а возвращаем на склад.
     self:addObjectToObjectStorage(spawnedObject, false)
     self:setObjectStorageObjectInfosDirty()
 
     if incompatibleContents then
-        self:productionWarehouseSupplyFinishCurrentJob("pallet contains another/mixed fillType")
-    elseif palletAmount <= PlaceableProductionWarehouseSupply.EPSILON then
-        self:productionWarehouseSupplyFinishCurrentJob("pallet is empty or has no readable fill unit")
+        self:productionWarehouseSupplyFinishCurrentJob("stored object contains another/mixed fillType")
+    elseif storedAmount <= PlaceableProductionWarehouseSupply.EPSILON then
+        self:productionWarehouseSupplyFinishCurrentJob("stored object is empty or has no readable fill level")
     else
-        self:productionWarehouseSupplyFinishCurrentJob("not enough free capacity for the whole pallet")
+        self:productionWarehouseSupplyFinishCurrentJob("not enough free capacity for the whole stored object")
     end
 
     self:productionWarehouseSupplyProcessQueue()
