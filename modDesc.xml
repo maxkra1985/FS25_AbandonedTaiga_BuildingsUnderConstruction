@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="101">
 	<author>MaxKra1985</author>
-	<version>0.3.0.1</version>
+	<version>0.3.0.2</version>
 
 	<title>
 		<ru>Комплект проектов возводимых домов, производств, загонов для животных.</ru>
@@ -113,8 +113,8 @@
 		<type name="productionPointWithStorage" parent="productionPoint" className="Placeable" filename="$dataS/scripts/placeables/Placeable.lua">
 			<specialization name="constructible"/>
 			<specialization name="objectStorage"/>
-			<!-- Специализация зарегистрирована зависимостью FS25_AbandonedTaiga_4x. -->
-			<specialization name="productionWarehouseSupply"/>
+			<!-- Специализация зарегистрирована обязательной зависимостью FS25_AbandonedTaiga_4x. -->
+			<specialization name="FS25_AbandonedTaiga_4x.productionWarehouseSupply"/>
 			<specialization name="meatAnimalInput"/>
 		</type>
 	</placeableTypes>
