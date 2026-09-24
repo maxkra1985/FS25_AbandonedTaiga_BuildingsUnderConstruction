@@ -173,7 +173,7 @@
 	<triggerMarkers>
 		<triggerMarker node="constructibleUnloadTriggerMarker"	adjustToGround="true"	filename="markerIcons/markerIconStroyka.i3d"/>
 		<triggerMarker node="playerTriggerMarker"				adjustToGround="false"	filename="$data/shared/assets/marker/markerIconWrench.i3d"/>
-		<triggerMarker node="palletTrigger"						adjustToGround="false"	filename="markerIcons/markerIconMineralFeedPallet.i3d"/>
+		<triggerMarker node="unloadTriggerPallet"				adjustToGround="false"	filename="markerIcons/markerIconMineralFeedPallet.i3d"/>
 		<triggerMarker node="bulkHayUnloadLinkNode"				adjustToGround="true"	filename="markerIcons/markerIconHay.i3d"/>
 		<triggerMarker node="bulkSillageUnloadLinkNode"			adjustToGround="true"	filename="markerIcons/markerIconSilage.i3d"/>
 		<triggerMarker node="bulkStrawUnloadLinkNode"			adjustToGround="true"	filename="markerIcons/markerIconStraw.i3d"/>
@@ -267,7 +267,7 @@
 			<animation duration="1.2">
 				<part node="singleDoor2Leaf">
 					<keyFrame time="0.0" rotation="0 0 0"/>
-					<keyFrame time="1.0" rotation="0 105 0"/>
+					<keyFrame time="1.0" rotation="0 -105 0"/>
 				</part>
 			</animation>
 			<controls triggerNode="singleDoor2Trigger" posAction="ACTIVATE_HANDTOOL" posText="action_openDoor" negText="action_closeDoor"/>
