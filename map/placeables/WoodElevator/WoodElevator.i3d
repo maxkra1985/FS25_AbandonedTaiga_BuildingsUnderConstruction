@@ -34,17 +34,17 @@
     <File fileId="112" filename="textures/DeskiBig_2w_025H_90d.dds"/>
     <File fileId="128" filename="textures/Detale_diffuse.dds"/>
     <File fileId="129" filename="textures/Detale_normal.dds"/>
-    <File fileId="102" filename="textures/DmuchawaSilosNiebieski_diffuse.dds"/>
+    <File fileId="102" filename="../textures/DmuchawaSilosNiebieski_diffuse.dds"/>
     <File fileId="111" filename="textures/DmuchawaSilos_diffuse.dds"/>
-    <File fileId="103" filename="textures/DmuchawaSilos_normal.dds"/>
-    <File fileId="104" filename="textures/DmuchawaSilos_specular.dds"/>
+    <File fileId="103" filename="../textures/DmuchawaSilos_normal.dds"/>
+    <File fileId="104" filename="../textures/DmuchawaSilos_specular.dds"/>
     <File fileId="130" filename="textures/Kable_mask.dds"/>
     <File fileId="201" filename="textures/Posters/01_grain_quality.dds"/>
     <File fileId="202" filename="textures/Posters/02_grain_moisture.dds"/>
     <File fileId="203" filename="textures/Posters/03_grain_flow.dds"/>
     <File fileId="204" filename="textures/Posters/04_bucket_elevator.dds"/>
     <File fileId="205" filename="textures/Posters/05_grain_cleaning.dds"/>
-    <File fileId="206" filename="textures/Posters/06_moving_machinery.dds"/>
+    <File fileId="206" filename="../textures/06_moving_machinery.dds"/>
     <File fileId="207" filename="textures/Posters/07_grain_entrapment.dds"/>
     <File fileId="208" filename="textures/Posters/08_safe_unloading.dds"/>
     <File fileId="209" filename="textures/Posters/09_fire_safety.dds"/>
@@ -55,17 +55,17 @@
     <File fileId="167" filename="textures/beachAndElectricityDecals_diffuse.png"/>
     <File fileId="127" filename="textures/beltRubber_diffuse.png"/>
     <File fileId="125" filename="textures/bucketSteel_diffuse.png"/>
-    <File fileId="174" filename="textures/cableStraightVentilatorGrid_diffuse.png"/>
-    <File fileId="139" filename="textures/cableStraightVentilatorGrid_specular.dds"/>
-    <File fileId="175" filename="textures/cableStraightVentilatorGrid_specular.png"/>
-    <File fileId="171" filename="textures/cableStraightVentilator_diffuse.png"/>
-    <File fileId="172" filename="textures/cableStraightVentilator_normal.png"/>
-    <File fileId="173" filename="textures/cableStraightVentilator_specular.png"/>
+    <File fileId="174" filename="../textures/cableStraightVentilatorGrid_diffuse.dds"/>
+    <File fileId="139" filename="../textures/cableStraightVentilatorGrid_specular.dds"/>
+    <File fileId="175" filename="../textures/cableStraightVentilatorGrid_specular.dds"/>
+    <File fileId="171" filename="../textures/cableStraightVentilator_diffuse.dds"/>
+    <File fileId="172" filename="../textures/cableStraightVentilator_normal.dds"/>
+    <File fileId="173" filename="../textures/cableStraightVentilator_specular.dds"/>
     <File fileId="255" filename="textures/canola_diffuse.png"/>
     <File fileId="256" filename="textures/canola_normal.png"/>
-    <File fileId="14" filename="textures/cargoBox01_diffuse.dds"/>
-    <File fileId="15" filename="textures/cargoBox01_normal.dds"/>
-    <File fileId="16" filename="textures/cargoBox01_specular.dds"/>
+    <File fileId="14" filename="../textures/cargoBox01_diffuse.dds"/>
+    <File fileId="15" filename="../textures/cargoBox01_normal.dds"/>
+    <File fileId="16" filename="../textures/cargoBox01_specular.dds"/>
     <File fileId="265" filename="textures/cleanGrain_diffuse.png"/>
     <File fileId="266" filename="textures/cleanGrain_normal.png"/>
     <File fileId="192" filename="textures/darkWood_diffuse.png"/>
@@ -74,27 +74,27 @@
     <File fileId="161" filename="../textures/electricalMeter_diffuse.dds"/>
     <File fileId="162" filename="../textures/electricalMeter_normal.dds"/>
     <File fileId="163" filename="../textures/electricalMeter_specular.dds"/>
-    <File fileId="36" filename="textures/euroPallet01_diffuse.png"/>
-    <File fileId="37" filename="textures/euroPallet01_normal.png"/>
-    <File fileId="38" filename="textures/euroPallet01_specular.png"/>
-    <File fileId="39" filename="textures/flourSackSet_diffuse.png"/>
-    <File fileId="40" filename="textures/flourSackSet_normal.png"/>
-    <File fileId="41" filename="textures/flourSackSet_specular.png"/>
+    <File fileId="36" filename="../textures/euroPallet01_diffuse.dds"/>
+    <File fileId="37" filename="../textures/euroPallet01_normal.dds"/>
+    <File fileId="38" filename="../textures/euroPallet01_specular.dds"/>
+    <File fileId="39" filename="../textures/flourSackSet_diffuse.dds"/>
+    <File fileId="40" filename="../textures/flourSackSet_normal.dds"/>
+    <File fileId="41" filename="../textures/flourSackSet_specular.dds"/>
     <File fileId="198" filename="textures/frameMetal_diffuse.png"/>
     <File fileId="200" filename="textures/frameMetal_gloss.png"/>
     <File fileId="199" filename="textures/frameMetal_normal.png"/>
     <File fileId="164" filename="textures/glass_diffuse.png"/>
-    <File fileId="143" filename="textures/grainDividerSET_diffuse.png"/>
-    <File fileId="146" filename="textures/grainDividerSET_mask.png"/>
-    <File fileId="144" filename="textures/grainDividerSET_normal.png"/>
-    <File fileId="145" filename="textures/grainDividerSET_specular.png"/>
+    <File fileId="143" filename="../textures/grainDividerSET_diffuse.dds"/>
+    <File fileId="146" filename="../textures/grainDividerSET_mask.dds"/>
+    <File fileId="144" filename="../textures/grainDividerSET_normal.dds"/>
+    <File fileId="145" filename="../textures/grainDividerSET_specular.dds"/>
     <File fileId="263" filename="textures/maize_diffuse.png"/>
     <File fileId="264" filename="textures/maize_normal.png"/>
     <File fileId="118" filename="textures/masklong.dds"/>
     <File fileId="116" filename="textures/met.dds"/>
-    <File fileId="42" filename="textures/metalPallet_diffuse.png"/>
-    <File fileId="43" filename="textures/metalPallet_normal.png"/>
-    <File fileId="44" filename="textures/metalPallet_specular.png"/>
+    <File fileId="42" filename="../textures/metalPallet_diffuse.dds"/>
+    <File fileId="43" filename="../textures/metalPallet_normal.dds"/>
+    <File fileId="44" filename="../textures/metalPallet_specular.dds"/>
     <File fileId="115" filename="textures/metalnew.png"/>
     <File fileId="253" filename="textures/oat_diffuse.png"/>
     <File fileId="254" filename="textures/oat_normal.png"/>
@@ -102,17 +102,17 @@
     <File fileId="113" filename="textures/osb_2x2.png"/>
     <File fileId="95" filename="textures/osb_4x1.dds"/>
     <File fileId="160" filename="textures/plastic.dds"/>
-    <File fileId="6" filename="textures/props/euroPallet01_diffuse.png"/>
-    <File fileId="7" filename="textures/props/euroPallet01_normal.png"/>
-    <File fileId="8" filename="textures/props/euroPallet01_specular.png"/>
-    <File fileId="9" filename="textures/props/metalTrashSet_diffuse.png"/>
-    <File fileId="10" filename="textures/props/metalTrashSet_normal.png"/>
-    <File fileId="11" filename="textures/props/metalTrashSet_specular.png"/>
+    <File fileId="6" filename="../textures/euroPallet01_diffuse.dds"/>
+    <File fileId="7" filename="../textures/euroPallet01_normal.dds"/>
+    <File fileId="8" filename="../textures/euroPallet01_specular.dds"/>
+    <File fileId="9" filename="../textures/metalTrashSet_diffuse.dds"/>
+    <File fileId="10" filename="../textures/metalTrashSet_normal.dds"/>
+    <File fileId="11" filename="../textures/metalTrashSet_specular.dds"/>
     <File fileId="3" filename="../textures/propsDecals_diffuse.dds"/>
     <File fileId="4" filename="../textures/propsDecals_specular.dds"/>
-    <File fileId="17" filename="textures/rebar_diffuse.dds"/>
-    <File fileId="18" filename="textures/rebar_normal.dds"/>
-    <File fileId="19" filename="textures/rebar_specular.dds"/>
+    <File fileId="17" filename="../textures/rebar_diffuse.dds"/>
+    <File fileId="18" filename="../textures/rebar_normal.dds"/>
+    <File fileId="19" filename="../textures/rebar_specular.dds"/>
     <File fileId="195" filename="textures/signFace_diffuse.png"/>
     <File fileId="197" filename="textures/signFace_gloss.png"/>
     <File fileId="196" filename="textures/signFace_normal.png"/>
