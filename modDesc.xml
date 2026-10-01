@@ -23,6 +23,7 @@
 
 	<extraSourceFiles>
 		<sourceFile filename="scripts/WoodElevatorStorageInfo.lua"/>
+		<sourceFile filename="scripts/ProductionVisualsLifecycle.lua"/>
 		<sourceFile filename="scripts/BunkerFillPlanes.lua"/>
 		<sourceFile filename="scripts/ProductionFillVolumes.lua"/>
 		<sourceFile filename="scripts/ConstructibleProgressMeshes.lua"/>

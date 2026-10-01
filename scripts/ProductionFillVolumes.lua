@@ -9,7 +9,6 @@ ProductionFillVolumes = ProductionFillVolumes or {}
 local PFV = ProductionFillVolumes
 PFV.VERSION = "1.0.0.0"
 PFV.LOG_PREFIX = "[ProductionFillVolumes]"
-PFV.hooksInstalled = PFV.hooksInstalled or false
 PFV.placeablesByProductionPoint = PFV.placeablesByProductionPoint or setmetatable({}, {__mode = "k"})
 
 -- Регистрирует XML-параметры визуальных объёмов внутри ProductionPoint Storage.
@@ -670,105 +669,17 @@ function PFV:deletePlaceable(placeable)
 end
 
 -- Устанавливает хуки один раз при загрузке sourceFile из modDesc.xml.
-function PFV:installHooks()
-    if self.hooksInstalled then
-        return
+
+-- Called by the shared ProductionVisualsLifecycle after vanilla state changes.
+function PFV:onProductionStateChanged(productionPoint, productionId, isEnabled, noEventSend)
+    local placeable = self.placeablesByProductionPoint[productionPoint]
+    if placeable ~= nil then
+        self:updatePlaceable(placeable)
     end
-
-    self.hooksInstalled = true
-
-    PlaceableProductionPoint.registerXMLPaths =
-        Utils.appendedFunction(
-            PlaceableProductionPoint.registerXMLPaths,
-            function(schema, basePath)
-                PFV:registerXMLPaths(
-                    schema,
-                    basePath
-                )
-            end
-        )
-
-    PlaceableProductionPoint.onLoad =
-        Utils.appendedFunction(
-            PlaceableProductionPoint.onLoad,
-            function(placeable, savegame)
-                PFV:loadPlaceable(
-                    placeable
-                )
-            end
-        )
-
-    PlaceableProductionPoint.onFinalizePlacement =
-        Utils.appendedFunction(
-            PlaceableProductionPoint.onFinalizePlacement,
-            function(placeable)
-                PFV:connectStorage(
-                    placeable
-                )
-            end
-        )
-
-    PlaceableProductionPoint.onReadStream =
-        Utils.appendedFunction(
-            PlaceableProductionPoint.onReadStream,
-            function(placeable, streamId, connection)
-                PFV:connectStorage(
-                    placeable
-                )
-                PFV:updatePlaceable(
-                    placeable
-                )
-            end
-        )
-
-    PlaceableProductionPoint.finalizeConstruction =
-        Utils.appendedFunction(
-            PlaceableProductionPoint.finalizeConstruction,
-            function(placeable)
-                PFV:connectStorage(
-                    placeable
-                )
-                PFV:updatePlaceable(
-                    placeable
-                )
-            end
-        )
-
-    PlaceableProductionPoint.onDelete =
-        Utils.prependedFunction(
-            PlaceableProductionPoint.onDelete,
-            function(placeable)
-                PFV:deletePlaceable(
-                    placeable
-                )
-            end
-        )
-
-    -- Резервный режим реагирует сразу на включение и выключение рецепта.
-    if ProductionPoint ~= nil
-        and ProductionPoint.setProductionState ~= nil then
-
-        ProductionPoint.setProductionState =
-            Utils.appendedFunction(
-                ProductionPoint.setProductionState,
-                function(productionPoint, productionId, isEnabled, noEventSend)
-                    local placeable =
-                        PFV.placeablesByProductionPoint[productionPoint]
-
-                    if placeable ~= nil then
-                        PFV:updatePlaceable(
-                            placeable
-                        )
-                    end
-                end
-            )
-    end
-
-    Logging.info(
-        "%s hooks installed, version=%s",
-        self.LOG_PREFIX,
-        self.VERSION
-    )
 end
 
-PFV:installHooks()
+if ProductionVisualsLifecycle ~= nil then
+    ProductionVisualsLifecycle:registerModule("ProductionFillVolumes", PFV)
+else
+    Logging.error("%s ProductionVisualsLifecycle is not loaded", PFV.LOG_PREFIX)
+end

@@ -39,7 +39,6 @@ BunkerFillPlanes = BunkerFillPlanes or {}
 local BFP = BunkerFillPlanes
 BFP.VERSION = "2.0.0.0"
 BFP.LOG_PREFIX = "[BunkerFillPlanes]"
-BFP.hooksInstalled = BFP.hooksInstalled or false
 
 local function registerBunkerXMLPaths(schema, productionPath)
     local key = productionPath .. ".storage.bunkerFillPlane(?)"
@@ -497,90 +496,8 @@ function BFP:deletePlaceable(placeable)
     placeable.bunkerFillPlanesState = nil
 end
 
-function BFP:installHooks()
-    if self.hooksInstalled then
-        return
-    end
-
-    self.hooksInstalled = true
-
-    -- Register our custom XML children for every placeable type that
-    -- includes PlaceableProductionPoint. No custom placeable type needed.
-    PlaceableProductionPoint.registerXMLPaths =
-        Utils.appendedFunction(
-            PlaceableProductionPoint.registerXMLPaths,
-            function(schema, basePath)
-                BFP:registerXMLPaths(
-                    schema,
-                    basePath
-                )
-            end
-        )
-
-    PlaceableProductionPoint.onLoad =
-        Utils.appendedFunction(
-            PlaceableProductionPoint.onLoad,
-            function(placeable, savegame)
-                BFP:loadPlaceable(
-                    placeable
-                )
-            end
-        )
-
-    PlaceableProductionPoint.onFinalizePlacement =
-        Utils.appendedFunction(
-            PlaceableProductionPoint.onFinalizePlacement,
-            function(placeable)
-                BFP:connectStorage(
-                    placeable
-                )
-            end
-        )
-
-    -- Initial MP stream may arrive after onLoad.
-    PlaceableProductionPoint.onReadStream =
-        Utils.appendedFunction(
-            PlaceableProductionPoint.onReadStream,
-            function(placeable, streamId, connection)
-                BFP:connectStorage(
-                    placeable
-                )
-                BFP:updatePlaceable(
-                    placeable
-                )
-            end
-        )
-
-    -- Construction FINALIZE can happen long after normal placement.
-    PlaceableProductionPoint.finalizeConstruction =
-        Utils.appendedFunction(
-            PlaceableProductionPoint.finalizeConstruction,
-            function(placeable)
-                BFP:connectStorage(
-                    placeable
-                )
-                BFP:updatePlaceable(
-                    placeable
-                )
-            end
-        )
-
-    -- Remove listener before vanilla ProductionPoint deletion.
-    PlaceableProductionPoint.onDelete =
-        Utils.prependedFunction(
-            PlaceableProductionPoint.onDelete,
-            function(placeable)
-                BFP:deletePlaceable(
-                    placeable
-                )
-            end
-        )
-
-    Logging.info(
-        "%s hooks installed, version=%s",
-        self.LOG_PREFIX,
-        self.VERSION
-    )
+if ProductionVisualsLifecycle ~= nil then
+    ProductionVisualsLifecycle:registerModule("BunkerFillPlanes", BFP)
+else
+    Logging.error("%s ProductionVisualsLifecycle is not loaded", BFP.LOG_PREFIX)
 end
-
-BFP:installHooks()

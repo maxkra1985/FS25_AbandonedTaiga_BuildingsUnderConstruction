@@ -19,6 +19,16 @@
 
     В construction preview постоянные пошаговые фазы показываются полностью,
     а временные диапазонные props скрываются.
+
+    IMPORTANT / DO NOT REPLACE WITH VANILLA <mesh>:
+    Штатный ConstructibleStateBuilding <mesh> управляет прогрессом через shader
+    hideByIndex и рассчитан на сложный Shape, внутри которого геометрические части
+    заранее имеют соответствующие индексы. Наши строительные модели устроены иначе:
+    отдельные объекты/Shape должны включаться и выключаться как самостоятельные узлы,
+    в том числе по progressFillType, диапазонам progressStepMin/progressStepMax и
+    вместе с physics. Именно поэтому здесь используется собственный
+    ConstructibleProgressMeshes, а не штатный <mesh>. Не предлагать обратный переход
+    без изменения самих I3D-моделей и их индексированной геометрии.
 ]]
 
 ConstructibleProgressMeshes = ConstructibleProgressMeshes or {}
