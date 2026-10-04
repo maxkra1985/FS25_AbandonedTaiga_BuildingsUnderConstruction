@@ -87,6 +87,59 @@ local function collectShapeTree(node, shapes)
 end
 
 
+-- Собирает реальные источники света lampa_alap внутри временного строительного props.
+local function collectConstructionPropsLights(node, lights)
+    local parent = getParent(node)
+
+    if parent ~= 0 and getName(node) == "light" and getName(parent) == "lampa_alap" then
+        table.insert(lights, node)
+    end
+
+    local numChildren = getNumOfChildren(node)
+
+    for childIndex = 0, numChildren - 1 do
+        collectConstructionPropsLights(getChildAt(node, childIndex), lights)
+    end
+end
+
+
+-- Обновляет свет только у активного phase_XX_propsYY по текущему состоянию дня/ночи.
+local function updateConstructionPropsLights(entry)
+    if not entry.isConstructionProps
+        or not entry.lastVisibility
+        or entry.constructible == nil
+        or not entry.constructible.isClient then
+        return
+    end
+
+    local environment = g_currentMission ~= nil and g_currentMission.environment or nil
+
+    if environment == nil then
+        return
+    end
+
+    local isLightActive = not environment.isSunOn
+
+    for _, lightNode in ipairs(entry.lightNodes) do
+        setVisibility(lightNode, isLightActive)
+    end
+end
+
+
+-- Переключает свет только в тех phase_XX_propsYY, которые сейчас активны по прогрессу.
+function CPM.onDayNightChanged(constructible)
+    local entries = constructible.progressMeshConstructionLightEntries
+
+    if entries == nil then
+        return
+    end
+
+    for _, entry in ipairs(entries) do
+        updateConstructionPropsLights(entry)
+    end
+end
+
+
 -- Собирает визуальные единицы внутри ноды в порядке Scenegraph.
 -- TransformGroup служит только контейнером. Как только найден Shape,
 -- он становится одной единицей, а вложенные Shape входят в ту же единицу.
@@ -273,6 +326,12 @@ local function applyRangeProgress(entry, progress, force)
     changed = setEntryShapesState(entry, shouldBeVisible, force) or changed
     entry.lastVisibility = shouldBeVisible
 
+    -- Свет временного строительного props выставляется только при его активации
+    -- или принудительной синхронизации. Смену дня/ночи дальше обрабатывает событие среды.
+    if shouldBeVisible and entry.isConstructionProps and (changed or force) then
+        updateConstructionPropsLights(entry)
+    end
+
     return changed
 end
 
@@ -394,9 +453,11 @@ function CPM.loadState(state, xmlFile, key)
             local hasRangeMin = xmlFile:hasProperty(progressKey .. "#progressStepMin")
             local hasRangeMax = xmlFile:hasProperty(progressKey .. "#progressStepMax")
 
+            local nodeName = getName(node)
             local entry = {
                 node = node,
-                nodeName = getName(node),
+                nodeName = nodeName,
+                constructible = state.constructible,
                 active = xmlFile:getBool(progressKey .. "#active", true),
                 updatePhysics = xmlFile:getBool(progressKey .. "#updatePhysics", false),
                 progressStepByStep = hasStepByStep,
@@ -405,6 +466,8 @@ function CPM.loadState(state, xmlFile, key)
                 hasRange = hasRangeMin or hasRangeMax,
                 units = {},
                 unitVisibility = {},
+                lightNodes = {},
+                isConstructionProps = string.match(nodeName, "^phase_%d+_props%d+$") ~= nil,
                 shapeCount = 0,
                 disabled = false
             }
@@ -423,6 +486,10 @@ function CPM.loadState(state, xmlFile, key)
             -- Для progressStepByStep units задают последовательность появления.
             -- Для progressStepMin/progressStepMax все найденные Shape переключаются вместе.
             collectShapeUnits(node, entry.units)
+
+            if entry.isConstructionProps then
+                collectConstructionPropsLights(node, entry.lightNodes)
+            end
 
             for _, unit in ipairs(entry.units) do
                 entry.shapeCount = entry.shapeCount + #unit.shapes
@@ -563,6 +630,8 @@ function CPM.loadPlaceableStates(constructible)
         return
     end
 
+    constructible.progressMeshConstructionLightEntries = {}
+
     local loadedStates = 0
     local loadedEntries = 0
 
@@ -575,7 +644,25 @@ function CPM.loadPlaceableStates(constructible)
             CPM.loadState(state, constructible.xmlFile, stateKey)
             loadedStates = loadedStates + 1
             loadedEntries = loadedEntries + #state.progressToggleMeshes
+
+            for _, entry in ipairs(state.progressToggleMeshes) do
+                if entry.isConstructionProps and #entry.lightNodes > 0 then
+                    table.insert(constructible.progressMeshConstructionLightEntries, entry)
+                end
+            end
         end
+    end
+
+    if constructible.isClient
+        and #constructible.progressMeshConstructionLightEntries > 0
+        and not constructible.progressMeshConstructionLightsSubscribed then
+
+        g_messageCenter:subscribe(
+            MessageType.DAY_NIGHT_CHANGED,
+            CPM.onDayNightChanged,
+            constructible
+        )
+        constructible.progressMeshConstructionLightsSubscribed = true
     end
 
     if loadedEntries > 0 then
