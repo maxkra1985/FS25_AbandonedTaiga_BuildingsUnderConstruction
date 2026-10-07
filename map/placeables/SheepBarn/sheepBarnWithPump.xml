@@ -88,10 +88,11 @@
 	</ai>
 
 	<triggerMarkers>
-		<triggerMarker node="markerFoodLeft" filename="$data/shared/assets/marker/markerIconFood.i3d" adjustToGround="true" />
-		<triggerMarker node="markerFoodRight" filename="$data/shared/assets/marker/markerIconFood.i3d"  adjustToGround="true"/>
-		<triggerMarker node="markerAnimals" filename="$data/shared/assets/marker/markerIconAnimals.i3d" adjustToGround="true"/>
-		<triggerMarker node="markerBale" filename="$data/shared/assets/marker/markerIconBales.i3d" adjustToGround="true"/>
+		<triggerMarker node="unloadTriggerMarker" filename="markerIcons/markerIconStroyka.i3d" />
+		<triggerMarker node="markerFoodLeft" filename="markerIcons/markerIconFood.i3d" adjustToGround="true" />
+		<triggerMarker node="markerFoodRight" filename="markerIcons/markerIconFood.i3d"  adjustToGround="true"/>
+		<triggerMarker node="markerAnimals" filename="markerIcons/markerIconSheepGoatTrade.i3d" adjustToGround="true"/>
+		<triggerMarker node="markerBale" filename="markerIcons/markerIconBaleStorage.i3d" adjustToGround="true"/>
 	</triggerMarkers>
 
 	<hotspots>

@@ -91,14 +91,15 @@
 	</ai>
 
 	<triggerMarkers>
-		<triggerMarker node="markerFood" filename="$data/shared/assets/marker/markerIconFood.i3d" />
-		<triggerMarker node="markerAnimals" filename="$data/shared/assets/marker/markerIconAnimals.i3d" />
+		<triggerMarker node="markerFood" filename="markerIcons/markerIconFood.i3d" />
+		<triggerMarker node="markerAnimals" filename="markerIcons/markerIconChickenTrade.i3d" />
+		<triggerMarker node="unloadTriggerMarker" filename="markerIcons/markerIconStroyka.i3d" />
 		<triggerMarker node="markerEggsDecal1" adjustToGround="true" />
 		<triggerMarker node="markerEggsDecal2" adjustToGround="true" />
 		<triggerMarker node="markerEggsDecal3" adjustToGround="true" />
 		<triggerMarker node="markerEggsDecal4" adjustToGround="true" />
 		<triggerMarker node="warningStripes" />
-		<triggerMarker node="ConstructibleWoodSellActivationTriggerMarker" adjustToGround="true" filename="$data/shared/assets/marker/markerIconExclamationMark.i3d"/>
+		<triggerMarker node="ConstructibleWoodSellActivationTriggerMarker" adjustToGround="true" filename="markerIcons/woodUnloadZone.i3d"/>
 
 	</triggerMarkers>
 
