@@ -161,12 +161,14 @@
 	<objectStorage supportsBales="true" supportsPallets="false" capacity="120" maxUnloadAmount="50" maxLength="2.5" maxWidth="2.5" maxHeight="2.5" fillTypes="DRYGRASS_WINDROW STRAW SILAGE">
 		<playerTrigger node="storagePlayerTrigger"/>
 		<objectTrigger node="baleTrigger"/>
+		<transferFromStorage playerTrigger="transferFromStorageTrigger">
+		</transferFromStorage>
 		<spawnAreas>
-			<spawnArea startNode="baleSpawnAreaStart01" endNode="baleSpawnAreaEnd01" maxHeight="2.5"/>
-			<spawnArea startNode="baleSpawnAreaStart02" endNode="baleSpawnAreaEnd02" maxHeight="2.5"/>
+			<spawnArea startNode="baleSpawnAreaStart01" endNode="baleSpawnAreaEnd01" maxHeight="7.5"/>
+			<spawnArea startNode="baleSpawnAreaStart02" endNode="baleSpawnAreaEnd02" maxHeight="7.5"/>
 		</spawnAreas>
 		<storageAreas>
-			<storageArea startNode="baleStorageAreaStart01" endNode="baleStorageAreaEnd01" maxHeight="2.5"/>
+			<storageArea startNode="baleStorageAreaStart01" endNode="baleStorageAreaEnd01" maxHeight="6"/>
 		</storageAreas>
 	</objectStorage>
 
@@ -179,6 +181,7 @@
 		<triggerMarker node="bulkStrawUnloadLinkNode"			adjustToGround="true"	filename="markerIcons/markerIconStraw.i3d"/>
 		<triggerMarker node="baleUnloadLinkNode"				adjustToGround="false"	filename="markerIcons/markerIconBaleStorage.i3d"/>
 		<triggerMarker node="storagePlayerTriggerMarker"		adjustToGround="false"	filename="$data/shared/assets/marker/markerIconWrench.i3d"/>
+		<triggerMarker node="transferFromStorageTriggerMarker"	adjustToGround="false"	filename="markerIcons/markerIconBaleToProduction.i3d"/>
 	</triggerMarkers>
 
 	<hotspots>
@@ -539,6 +542,8 @@
 		<i3dMapping id="baleStorageAreaEnd01" node="0>5|1|2|0"/>
 		<i3dMapping id="storagePlayerTrigger" node="0>5|2"/>
 		<i3dMapping id="storagePlayerTriggerMarker" node="0>5|2|0"/>
+		<i3dMapping id="transferFromStorageTrigger" node="0>5|3"/>
+		<i3dMapping id="transferFromStorageTriggerMarker" node="0>5|3|0"/>
 
 		<!-- АНИМАЦИИ ПРОИЗВОДСТВА -->
 		<i3dMapping id="ventRotor01" node="0>1|32|8|2"/>

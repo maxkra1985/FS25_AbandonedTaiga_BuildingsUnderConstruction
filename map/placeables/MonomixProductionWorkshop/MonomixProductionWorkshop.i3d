@@ -4592,23 +4592,26 @@
       </TransformGroup>
       <TransformGroup name="baleWarehouse" nodeId="3453">
         <TransformGroup name="baleTrigger" translation="0 0 -29.4586" nodeId="3454">
-          <Shape name="baleTrigger" translation="0 1.13786 0" scale="0.242563 4 1" shapeId="251" static="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x40000" nodeId="3455" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="67"/>
+          <Shape name="baleTrigger" translation="0 1.34685 -0.408907" scale="0.242563 6.50461 1" shapeId="251" static="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x40000" nodeId="3455" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="67"/>
           <TransformGroup name="baleUnloadLinkNode" translation="0.388149 0.358972 0.226313" nodeId="3456"/>
           <TransformGroup name="baleAiUnloadingNode" translation="0.388149 0.358972 0.226313" nodeId="3457"/>
         </TransformGroup>
         <TransformGroup name="areas" nodeId="3458">
-          <TransformGroup name="spawnAreaStart_Row1" translation="9.6 4.76837e-07 -31.6" rotation="0 -90 0" nodeId="3459">
+          <TransformGroup name="spawnAreaStart_Row1" translation="9.6 4.76837e-07 -32" rotation="0 -90 0" nodeId="3459">
             <TransformGroup name="spawnAreaEnd_Row1" translation="3 -1.43051e-06 6.5" nodeId="3460"/>
           </TransformGroup>
-          <TransformGroup name="spawnAreaStart_Row2" translation="-3.1 0 -31.6" rotation="0 -90 0" nodeId="3461">
+          <TransformGroup name="spawnAreaStart_Row2" translation="-3.1 0 -32" rotation="0 -90 0" nodeId="3461">
             <TransformGroup name="spawnAreaEnd_Row2" translation="3 0 6.5" nodeId="3462"/>
           </TransformGroup>
           <TransformGroup name="storageAreaStart_Row1_part01" translation="8.8 0.25 -28.3" rotation="0 -90 0" nodeId="3463">
             <TransformGroup name="storageAreaEnd_Row1_part01" translation="14.3 0 6.5" nodeId="3464"/>
           </TransformGroup>
         </TransformGroup>
-        <Shape name="storagePlayerTrigger" translation="-2 0.25 -18.5" shapeId="252" static="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x110000" nodeId="3465" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="68">
+        <Shape name="storagePlayerTrigger" translation="-2 0.25 -26.9764" shapeId="252" static="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x110000" nodeId="3465" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="68">
           <TransformGroup name="playerTriggerMarker" nodeId="3466"/>
+        </Shape>
+        <Shape name="transferFromStorageTrigger" translation="-2 0.25 -15.9764" shapeId="252" static="true" collision="false" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x110000" nodeId="3533" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="68">
+          <TransformGroup name="transferFromStorageTriggerMarker" nodeId="3534"/>
         </Shape>
       </TransformGroup>
     </TransformGroup>
