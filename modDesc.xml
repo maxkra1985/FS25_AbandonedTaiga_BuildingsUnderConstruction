@@ -116,6 +116,7 @@
 			<specialization name="objectStorage"/>
 			<!-- Специализация зарегистрирована обязательной зависимостью FS25_AbandonedTaiga_4x. -->
 			<specialization name="FS25_AbandonedTaiga_4x.productionWarehouseSupply"/>
+			<specialization name="FS25_AbandonedTaiga_4x.transferFromStorage"/>
 			<specialization name="meatAnimalInput"/>
 		</type>
 	</placeableTypes>

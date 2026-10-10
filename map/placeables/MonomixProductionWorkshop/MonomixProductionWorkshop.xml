@@ -162,6 +162,9 @@
 		<playerTrigger node="storagePlayerTrigger"/>
 		<objectTrigger node="baleTrigger"/>
 		<transferFromStorage playerTrigger="transferFromStorageTrigger">
+			<destination fillType="DRYGRASS_WINDROW" target="productionStorage" actionText="В производство"/>
+			<destination fillType="SILAGE" target="productionStorage" actionText="В производство"/>
+			<destination fillType="STRAW" target="productionStorage" actionText="В производство"/>
 		</transferFromStorage>
 		<spawnAreas>
 			<spawnArea startNode="baleSpawnAreaStart01" endNode="baleSpawnAreaEnd01" maxHeight="7.5"/>
