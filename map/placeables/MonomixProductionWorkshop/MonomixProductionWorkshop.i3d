@@ -4610,7 +4610,7 @@
         <Shape name="storagePlayerTrigger" translation="-2 0.25 -26.9764" shapeId="252" static="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x110000" nodeId="3465" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="68">
           <TransformGroup name="playerTriggerMarker" nodeId="3466"/>
         </Shape>
-        <Shape name="transferFromStorageTrigger" translation="-2 0.25 -15.9764" shapeId="252" static="true" collision="false" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x110000" nodeId="3533" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="68">
+        <Shape name="transferFromStorageTrigger" translation="-2 0.25 -15.9764" shapeId="252" static="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x110000" nodeId="3533" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="68">
           <TransformGroup name="transferFromStorageTriggerMarker" nodeId="3534"/>
         </Shape>
       </TransformGroup>
