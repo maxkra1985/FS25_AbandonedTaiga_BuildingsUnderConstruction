@@ -171,7 +171,7 @@
 			<spawnArea startNode="baleSpawnAreaStart02" endNode="baleSpawnAreaEnd02" maxHeight="7.5"/>
 		</spawnAreas>
 		<storageAreas>
-			<storageArea startNode="baleStorageAreaStart01" endNode="baleStorageAreaEnd01" maxHeight="6"/>
+			<storageArea startNode="baleStorageAreaStart01" endNode="baleStorageAreaEnd01" maxHeight="4.15"/>
 		</storageAreas>
 	</objectStorage>
 
