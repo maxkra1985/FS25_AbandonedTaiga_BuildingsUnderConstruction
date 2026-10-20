@@ -297,6 +297,22 @@
 			<en>Inedible fat</en>
 			<de>Ungenießbares Fett</de>
 		</text>
+
+		<text name="button_moveAnimal">
+			<ru>Сдать на %s</ru>
+			<en>Submit for %s</en>
+			<de>Abgeben für %s</de>
+		</text>
+		<text name="message_unloadAnimalConfirmation">
+			<ru>Животные были успешно сданы на %s!</ru>
+			<en>The animals were successfully handed over to %s!</en>
+			<de>Die Tiere wurden erfolgreich bei %s abgegeben!</de>
+		</text>
+		<text name="message_unloadAnimalSuccess">
+			<ru>Вы хотите сдать %d животных (%s) на %s?</ru>
+			<en>Do you want to hand over %d animals (%s) to %s?</en>
+			<de>Möchten Sie %d Tiere (%s) bei %s abgeben?</de>
+		</text>
 	</l10n>
 
 </modDesc>

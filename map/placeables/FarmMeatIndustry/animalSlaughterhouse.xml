@@ -129,7 +129,7 @@
 
 	<productionPoint isFinalized="false">
 		<productions sharedThroughputCapacity="true">
-			<production id="cow" name="$l10n_fillType_beef" cyclesPerHour="3" costsPerActiveHour="10">
+			<production id="cow" name="$l10n_fillType_beef" cyclesPerHour="9" costsPerActiveHour="10">
 				<inputs>
 					<input fillType="COW_INPUT" amount="100"/>
 					<input fillType="EUROPALLET" amount="8"/>
@@ -254,7 +254,7 @@
 			<active file="$data/placeables/brandless/productionPointsGeneric/paperFactory/sounds/paperFactoryWork.wav" linkNode="productionPoint" loops="0" innerRadius="7" outerRadius="40" supportsReverb="false"/>
 		</sounds>
 	</productionPoint>
-	<objectStorage isExtension="true" supportsExtension="false" supportsBales="false" supportsPallets="true" capacity="120" maxUnloadAmount="25" maxLength="8.5" maxWidth="6" maxHeight="4.0" fillTypes="BEEF PORK MUTTON CHICKENMEAT KOSTI KROW WOOL SALO">
+	<objectStorage isExtension="true" supportsExtension="false" supportsBales="false" supportsPallets="true" capacity="350" maxUnloadAmount="25" maxLength="8.5" maxWidth="6" maxHeight="4.0" fillTypes="BEEF PORK MUTTON CHICKENMEAT KOSTI KROW WOOL SALO EUROPALLET CARTONROLL">
 		<playerTrigger node="storagePlayerTrigger"/>
 		<objectTrigger node="objectTrigger"/>
 		<spawnAreas>
