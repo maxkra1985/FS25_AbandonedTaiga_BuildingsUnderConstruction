@@ -16,6 +16,9 @@ WESI.LOG_PREFIX = "[WoodElevatorStorageInfo]"
 WESI.infoHookInstalled = WESI.infoHookInstalled or false
 WESI.pricesHookInstalled = WESI.pricesHookInstalled or false
 
+-- Диагностика HUD ограничена одним снимком на объект за пять секунд.
+WESI.hudDebugTimes = WESI.hudDebugTimes or setmetatable({}, { __mode = "k" })
+
 WESI.EXTRA_FILL_TYPES = {
     "CANOLA",
     "SUNFLOWER",
@@ -165,53 +168,143 @@ function WESI:insertStorageUsageRow(productionPoint, infoTable)
     table.insert(infoTable, row)
 end
 
+-- Записывает состав таблицы информационного HUD для анализа формирования строк.
+function WESI:debugInfoRows(stage, infoTable)
+    Logging.info("%s HUD %s: rows=%d", self.LOG_PREFIX, stage, #infoTable)
+
+    for index, row in ipairs(infoTable) do
+        Logging.info(
+            "%s HUD %s row[%d]: title=%s text=%s",
+            self.LOG_PREFIX,
+            stage,
+            index,
+            tostring(row.title),
+            tostring(row.text)
+        )
+    end
+end
+
+-- Дополняет стандартный HUD элеватора и диагностирует условия вывода культур.
 function WESI:updateInfo(productionPoint, superFunc, infoTable)
     superFunc(productionPoint, infoTable)
 
-    if not self:isWoodElevator(productionPoint) then
+    local filename = productionPoint.owningPlaceable ~= nil
+        and normalizePath(productionPoint.owningPlaceable.configFileName)
+        or ""
+    local isElevator = self:isWoodElevator(productionPoint)
+
+    -- Фиксируем также непризнанный элеватор: иначе ошибка определения объекта
+    -- скрыла бы вообще все диагностические сообщения.
+    local isCandidate = isElevator
+        or string.find(filename, "woodelevator", 1, true) ~= nil
+    if not isCandidate then
+        return
+    end
+
+    local now = g_currentMission ~= nil and g_currentMission.time or 0
+    local previous = self.hudDebugTimes[productionPoint]
+    local debugEnabled = previous == nil or now < previous or now - previous >= 5000
+    if debugEnabled then
+        self.hudDebugTimes[productionPoint] = now
+        Logging.info(
+            "%s HUD begin: path=%s recognized=%s storage=%s time=%s",
+            self.LOG_PREFIX,
+            filename,
+            tostring(isElevator),
+            tostring(productionPoint.storage ~= nil),
+            tostring(now)
+        )
+        self:debugInfoRows("vanilla", infoTable)
+    end
+
+    if not isElevator then
+        if debugEnabled then
+            Logging.info("%s HUD skip: isWoodElevator=false", self.LOG_PREFIX)
+        end
         return
     end
 
     local storage = productionPoint.storage
     if storage == nil then
+        if debugEnabled then
+            Logging.info("%s HUD skip: productionPoint.storage=nil", self.LOG_PREFIX)
+        end
         return
     end
 
-    -- Total used / configured capacity.
+    if debugEnabled then
+        local used, capacity = self:getStorageUsage(storage)
+        Logging.info(
+            "%s HUD storage: used=%s capacity=%s supportedTypes=%s",
+            self.LOG_PREFIX,
+            tostring(used),
+            tostring(capacity),
+            tostring(storage:getSupportedFillTypes() ~= nil)
+        )
+    end
+
+    -- Общая заполненность элеватора.
     self:insertStorageUsageRow(productionPoint, infoTable)
 
-    -- FillTypes which are storage-only and therefore absent from vanilla
-    -- ProductionPoint.inputFillTypeIdsArray/outputFillTypeIdsArray.
     local addedAny = false
 
+    -- Диагностируем каждое условие отображения дополнительных культур.
     for _, fillTypeName in ipairs(self.EXTRA_FILL_TYPES) do
         local fillTypeId = g_fillTypeManager:getFillTypeIndexByName(fillTypeName)
 
-        if fillTypeId ~= nil then
-            -- If the fillType later becomes a real recipe input/output,
-            -- vanilla ProductionPoint:updateInfo already displays it.
-            local alreadyVanilla =
-                productionPoint.inputFillTypeIds[fillTypeId] == true
-                or productionPoint.outputFillTypeIds[fillTypeId] == true
+        if fillTypeId == nil then
+            if debugEnabled then
+                Logging.info(
+                    "%s HUD fillType=%s skip: unknown fillTypeId",
+                    self.LOG_PREFIX, fillTypeName
+                )
+            end
+        else
+            local isInput = productionPoint.inputFillTypeIds[fillTypeId] == true
+            local isOutput = productionPoint.outputFillTypeIds[fillTypeId] == true
+            local alreadyVanilla = isInput or isOutput
+            local supported = storage:getIsFillTypeSupported(fillTypeId)
+            local storedLevel = storage:getFillLevel(fillTypeId)
+            local productionLevel = productionPoint:getFillLevel(fillTypeId)
+            local added = false
 
-            if not alreadyVanilla and storage:getIsFillTypeSupported(fillTypeId) then
-                local fillLevel = storage:getFillLevel(fillTypeId)
+            if not alreadyVanilla and supported and storedLevel > 1 then
+                table.insert(infoTable, {
+                    title = g_fillTypeManager:getFillTypeTitleByIndex(fillTypeId),
+                    text = g_i18n:formatVolume(storedLevel, 0)
+                })
+                added = true
+                addedAny = true
+            end
 
-                -- Vanilla ProductionPoint:updateInfo uses the same > 1 L threshold.
-                if fillLevel > 1 then
-                    table.insert(infoTable, {
-                        title = g_fillTypeManager:getFillTypeTitleByIndex(fillTypeId),
-                        text = g_i18n:formatVolume(fillLevel, 0)
-                    })
-
-                    addedAny = true
-                end
+            if debugEnabled then
+                Logging.info(
+                    "%s HUD fillType=%s id=%s input=%s output=%s supported=%s storageLevel=%s productionLevel=%s added=%s",
+                    self.LOG_PREFIX,
+                    fillTypeName,
+                    tostring(fillTypeId),
+                    tostring(isInput),
+                    tostring(isOutput),
+                    tostring(supported),
+                    tostring(storedLevel),
+                    tostring(productionLevel),
+                    tostring(added)
+                )
             end
         end
     end
 
     if addedAny then
         self:removeStorageEmptyRow(productionPoint, infoTable)
+    end
+
+    if debugEnabled then
+        Logging.info(
+            "%s HUD end: addedAny=%s",
+            self.LOG_PREFIX,
+            tostring(addedAny)
+        )
+        self:debugInfoRows("final", infoTable)
     end
 end
 
