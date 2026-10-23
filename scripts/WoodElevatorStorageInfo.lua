@@ -113,6 +113,79 @@ function WESI:getStorageUsage(storage)
     return used, totalCapacity
 end
 
+-- Форматирует литры с разделением тысяч для заголовка элеватора.
+local function formatLiters(value)
+    local digits = tostring(math.floor(math.max(value or 0, 0) + 0.5))
+    return digits:reverse():gsub("(%d%d%d)", "%1 "):reverse():gsub("^ ", "")
+end
+
+-- Добавляет специфичные для элеватора строки в уже сформированную секцию склада.
+-- Применяется и при интеграции с картой, и в штатном ProductionPoint HUD.
+function WESI:extendStorageInfo(productionPoint, infoTable, headerRow, displayedFillTypes)
+    if not self:isWoodElevator(productionPoint) or productionPoint.storage == nil then
+        return false
+    end
+
+    local storage = productionPoint.storage
+    local used, capacity = self:getStorageUsage(storage)
+
+    if headerRow ~= nil then
+        headerRow.title = string.format(
+            "%s (%s / %s)",
+            headerRow.title,
+            formatLiters(used),
+            formatLiters(capacity)
+        )
+    end
+
+    local addedAny = false
+    displayedFillTypes = displayedFillTypes or {}
+
+    for _, fillTypeName in ipairs(self.EXTRA_FILL_TYPES) do
+        local fillTypeId = g_fillTypeManager:getFillTypeIndexByName(fillTypeName)
+        if fillTypeId ~= nil and not displayedFillTypes[fillTypeId] then
+            local supported = storage:getIsFillTypeSupported(fillTypeId)
+            local level = storage:getFillLevel(fillTypeId)
+            if supported and level > 1 then
+                local title = g_fillTypeManager:getFillTypeTitleByIndex(fillTypeId)
+                local exists = false
+                for _, row in ipairs(infoTable) do
+                    if row.title == title then
+                        exists = true
+                        break
+                    end
+                end
+
+                if not exists then
+                    table.insert(infoTable, {
+                        title = title,
+                        text = g_i18n:formatVolume(level, 0)
+                    })
+                end
+
+                addedAny = true
+                displayedFillTypes[fillTypeId] = true
+            end
+        end
+    end
+
+    return addedAny
+end
+
+-- Подключает расширение к универсальному HUD карты, если он существует.
+function WESI:installMapInfoExtension()
+    local hud = TaigaConstructionInfoHUD
+    if hud == nil or type(hud.registerProductionStorageExtension) ~= "function" then
+        return false
+    end
+
+    self.mapInfoExtension = self.mapInfoExtension or function(productionPoint, infoTable, headerRow, displayedFillTypes)
+        return WESI:extendStorageInfo(productionPoint, infoTable, headerRow, displayedFillTypes)
+    end
+
+    return hud.registerProductionStorageExtension(self.mapInfoExtension)
+end
+
 function WESI:removeStorageEmptyRow(productionPoint, infoTable)
     if productionPoint == nil
         or productionPoint.infoTables == nil
@@ -243,55 +316,13 @@ function WESI:updateInfo(productionPoint, superFunc, infoTable)
         )
     end
 
-    -- Общая заполненность элеватора.
+    -- Штатный HUD не имеет общего заголовка карты: сохраняем строку ёмкости.
     self:insertStorageUsageRow(productionPoint, infoTable)
 
-    local addedAny = false
+    local addedAny = self:extendStorageInfo(productionPoint, infoTable, nil)
 
-    -- Диагностируем каждое условие отображения дополнительных культур.
-    for _, fillTypeName in ipairs(self.EXTRA_FILL_TYPES) do
-        local fillTypeId = g_fillTypeManager:getFillTypeIndexByName(fillTypeName)
-
-        if fillTypeId == nil then
-            if debugEnabled then
-                Logging.info(
-                    "%s HUD fillType=%s skip: unknown fillTypeId",
-                    self.LOG_PREFIX, fillTypeName
-                )
-            end
-        else
-            local isInput = productionPoint.inputFillTypeIds[fillTypeId] == true
-            local isOutput = productionPoint.outputFillTypeIds[fillTypeId] == true
-            local alreadyVanilla = isInput or isOutput
-            local supported = storage:getIsFillTypeSupported(fillTypeId)
-            local storedLevel = storage:getFillLevel(fillTypeId)
-            local productionLevel = productionPoint:getFillLevel(fillTypeId)
-            local added = false
-
-            if not alreadyVanilla and supported and storedLevel > 1 then
-                table.insert(infoTable, {
-                    title = g_fillTypeManager:getFillTypeTitleByIndex(fillTypeId),
-                    text = g_i18n:formatVolume(storedLevel, 0)
-                })
-                added = true
-                addedAny = true
-            end
-
-            if debugEnabled then
-                Logging.info(
-                    "%s HUD fillType=%s id=%s input=%s output=%s supported=%s storageLevel=%s productionLevel=%s added=%s",
-                    self.LOG_PREFIX,
-                    fillTypeName,
-                    tostring(fillTypeId),
-                    tostring(isInput),
-                    tostring(isOutput),
-                    tostring(supported),
-                    tostring(storedLevel),
-                    tostring(productionLevel),
-                    tostring(added)
-                )
-            end
-        end
+    if debugEnabled then
+        Logging.info("%s HUD extra crops added=%s", self.LOG_PREFIX, tostring(addedAny))
     end
 
     if addedAny then
@@ -461,12 +492,14 @@ function WESI:installPricesHook()
 end
 
 function WESI:install()
+    local mapOk = self:installMapInfoExtension()
     local infoOk = self:installInfoHook()
     local pricesOk = self:installPricesHook()
 
     Logging.info(
-        "%s install complete: infoHud=%s pricesStorage=%s extraFillTypes=%s",
+        "%s install complete: mapHud=%s infoHud=%s pricesStorage=%s extraFillTypes=%s",
         self.LOG_PREFIX,
+        tostring(mapOk),
         tostring(infoOk),
         tostring(pricesOk),
         table.concat(self.EXTRA_FILL_TYPES, ", ")
