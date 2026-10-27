@@ -225,6 +225,10 @@
 		<triggerMarkers>
 		<triggerMarker node="constructibleUnloadTriggerMarker" adjustToGround="true" filename="markerIcons/markerIconStroyka.i3d"/>
 		<triggerMarker node="playerTriggerMarker" adjustToGround="false" filename="$data/shared/assets/marker/markerIconWrench.i3d"/>
+		<!-- Приём сырья в производство и размещение паллет на складе. -->
+		<triggerMarker node="productionPalletUnloadMarker" adjustToGround="false" filename="$data/shared/assets/marker/markerIconPallet.i3d"/>
+		<triggerMarker node="milkUnloadMarker" adjustToGround="false" filename="$data/shared/assets/marker/markerIconUnload.i3d"/>
+		<triggerMarker node="storagePalletUnloadMarker" adjustToGround="false" filename="$data/shared/assets/marker/markerIconPallet.i3d"/>
 		<triggerMarker node="storagePlayerTriggerMarker" adjustToGround="false" filename="$data/shared/assets/marker/markerIconWrench.i3d"/>
 		<triggerMarker node="transferFromStorageTriggerMarker" adjustToGround="false" filename="markerIcons/markerIconBaleToProduction.i3d"/>
 	</triggerMarkers>
@@ -484,6 +488,9 @@
 		<i3dMapping id="playerTriggerMarker" node="0>4|3|0"/>
 		<i3dMapping id="storagePalletTrigger" node="0>5|0|0"/>
 		<i3dMapping id="storagePlayerTrigger" node="0>5|2"/>
+		<i3dMapping id="productionPalletUnloadMarker" node="0>4|0|2"/>
+		<i3dMapping id="milkUnloadMarker" node="0>4|1|1"/>
+		<i3dMapping id="storagePalletUnloadMarker" node="0>5|0|1"/>
 		<i3dMapping id="storagePlayerTriggerMarker" node="0>5|2|0"/>
 		<i3dMapping id="transferFromStorageTrigger" node="0>5|3"/>
 		<i3dMapping id="transferFromStorageTriggerMarker" node="0>5|3|0"/>
