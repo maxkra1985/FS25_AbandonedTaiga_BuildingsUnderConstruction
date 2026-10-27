@@ -34,7 +34,7 @@
 ConstructibleProgressMeshes = ConstructibleProgressMeshes or {}
 
 local CPM = ConstructibleProgressMeshes
-CPM.VERSION = "0.7.0"
+CPM.VERSION = "0.7.1"
 
 local PROGRESS_EPSILON = 0.0000001
 
@@ -84,6 +84,103 @@ local function collectShapeTree(node, shapes)
     for childIndex = 0, numChildren - 1 do
         collectShapeTree(getChildAt(node, childIndex), shapes)
     end
+end
+
+
+-- Собирает реальные источники света постоянных строительных частей.
+-- Внешние I3D через ReferenceNode также обходятся после загрузки Scenegraph.
+local function collectPermanentLightNodes(node, lights)
+    if getHasClassId(node, ClassIds.LIGHT_SOURCE) then
+        table.insert(lights, node)
+    end
+
+    for childIndex = 0, getNumOfChildren(node) - 1 do
+        collectPermanentLightNodes(getChildAt(node, childIndex), lights)
+    end
+end
+
+
+-- Находит ближайший ReferenceNode внутри строительной фазы.
+-- Нужен для светильников, у которых Shape и Light являются соседними узлами внешней модели.
+local function findReferenceAncestor(node, phaseRoot)
+    local current = node
+
+    while current ~= 0 and current ~= phaseRoot do
+        local isReference = getReferenceInfo(current)
+
+        if isReference then
+            return current
+        end
+
+        current = getParent(current)
+    end
+
+    return nil
+end
+
+
+-- Сопоставляет каждый источник света с Shape-единицей той же строительной детали.
+-- Источники без соответствующей геометрии остаются выключенными до конца стадии.
+-- Обработка временного света lampa_alap здесь намеренно исключена.
+local function linkPermanentLights(entry)
+    if not entry.progressStepByStep or entry.isConstructionProps then
+        return
+    end
+
+    local lights = {}
+    collectPermanentLightNodes(entry.node, lights)
+
+    if #lights == 0 then
+        return
+    end
+
+    local unitByShape = {}
+    local unitByReference = {}
+
+    for _, unit in ipairs(entry.units) do
+        unit.lightNodes = {}
+
+        for _, shape in ipairs(unit.shapes) do
+            unitByShape[shape] = unit
+        end
+
+        local reference = findReferenceAncestor(unit.root, entry.node)
+
+        if reference ~= nil and unitByReference[reference] == nil then
+            unitByReference[reference] = unit
+        end
+    end
+
+    for _, light in ipairs(lights) do
+        local owner = nil
+        local parent = getParent(light)
+
+        while parent ~= 0 and parent ~= entry.node do
+            owner = unitByShape[parent]
+
+            if owner ~= nil then
+                break
+            end
+
+            parent = getParent(parent)
+        end
+
+        if owner == nil then
+            local reference = findReferenceAncestor(light, entry.node)
+
+            if reference ~= nil then
+                owner = unitByReference[reference]
+            end
+        end
+
+        if owner ~= nil then
+            table.insert(owner.lightNodes, light)
+        else
+            table.insert(entry.detachedLightNodes, light)
+        end
+    end
+
+    entry.permanentLightCount = #lights
 end
 
 
@@ -172,6 +269,12 @@ local function setShapeUnitState(unit, isVisible, updatePhysics, force)
         changed = setNodeState(shape, isVisible, updatePhysics, force) or changed
     end
 
+    -- У Shape и реального источника света разные классы Scenegraph.
+    -- Видимость источника привязывается к появлению соответствующей детали.
+    for _, light in ipairs(unit.lightNodes or {}) do
+        changed = setNodeState(light, isVisible, false, force) or changed
+    end
+
     return changed
 end
 
@@ -182,6 +285,10 @@ local function setEntryShapesState(entry, isVisible, force)
 
     for _, unit in ipairs(entry.units) do
         changed = setShapeUnitState(unit, isVisible, entry.updatePhysics, force) or changed
+    end
+
+    for _, light in ipairs(entry.detachedLightNodes or {}) do
+        changed = setNodeState(light, isVisible, false, force) or changed
     end
 
     return changed
@@ -304,6 +411,14 @@ local function applyStepByStepProgress(entry, progress, force)
         -- Это важно после штатного finalizePlacement/addToPhysics и при загрузке savegame.
         changed = setShapeUnitState(unit, shouldBeVisible, entry.updatePhysics, force) or changed
         entry.unitVisibility[index] = shouldBeVisible
+    end
+
+    -- Свет без привязки к конкретному Shape включается лишь после появления
+    -- всей постоянной геометрии этапа, чтобы исключить свет невидимых ламп.
+    local detachedLightsVisible = visibleCount == numUnits
+
+    for _, light in ipairs(entry.detachedLightNodes or {}) do
+        changed = setNodeState(light, detachedLightsVisible, false, force) or changed
     end
 
     entry.lastVisibleCount = visibleCount
@@ -467,6 +582,8 @@ function CPM.loadState(state, xmlFile, key)
                 units = {},
                 unitVisibility = {},
                 lightNodes = {},
+                detachedLightNodes = {},
+                permanentLightCount = 0,
                 isConstructionProps = string.match(nodeName, "^phase_%d+_props%d+$") ~= nil,
                 shapeCount = 0,
                 disabled = false
@@ -486,6 +603,7 @@ function CPM.loadState(state, xmlFile, key)
             -- Для progressStepByStep units задают последовательность появления.
             -- Для progressStepMin/progressStepMax все найденные Shape переключаются вместе.
             collectShapeUnits(node, entry.units)
+            linkPermanentLights(entry)
 
             if entry.isConstructionProps then
                 collectConstructionPropsLights(node, entry.lightNodes)
@@ -493,6 +611,16 @@ function CPM.loadState(state, xmlFile, key)
 
             for _, unit in ipairs(entry.units) do
                 entry.shapeCount = entry.shapeCount + #unit.shapes
+            end
+
+            if entry.permanentLightCount > 0 then
+                Logging.info(
+                    "ConstructibleProgressMeshes v%s: %s permanentLightNodes=%d deferredLightNodes=%d",
+                    CPM.VERSION,
+                    tostring(entry.nodeName),
+                    entry.permanentLightCount,
+                    #entry.detachedLightNodes
+                )
             end
 
             if #entry.units == 0 then
