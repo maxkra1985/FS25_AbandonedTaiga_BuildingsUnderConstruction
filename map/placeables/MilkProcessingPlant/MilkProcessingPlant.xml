@@ -265,8 +265,8 @@
 					<toggleProgressMesh node="phase_01_props02" updatePhysics="true" progressStepMin="33" progressStepMax="67"/>
 					<toggleProgressMesh node="phase_01_props03" updatePhysics="true" progressStepMin="66" progressStepMax="100"/>
 
-					<input fillType="INSTRUMENT" amount="48" usagePerHour="17"/>
-					<input fillType="BUILDING_METAL" amount="4990" usagePerHour="1667"/>
+					<input fillType="INSTRUMENT" amount="48" usagePerHour="16"/>
+					<input fillType="BUILDING_METAL" amount="4990" usagePerHour="1663.333333"/>
 					<sounds>
 						<active template="constructibleActive"/>
 					</sounds>
@@ -279,10 +279,10 @@
 					<toggleProgressMesh node="phase_02_props02" updatePhysics="true" progressStepMin="33" progressStepMax="67"/>
 					<toggleProgressMesh node="phase_02_props03" updatePhysics="true" progressStepMin="66" progressStepMax="100"/>
 
-					<input fillType="INSTRUMENT" amount="98" usagePerHour="50"/>
-					<input fillType="BOARDS" amount="1995" usagePerHour="1000"/>
-					<input fillType="PLANKS" amount="3995" usagePerHour="2000"/>
-					<input fillType="NAILS" amount="98" usagePerHour="50"/>
+					<input fillType="INSTRUMENT" amount="48" usagePerHour="24"/>
+					<input fillType="BOARDS" amount="995" usagePerHour="497.5"/>
+					<input fillType="PLANKS" amount="3995" usagePerHour="1997.5"/>
+					<input fillType="NAILS" amount="98" usagePerHour="49"/>
 					<sounds>
 						<active template="carpenterSmallWork"/>
 					</sounds>
@@ -299,8 +299,8 @@
 					<toggleProgressMesh node="phase_03_props06" updatePhysics="true" progressStepMin="72" progressStepMax="86"/>
 					<toggleProgressMesh node="phase_03_props07" updatePhysics="true" progressStepMin="86" progressStepMax="100"/>
 
-					<input fillType="INSTRUMENT" amount="58" usagePerHour="10"/>
-					<input fillType="CEMENT" amount="14990" usagePerHour="1500"/>
+					<input fillType="INSTRUMENT" amount="58" usagePerHour="5.8"/>
+					<input fillType="CEMENT" amount="14990" usagePerHour="1499"/>
 					<sounds>
 						<active template="constructibleActive"/>
 					</sounds>
@@ -316,9 +316,9 @@
 					<toggleProgressMesh node="phase_04_props03" updatePhysics="true" progressStepMin="50" progressStepMax="76"/>
 					<toggleProgressMesh node="phase_04_props04" updatePhysics="true" progressStepMin="75" progressStepMax="100"/>
 
-					<input fillType="INSTRUMENT" amount="118" usagePerHour="10"/>
-					<input fillType="WOODBEAM" amount="35990" usagePerHour="3000"/>
-					<input fillType="NAILS" amount="298" usagePerHour="25"/>
+					<input fillType="INSTRUMENT" amount="240" usagePerHour="20"/>
+					<input fillType="WOODBEAM" amount="19900" usagePerHour="1658.333333"/>
+					<input fillType="NAILS" amount="440" usagePerHour="36.666667"/>
 					<sounds>
 						<active template="carpenterSmallWork"/>
 					</sounds>
@@ -334,9 +334,9 @@
 					<toggleProgressMesh node="phase_05_props05" updatePhysics="true" progressStepMin="66" progressStepMax="83"/>
 					<toggleProgressMesh node="phase_05_props06" updatePhysics="true" progressStepMin="82" progressStepMax="100"/>
 
-					<input fillType="INSTRUMENT" amount="78" usagePerHour="10"/>
-					<input fillType="WOODBEAM" amount="9990" usagePerHour="1250"/>
-					<input fillType="NAILS" amount="98" usagePerHour="12.5"/>
+					<input fillType="INSTRUMENT" amount="145" usagePerHour="29"/>
+					<input fillType="PLANKS" amount="9990" usagePerHour="1998"/>
+					<input fillType="NAILS" amount="295" usagePerHour="59"/>
 					<sounds>
 						<active template="carpenterSmallWork"/>
 					</sounds>
@@ -350,9 +350,9 @@
 					<toggleProgressMesh node="phase_06_props03" updatePhysics="true" progressStepMin="48" progressStepMax="77"/>
 					<toggleProgressMesh node="phase_06_props04" updatePhysics="true" progressStepMin="73" progressStepMax="100"/>
 
-					<input fillType="INSTRUMENT" amount="58" usagePerHour="12"/>
-					<input fillType="WOODBEAM" amount="4995" usagePerHour="1000"/>
-					<input fillType="NAILS" amount="98" usagePerHour="20"/>
+					<input fillType="INSTRUMENT" amount="240" usagePerHour="20"/>
+					<input fillType="WOODBEAM" amount="19900" usagePerHour="1658.333333"/>
+					<input fillType="NAILS" amount="440" usagePerHour="36.666667"/>
 					<sounds>
 						<active template="carpenterSmallWork"/>
 					</sounds>
@@ -368,11 +368,10 @@
 					<toggleProgressMesh node="phase_07_props05" updatePhysics="true" progressStepMin="65" progressStepMax="85"/>
 					<toggleProgressMesh node="phase_07_props06" updatePhysics="true" progressStepMin="82" progressStepMax="100"/>
 
-					<input fillType="INSTRUMENT" amount="198" usagePerHour="20"/>
-					<input fillType="PLANKS" amount="9995" usagePerHour="1000"/>
-					<input fillType="BOARDS" amount="2995" usagePerHour="300"/>
-					<input fillType="ROOFPLATES" amount="9900" usagePerHour="1000"/>
-					<input fillType="NAILS" amount="148" usagePerHour="15"/>
+					<input fillType="INSTRUMENT" amount="198" usagePerHour="39.6"/>
+					<input fillType="PLANKS" amount="9995" usagePerHour="1999"/>
+					<input fillType="ROOFPLATES" amount="9900" usagePerHour="1980"/>
+					<input fillType="NAILS" amount="295" usagePerHour="59"/>
 					<sounds>
 						<active template="carpenterSmallWork"/>
 					</sounds>
@@ -388,10 +387,11 @@
 					<toggleProgressMesh node="phase_08_props05" updatePhysics="true" progressStepMin="67" progressStepMax="83"/>
 					<toggleProgressMesh node="phase_08_props06" updatePhysics="true" progressStepMin="83" progressStepMax="100"/>
 
-					<input fillType="INSTRUMENT" amount="447" usagePerHour="45"/>
-					<input fillType="FURNITURE" amount="4990" usagePerHour="1000"/>
-					<input fillType="BUILDING_METAL" amount="9990" usagePerHour="1000"/>
-					<input fillType="METAL" amount="9990" usagePerHour="1000"/>
+					<input fillType="INSTRUMENT" amount="447" usagePerHour="37.25"/>
+					<input fillType="FURNITURE" amount="4990" usagePerHour="415.833333"/>
+					<input fillType="BUILDING_METAL" amount="9990" usagePerHour="832.5"/>
+					<input fillType="METAL" amount="9990" usagePerHour="832.5"/>
+					<input fillType="NAILS" amount="32" usagePerHour="2.666667"/>
 					<sounds>
 						<active template="constructibleActive"/>
 					</sounds>
@@ -424,7 +424,7 @@
 		</sellingStation>
 
 		<storage isExtension="false" fillLevelSyncThreshold="50">
-			<!-- Стартовый баланс строительства: 69 игровых часов. -->
+			<!-- Расчётное время всех строительных этапов при непрерывной подаче материалов: 61 игровой час. -->
 			<capacity fillType="INSTRUMENT" capacity="1000"/>
 			<capacity fillType="BUILDING_METAL" capacity="10000"/>
 			<capacity fillType="BOARDS" capacity="4000"/>
