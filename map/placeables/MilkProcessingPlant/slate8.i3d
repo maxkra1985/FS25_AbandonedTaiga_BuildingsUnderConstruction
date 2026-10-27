@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<i3D name="slate8.i3d" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+  <Asset>
+    <Export program="GIANTS Editor 64bit" version="10.0.14"/>
+  </Asset>
+
+  <Files>
+    <File fileId="1" filename="textures/slateDiffuse.dds"/>
+    <File fileId="2" filename="textures/slateSpecular.dds"/>
+  </Files>
+
+
+  <Materials>
+    <Material name="slateMat" materialId="5">
+      <Texture fileId="1"/>
+      <Glossmap fileId="2"/>
+    </Material>
+  </Materials>
+
+
+  <Shapes externalShapesFile="slate8.i3d.shapes">
+  </Shapes>
+
+  <Scene>
+    <Shape name="slate8" shapeId="1" clipDistance="350" nodeId="8" castsShadows="true" receiveShadows="true" materialIds="5"/>
+  </Scene>
+
+</i3D>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="iso-8859-1"?>
+<i3D name="grainSiloEscalier_01.i3d" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+    <Asset>
+        <Export program="GIANTS Editor 64bit" version="10.0.14"/>
+    </Asset>
+    <Files>
+        <File fileId="1" filename="../textures/fer_diffuse.dds"/>
+        <File fileId="3" filename="../textures/fer_gloss.dds"/>
+        <File fileId="2" filename="../textures/fer_normal.dds"/>
+        <File fileId="4" filename="../textures/wood1024_diffuse.dds"/>
+    </Files>
+    <Materials>
+        <Material name="ferMat" materialId="46">
+            <Texture fileId="1"/>
+            <Normalmap fileId="2"/>
+            <Glossmap fileId="3"/>
+        </Material>
+        <Material name="UnnamedMaterial" materialId="89">
+            <Texture fileId="4"/>
+        </Material>
+        <Material name="UnnamedMaterial" materialId="122" diffuseColor="1 1 1 1"/>
+    </Materials>
+    <Shapes externalShapesFile="grainSiloEscalier_01.i3d.shapes"/>
+    <Scene>
+        <TransformGroup name="grainSiloEscalier_01" translation="-12.0076 -5.96046e-08 0" rotation="-0 90 0" scale="1.1669 0.909365 0.878379" nodeId="5725">
+            <Shape name="escalier" translation="-14.5285 2.70352 14.5033" shapeId="1" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" clipDistance="120" nodeId="5726" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="46"/>
+            <TransformGroup name="supportPillar01" translation="-3.5949 3.9955 9.1351" rotation="-0 -90 0" scale="1.13846 1.09967 0.971603" nodeId="5727">
+                <Shape name="supportPillar" translation="0.436476 -0.0472727 0.849551" rotation="9.70628e-20 90 0" scale="0.35 0.1 2.87792" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5728" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89">
+                    <Shape name="supportPillar" translation="14.1359 -1.45445e-22 -0.00309017" scale="0.546592 1 1.02566" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5729" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                    <Shape name="supportPillar" translation="-14.1291 2.08788e-27 -4.34012e-07" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5730" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                    <Shape name="supportPillar" translation="-27.9979 5.40106e-26 6.30985e-07" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5731" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                    <Shape name="supportPillar" translation="11.8359 -1.45434e-22 -0.00308995" scale="0.544772 1 1.02566" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5732" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                </Shape>
+                <Shape name="supportPillar" translation="-0.852335 0.0490551 -1.6991" scale="0.4 0.1 5.01326" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5733" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89">
+                    <Shape name="supportPillar" translation="1.11713e-08 0 1" rotation="0 180 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5734" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                    <Shape name="supportPillar" translation="1.25 0 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5735" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89">
+                        <Shape name="supportPillar" translation="1.11713e-08 0 1" rotation="0 180 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5736" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                        <Shape name="supportPillar" translation="1.11713e-08 0 2" rotation="0 180 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5737" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                    </Shape>
+                    <Shape name="supportPillar" translation="2.5 0 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5738" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89">
+                        <Shape name="supportPillar" translation="1.11713e-08 0 1" rotation="0 180 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5739" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                        <Shape name="supportPillar" translation="1.11713e-08 0 2" rotation="0 180 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5740" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                    </Shape>
+                    <Shape name="supportPillar" translation="3.75 0 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5741" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89">
+                        <Shape name="supportPillar" translation="1.11713e-08 0 1" rotation="0 180 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5742" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                        <Shape name="supportPillar" translation="1.11713e-08 0 2" rotation="0 180 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5743" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                    </Shape>
+                    <Shape name="supportPillar" translation="5 0 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5744" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89">
+                        <Shape name="supportPillar" translation="1.11713e-08 0 1" rotation="0 180 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5745" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                        <Shape name="supportPillar" translation="1.11713e-08 0 2" rotation="0 180 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5746" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                    </Shape>
+                    <Shape name="supportPillar" translation="6.25 0 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5747" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89">
+                        <Shape name="supportPillar" translation="1.11713e-08 0 1" rotation="0 180 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5748" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                        <Shape name="supportPillar" translation="1.11713e-08 0 2" rotation="0 180 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5749" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                    </Shape>
+                    <Shape name="supportPillar" translation="1.11713e-08 0 2" rotation="0 180 0" shapeId="2" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5750" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="89"/>
+                </Shape>
+                <Shape name="Coli" translation="0.415854 -0.00178242 0.849551" scale="1.45926 0.128551 10.0387" shapeId="3" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="5751" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="122"/>
+            </TransformGroup>
+        </TransformGroup>
+    </Scene>
+</i3D>

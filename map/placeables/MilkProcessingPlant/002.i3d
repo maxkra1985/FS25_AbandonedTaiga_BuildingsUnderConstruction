@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="iso-8859-1"?>
+<i3D name="002.i3d" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+    <Asset>
+        <Export program="GIANTS Editor 64bit" version="10.0.14"/>
+    </Asset>
+    <Files>
+        <File fileId="1" filename="../../textures/0_diffuse.dds"/>
+        <File fileId="3" filename="../../textures/0_gloss.dds"/>
+        <File fileId="2" filename="../../textures/0_normal.dds"/>
+        <File fileId="7" filename="../../textures/affichette_diffuse.dds"/>
+        <File fileId="10" filename="../../textures/boisPorte_diffuse.dds"/>
+        <File fileId="12" filename="../../textures/boisPorte_gloss.dds"/>
+        <File fileId="11" filename="../../textures/boisPorte_normal.dds"/>
+        <File fileId="15" filename="../../textures/fromageMorvan_diffuse.dds"/>
+        <File fileId="16" filename="$data/objects/pallets/mozzarellaBufalaBoxPallet/mozzarellaBufalaBox_diffuse.png"/>
+        <File fileId="17" filename="$data/objects/pallets/mozzarellaBufalaBoxPallet/mozzarellaBufalaBox_normal.png"/>
+        <File fileId="18" filename="$data/objects/pallets/mozzarellaBufalaBoxPallet/mozzarellaBufalaBox_specular.png"/>
+        <File fileId="5" filename="$data/shared/characterDirt_normal.dds"/>
+        <File fileId="13" filename="$data/shared/clearGlass_diffuse.dds"/>
+        <File fileId="8" filename="$data/shared/default_normal.png"/>
+        <File fileId="9" filename="$data/shared/default_specular.png"/>
+        <File fileId="6" filename="$data/shared/window02_specular.dds"/>
+    </Files>
+    <Materials>
+        <Material name="0mat" materialId="6">
+            <Texture fileId="1"/>
+            <Normalmap fileId="2"/>
+            <Glossmap fileId="3"/>
+        </Material>
+        <Material name="affichetteMat" materialId="7">
+            <Texture fileId="7"/>
+            <Normalmap fileId="8"/>
+            <Glossmap fileId="9"/>
+        </Material>
+        <Material name="boisLiteauMat" materialId="14">
+            <Texture fileId="10"/>
+            <Normalmap fileId="11"/>
+            <Glossmap fileId="12"/>
+        </Material>
+        <Material name="fromage" materialId="28" diffuseColor="0.321569 0.317647 0.219608 1">
+            <Normalmap fileId="5"/>
+            <Glossmap fileId="6"/>
+        </Material>
+        <Material name="fromage" materialId="29" diffuseColor="0.560784 0.556863 0.384314 1">
+            <Normalmap fileId="5"/>
+            <Glossmap fileId="6"/>
+        </Material>
+        <Material name="fromageMorvanMat" materialId="30">
+            <Texture fileId="15"/>
+            <Normalmap fileId="8"/>
+            <Glossmap fileId="9"/>
+        </Material>
+        <Material name="mozzarellaBufalaBox_mat" materialId="41">
+            <Texture fileId="16"/>
+            <Normalmap fileId="17"/>
+            <Glossmap fileId="18"/>
+        </Material>
+        <Material name="plasticBleuMat" materialId="50" alphaBlending="true">
+            <Texture fileId="13"/>
+            <Glossmap fileId="6"/>
+        </Material>
+        <Material name="plasticTransparentMat" materialId="51" alphaBlending="true">
+            <Texture fileId="13"/>
+            <Normalmap fileId="8"/>
+            <Glossmap fileId="6"/>
+        </Material>
+        <Material name="UnnamedMaterial" materialId="62" diffuseColor="1 1 1 1"/>
+    </Materials>
+    <Shapes externalShapesFile="002.i3d.shapes"/>
+    <Scene>
+        <TransformGroup name="importPart" translation="0 0 16.9826" clipDistance="30" nodeId="1148">
+            <TransformGroup name="productionFromagerie" translation="0.301679 0.0566487 -0.470887" nodeId="1149">
+                <TransformGroup name="decorations" translation="-9.64528 0.849731 0.670179" rotation="0 -90 0" nodeId="1150">
+                    <Shape name="faisselle.009" translation="-0.194932 0.174531 1.26613" rotation="180 -61.4165 180" shapeId="1" clipDistance="30" nodeId="1151" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="6"/>
+                    <Shape name="plateau" translation="3.71086 0.0411521 0.83816" rotation="0 84.2164 0" shapeId="2" clipDistance="30" nodeId="1152" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="6"/>
+                    <Shape name="Cylinder" translation="-0.409518 0.0675038 -0.642077" shapeId="3" clipDistance="30" nodeId="1153" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="6"/>
+                    <Shape name="cuve01" translation="3.68979 -0.870702 -2.53069" rotation="180 -62.5673 180" shapeId="4" clipDistance="30" nodeId="1154" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="6"/>
+                    <Shape name="chariot" translation="-0.295795 -0.870702 1.59789" rotation="0 -35.9097 0" shapeId="5" clipDistance="30" nodeId="1155" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="6"/>
+                    <Shape name="cadre.002" translation="3.70958 -0.870702 0.785812" rotation="-0 90 0" shapeId="6" clipDistance="30" nodeId="1156" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="6"/>
+                    <Shape name="bureau" translation="-0.76387 -0.870702 -0.486128" rotation="-0 90 0" shapeId="7" clipDistance="30" nodeId="1157" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="6"/>
+                    <Shape name="bac_lavage" translation="3.67385 -0.870702 -0.86745" rotation="-0 -90 0" shapeId="8" clipDistance="30" nodeId="1158" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="28"/>
+                    <Shape name="Plane.010" translation="-1.45007 0.990576 1.1956" shapeId="9" clipDistance="30" nodeId="1159" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="7"/>
+                    <Shape name="Plane.007" translation="-1.45007 0.979727 2.81862" shapeId="10" clipDistance="30" nodeId="1160" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="7"/>
+                    <Shape name="Plane.008" translation="-1.45007 1.00562 -0.385601" shapeId="11" clipDistance="30" nodeId="1161" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="7"/>
+                    <Shape name="Plane.014" translation="-1.45007 1.58701 0.789524" scale="0.858069 0.858069 0.858069" shapeId="12" clipDistance="30" nodeId="1162" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="7"/>
+                    <Shape name="Plane.015" translation="-1.45007 1.61024 0.23308" scale="0.858069 0.858069 0.858069" shapeId="13" clipDistance="30" nodeId="1163" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="7"/>
+                    <Shape name="Plane.017" translation="-1.45007 1.61558 1.3597" scale="0.858069 0.858069 0.858069" shapeId="14" clipDistance="30" nodeId="1164" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="7"/>
+                    <Shape name="Plane.018" translation="-1.45007 1.59409 -0.363947" scale="0.858069 0.858069 0.858069" shapeId="15" clipDistance="30" nodeId="1165" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="7"/>
+                    <Shape name="etagere" translation="-2.28384 -0.671907 -1.89185" shapeId="16" clipDistance="30" nodeId="1166" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="14"/>
+                    <Shape name="etagere.001" translation="-5.68986 -0.671907 -1.89185" shapeId="16" clipDistance="30" nodeId="1167" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="14"/>
+                    <Shape name="etagere.002" translation="-0.344921 -0.671907 3.96412" rotation="-0 90 0" shapeId="17" clipDistance="30" nodeId="1168" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="14"/>
+                    <Shape name="faisselle.013" translation="-0.867233 0.143151 -0.774584" rotation="180 -61.4165 180" shapeId="18" clipDistance="30" nodeId="1169" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="6"/>
+                    <Shape name="plateau.001" translation="-0.57864 -0.317997 0.185776" rotation="180 2.23118e-05 180" scale="0.758932 0.758932 0.758932" shapeId="19" clipDistance="30" nodeId="1170" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="6"/>
+                    <Shape name="cuve02.001" translation="-0.704272 -0.870702 -2.57503" rotation="-0 90 0" shapeId="20" clipDistance="30" nodeId="1171" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="6"/>
+                    <Shape name="casserole.001" translation="-0.708279 0.284875 0.0935431" rotation="180 67.6484 180" shapeId="21" clipDistance="30" nodeId="1172" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="6"/>
+                    <Shape name="bac_lavage.001" translation="3.67385 -0.870702 -0.86745" rotation="-0 -90 0" shapeId="22" clipDistance="30" nodeId="1173" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="6"/>
+                    <Shape name="seau" translation="3.50774 -0.574278 0.794572" rotation="180 67.6484 180" shapeId="23" clipDistance="30" nodeId="1174" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="50"/>
+                </TransformGroup>
+                <TransformGroup name="fillMilk" translation="0.643019 -0.0566487 -0.0446787" nodeId="1175">
+                    <Shape name="casserole" translation="-10.3819 1.19126 0.0065788" rotation="0 22.3515 0" shapeId="24" nodeId="1176" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="29"/>
+                    <Shape name="laitPlane" translation="-7.75761 0.035678 4.40465" rotation="-180 27.4327 -180" shapeId="25" clipDistance="30" nodeId="1177" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="29"/>
+                    <Shape name="cuve02" translation="-7.71327 0.035678 0.0105863" shapeId="26" clipDistance="30" nodeId="1178" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="29"/>
+                </TransformGroup>
+                <TransformGroup name="fillCrottinFrais" translation="0.643019 -0.0566487 -0.0446787" nodeId="1179">
+                    <Shape name="bacS" translation="-11.571 0.958544 4.39572" rotation="0 -8.14718 0" shapeId="27" nodeId="1180" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51">
+                        <Shape name="crottinsFrais" translation="-0.0691713 0 0.213742" shapeId="28" nodeId="1181" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    </Shape>
+                    <Shape name="bacS" translation="-14.21 0.734473 2.62376" rotation="0 2.01372 0" shapeId="27" nodeId="1182" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51">
+                        <Shape name="crottinsFrais" translation="-0.0691713 0 0.213742" shapeId="28" nodeId="1183" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    </Shape>
+                    <Shape name="bacS" translation="-14.2077 1.23447 3.27115" rotation="0 2.01372 0" shapeId="27" nodeId="1184" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51">
+                        <Shape name="crottinsFrais" translation="-0.0691713 0 0.213742" shapeId="28" nodeId="1185" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    </Shape>
+                    <Shape name="bacS" translation="-14.1896 1.23447 2.2103" rotation="0 2.01372 0" shapeId="27" nodeId="1186" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51"/>
+                    <Shape name="bacS" translation="-14.2455 1.73447 2.23052" rotation="0 2.01372 0" shapeId="27" nodeId="1187" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51">
+                        <Shape name="crottinsFrais" translation="-0.0691713 0 0.213742" shapeId="28" nodeId="1188" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    </Shape>
+                    <Shape name="bacS" translation="-14.2051 1.73447 2.95203" rotation="0 2.01372 0" shapeId="27" nodeId="1189" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51"/>
+                    <Shape name="bacS" translation="-14.2076 2.23447 3.30107" rotation="0 2.01372 0" shapeId="27" nodeId="1190" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51">
+                        <Shape name="crottinsFrais" translation="-0.0691713 0 0.213742" shapeId="28" nodeId="1191" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    </Shape>
+                    <Shape name="bacS" translation="-14.2388 2.73447 3.19443" rotation="0 2.01372 0" shapeId="27" nodeId="1192" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51"/>
+                    <Shape name="crottinFrais" translation="-11.6732 1.01706 -0.0408276" shapeId="29" clipDistance="30" nodeId="1193" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinFrais" translation="-9.38905 0.954476 0.243461" shapeId="29" clipDistance="30" nodeId="1194" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinFrais" translation="-10.8971 0.958544 4.18271" shapeId="29" clipDistance="30" nodeId="1195" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinFrais" translation="-11.8417 1.01706 -0.166873" rotation="0 15.0739 0" shapeId="29" clipDistance="30" nodeId="1196" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinFrais" translation="-11.9577 1.01706 0.00514352" rotation="0 243.148 0" shapeId="29" clipDistance="30" nodeId="1197" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinFrais" translation="-11.3111 1.01706 0.251286" shapeId="29" clipDistance="30" nodeId="1198" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="bacS" translation="-14.3282 1.2322 -0.122308" rotation="0 2.01372 0" shapeId="27" nodeId="1199" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51">
+                        <Shape name="crottinsFrais" translation="-0.0691713 0 0.213742" shapeId="28" nodeId="1200" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    </Shape>
+                    <Shape name="bacS" translation="-14.2878 1.2322 0.599203" rotation="0 2.01372 0" shapeId="27" nodeId="1201" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51"/>
+                    <Shape name="bacS" translation="-14.3213 1.73447 0.074283" rotation="0 2.01372 0" shapeId="27" nodeId="1202" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51">
+                        <Shape name="crottinsFrais" translation="-0.0691713 0 0.213742" shapeId="28" nodeId="1203" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    </Shape>
+                </TransformGroup>
+                <TransformGroup name="fillCrottinAffine" translation="0.643019 -0.0566487 -0.0446787" nodeId="1204">
+                    <Shape name="bacL" translation="-7.82026 1.73447 -1.53403" rotation="-180 88.1994 -180" shapeId="30" nodeId="1205" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51">
+                        <Shape name="crottinsAffine" translation="-0.0549617 0 0.19644" shapeId="31" nodeId="1206" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    </Shape>
+                    <Shape name="bacL" translation="-12.0069 1.01706 0.761965" rotation="0 47.8676 0" shapeId="30" nodeId="1207" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51"/>
+                    <Shape name="bacL" translation="-9.00495 1.73447 -1.49679" rotation="-180 88.1994 -180" shapeId="30" nodeId="1208" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51">
+                        <Shape name="crottinsAffine" translation="-0.0549617 0 0.19644" shapeId="31" nodeId="1209" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    </Shape>
+                    <Shape name="bacL" translation="-8.51904 2.73447 -1.55219" rotation="-180 88.6298 180" shapeId="30" nodeId="1210" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51"/>
+                    <Shape name="bacL" translation="-8.9697 2.23447 -1.55349" rotation="5.99495e-16 86.8085 3.81708e-10" shapeId="30" nodeId="1211" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51"/>
+                    <Shape name="bacL" translation="-7.85866 2.73447 -1.54777" rotation="5.99495e-16 86.8085 3.81708e-10" shapeId="30" nodeId="1212" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51">
+                        <Shape name="crottinsAffine" translation="-0.0549617 0 0.19644" shapeId="31" nodeId="1213" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    </Shape>
+                    <Shape name="bacL" translation="-9.03099 0.734473 -1.64553" rotation="-3.07065e-07 1.81035 -2.73296e-05" shapeId="30" nodeId="1214" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51"/>
+                    <Shape name="bacL" translation="-7.88388 0.234473 -4.92755" rotation="-3.07065e-07 1.81035 -2.73296e-05" shapeId="30" nodeId="1215" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51"/>
+                    <Shape name="bacL" translation="-9.0836 0.234473 -4.92859" rotation="-3.07065e-07 1.81035 -2.73296e-05" shapeId="30" nodeId="1216" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="51"/>
+                    <Shape name="crottinAffine" translation="-12.3465 1.73447 -1.44481" shapeId="32" clipDistance="30" nodeId="1217" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-11.7726 1.01706 0.210166" rotation="0 -30.015 0" shapeId="32" clipDistance="30" nodeId="1218" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-11.4996 1.01706 0.335382" rotation="0 -40.8546 0" shapeId="32" clipDistance="30" nodeId="1219" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-11.5164 1.01706 0.0862054" rotation="0 153.901 0" shapeId="32" clipDistance="30" nodeId="1220" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-12.4718 1.23447 -1.46635" rotation="0 342.968 0" shapeId="32" clipDistance="30" nodeId="1221" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-12.7156 1.23447 -1.74022" rotation="0 169.728 0" shapeId="32" clipDistance="30" nodeId="1222" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-13.3189 1.23447 -1.7431" rotation="0 105.133 0" shapeId="32" clipDistance="30" nodeId="1223" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-13.9671 1.23447 -1.71663" rotation="0 34.159 0" shapeId="32" clipDistance="30" nodeId="1224" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-13.9591 0.734473 -1.72061" rotation="0 113.288 0" shapeId="32" clipDistance="30" nodeId="1225" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-13.722 0.734473 -1.49388" rotation="0 246.949 0" shapeId="32" clipDistance="30" nodeId="1226" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-13.4538 0.734473 -1.78095" rotation="0 47.5724 0" shapeId="32" clipDistance="30" nodeId="1227" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-13.2104 0.734473 -1.51894" rotation="0 56.865 0" shapeId="32" clipDistance="30" nodeId="1228" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-12.5774 0.734473 -1.5283" rotation="0 318.079 0" shapeId="32" clipDistance="30" nodeId="1229" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-12.3701 0.734473 -1.72407" rotation="0 107.571 0" shapeId="32" clipDistance="30" nodeId="1230" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-12.3997 0.234473 -1.73608" rotation="0 8.90957 0" shapeId="32" clipDistance="30" nodeId="1231" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-12.7167 0.234473 -1.48213" rotation="0 296.348 0" shapeId="32" clipDistance="30" nodeId="1232" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-13.9166 1.73447 -1.7144" rotation="0 161.127 0" shapeId="32" clipDistance="30" nodeId="1233" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-13.313 1.73447 -1.74068" rotation="0 69.6139 0" shapeId="32" clipDistance="30" nodeId="1234" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="crottinAffine" translation="-12.6749 1.73447 -1.67845" rotation="0 82.4031 0" shapeId="32" clipDistance="30" nodeId="1235" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                </TransformGroup>
+                <TransformGroup name="fillTome" translation="0.643019 -0.0566487 -0.0446787" nodeId="1236">
+                    <Shape name="tomes" translation="-11.9264 0.267063 0.970492" rotation="0 50.918 0" shapeId="33" nodeId="1237" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-10.4567 2.23447 -1.54377" rotation="180 -80.915 180" shapeId="34" clipDistance="30" nodeId="1238" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-10.4194 1.73447 -1.58596" rotation="0 -64.665 0" shapeId="34" clipDistance="30" nodeId="1239" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-11.1707 2.23447 -1.60342" rotation="180 -33.017 180" shapeId="34" clipDistance="30" nodeId="1240" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-11.0818 1.73447 -1.59457" rotation="180 -28.039 180" shapeId="34" clipDistance="30" nodeId="1241" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-11.0325 2.73447 -1.58959" rotation="180 -19.34 180" shapeId="34" clipDistance="30" nodeId="1242" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-11.0787 1.23447 -1.54235" rotation="180 53.774 -180" shapeId="34" clipDistance="30" nodeId="1243" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-10.4514 1.23447 -1.53286" rotation="180 -12.752 180" shapeId="34" clipDistance="30" nodeId="1244" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-10.4059 2.73447 -1.54797" rotation="0 1.35282 0" shapeId="34" clipDistance="30" nodeId="1245" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-10.4555 0.734473 -1.72607" rotation="180 83.4624 -180" shapeId="34" clipDistance="30" nodeId="1246" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-13.4365 2.73447 -1.55466" rotation="180 67.65 -180" shapeId="34" clipDistance="30" nodeId="1247" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-12.7658 2.73447 -1.62757" rotation="0 -24.474 0" shapeId="34" clipDistance="30" nodeId="1248" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-12.871 2.23447 -1.61256" rotation="0 -43.173 0" shapeId="34" clipDistance="30" nodeId="1249" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-13.5198 2.23447 -1.61194" rotation="0 -86.214 0" shapeId="34" clipDistance="30" nodeId="1250" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-8.78777 1.73447 -4.98729" rotation="180 14.308 -180" shapeId="34" clipDistance="30" nodeId="1251" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-8.08215 1.73447 -4.94142" rotation="180 -13.217 180" shapeId="34" clipDistance="30" nodeId="1252" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-8.85012 2.23447 -4.96934" rotation="0 249.994 0" shapeId="34" clipDistance="30" nodeId="1253" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-9.11652 2.73447 -4.99039" rotation="0 89.0566 0" shapeId="34" clipDistance="30" nodeId="1254" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-7.90143 2.73447 -5.01151" rotation="0 106.639 0" shapeId="34" clipDistance="30" nodeId="1255" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-9.18669 0.95452 -0.384685" rotation="180 15.3044 -180" shapeId="34" clipDistance="30" nodeId="1256" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-14.2612 3.23447 3.54334" rotation="-180 15.3044 180" shapeId="34" clipDistance="30" nodeId="1257" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-9.52061 0.956207 -0.170687" rotation="-180 87.5475 180" shapeId="34" clipDistance="30" nodeId="1258" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-14.2049 3.23447 2.10646" rotation="-180 93.4615 180" shapeId="34" clipDistance="30" nodeId="1259" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-14.2549 3.23447 2.62285" rotation="-180 183.217 180" shapeId="34" clipDistance="30" nodeId="1260" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-14.2109 3.23447 3.10233" rotation="-180 37.3587 180" shapeId="34" clipDistance="30" nodeId="1261" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-14.2228 0.734473 0.758552" rotation="-5.00896e-06 86.5384 5.00896e-06" shapeId="34" clipDistance="30" nodeId="1262" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-14.1666 2.23447 0.865583" rotation="-5.00896e-06 159.393 5.00896e-06" shapeId="34" clipDistance="30" nodeId="1263" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-14.2794 2.23447 0.428008" rotation="-5.00896e-06 420.085 5.00896e-06" shapeId="34" clipDistance="30" nodeId="1264" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                    <Shape name="tome" translation="-14.1729 2.23447 -0.106322" rotation="-5.00896e-06 261.776 5.00896e-06" shapeId="34" clipDistance="30" nodeId="1265" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="30"/>
+                </TransformGroup>
+                <TransformGroup name="fillButter" translation="0.643019 -0.0566487 -0.0446787" nodeId="1266"/>
+                <TransformGroup name="fillSugar" translation="0.643019 -0.0566487 -0.0446787" nodeId="1267"/>
+                <TransformGroup name="fillChocolat" translation="0.643019 -0.0566487 -0.0446787" nodeId="1268"/>
+                <TransformGroup name="fillMilkGoat" translation="0.643019 -0.0566487 -0.0446787" nodeId="1269">
+                    <Shape name="laitPlane" translation="-7.75761 0.014415 4.40465" rotation="-180 27.4327 -180" shapeId="25" clipDistance="30" nodeId="1270" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="29"/>
+                    <Shape name="faisselle.006" translation="-11.5545 1.08091 0.519925" rotation="180 28.5835 180" shapeId="35" nodeId="1271" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="29"/>
+                </TransformGroup>
+                <TransformGroup name="fillMilkBuffalo" translation="0.643019 -0.0566487 -0.0446787" nodeId="1272">
+                    <Shape name="laitPlane" translation="-7.75761 -0.0225922 4.40465" rotation="-180 27.4327 -180" shapeId="25" clipDistance="30" nodeId="1273" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="29"/>
+                </TransformGroup>
+                <TransformGroup name="fillMilkBuffaloBottled" translation="0.643019 -0.0566487 -0.0446787" nodeId="1274"/>
+                <TransformGroup name="fillMilkBottled" translation="0.643019 -0.0566487 -0.0446787" nodeId="1275"/>
+                <TransformGroup name="fillMilkGoatBottled" translation="0.643019 -0.0566487 -0.0446787" nodeId="1276"/>
+                <TransformGroup name="fillMozza" translation="0.643019 -0.0566487 -0.0446787" nodeId="1277">
+                    <Shape name="mozza" translation="-9.07714 0.734473 -4.9141" rotation="-0 -90 0" shapeId="36" nodeId="1278" castsShadows="true" receiveShadows="true" materialIds="41"/>
+                    <Shape name="mozza" translation="-8.96825 0.999545 0.161683" rotation="-0 -90 0" shapeId="36" nodeId="1279" castsShadows="true" receiveShadows="true" materialIds="41"/>
+                    <Shape name="mozza" translation="-9.0836 1.23447 -4.92302" rotation="-0 -90 0" shapeId="36" nodeId="1280" castsShadows="true" receiveShadows="true" materialIds="41"/>
+                    <Shape name="mozza" translation="-8.70206 1.23447 -4.89427" rotation="-0 -90 0" shapeId="36" nodeId="1281" castsShadows="true" receiveShadows="true" materialIds="41"/>
+                    <Shape name="mozza" translation="-8.34065 1.23447 -4.93426" rotation="-0 -90 0" shapeId="36" nodeId="1282" castsShadows="true" receiveShadows="true" materialIds="41"/>
+                </TransformGroup>
+                <TransformGroup name="animation" translation="0.643019 -0.0566487 -0.0446787" nodeId="1283">
+                    <Shape name="anim" translation="-7.75305 1.38411 4.40012" rotation="180 27.4327 180" shapeId="37" nodeId="1284" castsShadows="true" receiveShadows="true" distanceBlending="false" materialIds="6"/>
+                </TransformGroup>
+                <TransformGroup name="collisions" translation="0.643019 -0.0566487 -0.0446787" nodeId="1285">
+                    <Shape name="col" translation="-9.43594 0.46498 4.37658" shapeId="38" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="1286" castsShadows="false" receiveShadows="false" nonRenderable="true" distanceBlending="false" materialIds="62"/>
+                    <Shape name="col" translation="-11.0765 0.470382 4.40658" shapeId="39" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="1287" castsShadows="false" receiveShadows="false" nonRenderable="true" distanceBlending="false" materialIds="62"/>
+                    <Shape name="col" translation="-11.8901 0.545588 0.430341" shapeId="40" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="1288" castsShadows="false" receiveShadows="false" nonRenderable="true" distanceBlending="false" materialIds="62"/>
+                    <Shape name="col" translation="-9.80787 0.471895 -0.0341448" shapeId="41" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="1289" castsShadows="false" receiveShadows="false" nonRenderable="true" distanceBlending="false" materialIds="62"/>
+                    <Shape name="col" translation="-14.2613 1.72517 1.54656" shapeId="42" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="1290" castsShadows="false" receiveShadows="false" nonRenderable="true" distanceBlending="false" materialIds="62"/>
+                    <Shape name="col" translation="-7.81167 1.57125 4.51079" shapeId="43" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="1291" castsShadows="false" receiveShadows="false" nonRenderable="true" distanceBlending="false" materialIds="62"/>
+                    <Shape name="col" translation="-7.73539 0.634577 4.4335" shapeId="44" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="1292" castsShadows="false" receiveShadows="false" nonRenderable="true" distanceBlending="false" materialIds="62"/>
+                    <Shape name="col" translation="-7.73817 0.978016 -0.00704729" shapeId="45" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="1293" castsShadows="false" receiveShadows="false" nonRenderable="true" distanceBlending="false" materialIds="62"/>
+                    <Shape name="col" translation="-10.3846 1.18611 0.0113263" shapeId="46" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="1294" castsShadows="false" receiveShadows="false" nonRenderable="true" distanceBlending="false" materialIds="62"/>
+                    <Shape name="col" translation="-10.819 1.73447 -5.00251" shapeId="47" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="1295" castsShadows="false" receiveShadows="false" nonRenderable="true" distanceBlending="false" materialIds="62"/>
+                    <Shape name="col" translation="-10.819 1.73447 -1.56335" shapeId="48" static="true" collisionFilterGroup="0x1034" collisionFilterMask="0xfffffbff" nodeId="1296" castsShadows="false" receiveShadows="false" nonRenderable="true" distanceBlending="false" materialIds="62"/>
+                </TransformGroup>
+            </TransformGroup>
+        </TransformGroup>
+    </Scene>
+</i3D>

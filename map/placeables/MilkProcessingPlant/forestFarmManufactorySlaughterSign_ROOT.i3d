@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="iso-8859-1"?>
+<i3D name="forestFarmManufactorySlaughterSign_ROOT.i3d" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+    <Asset>
+        <Export program="GIANTS Editor 64bit" version="10.0.14"/>
+    </Asset>
+    <Files>
+        <File fileId="6" filename="textures/sign_front_diffuse.png"/>
+        <File fileId="8" filename="textures/sign_front_gloss.png"/>
+        <File fileId="7" filename="textures/sign_front_normal.png"/>
+        <File fileId="4" filename="../textures/metal_dark_diffuse.dds"/>
+        <File fileId="1" filename="../textures/wood_dark_diffuse.dds"/>
+        <File fileId="2" filename="../textures/wood_dark_normal.dds"/>
+    </Files>
+    <Materials>
+        <Material name="metalDark" materialId="74" specularColor="0.219608 1 0.219608">
+            <Texture fileId="4"/>
+        </Material>
+        <Material name="signFrontRelief" materialId="100">
+            <Texture fileId="6"/>
+            <Normalmap fileId="7" bumpDepth="0.35"/>
+            <Glossmap fileId="8"/>
+        </Material>
+        <Material name="woodDark" materialId="124" specularColor="0.0509804 1 0.0509804">
+            <Texture fileId="1"/>
+            <Normalmap fileId="2" bumpDepth="0.25"/>
+        </Material>
+    </Materials>
+    <Shapes externalShapesFile="forestFarmManufactorySlaughterSign_ROOT.i3d.shapes"/>
+    <Scene>
+        <TransformGroup name="forestFarmManufactorySlaughterSign_ROOT" translation="-2.63028 4.02244 0.82397" rotation="0 -90 0" nodeId="5530">
+            <Shape name="lowerWoodPanel" scale="1 3.40881 1" shapeId="1" clipDistance="300" nodeId="5531" castsShadows="true" receiveShadows="true" materialIds="124"/>
+            <Shape name="frameBottom" translation="0 0 -0.00430103" scale="1 1.60671 1" shapeId="2" clipDistance="300" nodeId="5532" castsShadows="true" receiveShadows="true" materialIds="74">
+                <Shape name="bolt07" translation="0 -0.026843 0" scale="1 0.622391 1" shapeId="3" clipDistance="300" nodeId="5533" castsShadows="true" receiveShadows="true" materialIds="74"/>
+                <Shape name="bolt08" translation="0 -0.026843 0" scale="1 0.622391 1" shapeId="4" clipDistance="300" nodeId="5534" castsShadows="true" receiveShadows="true" materialIds="74"/>
+                <Shape name="bolt09" translation="0 -0.026843 0" scale="1 0.622391 1" shapeId="5" clipDistance="300" nodeId="5535" castsShadows="true" receiveShadows="true" materialIds="74"/>
+            </Shape>
+            <Shape name="frameLeft" translation="0.32247 0.119698 -0.00430103" scale="1.14035 0.869053 1" shapeId="6" clipDistance="300" nodeId="5536" castsShadows="true" receiveShadows="true" materialIds="74">
+                <Shape name="bolt01" translation="-0.0715207 0 0" shapeId="7" clipDistance="300" nodeId="5537" castsShadows="true" receiveShadows="true" materialIds="74"/>
+                <Shape name="bolt02" translation="-2.26032 -0.753651 -0.00507835" shapeId="8" clipDistance="300" nodeId="5538" castsShadows="true" receiveShadows="true" materialIds="74"/>
+                <Shape name="bolt03" translation="-4.44901 -1.41109 0" shapeId="9" clipDistance="300" nodeId="5539" castsShadows="true" receiveShadows="true" materialIds="74"/>
+            </Shape>
+            <Shape name="rearBracketLeft" shapeId="10" clipDistance="300" nodeId="5540" castsShadows="true" receiveShadows="true" materialIds="74"/>
+            <Shape name="rearBracketRight" shapeId="11" clipDistance="300" nodeId="5541" castsShadows="true" receiveShadows="true" materialIds="74"/>
+            <Shape name="reliefFront" shapeId="12" clipDistance="300" nodeId="5542" castsShadows="true" receiveShadows="true" materialIds="100"/>
+            <Shape name="frameBottom" translation="0 0.616308 -0.00430103" scale="1 1.60671 1" shapeId="2" clipDistance="300" nodeId="5543" castsShadows="true" receiveShadows="true" materialIds="74">
+                <Shape name="bolt07" translation="0 -0.026843 0" scale="1 0.622391 1" shapeId="3" clipDistance="300" nodeId="5544" castsShadows="true" receiveShadows="true" materialIds="74"/>
+                <Shape name="bolt08" translation="0 -0.026843 0" scale="1 0.622391 1" shapeId="4" clipDistance="300" nodeId="5545" castsShadows="true" receiveShadows="true" materialIds="74"/>
+                <Shape name="bolt09" translation="0 -0.026843 0" scale="1 0.622391 1" shapeId="5" clipDistance="300" nodeId="5546" castsShadows="true" receiveShadows="true" materialIds="74"/>
+            </Shape>
+            <Shape name="frameBottom" translation="0 1.71851 -0.00430103" scale="1 1.60671 1" shapeId="2" clipDistance="300" nodeId="5547" castsShadows="true" receiveShadows="true" materialIds="74">
+                <Shape name="bolt07" translation="0 -0.026843 0" scale="1 0.622391 1" shapeId="3" clipDistance="300" nodeId="5548" castsShadows="true" receiveShadows="true" materialIds="74"/>
+                <Shape name="bolt08" translation="0 -0.026843 0" scale="1 0.622391 1" shapeId="4" clipDistance="300" nodeId="5549" castsShadows="true" receiveShadows="true" materialIds="74"/>
+                <Shape name="bolt09" translation="0 -0.026843 0" scale="1 0.622391 1" shapeId="5" clipDistance="300" nodeId="5550" castsShadows="true" receiveShadows="true" materialIds="74"/>
+            </Shape>
+            <Shape name="frameLeft" translation="4.83393 0.119698 -0.00430103" scale="1.14035 0.869053 1" shapeId="6" clipDistance="300" nodeId="5551" castsShadows="true" receiveShadows="true" materialIds="74">
+                <Shape name="bolt01" translation="-0.0715207 0 0" shapeId="7" clipDistance="300" nodeId="5552" castsShadows="true" receiveShadows="true" materialIds="74"/>
+                <Shape name="bolt02" translation="-2.26032 -0.753651 -0.00507835" shapeId="8" clipDistance="300" nodeId="5553" castsShadows="true" receiveShadows="true" materialIds="74"/>
+                <Shape name="bolt03" translation="-4.44901 -1.41109 0" shapeId="9" clipDistance="300" nodeId="5554" castsShadows="true" receiveShadows="true" materialIds="74"/>
+            </Shape>
+        </TransformGroup>
+    </Scene>
+</i3D>
