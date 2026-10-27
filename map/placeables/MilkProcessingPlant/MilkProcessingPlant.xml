@@ -381,10 +381,12 @@
 
 					<!-- Основная геометрия стадии появляется по отдельным Shape в порядке Scenegraph. -->
 					<toggleProgressMesh node="phase_08" active="true" updatePhysics="true" progressStepByStep="true"/>
-					<toggleProgressMesh node="phase_08_props01" updatePhysics="true" progressStepMin="0" progressStepMax="25"/>
-					<toggleProgressMesh node="phase_08_props02" updatePhysics="true" progressStepMin="25" progressStepMax="50"/>
-					<toggleProgressMesh node="phase_08_props03" updatePhysics="true" progressStepMin="50" progressStepMax="75"/>
-					<toggleProgressMesh node="phase_08_props04" updatePhysics="true" progressStepMin="75" progressStepMax="100"/>
+					<toggleProgressMesh node="phase_08_props01" updatePhysics="true" progressStepMin="0" progressStepMax="17"/>
+					<toggleProgressMesh node="phase_08_props02" updatePhysics="true" progressStepMin="17" progressStepMax="33"/>
+					<toggleProgressMesh node="phase_08_props03" updatePhysics="true" progressStepMin="33" progressStepMax="50"/>
+					<toggleProgressMesh node="phase_08_props04" updatePhysics="true" progressStepMin="50" progressStepMax="67"/>
+					<toggleProgressMesh node="phase_08_props05" updatePhysics="true" progressStepMin="67" progressStepMax="83"/>
+					<toggleProgressMesh node="phase_08_props06" updatePhysics="true" progressStepMin="83" progressStepMax="100"/>
 
 					<input fillType="INSTRUMENT" amount="447" usagePerHour="45"/>
 					<input fillType="FURNITURE" amount="4990" usagePerHour="1000"/>
@@ -418,7 +420,7 @@
 		</stateMachine>
 
 		<sellingStation node="constructibleSellingStation" supportsExtension="false" allowMissions="true" appearsOnStats="false">
-			<palletTrigger triggerNode="constructiblePalletTrigger" aiNode="constructibleUnloadTriggerAINode" fillTypes="INSTRUMENT BOARDS PLANKS BUILDING_METAL CEMENT WOODBEAM METAL FURNITURE NAILS" deleteLitersPerSecond="200"/>
+			<palletTrigger triggerNode="constructiblePalletTrigger" aiNode="constructibleUnloadTriggerAINode" fillTypes="INSTRUMENT BOARDS PLANKS BUILDING_METAL CEMENT WOODBEAM METAL FURNITURE NAILS ROOFPLATES" deleteLitersPerSecond="200"/>
 		</sellingStation>
 
 		<storage isExtension="false" fillLevelSyncThreshold="50">
@@ -484,15 +486,15 @@
 		<i3dMapping id="storageAreaEnd_Row1_part03" node="0>0|5|1|4|0"/>
 		<i3dMapping id="storageAreaStart_Row1_part04" node="0>0|5|1|5"/>
 		<i3dMapping id="storageAreaEnd_Row1_part04" node="0>0|5|1|5|0"/>
-		<i3dMapping id="rollingDoor1Base" node="0>0|1|45|46|2"/>
-		<i3dMapping id="rollingDoor1" node="0>0|1|45|46|2|0"/>
-		<i3dMapping id="rollingDoor1ColPartBottom" node="0>0|1|45|46|2|1"/>
-		<i3dMapping id="rollingDoor1ColPartTop" node="0>0|1|45|46|2|2"/>
-		<i3dMapping id="rollingDoor1Trigger" node="0>0|1|45|46|2|3"/>
-		<i3dMapping id="externalDoor" node="0>0|1|45|47|1"/>
-		<i3dMapping id="externalDoorTrigger" node="0>0|1|45|47|0|0"/>
-		<i3dMapping id="internalDoor" node="0>0|1|45|48|1"/>
-		<i3dMapping id="internalDoorTrigger" node="0>0|1|45|48|0|0"/>
+		<i3dMapping id="rollingDoor1Base" node="0>0|1|40|56|2"/>
+		<i3dMapping id="rollingDoor1" node="0>0|1|40|56|2|0"/>
+		<i3dMapping id="rollingDoor1ColPartBottom" node="0>0|1|40|56|2|1"/>
+		<i3dMapping id="rollingDoor1ColPartTop" node="0>0|1|40|56|2|2"/>
+		<i3dMapping id="rollingDoor1Trigger" node="0>0|1|40|56|2|3"/>
+		<i3dMapping id="externalDoor" node="0>0|1|40|57|1"/>
+		<i3dMapping id="externalDoorTrigger" node="0>0|1|40|57|0|0"/>
+		<i3dMapping id="internalDoor" node="0>0|1|40|58|1"/>
+		<i3dMapping id="internalDoorTrigger" node="0>0|1|40|58|0|0"/>
 		<i3dMapping id="phase_01" node="0>0|1|0"/>
 		<i3dMapping id="phase_01_props01" node="0>0|1|1"/>
 		<i3dMapping id="phase_01_props02" node="0>0|1|2"/>
@@ -538,8 +540,7 @@
 		<i3dMapping id="phase_08_props02" node="0>0|1|42"/>
 		<i3dMapping id="phase_08_props03" node="0>0|1|43"/>
 		<i3dMapping id="phase_08_props04" node="0>0|1|44"/>
-		<i3dMapping id="phase_09" node="0>0|1|45"/>
-		<i3dMapping id="phase_09_props01" node="0>0|1|46"/>
-		<i3dMapping id="phase_09_props02" node="0>0|1|47"/>
+		<i3dMapping id="phase_08_props05" node="0>0|1|45"/>
+		<i3dMapping id="phase_08_props06" node="0>0|1|46"/>
 	</i3dMappings>
 </placeable>
