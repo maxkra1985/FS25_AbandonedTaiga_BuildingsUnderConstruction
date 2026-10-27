@@ -70,6 +70,21 @@
 		Для жидкостей в данной модели только exactFillRootNodeWater имеет физический Shape.
 	-->
 	<productionPoint isFinalized="false" name="$l10n_storeItem_MilkProcessingPlant">
+		<!-- Вращение восьми мешалок и четырёх вентиляторов при активном производстве. -->
+		<animationNodes>
+			<animationNode node="milkRotor01" rotSpeed="700" rotAxis="3" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
+			<animationNode node="milkRotor02" rotSpeed="700" rotAxis="3" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
+			<animationNode node="milkRotor03" rotSpeed="700" rotAxis="3" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
+			<animationNode node="milkRotor04" rotSpeed="700" rotAxis="3" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
+			<animationNode node="milkMixer01" rotSpeed="170" rotAxis="2" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
+			<animationNode node="milkMixer02" rotSpeed="170" rotAxis="2" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
+			<animationNode node="milkMixer03" rotSpeed="170" rotAxis="2" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
+			<animationNode node="milkMixer04" rotSpeed="170" rotAxis="2" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
+			<animationNode node="milkMixer05" rotSpeed="170" rotAxis="2" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
+			<animationNode node="milkMixer06" rotSpeed="170" rotAxis="2" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
+			<animationNode node="milkMixer07" rotSpeed="170" rotAxis="2" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
+			<animationNode node="milkMixer08" rotSpeed="170" rotAxis="2" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
+		</animationNodes>
 		<productions sharedThroughputCapacity="true">
 			<production id="butter_milk" name="$l10n_milkProcessing_butter_milk" cyclesPerHour="20" costsPerActiveHour="1">
 				<inputs>
@@ -540,5 +555,17 @@
 		<i3dMapping id="phase_08_props04" node="0>1|44"/>
 		<i3dMapping id="phase_08_props05" node="0>1|45"/>
 		<i3dMapping id="phase_08_props06" node="0>1|46"/>
+		<i3dMapping id="milkRotor01" node="0>1|40|12|2"/>
+		<i3dMapping id="milkRotor02" node="0>1|40|13|2"/>
+		<i3dMapping id="milkRotor03" node="0>1|40|14|2"/>
+		<i3dMapping id="milkRotor04" node="0>1|40|15|2"/>
+		<i3dMapping id="milkMixer01" node="0>1|40|40|0|1"/>
+		<i3dMapping id="milkMixer02" node="0>1|40|40|1|1"/>
+		<i3dMapping id="milkMixer03" node="0>1|40|40|2|1"/>
+		<i3dMapping id="milkMixer04" node="0>1|40|40|3|1"/>
+		<i3dMapping id="milkMixer05" node="0>1|40|40|5|1"/>
+		<i3dMapping id="milkMixer06" node="0>1|40|40|6|1"/>
+		<i3dMapping id="milkMixer07" node="0>1|40|40|7|1"/>
+		<i3dMapping id="milkMixer08" node="0>1|40|40|8|1"/>
 	</i3dMappings>
 </placeable>
