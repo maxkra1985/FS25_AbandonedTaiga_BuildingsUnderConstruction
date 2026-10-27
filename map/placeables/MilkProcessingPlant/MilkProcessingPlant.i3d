@@ -6,9 +6,9 @@
   </Asset>
 
   <Files>
-    <File fileId="53" filename="../../../../!!! Objects/roofPanels/textures/slateDiffuse.dds"/>
-    <File fileId="54" filename="../../../../!!! Objects/roofPanels/textures/slateSpecular.dds"/>
-    <File fileId="282" filename="MonomixProductionWorkshop_passport.dds"/>
+    <File fileId="53" filename="textures/slateDiffuse.dds"/>
+    <File fileId="54" filename="textures/slateSpecular.dds"/>
+    <File fileId="282" filename="MilkProcessingPlant_passport.dds"/>
     <File fileId="18" filename="shaders/vehicleShader.xml"/>
     <File fileId="83" filename="textures/GIANTS Engine 8_mask.dds"/>
     <File fileId="14" filename="textures/Lamps_Albedo.dds"/>
@@ -35,7 +35,7 @@
     <File fileId="232" filename="textures/gateWood04_specular.dds"/>
     <File fileId="88" filename="textures/kuhnIT26_normal.dds"/>
     <File fileId="89" filename="textures/kuhnIT26_vmask.dds"/>
-    <File fileId="86" filename="textures/logos.png"/>
+    <File fileId="86" filename="textures/logos.dds"/>
     <File fileId="266" filename="textures/milkProcessingSign_diffuse.dds"/>
     <File fileId="268" filename="textures/milkProcessingSign_gloss.dds"/>
     <File fileId="267" filename="textures/milkProcessingSign_normal.dds"/>
@@ -886,7 +886,7 @@
   </Shapes>
 
   <Scene>
-    <TransformGroup name="MonomixProductionWorkshop" nodeId="344">
+    <TransformGroup name="MilkProcessingPlant" nodeId="344">
       <TransformGroup name="areas" nodeId="345">
         <TransformGroup name="testAreas" nodeId="346">
           <TransformGroup name="levelArea1Height" translation="-10.5 0 -22.1" nodeId="347"/>

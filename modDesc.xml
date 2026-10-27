@@ -50,6 +50,7 @@
 		<storeItem xmlFilename="map/placeables/SawMillBig/constructibleSawmill.xml"/>
 		<storeItem xmlFilename="map/placeables/PulpPaperProduction/PulpPaperProduction.xml"/>
 		<storeItem xmlFilename="map/placeables/MonomixProductionWorkshop/MonomixProductionWorkshop.xml"/>
+		<storeItem xmlFilename="map/placeables/MilkProcessingPlant/MilkProcessingPlant.xml"/>
 		<!-- СКЛАДЫ, БУНКЕРЫ И ХРАНИЛИЩА -->
 		<storeItem xmlFilename="map/placeables/Storage/Storage.xml"/>
 		<storeItem xmlFilename="map/placeables/WoodStorageDistributor/WoodStorageDistributor.xml"/>
@@ -170,6 +171,19 @@
 			<de>Baubare Mischfutterwerkstatt mit Ballenlager und drei Rohstoffbunkern.</de>
 		</text>
 
+        <!-- МОЛОКОПЕРЕРАБАТЫВАЮЩИЙ ЗАВОД -->
+        <text name="storeItem_MilkProcessingPlant"><ru>Молокоперерабатывающий завод</ru><en>Milk processing plant</en><de>Milchverarbeitungsbetrieb</de></text>
+        <text name="function_MilkProcessingPlant"><ru>Строящееся молочное производство со складом паллет.</ru><en>Constructible dairy factory with pallet storage.</en><de>Baubare Molkerei mit Palettenlager.</de></text>
+        <text name="milkProcessing_butter_milk"><ru>Масло из коровьего молока</ru><en>Butter from cow milk</en><de>Butter aus Kuhmilch</de></text>
+        <text name="milkProcessing_butter_goatMilk"><ru>Масло из козьего молока</ru><en>Butter from goat milk</en><de>Butter aus Ziegenmilch</de></text>
+        <text name="milkProcessing_butter_buffaloMilk"><ru>Масло из буйволиного молока</ru><en>Butter from buffalo milk</en><de>Butter aus Büffelmilch</de></text>
+        <text name="milkProcessing_cheese"><ru>Сыр из коровьего молока</ru><en>Cheese from cow milk</en><de>Käse aus Kuhmilch</de></text>
+        <text name="milkProcessing_goatcheese"><ru>Козий сыр</ru><en>Goat cheese</en><de>Ziegenkäse</de></text>
+        <text name="milkProcessing_buffalomozzarella"><ru>Буйволиная моцарелла</ru><en>Buffalo mozzarella</en><de>Büffelmozzarella</de></text>
+        <text name="milkProcessing_chocolate"><ru>Шоколад</ru><en>Chocolate</en><de>Schokolade</de></text>
+        <text name="milkProcessing_milkBottled"><ru>Молоко в бутылках</ru><en>Bottled milk</en><de>Milch in Flaschen</de></text>
+        <text name="milkProcessing_goatmilkBottled"><ru>Козье молоко в бутылках</ru><en>Bottled goat milk</en><de>Ziegenmilch in Flaschen</de></text>
+        <text name="milkProcessing_buffalomilkBottled"><ru>Буйволиное молоко в бутылках</ru><en>Bottled buffalo milk</en><de>Büffelmilch in Flaschen</de></text>
 		<text name="PulpPaperProduction">
 			<ru>Целлюлозно-бумажное производство</ru>
 			<en>Pulp and paper production</en>
