@@ -4139,7 +4139,7 @@
       </TransformGroup>
       <TransformGroup name="storage" nodeId="3431">
         <TransformGroup name="palletTrigger" translation="4.06711 0.25 -12.5231" nodeId="3432">
-          <Shape name="palletTrigger" translation="0 1.34685 1.19871" scale="0.110668 6.50461 5.35327" shapeId="180" static="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x40000" nodeId="3433" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="59"/>
+          <Shape name="palletTrigger" translation="0 1.34685 1.19871" scale="0.110668 6.50461 5.35327" shapeId="180" static="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x50000" nodeId="3433" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="59"/>
           <TransformGroup name="palletUnloadLinkNode" translation="0.388149 0.358972 0.226313" nodeId="3434"/>
           <TransformGroup name="palletAiUnloadingNode" translation="0.388149 0.358972 0.226313" nodeId="3435"/>
         </TransformGroup>

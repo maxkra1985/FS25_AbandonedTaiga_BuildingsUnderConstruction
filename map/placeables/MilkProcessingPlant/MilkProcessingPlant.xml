@@ -157,7 +157,6 @@
 			<capacity fillType="MILK" capacity="100000"/>
 			<capacity fillType="GOATMILK" capacity="50000"/>
 			<capacity fillType="BUFFALOMILK" capacity="50000"/>
-			<capacity fillType="WATER" capacity="40000"/>
 			<capacity fillType="SUGAR" capacity="30000"/>
 			<capacity fillType="BUTTER" capacity="30000"/>
 			<capacity fillType="CHEESE" capacity="30000"/>
@@ -173,10 +172,9 @@
 				<fillType name="MILK"/>
 				<fillType name="GOATMILK"/>
 				<fillType name="BUFFALOMILK"/>
-				<fillType name="WATER"/>
 				<fillType name="SUGAR"/>
 			</supportedFillTypes>
-			<unloadTrigger exactFillRootNode="exactFillRootNodeWater" aiNode="unloadTriggerAINodeWater" fillTypes="MILK GOATMILK BUFFALOMILK WATER"/>
+			<unloadTrigger exactFillRootNode="exactFillRootNodeWater" aiNode="unloadTriggerAINodeWater" fillTypes="MILK GOATMILK BUFFALOMILK"/>
 			<palletTrigger triggerNode="productionPalletTrigger" aiNode="productionPalletAiNode" fillTypes="SUGAR GOATMILK BUFFALOMILK"/>
 		</sellingStation>
 		<palletSpawner node="palletSpawner">
