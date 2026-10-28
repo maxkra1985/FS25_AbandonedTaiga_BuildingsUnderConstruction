@@ -161,6 +161,15 @@
 					<output fillType="BUFFALOMILK_BOTTLED" amount="9.9"/>
 				</outputs>
 			</production>
+			<!-- Сушка обрата: примерно 11 л обезжиренного молока на 1 кг порошка. -->
+			<production id="skimmedMilkPowder" name="$l10n_milkProcessing_skimmedMilkPowder" cyclesPerHour="30" costsPerActiveHour="6">
+				<inputs>
+					<input fillType="SKIMMED_MILK" amount="11"/>
+				</inputs>
+				<outputs>
+					<output fillType="SKIMMED_MILK_POWDER" amount="1"/>
+				</outputs>
+			</production>
 		</productions>
 		<storage isExtension="false" fillLevelSyncThreshold="50">
 			<capacity fillType="MILK" capacity="100000"/>
@@ -171,6 +180,7 @@
 			<capacity fillType="BUFFALOBUTTER" capacity="30000"/>
 			<!-- Обрат сохраняется как сырьё для будущих производственных рецептов. -->
 			<capacity fillType="SKIMMED_MILK" capacity="30000"/>
+			<capacity fillType="SKIMMED_MILK_POWDER" capacity="30000"/>
 			<capacity fillType="CHEESE" capacity="30000"/>
 			<capacity fillType="GOATCHEESE" capacity="30000"/>
 			<capacity fillType="BUFFALOMOZZARELLA" capacity="30000"/>
@@ -197,7 +207,7 @@
 
 	<!-- Склад готовой продукции и ингредиентов на паллетах. -->
 	<objectStorage isExtension="true" supportsExtension="false" supportsBales="false" supportsPallets="true" capacity="120" maxUnloadAmount="25" maxLength="8.5" maxWidth="6" maxHeight="4"
-				   fillTypes="GOATMILK BUFFALOMILK BUTTER GOATBUTTER BUFFALOBUTTER CHEESE GOATCHEESE BUFFALOMOZZARELLA MILK_BOTTLED GOATMILK_BOTTLED BUFFALOMILK_BOTTLED">
+				   fillTypes="GOATMILK BUFFALOMILK BUTTER GOATBUTTER BUFFALOBUTTER CHEESE GOATCHEESE BUFFALOMOZZARELLA MILK_BOTTLED GOATMILK_BOTTLED BUFFALOMILK_BOTTLED SKIMMED_MILK_POWDER">
 		<playerTrigger node="storagePlayerTrigger"/>
 		<objectTrigger node="storagePalletTrigger"/>
 		<transferFromStorage playerTrigger="transferFromStorageTrigger">

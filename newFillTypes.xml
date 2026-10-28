@@ -292,11 +292,18 @@
 			<economy pricePerLiter="0.33"/>
 			<image hud="$dataS/menu/hud/fillTypes/hud_fill_milkCow.png"/>
 		</fillType>
+		<!-- Сухое обезжиренное молоко: продукт сушки обрата с отдельной паллетой. -->
+		<fillType name="SKIMMED_MILK_POWDER" title="$l10n_fillType_skimmedMilkPowder" showOnPriceTable="true" isPalletType="true">
+			<physics massPerLiter="0.50" maxPhysicalSurfaceAngle="38"/>
+			<economy pricePerLiter="5.20"/>
+			<image hud="map/placeables/MilkProcessingPlant/pallets/skimmedMilkPowderPallet/store_skimmedMilkPowderPallet.dds"/>
+			<pallet filename="map/placeables/MilkProcessingPlant/pallets/skimmedMilkPowderPallet/skimmedMilkPowderPallet.xml"/>
+		</fillType>
 	</fillTypes>
 	<fillTypeCategories>
 		<fillTypeCategory name="SELLINGSTATION_PRODUCTS">BEEF CHICKENMEAT PORK MUTTON MEATOBR KOSTI KROW SALO</fillTypeCategory>
-		<fillTypeCategory name="SELLINGSTATION_PRODUCTSFOOD">BEEF CHICKENMEAT PORK MUTTON MEATOBR KOSTI KROW SALO BUTTER GOATBUTTER BUFFALOBUTTER SKIMMED_MILK</fillTypeCategory>
-		<fillTypeCategory name="PRODUCT">BUTTER GOATBUTTER BUFFALOBUTTER SKIMMED_MILK</fillTypeCategory>
+		<fillTypeCategory name="SELLINGSTATION_PRODUCTSFOOD">BEEF CHICKENMEAT PORK MUTTON MEATOBR KOSTI KROW SALO BUTTER GOATBUTTER BUFFALOBUTTER SKIMMED_MILK SKIMMED_MILK_POWDER</fillTypeCategory>
+		<fillTypeCategory name="PRODUCT">BUTTER GOATBUTTER BUFFALOBUTTER SKIMMED_MILK SKIMMED_MILK_POWDER</fillTypeCategory>
 		<fillTypeCategory name="LIQUID">SKIMMED_MILK</fillTypeCategory>
 	</fillTypeCategories>
 </map>

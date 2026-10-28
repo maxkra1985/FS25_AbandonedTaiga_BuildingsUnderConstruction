@@ -55,6 +55,8 @@
 		<storeItem xmlFilename="map/placeables/MilkProcessingPlant/pallets/cowButterBoxPallet/cowButterBoxPallet.xml"/>
 		<storeItem xmlFilename="map/placeables/MilkProcessingPlant/pallets/goatButterBoxPallet/goatButterBoxPallet.xml"/>
 		<storeItem xmlFilename="map/placeables/MilkProcessingPlant/pallets/buffaloButterBoxPallet/buffaloButterBoxPallet.xml"/>
+		<!-- Паллеты сухого обезжиренного молока. -->
+		<storeItem xmlFilename="map/placeables/MilkProcessingPlant/pallets/skimmedMilkPowderPallet/skimmedMilkPowderPallet.xml"/>
 		<!-- СКЛАДЫ, БУНКЕРЫ И ХРАНИЛИЩА -->
 		<storeItem xmlFilename="map/placeables/Storage/Storage.xml"/>
 		<storeItem xmlFilename="map/placeables/WoodStorageDistributor/WoodStorageDistributor.xml"/>
@@ -180,6 +182,8 @@
         <text name="fillType_goatButter"><ru>Масло козье</ru><en>Goat butter</en><de>Ziegenbutter</de></text>
         <text name="fillType_buffaloButter"><ru>Масло буйволиное</ru><en>Buffalo butter</en><de>Büffelbutter</de></text>
         <text name="fillType_skimmedMilk"><ru>Молоко обезжиренное (обрат)</ru><en>Skimmed milk</en><de>Magermilch</de></text>
+        <text name="fillType_skimmedMilkPowder"><ru>Молоко сухое обезжиренное</ru><en>Skimmed milk powder</en><de>Magermilchpulver</de></text>
+        <text name="function_skimmedMilkPowder"><ru>Сухое молоко для хранения и продажи.</ru><en>Milk powder for storage and sale.</en><de>Milchpulver zur Lagerung und zum Verkauf.</de></text>
         <text name="storeItem_MilkProcessingPlant"><ru>Молокоперерабатывающий завод</ru><en>Milk processing plant</en><de>Milchverarbeitungsbetrieb</de></text>
         <text name="function_MilkProcessingPlant"><ru>Строящееся молочное производство со складом паллет.</ru><en>Constructible dairy factory with pallet storage.</en><de>Baubare Molkerei mit Palettenlager.</de></text>
         <text name="milkProcessing_butter_milk"><ru>Масло из коровьего молока</ru><en>Butter from cow milk</en><de>Butter aus Kuhmilch</de></text>
@@ -191,6 +195,7 @@
         <text name="milkProcessing_milkBottled"><ru>Молоко в бутылках</ru><en>Bottled milk</en><de>Milch in Flaschen</de></text>
         <text name="milkProcessing_goatmilkBottled"><ru>Козье молоко в бутылках</ru><en>Bottled goat milk</en><de>Ziegenmilch in Flaschen</de></text>
         <text name="milkProcessing_buffalomilkBottled"><ru>Буйволиное молоко в бутылках</ru><en>Bottled buffalo milk</en><de>Büffelmilch in Flaschen</de></text>
+        <text name="milkProcessing_skimmedMilkPowder"><ru>Сухое обезжиренное молоко</ru><en>Skimmed milk powder</en><de>Magermilchpulver</de></text>
 		<text name="PulpPaperProduction">
 			<ru>Целлюлозно-бумажное производство</ru>
 			<en>Pulp and paper production</en>
