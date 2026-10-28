@@ -51,6 +51,10 @@
 		<storeItem xmlFilename="map/placeables/PulpPaperProduction/PulpPaperProduction.xml"/>
 		<storeItem xmlFilename="map/placeables/MonomixProductionWorkshop/MonomixProductionWorkshop.xml"/>
 		<storeItem xmlFilename="map/placeables/MilkProcessingPlant/MilkProcessingPlant.xml"/>
+		<!-- Паллеты трёх видов масла. -->
+		<storeItem xmlFilename="map/placeables/MilkProcessingPlant/pallets/cowButterBoxPallet/cowButterBoxPallet.xml"/>
+		<storeItem xmlFilename="map/placeables/MilkProcessingPlant/pallets/goatButterBoxPallet/goatButterBoxPallet.xml"/>
+		<storeItem xmlFilename="map/placeables/MilkProcessingPlant/pallets/buffaloButterBoxPallet/buffaloButterBoxPallet.xml"/>
 		<!-- СКЛАДЫ, БУНКЕРЫ И ХРАНИЛИЩА -->
 		<storeItem xmlFilename="map/placeables/Storage/Storage.xml"/>
 		<storeItem xmlFilename="map/placeables/WoodStorageDistributor/WoodStorageDistributor.xml"/>
@@ -172,6 +176,10 @@
 		</text>
 
         <!-- МОЛОКОПЕРЕРАБАТЫВАЮЩИЙ ЗАВОД -->
+        <text name="fillType_cowButter"><ru>Масло коровье</ru><en>Cow butter</en><de>Kuhbutter</de></text>
+        <text name="fillType_goatButter"><ru>Масло козье</ru><en>Goat butter</en><de>Ziegenbutter</de></text>
+        <text name="fillType_buffaloButter"><ru>Масло буйволиное</ru><en>Buffalo butter</en><de>Büffelbutter</de></text>
+        <text name="fillType_skimmedMilk"><ru>Молоко обезжиренное (обрат)</ru><en>Skimmed milk</en><de>Magermilch</de></text>
         <text name="storeItem_MilkProcessingPlant"><ru>Молокоперерабатывающий завод</ru><en>Milk processing plant</en><de>Milchverarbeitungsbetrieb</de></text>
         <text name="function_MilkProcessingPlant"><ru>Строящееся молочное производство со складом паллет.</ru><en>Constructible dairy factory with pallet storage.</en><de>Baubare Molkerei mit Palettenlager.</de></text>
         <text name="milkProcessing_butter_milk"><ru>Масло из коровьего молока</ru><en>Butter from cow milk</en><de>Butter aus Kuhmilch</de></text>
@@ -180,7 +188,6 @@
         <text name="milkProcessing_cheese"><ru>Сыр из коровьего молока</ru><en>Cheese from cow milk</en><de>Käse aus Kuhmilch</de></text>
         <text name="milkProcessing_goatcheese"><ru>Козий сыр</ru><en>Goat cheese</en><de>Ziegenkäse</de></text>
         <text name="milkProcessing_buffalomozzarella"><ru>Буйволиная моцарелла</ru><en>Buffalo mozzarella</en><de>Büffelmozzarella</de></text>
-        <text name="milkProcessing_chocolate"><ru>Шоколад</ru><en>Chocolate</en><de>Schokolade</de></text>
         <text name="milkProcessing_milkBottled"><ru>Молоко в бутылках</ru><en>Bottled milk</en><de>Milch in Flaschen</de></text>
         <text name="milkProcessing_goatmilkBottled"><ru>Козье молоко в бутылках</ru><en>Bottled goat milk</en><de>Ziegenmilch in Flaschen</de></text>
         <text name="milkProcessing_buffalomilkBottled"><ru>Буйволиное молоко в бутылках</ru><en>Bottled buffalo milk</en><de>Büffelmilch in Flaschen</de></text>

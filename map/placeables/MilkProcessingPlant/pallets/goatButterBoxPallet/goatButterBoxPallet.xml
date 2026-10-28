@@ -40,7 +40,7 @@
 		<fillUnitConfigurations>
 			<fillUnitConfiguration>
 				<fillUnits>
-					<fillUnit unitTextOverride="$l10n_unit_literShort" fillTypes="GOATBUTTER" capacity="1000" ignoreFillLimit="true"/>
+					<fillUnit unitTextOverride="$l10n_unit_literShort" fillTypes="GOATBUTTER" capacity="60" ignoreFillLimit="true"/>
 				</fillUnits>
 			</fillUnitConfiguration>
 		</fillUnitConfigurations>

@@ -3,9 +3,9 @@
 	<annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
 
 	<storeData>
-		<name>$l10n_fillType_butter</name>
+		<name>$l10n_fillType_cowButter</name>
 		<image>map/placeables/MilkProcessingPlant/pallets/cowButterBoxPallet/store_cowButterBoxPallet.dds</image>
-		<price>1120</price>
+		<price>4354</price>
 		<category>pallets</category>
 		<brand>NONE</brand>
 		<showInStore>false</showInStore>
@@ -39,7 +39,7 @@
 		<fillUnitConfigurations>
 			<fillUnitConfiguration>
 				<fillUnits>
-					<fillUnit unitTextOverride="$l10n_unit_literShort" fillTypes="BUTTER" capacity="1000" ignoreFillLimit="true"/>
+					<fillUnit unitTextOverride="$l10n_unit_literShort" fillTypes="BUTTER" capacity="240" ignoreFillLimit="true"/>
 				</fillUnits>
 			</fillUnitConfiguration>
 		</fillUnitConfigurations>

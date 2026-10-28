@@ -91,7 +91,8 @@
 					<input fillType="MILK" amount="15"/>
 				</inputs>
 				<outputs>
-					<output fillType="BUTTER" amount="13"/>
+					<output fillType="BUTTER" amount="0.75" isPrimary="true"/>
+					<output fillType="SKIMMED_MILK" amount="13.4" sellDirectly="true"/>
 				</outputs>
 			</production>
 			<production id="butter_goatMilk" name="$l10n_milkProcessing_butter_goatMilk" cyclesPerHour="31" costsPerActiveHour="4">
@@ -99,7 +100,8 @@
 					<input fillType="GOATMILK" amount="3"/>
 				</inputs>
 				<outputs>
-					<output fillType="BUTTER" amount="10"/>
+					<output fillType="GOATBUTTER" amount="0.12" isPrimary="true"/>
+					<output fillType="SKIMMED_MILK" amount="2.7" sellDirectly="true"/>
 				</outputs>
 			</production>
 			<production id="butter_buffaloMilk" name="$l10n_milkProcessing_butter_buffaloMilk" cyclesPerHour="2.2" costsPerActiveHour="8">
@@ -107,7 +109,8 @@
 					<input fillType="BUFFALOMILK" amount="3"/>
 				</inputs>
 				<outputs>
-					<output fillType="BUTTER" amount="45"/>
+					<output fillType="BUFFALOBUTTER" amount="0.2" isPrimary="true"/>
+					<output fillType="SKIMMED_MILK" amount="2.5" sellDirectly="true"/>
 				</outputs>
 			</production>
 			<production id="cheese" name="$l10n_milkProcessing_cheese" cyclesPerHour="55" costsPerActiveHour="1">
@@ -115,7 +118,7 @@
 					<input fillType="MILK" amount="3"/>
 				</inputs>
 				<outputs>
-					<output fillType="CHEESE" amount="2"/>
+					<output fillType="CHEESE" amount="0.3"/>
 				</outputs>
 			</production>
 			<production id="goatcheese" name="$l10n_milkProcessing_goatcheese" cyclesPerHour="40" costsPerActiveHour="4">
@@ -123,7 +126,7 @@
 					<input fillType="GOATMILK" amount="3"/>
 				</inputs>
 				<outputs>
-					<output fillType="GOATCHEESE" amount="6"/>
+					<output fillType="GOATCHEESE" amount="0.4"/>
 				</outputs>
 			</production>
 			<production id="buffalomozzarella" name="$l10n_milkProcessing_buffalomozzarella" cyclesPerHour="20" costsPerActiveHour="8">
@@ -131,16 +134,7 @@
 					<input fillType="BUFFALOMILK" amount="3"/>
 				</inputs>
 				<outputs>
-					<output fillType="BUFFALOMOZZARELLA" amount="2"/>
-				</outputs>
-			</production>
-			<production id="chocolate" name="$l10n_milkProcessing_chocolate" cyclesPerHour="105" costsPerActiveHour="1">
-				<inputs>
-					<input fillType="MILK" amount="1"/>
-					<input fillType="SUGAR" amount="1"/>
-				</inputs>
-				<outputs>
-					<output fillType="CHOCOLATE" amount="1"/>
+					<output fillType="BUFFALOMOZZARELLA" amount="0.6"/>
 				</outputs>
 			</production>
 			<production id="milkBottled" name="$l10n_milkProcessing_milkBottled" cyclesPerHour="20" costsPerActiveHour="1">
@@ -148,7 +142,7 @@
 					<input fillType="MILK" amount="10"/>
 				</inputs>
 				<outputs>
-					<output fillType="MILK_BOTTLED" amount="20"/>
+					<output fillType="MILK_BOTTLED" amount="9.9"/>
 				</outputs>
 			</production>
 			<production id="goatmilkBottled" name="$l10n_milkProcessing_goatmilkBottled" cyclesPerHour="6" costsPerActiveHour="4">
@@ -156,7 +150,7 @@
 					<input fillType="GOATMILK" amount="10"/>
 				</inputs>
 				<outputs>
-					<output fillType="GOATMILK_BOTTLED" amount="20"/>
+					<output fillType="GOATMILK_BOTTLED" amount="9.9"/>
 				</outputs>
 			</production>
 			<production id="buffalomilkBottled" name="$l10n_milkProcessing_buffalomilkBottled" cyclesPerHour="6" costsPerActiveHour="8">
@@ -164,7 +158,7 @@
 					<input fillType="BUFFALOMILK" amount="10"/>
 				</inputs>
 				<outputs>
-					<output fillType="BUFFALOMILK_BOTTLED" amount="20"/>
+					<output fillType="BUFFALOMILK_BOTTLED" amount="9.9"/>
 				</outputs>
 			</production>
 		</productions>
@@ -172,12 +166,12 @@
 			<capacity fillType="MILK" capacity="100000"/>
 			<capacity fillType="GOATMILK" capacity="50000"/>
 			<capacity fillType="BUFFALOMILK" capacity="50000"/>
-			<capacity fillType="SUGAR" capacity="30000"/>
 			<capacity fillType="BUTTER" capacity="30000"/>
+			<capacity fillType="GOATBUTTER" capacity="30000"/>
+			<capacity fillType="BUFFALOBUTTER" capacity="30000"/>
 			<capacity fillType="CHEESE" capacity="30000"/>
 			<capacity fillType="GOATCHEESE" capacity="30000"/>
 			<capacity fillType="BUFFALOMOZZARELLA" capacity="30000"/>
-			<capacity fillType="CHOCOLATE" capacity="30000"/>
 			<capacity fillType="MILK_BOTTLED" capacity="30000"/>
 			<capacity fillType="GOATMILK_BOTTLED" capacity="30000"/>
 			<capacity fillType="BUFFALOMILK_BOTTLED" capacity="30000"/>
@@ -187,10 +181,9 @@
 				<fillType name="MILK"/>
 				<fillType name="GOATMILK"/>
 				<fillType name="BUFFALOMILK"/>
-				<fillType name="SUGAR"/>
 			</supportedFillTypes>
 			<unloadTrigger exactFillRootNode="exactFillRootNodeWater" aiNode="unloadTriggerAINodeWater" fillTypes="MILK GOATMILK BUFFALOMILK"/>
-			<palletTrigger triggerNode="productionPalletTrigger" aiNode="productionPalletAiNode" fillTypes="SUGAR GOATMILK BUFFALOMILK"/>
+			<palletTrigger triggerNode="productionPalletTrigger" aiNode="productionPalletAiNode" fillTypes="GOATMILK BUFFALOMILK"/>
 		</sellingStation>
 		<palletSpawner node="palletSpawner">
 			<spawnPlaces>
@@ -202,11 +195,10 @@
 
 	<!-- Склад готовой продукции и ингредиентов на паллетах. -->
 	<objectStorage isExtension="true" supportsExtension="false" supportsBales="false" supportsPallets="true" capacity="120" maxUnloadAmount="25" maxLength="8.5" maxWidth="6" maxHeight="4"
-				   fillTypes="SUGAR GOATMILK BUFFALOMILK BUTTER CHEESE GOATCHEESE BUFFALOMOZZARELLA CHOCOLATE MILK_BOTTLED GOATMILK_BOTTLED BUFFALOMILK_BOTTLED">
+				   fillTypes="GOATMILK BUFFALOMILK BUTTER GOATBUTTER BUFFALOBUTTER CHEESE GOATCHEESE BUFFALOMOZZARELLA MILK_BOTTLED GOATMILK_BOTTLED BUFFALOMILK_BOTTLED">
 		<playerTrigger node="storagePlayerTrigger"/>
 		<objectTrigger node="storagePalletTrigger"/>
 		<transferFromStorage playerTrigger="transferFromStorageTrigger">
-			<destination fillType="SUGAR" target="productionStorage" actionText="В производство"/>
 			<destination fillType="GOATMILK" target="productionStorage" actionText="В производство"/>
 			<destination fillType="BUFFALOMILK" target="productionStorage" actionText="В производство"/>
 		</transferFromStorage>

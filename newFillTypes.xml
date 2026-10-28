@@ -222,9 +222,81 @@
 			<image hud="map/placeables/FarmMeatIndustry/huds/hud_fill_spices.dds"/>
 			<pallet filename="map/placeables/FarmMeatIndustry/pallets/pokupka/spicesBagsPallet.xml"/>
 		</fillType>
+		<!-- Молочный цех: масло трёх видов и обезжиренное молоко. -->
+		<fillType name="BUTTER" title="$l10n_fillType_cowButter" showOnPriceTable="true" isPalletType="true">
+			<physics massPerLiter="0.9" maxPhysicalSurfaceAngle="38" />
+			<economy pricePerLiter="18.14">
+				<factors>
+					<factor period="1"  value="1.06" />
+					<factor period="2"  value="1.01" />
+					<factor period="3"  value="0.96" />
+					<factor period="4"  value="0.90" />
+					<factor period="5"  value="0.95" />
+					<factor period="6"  value="0.95" />
+					<factor period="7"  value="1.03" />
+					<factor period="8"  value="1.09" />
+					<factor period="9"  value="0.98" />
+					<factor period="10" value="0.96" />
+					<factor period="11" value="1.08" />
+					<factor period="12" value="1.07" />
+				</factors>
+			</economy>
+			<image  hud     ="$dataS/menu/hud/fillTypes/hud_fill_butter.png" />
+			<pallet filename="map/placeables/MilkProcessingPlant/pallets/cowButterBoxPallet/cowButterBoxPallet.xml" />
+		</fillType>
+		<fillType name="GOATBUTTER" title="$l10n_fillType_goatButter" showOnPriceTable="true" isPalletType="true">
+			<physics massPerLiter="0.9" maxPhysicalSurfaceAngle="38" />
+			<economy pricePerLiter="92.30">
+				<factors>
+					<factor period="1"  value="1.06" />
+					<factor period="2"  value="1.01" />
+					<factor period="3"  value="0.96" />
+					<factor period="4"  value="0.90" />
+					<factor period="5"  value="0.95" />
+					<factor period="6"  value="0.95" />
+					<factor period="7"  value="1.03" />
+					<factor period="8"  value="1.09" />
+					<factor period="9"  value="0.98" />
+					<factor period="10" value="0.96" />
+					<factor period="11" value="1.08" />
+					<factor period="12" value="1.07" />
+				</factors>
+			</economy>
+			<image  hud     ="$dataS/menu/hud/fillTypes/hud_fill_butter.png" />
+			<pallet filename="map/placeables/MilkProcessingPlant/pallets/goatButterBoxPallet/goatButterBoxPallet.xml" />
+		</fillType>
+		<fillType name="BUFFALOBUTTER" title="$l10n_fillType_buffaloButter" showOnPriceTable="true" isPalletType="true">
+			<physics massPerLiter="0.9" maxPhysicalSurfaceAngle="38" />
+			<economy pricePerLiter="91.15">
+				<factors>
+					<factor period="1"  value="1.06" />
+					<factor period="2"  value="1.01" />
+					<factor period="3"  value="0.96" />
+					<factor period="4"  value="0.90" />
+					<factor period="5"  value="0.95" />
+					<factor period="6"  value="0.95" />
+					<factor period="7"  value="1.03" />
+					<factor period="8"  value="1.09" />
+					<factor period="9"  value="0.98" />
+					<factor period="10" value="0.96" />
+					<factor period="11" value="1.08" />
+					<factor period="12" value="1.07" />
+				</factors>
+			</economy>
+			<image  hud     ="$dataS/menu/hud/fillTypes/hud_fill_butter.png" />
+			<pallet filename="map/placeables/MilkProcessingPlant/pallets/buffaloButterBoxPallet/buffaloButterBoxPallet.xml" />
+		</fillType>
+		<!-- Пока нет отдельной паллеты обрата, он продаётся напрямую из производства. -->
+		<fillType name="SKIMMED_MILK" title="$l10n_fillType_skimmedMilk" showOnPriceTable="true" isBulkType="true" unitShort="$l10n_unit_literShort">
+			<physics massPerLiter="1.03" maxPhysicalSurfaceAngle="0"/>
+			<economy pricePerLiter="0.33"/>
+			<image hud="$dataS/menu/hud/fillTypes/hud_fill_milkCow.png"/>
+		</fillType>
 	</fillTypes>
 	<fillTypeCategories>
 		<fillTypeCategory name="SELLINGSTATION_PRODUCTS">BEEF CHICKENMEAT PORK MUTTON MEATOBR KOSTI KROW SALO</fillTypeCategory>
-		<fillTypeCategory name="SELLINGSTATION_PRODUCTSFOOD">BEEF CHICKENMEAT PORK MUTTON MEATOBR KOSTI KROW SALO</fillTypeCategory>
+		<fillTypeCategory name="SELLINGSTATION_PRODUCTSFOOD">BEEF CHICKENMEAT PORK MUTTON MEATOBR KOSTI KROW SALO BUTTER GOATBUTTER BUFFALOBUTTER SKIMMED_MILK</fillTypeCategory>
+		<fillTypeCategory name="PRODUCT">BUTTER GOATBUTTER BUFFALOBUTTER SKIMMED_MILK</fillTypeCategory>
+		<fillTypeCategory name="LIQUID">SKIMMED_MILK</fillTypeCategory>
 	</fillTypeCategories>
 </map>
