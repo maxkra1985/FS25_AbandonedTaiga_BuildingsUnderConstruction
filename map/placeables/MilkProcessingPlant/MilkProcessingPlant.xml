@@ -86,88 +86,91 @@
 			<animationNode node="milkMixer08" rotSpeed="170" rotAxis="2" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
 		</animationNodes>
 		<productions sharedThroughputCapacity="false">
-			<production id="butter_milk" name="$l10n_milkProcessing_butter_milk" cyclesPerHour="20" costsPerActiveHour="1">
+			<!-- Все 10 линий используют 25 циклов в час (600 за игровой месяц).
+				 Мощность каждых двух молочных линий одного вида покрывает максимальный удой хозяйства.
+				 Независимая пропускная способность сохраняет выбор активных рецептов за игроком. -->
+			<production id="butter_milk" name="$l10n_milkProcessing_butter_milk" cyclesPerHour="25" costsPerActiveHour="1">
 				<inputs>
-					<input fillType="MILK" amount="15"/>
+					<input fillType="MILK" amount="40"/>
 				</inputs>
 				<outputs>
-					<output fillType="BUTTER" amount="0.75" isPrimary="true"/>
-					<output fillType="SKIMMED_MILK" amount="13.4"/>
+					<output fillType="BUTTER" amount="2" isPrimary="true"/>
+					<output fillType="SKIMMED_MILK" amount="35.733333"/>
 				</outputs>
 			</production>
-			<production id="butter_goatMilk" name="$l10n_milkProcessing_butter_goatMilk" cyclesPerHour="31" costsPerActiveHour="4">
+			<production id="butter_goatMilk" name="$l10n_milkProcessing_butter_goatMilk" cyclesPerHour="25" costsPerActiveHour="4">
 				<inputs>
-					<input fillType="GOATMILK" amount="3"/>
+					<input fillType="GOATMILK" amount="11"/>
 				</inputs>
 				<outputs>
-					<output fillType="GOATBUTTER" amount="0.12" isPrimary="true"/>
-					<output fillType="SKIMMED_MILK" amount="2.7"/>
+					<output fillType="GOATBUTTER" amount="0.44" isPrimary="true"/>
+					<output fillType="SKIMMED_MILK" amount="9.9"/>
 				</outputs>
 			</production>
-			<production id="butter_buffaloMilk" name="$l10n_milkProcessing_butter_buffaloMilk" cyclesPerHour="2.2" costsPerActiveHour="8">
+			<production id="butter_buffaloMilk" name="$l10n_milkProcessing_butter_buffaloMilk" cyclesPerHour="25" costsPerActiveHour="10">
 				<inputs>
-					<input fillType="BUFFALOMILK" amount="3"/>
+					<input fillType="BUFFALOMILK" amount="8"/>
 				</inputs>
 				<outputs>
-					<output fillType="BUFFALOBUTTER" amount="0.2" isPrimary="true"/>
-					<output fillType="SKIMMED_MILK" amount="2.5"/>
+					<output fillType="BUFFALOBUTTER" amount="0.43" isPrimary="true"/>
+					<output fillType="SKIMMED_MILK" amount="6.666667"/>
 				</outputs>
 			</production>
-			<production id="cheese" name="$l10n_milkProcessing_cheese" cyclesPerHour="55" costsPerActiveHour="1">
+			<production id="cheese" name="$l10n_milkProcessing_cheese" cyclesPerHour="25" costsPerActiveHour="1">
 				<inputs>
-					<input fillType="MILK" amount="3"/>
+					<input fillType="MILK" amount="40"/>
 				</inputs>
 				<outputs>
-					<output fillType="CHEESE" amount="0.3"/>
+					<output fillType="CHEESE" amount="4"/>
 				</outputs>
 			</production>
-			<production id="goatcheese" name="$l10n_milkProcessing_goatcheese" cyclesPerHour="40" costsPerActiveHour="4">
+			<production id="goatcheese" name="$l10n_milkProcessing_goatcheese" cyclesPerHour="25" costsPerActiveHour="4">
 				<inputs>
-					<input fillType="GOATMILK" amount="3"/>
+					<input fillType="GOATMILK" amount="11"/>
 				</inputs>
 				<outputs>
-					<output fillType="GOATCHEESE" amount="0.4"/>
+					<output fillType="GOATCHEESE" amount="1.466667"/>
 				</outputs>
 			</production>
-			<production id="buffalomozzarella" name="$l10n_milkProcessing_buffalomozzarella" cyclesPerHour="20" costsPerActiveHour="8">
+			<production id="buffalomozzarella" name="$l10n_milkProcessing_buffalomozzarella" cyclesPerHour="25" costsPerActiveHour="8">
 				<inputs>
-					<input fillType="BUFFALOMILK" amount="3"/>
+					<input fillType="BUFFALOMILK" amount="8"/>
 				</inputs>
 				<outputs>
-					<output fillType="BUFFALOMOZZARELLA" amount="0.6"/>
+					<output fillType="BUFFALOMOZZARELLA" amount="1.6"/>
 				</outputs>
 			</production>
-			<production id="milkBottled" name="$l10n_milkProcessing_milkBottled" cyclesPerHour="20" costsPerActiveHour="1">
+			<production id="milkBottled" name="$l10n_milkProcessing_milkBottled" cyclesPerHour="25" costsPerActiveHour="1">
 				<inputs>
-					<input fillType="MILK" amount="10"/>
+					<input fillType="MILK" amount="40"/>
 				</inputs>
 				<outputs>
-					<output fillType="MILK_BOTTLED" amount="9.9"/>
+					<output fillType="MILK_BOTTLED" amount="39.6"/>
 				</outputs>
 			</production>
-			<production id="goatmilkBottled" name="$l10n_milkProcessing_goatmilkBottled" cyclesPerHour="6" costsPerActiveHour="4">
+			<production id="goatmilkBottled" name="$l10n_milkProcessing_goatmilkBottled" cyclesPerHour="25" costsPerActiveHour="4">
 				<inputs>
-					<input fillType="GOATMILK" amount="10"/>
+					<input fillType="GOATMILK" amount="11"/>
 				</inputs>
 				<outputs>
-					<output fillType="GOATMILK_BOTTLED" amount="9.9"/>
+					<output fillType="GOATMILK_BOTTLED" amount="10.89"/>
 				</outputs>
 			</production>
-			<production id="buffalomilkBottled" name="$l10n_milkProcessing_buffalomilkBottled" cyclesPerHour="6" costsPerActiveHour="8">
+			<production id="buffalomilkBottled" name="$l10n_milkProcessing_buffalomilkBottled" cyclesPerHour="25" costsPerActiveHour="8">
 				<inputs>
-					<input fillType="BUFFALOMILK" amount="10"/>
+					<input fillType="BUFFALOMILK" amount="8"/>
 				</inputs>
 				<outputs>
-					<output fillType="BUFFALOMILK_BOTTLED" amount="9.9"/>
+					<output fillType="BUFFALOMILK_BOTTLED" amount="7.92"/>
 				</outputs>
 			</production>
-			<!-- Сушка обрата: примерно 11 л обезжиренного молока на 1 кг порошка. -->
-			<production id="skimmedMilkPowder" name="$l10n_milkProcessing_skimmedMilkPowder" cyclesPerHour="30" costsPerActiveHour="6">
+			<!-- Сушка обрата: 48 л обрата преобразуются в 9.6 л порошка за цикл; объёмная пропорция 5:1. -->
+			<production id="skimmedMilkPowder" name="$l10n_milkProcessing_skimmedMilkPowder" cyclesPerHour="25" costsPerActiveHour="6">
 				<inputs>
-					<input fillType="SKIMMED_MILK" amount="11"/>
+					<input fillType="SKIMMED_MILK" amount="48"/>
 				</inputs>
 				<outputs>
-					<output fillType="SKIMMED_MILK_POWDER" amount="2.2"/>
+					<output fillType="SKIMMED_MILK_POWDER" amount="9.6"/>
 				</outputs>
 			</production>
 		</productions>
@@ -178,7 +181,7 @@
 			<capacity fillType="BUTTER" capacity="30000"/>
 			<capacity fillType="GOATBUTTER" capacity="30000"/>
 			<capacity fillType="BUFFALOBUTTER" capacity="30000"/>
-			<!-- Обрат сохраняется как сырьё для будущих производственных рецептов. -->
+			<!-- Обрат из маслобойных линий поступает в хранилище для последующей сушки. -->
 			<capacity fillType="SKIMMED_MILK" capacity="30000"/>
 			<capacity fillType="SKIMMED_MILK_POWDER" capacity="30000"/>
 			<capacity fillType="CHEESE" capacity="30000"/>
