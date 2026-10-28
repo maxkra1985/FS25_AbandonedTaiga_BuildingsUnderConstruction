@@ -85,7 +85,7 @@
 			<animationNode node="milkMixer07" rotSpeed="170" rotAxis="2" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
 			<animationNode node="milkMixer08" rotSpeed="170" rotAxis="2" turnOnFadeTime="1.5" turnOffFadeTime="2"/>
 		</animationNodes>
-		<productions sharedThroughputCapacity="true">
+		<productions sharedThroughputCapacity="false">
 			<production id="butter_milk" name="$l10n_milkProcessing_butter_milk" cyclesPerHour="20" costsPerActiveHour="1">
 				<inputs>
 					<input fillType="MILK" amount="15"/>
