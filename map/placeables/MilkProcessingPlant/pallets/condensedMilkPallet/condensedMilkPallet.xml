@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="pallet" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../shared/xml/schema/vehicle.xsd">
+    <!-- Используем штатную геометрию консервной паллеты и собственную текстуру этикетки. -->
+    <parentFile xmlFilename="$data/objects/pallets/soupCansPallet/soupCansPallet.xml">
+        <attributes>
+            <set path="vehicle.storeData.name" value="$l10n_fillType_condensedMilk"/>
+            <set path="vehicle.storeData.price" value="6000"/>
+            <set path="vehicle.storeData.image" value="$data/objects/pallets/soupCansPallet/store_soupCansPallet.png"/>
+            <set path="vehicle.storeData.showInStore" value="false"/>
+            <set path="vehicle.fillUnit.fillUnitConfigurations.fillUnitConfiguration(0).fillUnits.fillUnit#fillTypes" value="CONDENSED_MILK"/>
+            <set path="vehicle.fillUnit.fillUnitConfigurations.fillUnitConfiguration(0).fillUnits.fillUnit#startFillType" value="CONDENSED_MILK"/>
+            <set path="vehicle.fillUnit.fillUnitConfigurations.fillUnitConfiguration(0).fillUnits.fillUnit.fillTypeMaterials.material(0)#fillType" value="CONDENSED_MILK"/>
+            <set path="vehicle.fillUnit.fillUnitConfigurations.fillUnitConfiguration(0).fillUnits.fillUnit.fillTypeMaterials.material(0)#diffuse" value="map/placeables/MilkProcessingPlant/pallets/condensedMilkPallet/condensedMilk_diffuse.dds"/>
+        </attributes>
+    </parentFile>
+</vehicle>

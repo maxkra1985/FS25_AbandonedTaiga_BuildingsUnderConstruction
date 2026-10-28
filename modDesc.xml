@@ -57,6 +57,8 @@
 		<storeItem xmlFilename="map/placeables/MilkProcessingPlant/pallets/buffaloButterBoxPallet/buffaloButterBoxPallet.xml"/>
 		<!-- Паллеты сухого обезжиренного молока. -->
 		<storeItem xmlFilename="map/placeables/MilkProcessingPlant/pallets/skimmedMilkPowderPallet/skimmedMilkPowderPallet.xml"/>
+		<!-- Штатная паллета консервных банок со сгущённым молоком. -->
+		<storeItem xmlFilename="map/placeables/MilkProcessingPlant/pallets/condensedMilkPallet/condensedMilkPallet.xml"/>
 		<!-- СКЛАДЫ, БУНКЕРЫ И ХРАНИЛИЩА -->
 		<storeItem xmlFilename="map/placeables/Storage/Storage.xml"/>
 		<storeItem xmlFilename="map/placeables/WoodStorageDistributor/WoodStorageDistributor.xml"/>
@@ -136,6 +138,16 @@
 	</dependencies>
 
 	<l10n>
+		<text name="fillType_condensedMilk">
+			<ru>Молоко сгущённое с сахаром</ru>
+			<en>Sweetened condensed milk</en>
+			<de>Gezuckerte Kondensmilch</de>
+		</text>
+		<text name="milkProcessing_condensedMilk">
+			<ru>Сгущённое молоко</ru>
+			<en>Condensed milk</en>
+			<de>Kondensmilch</de>
+		</text>
 		<text name="OutdoorChickenCoop">
 			<ru>Курятник с открытым загоном</ru>
 			<en>Chicken coop with open run</en>

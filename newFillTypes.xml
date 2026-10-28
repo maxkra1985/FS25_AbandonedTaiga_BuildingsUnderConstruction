@@ -299,11 +299,19 @@
 			<image hud="map/placeables/MilkProcessingPlant/pallets/skimmedMilkPowderPallet/store_skimmedMilkPowderPallet.dds"/>
 			<pallet filename="map/placeables/MilkProcessingPlant/pallets/skimmedMilkPowderPallet/skimmedMilkPowderPallet.xml"/>
 		</fillType>
+		<!-- Сгущённое молоко с сахаром: штатная паллета консервных банок. -->
+		<fillType name="CONDENSED_MILK" title="$l10n_fillType_condensedMilk" showOnPriceTable="true" isPalletType="true">
+			<physics massPerLiter="0.65" maxPhysicalSurfaceAngle="38"/>
+			<!-- Базовая цена: проверена по себестоимости молока, сахара и эксплуатации линии. -->
+			<economy pricePerLiter="3.00"/>
+			<image hud="$dataS/menu/hud/fillTypes/hud_fill_milkCow.png"/>
+			<pallet filename="map/placeables/MilkProcessingPlant/pallets/condensedMilkPallet/condensedMilkPallet.xml"/>
+		</fillType>
 	</fillTypes>
 	<fillTypeCategories>
 		<fillTypeCategory name="SELLINGSTATION_PRODUCTS">BEEF CHICKENMEAT PORK MUTTON MEATOBR KOSTI KROW SALO</fillTypeCategory>
-		<fillTypeCategory name="SELLINGSTATION_PRODUCTSFOOD">BEEF CHICKENMEAT PORK MUTTON MEATOBR KOSTI KROW SALO BUTTER GOATBUTTER BUFFALOBUTTER SKIMMED_MILK SKIMMED_MILK_POWDER</fillTypeCategory>
-		<fillTypeCategory name="PRODUCT">BUTTER GOATBUTTER BUFFALOBUTTER SKIMMED_MILK SKIMMED_MILK_POWDER</fillTypeCategory>
+		<fillTypeCategory name="SELLINGSTATION_PRODUCTSFOOD">BEEF CHICKENMEAT PORK MUTTON MEATOBR KOSTI KROW SALO BUTTER GOATBUTTER BUFFALOBUTTER SKIMMED_MILK SKIMMED_MILK_POWDER CONDENSED_MILK</fillTypeCategory>
+		<fillTypeCategory name="PRODUCT">BUTTER GOATBUTTER BUFFALOBUTTER SKIMMED_MILK SKIMMED_MILK_POWDER CONDENSED_MILK</fillTypeCategory>
 		<fillTypeCategory name="LIQUID">SKIMMED_MILK</fillTypeCategory>
 	</fillTypeCategories>
 </map>

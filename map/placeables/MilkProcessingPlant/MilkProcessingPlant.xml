@@ -173,6 +173,16 @@
 					<output fillType="SKIMMED_MILK_POWDER" amount="9.6"/>
 				</outputs>
 			</production>
+			<!-- Сгущённое молоко: линия переработки коровьего молока с сахаром. -->
+			<production id="condensedMilk" name="$l10n_milkProcessing_condensedMilk" cyclesPerHour="25" costsPerActiveHour="6">
+				<inputs>
+					<input fillType="MILK" amount="40"/>
+					<input fillType="SUGAR" amount="8.5"/>
+				</inputs>
+				<outputs>
+					<output fillType="CONDENSED_MILK" amount="14"/>
+				</outputs>
+			</production>
 		</productions>
 		<storage isExtension="false" fillLevelSyncThreshold="50">
 			<capacity fillType="MILK" capacity="100000"/>
@@ -184,6 +194,8 @@
 			<!-- Обрат из маслобойных линий поступает в хранилище для последующей сушки. -->
 			<capacity fillType="SKIMMED_MILK" capacity="30000"/>
 			<capacity fillType="SKIMMED_MILK_POWDER" capacity="30000"/>
+			<capacity fillType="SUGAR" capacity="30000"/>
+			<capacity fillType="CONDENSED_MILK" capacity="30000"/>
 			<capacity fillType="CHEESE" capacity="30000"/>
 			<capacity fillType="GOATCHEESE" capacity="30000"/>
 			<capacity fillType="BUFFALOMOZZARELLA" capacity="30000"/>
@@ -198,7 +210,7 @@
 				<fillType name="BUFFALOMILK"/>
 			</supportedFillTypes>
 			<unloadTrigger exactFillRootNode="exactFillRootNodeWater" aiNode="unloadTriggerAINodeWater" fillTypes="MILK GOATMILK BUFFALOMILK"/>
-			<palletTrigger triggerNode="productionPalletTrigger" aiNode="productionPalletAiNode" fillTypes="GOATMILK BUFFALOMILK"/>
+			<palletTrigger triggerNode="productionPalletTrigger" aiNode="productionPalletAiNode" fillTypes="GOATMILK BUFFALOMILK SUGAR"/>
 		</sellingStation>
 		<palletSpawner node="palletSpawner">
 			<spawnPlaces>
@@ -210,12 +222,13 @@
 
 	<!-- Склад готовой продукции и ингредиентов на паллетах. -->
 	<objectStorage isExtension="true" supportsExtension="false" supportsBales="false" supportsPallets="true" capacity="120" maxUnloadAmount="25" maxLength="8.5" maxWidth="6" maxHeight="4"
-				   fillTypes="GOATMILK BUFFALOMILK BUTTER GOATBUTTER BUFFALOBUTTER CHEESE GOATCHEESE BUFFALOMOZZARELLA MILK_BOTTLED GOATMILK_BOTTLED BUFFALOMILK_BOTTLED SKIMMED_MILK_POWDER">
+				   fillTypes="GOATMILK BUFFALOMILK BUTTER GOATBUTTER BUFFALOBUTTER CHEESE GOATCHEESE BUFFALOMOZZARELLA MILK_BOTTLED GOATMILK_BOTTLED BUFFALOMILK_BOTTLED SKIMMED_MILK_POWDER SUGAR CONDENSED_MILK">
 		<playerTrigger node="storagePlayerTrigger"/>
 		<objectTrigger node="storagePalletTrigger"/>
 		<transferFromStorage playerTrigger="transferFromStorageTrigger">
 			<destination fillType="GOATMILK" target="productionStorage" actionText="В производство"/>
 			<destination fillType="BUFFALOMILK" target="productionStorage" actionText="В производство"/>
+			<destination fillType="SUGAR" target="productionStorage" actionText="В производство"/>
 		</transferFromStorage>
 		<spawnAreas>
 			<spawnArea startNode="spawnAreaStart_Row1" endNode="spawnAreaEnd_Row1" maxHeight="3"/>
