@@ -286,7 +286,7 @@
 			<image  hud     ="$dataS/menu/hud/fillTypes/hud_fill_butter.png" />
 			<pallet filename="map/placeables/MilkProcessingPlant/pallets/buffaloButterBoxPallet/buffaloButterBoxPallet.xml" />
 		</fillType>
-		<!-- Пока нет отдельной паллеты обрата, он продаётся напрямую из производства. -->
+		<!-- Обрат накапливается в хранилище молокозавода для дальнейшей переработки. -->
 		<fillType name="SKIMMED_MILK" title="$l10n_fillType_skimmedMilk" showOnPriceTable="true" isBulkType="true" unitShort="$l10n_unit_literShort">
 			<physics massPerLiter="1.03" maxPhysicalSurfaceAngle="0"/>
 			<economy pricePerLiter="0.33"/>

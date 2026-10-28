@@ -92,7 +92,7 @@
 				</inputs>
 				<outputs>
 					<output fillType="BUTTER" amount="0.75" isPrimary="true"/>
-					<output fillType="SKIMMED_MILK" amount="13.4" sellDirectly="true"/>
+					<output fillType="SKIMMED_MILK" amount="13.4"/>
 				</outputs>
 			</production>
 			<production id="butter_goatMilk" name="$l10n_milkProcessing_butter_goatMilk" cyclesPerHour="31" costsPerActiveHour="4">
@@ -101,7 +101,7 @@
 				</inputs>
 				<outputs>
 					<output fillType="GOATBUTTER" amount="0.12" isPrimary="true"/>
-					<output fillType="SKIMMED_MILK" amount="2.7" sellDirectly="true"/>
+					<output fillType="SKIMMED_MILK" amount="2.7"/>
 				</outputs>
 			</production>
 			<production id="butter_buffaloMilk" name="$l10n_milkProcessing_butter_buffaloMilk" cyclesPerHour="2.2" costsPerActiveHour="8">
@@ -110,7 +110,7 @@
 				</inputs>
 				<outputs>
 					<output fillType="BUFFALOBUTTER" amount="0.2" isPrimary="true"/>
-					<output fillType="SKIMMED_MILK" amount="2.5" sellDirectly="true"/>
+					<output fillType="SKIMMED_MILK" amount="2.5"/>
 				</outputs>
 			</production>
 			<production id="cheese" name="$l10n_milkProcessing_cheese" cyclesPerHour="55" costsPerActiveHour="1">
@@ -169,6 +169,8 @@
 			<capacity fillType="BUTTER" capacity="30000"/>
 			<capacity fillType="GOATBUTTER" capacity="30000"/>
 			<capacity fillType="BUFFALOBUTTER" capacity="30000"/>
+			<!-- Обрат сохраняется как сырьё для будущих производственных рецептов. -->
+			<capacity fillType="SKIMMED_MILK" capacity="30000"/>
 			<capacity fillType="CHEESE" capacity="30000"/>
 			<capacity fillType="GOATCHEESE" capacity="30000"/>
 			<capacity fillType="BUFFALOMOZZARELLA" capacity="30000"/>
