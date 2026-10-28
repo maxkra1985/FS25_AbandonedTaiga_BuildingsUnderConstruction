@@ -295,7 +295,7 @@
 		<!-- Сухое обезжиренное молоко: продукт сушки обрата с отдельной паллетой. -->
 		<fillType name="SKIMMED_MILK_POWDER" title="$l10n_fillType_skimmedMilkPowder" showOnPriceTable="true" isPalletType="true">
 			<physics massPerLiter="0.50" maxPhysicalSurfaceAngle="38"/>
-			<economy pricePerLiter="5.20"/>
+			<economy pricePerLiter="2.36"/>
 			<image hud="map/placeables/MilkProcessingPlant/pallets/skimmedMilkPowderPallet/store_skimmedMilkPowderPallet.dds"/>
 			<pallet filename="map/placeables/MilkProcessingPlant/pallets/skimmedMilkPowderPallet/skimmedMilkPowderPallet.xml"/>
 		</fillType>

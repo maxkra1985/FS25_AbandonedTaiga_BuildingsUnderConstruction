@@ -167,7 +167,7 @@
 					<input fillType="SKIMMED_MILK" amount="11"/>
 				</inputs>
 				<outputs>
-					<output fillType="SKIMMED_MILK_POWDER" amount="1"/>
+					<output fillType="SKIMMED_MILK_POWDER" amount="2.2"/>
 				</outputs>
 			</production>
 		</productions>
