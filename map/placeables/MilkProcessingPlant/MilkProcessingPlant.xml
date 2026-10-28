@@ -165,7 +165,7 @@
 				</outputs>
 			</production>
 			<!-- Сушка обрата: 48 л обрата преобразуются в 9.6 л порошка за цикл; объёмная пропорция 5:1. -->
-			<production id="skimmedMilkPowder" name="$l10n_milkProcessing_skimmedMilkPowder" cyclesPerHour="25" costsPerActiveHour="6">
+			<production id="skimmedMilkPowder" name="$l10n_milkProcessing_skimmedMilkPowder" cyclesPerHour="25" costsPerActiveHour="6" minRating="5">
 				<inputs>
 					<input fillType="SKIMMED_MILK" amount="48"/>
 				</inputs>
