@@ -225,7 +225,7 @@
 		<!-- Молочный цех: масло трёх видов и обезжиренное молоко. -->
 		<fillType name="BUTTER" title="$l10n_fillType_cowButter" showOnPriceTable="true" isPalletType="true">
 			<physics massPerLiter="0.9" maxPhysicalSurfaceAngle="38" />
-			<economy pricePerLiter="18.14">
+			<economy pricePerLiter="3.61">
 				<factors>
 					<factor period="1"  value="1.06" />
 					<factor period="2"  value="1.01" />
@@ -246,7 +246,7 @@
 		</fillType>
 		<fillType name="GOATBUTTER" title="$l10n_fillType_goatButter" showOnPriceTable="true" isPalletType="true">
 			<physics massPerLiter="0.9" maxPhysicalSurfaceAngle="38" />
-			<economy pricePerLiter="92.30">
+			<economy pricePerLiter="21.56">
 				<factors>
 					<factor period="1"  value="1.06" />
 					<factor period="2"  value="1.01" />
@@ -267,7 +267,7 @@
 		</fillType>
 		<fillType name="BUFFALOBUTTER" title="$l10n_fillType_buffaloButter" showOnPriceTable="true" isPalletType="true">
 			<physics massPerLiter="0.9" maxPhysicalSurfaceAngle="38" />
-			<economy pricePerLiter="91.15">
+			<economy pricePerLiter="24.48">
 				<factors>
 					<factor period="1"  value="1.06" />
 					<factor period="2"  value="1.01" />
@@ -289,13 +289,13 @@
 		<!-- Обрат накапливается в хранилище молокозавода для дальнейшей переработки. -->
 		<fillType name="SKIMMED_MILK" title="$l10n_fillType_skimmedMilk" showOnPriceTable="true" isBulkType="true" unitShort="$l10n_unit_literShort">
 			<physics massPerLiter="1.03" maxPhysicalSurfaceAngle="0"/>
-			<economy pricePerLiter="0.33"/>
+			<economy pricePerLiter="0.25"/>
 			<image hud="$dataS/menu/hud/fillTypes/hud_fill_milkCow.png"/>
 		</fillType>
 		<!-- Сухое обезжиренное молоко: продукт сушки обрата с отдельной паллетой. -->
 		<fillType name="SKIMMED_MILK_POWDER" title="$l10n_fillType_skimmedMilkPowder" showOnPriceTable="true" isPalletType="true">
 			<physics massPerLiter="0.50" maxPhysicalSurfaceAngle="38"/>
-			<economy pricePerLiter="2.36"/>
+			<economy pricePerLiter="1.68"/>
 			<image hud="map/placeables/MilkProcessingPlant/pallets/skimmedMilkPowderPallet/store_skimmedMilkPowderPallet.dds"/>
 			<pallet filename="map/placeables/MilkProcessingPlant/pallets/skimmedMilkPowderPallet/skimmedMilkPowderPallet.xml"/>
 		</fillType>
@@ -303,7 +303,7 @@
 		<fillType name="CONDENSED_MILK" title="$l10n_fillType_condensedMilk" showOnPriceTable="true" isPalletType="true">
 			<physics massPerLiter="0.65" maxPhysicalSurfaceAngle="38"/>
 			<!-- Базовая цена: проверена по себестоимости молока, сахара и эксплуатации линии. -->
-			<economy pricePerLiter="3.00"/>
+			<economy pricePerLiter="2.50"/>
 			<image hud="$dataS/menu/hud/fillTypes/hud_fill_milkCow.png"/>
 			<pallet filename="map/placeables/MilkProcessingPlant/pallets/condensedMilkPallet/condensedMilkPallet.xml"/>
 		</fillType>
