@@ -111,7 +111,7 @@
 
 		</storage>
 
-		<sellingStation node="sellingStation" supportsExtension="false" allowMissions="true" appearsOnStats="false" hideFromPricesMenu="true" suppressWarnings="true">
+		<sellingStation node="sellingStation" supportsExtension="false" hideFromPricesMenu="true" suppressWarnings="true" allowMissions="false" appearsOnStats="true">
 			<supportedFillTypes>
 				<fillType name="WOODCHIPS" />
 				<fillType name="WATER" />

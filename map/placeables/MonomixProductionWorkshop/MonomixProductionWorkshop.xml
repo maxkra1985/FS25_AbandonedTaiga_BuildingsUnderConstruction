@@ -133,7 +133,7 @@
 			<productionFillVolume node="it26FillVolume" fillType="FORAGE" visualFillType="SILAGE" fallbackProductionId="forage"/>
 		</storage>
 
-		<sellingStation node="productionPoint" appearsOnStats="false" allowMissions="false" supportsExtension="false" hideFromPricesMenu="true" suppressWarnings="true">
+		<sellingStation node="productionPoint" supportsExtension="false" hideFromPricesMenu="true" suppressWarnings="true" allowMissions="false" appearsOnStats="true">
 			<supportedFillTypes>
 				<fillType name="DRYGRASS_WINDROW"/>
 				<fillType name="SILAGE"/>

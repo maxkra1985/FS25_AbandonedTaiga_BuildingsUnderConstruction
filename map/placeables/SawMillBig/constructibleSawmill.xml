@@ -158,7 +158,7 @@
 			<capacity fillType="WOODCHIPS"	capacity="200000" />
 		</storage>
 
-		<sellingStation node="sellingStation" supportsExtension="false" incomeName="soldWood">
+		<sellingStation node="sellingStation" supportsExtension="false" incomeName="soldWood" allowMissions="false" appearsOnStats="true">
 			<woodTrigger fillTypes="WOOD" triggerNode="woodTrigger" activationTriggerNode="woodActivationTrigger"/>
 		</sellingStation>
 

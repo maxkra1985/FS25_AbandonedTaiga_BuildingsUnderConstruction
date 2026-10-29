@@ -99,7 +99,7 @@
 			<fillPlane node="logs" fillType="WOOD" minY="-2.88" maxY="0"/>
 		</storage>
 
-		<sellingStation node="WoodStorage" supportsExtension="false" hideFromPricesMenu="true" allowMissions="false" >
+		<sellingStation node="WoodStorage" supportsExtension="false" hideFromPricesMenu="true"  allowMissions="false" appearsOnStats="true">
 			<unloadTrigger exactFillRootNode="unloadTrigger" aiNode="unloadTriggerAINode" fillTypes="WOOD_INPUT WOOD" >
 				<fillTypeConversion incomingFillType="WOOD" outgoingFillType="WOOD_INPUT" ratio="1.0"/>
 			</unloadTrigger>

@@ -184,7 +184,7 @@
 			<bunkerFillPlane node="fillPlane09" fillTypes="WHEAT_CLEAN BARLEY_CLEAN OAT_CLEAN SORGHUM_CLEAN" minY="0" maxY="4.2"/>
 		</storage>
 
-		<sellingStation node="productionSellingStation" supportsExtension="false" allowMissions="true" appearsOnStats="false" hideFromPricesMenu="true">
+		<sellingStation node="productionSellingStation" supportsExtension="false" hideFromPricesMenu="true" allowMissions="false" appearsOnStats="true">
 			<supportedFillTypes>
 				<fillType name="WHEAT"/>
 				<fillType name="BARLEY"/>
