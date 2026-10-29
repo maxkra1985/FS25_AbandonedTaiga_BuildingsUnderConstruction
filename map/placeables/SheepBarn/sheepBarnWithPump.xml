@@ -327,7 +327,7 @@
 			</transitions>
 		</stateMachine>
 
-		<sellingStation node="constructiblesSellingStation" supportsExtension="false" allowMissions="true" appearsOnStats="false">
+		<sellingStation node="constructiblesSellingStation" supportsExtension="false" allowMissions="false" appearsOnStats="true">
 			<palletTrigger	triggerNode="ConstructiblePalletTrigger"	aiNode="unloadTriggerAINode"	fillTypes="INSTRUMENT WOODBEAM BOARDS PLANKS ROOFPLATES BUILDING_METAL METAL NAILS" />
 		</sellingStation>
 

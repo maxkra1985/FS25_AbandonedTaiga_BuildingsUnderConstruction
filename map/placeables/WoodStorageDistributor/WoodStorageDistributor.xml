@@ -214,7 +214,7 @@
 			</transitions>
 		</stateMachine>
 
-		<sellingStation node="ConstructibleSellingStation" supportsExtension="false" allowMissions="false" appearsOnStats="false">
+		<sellingStation node="ConstructibleSellingStation" supportsExtension="false" allowMissions="false" appearsOnStats="true">
 			<palletTrigger	triggerNode="constructiblePalletTrigger"	aiNode="constructibleUnloadTriggerAINode"	fillTypes="INSTRUMENT" />
 			<woodTrigger	triggerNode="constructibleWoodTrigger"		aiNode="constructibleUnloadTriggerAINode"	fillTypes="WOOD"	activationTriggerNode="constructibleWoodSellActivationTrigger"/>
 		</sellingStation>

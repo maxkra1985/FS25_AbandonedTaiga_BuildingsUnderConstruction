@@ -690,7 +690,7 @@
 			</transitions>
 		</stateMachine>
 
-		<sellingStation node="constructibleSellingStation" supportsExtension="false" allowMissions="true" appearsOnStats="false">
+		<sellingStation node="constructibleSellingStation" supportsExtension="false" allowMissions="false" appearsOnStats="true">
 			<palletTrigger triggerNode="constructiblePalletTrigger" aiNode="constructibleUnloadTriggerAINode" fillTypes="INSTRUMENT BUILDING_METAL CEMENT WOODBEAM BOARDS PLANKS PLYWOOD METAL FURNITURE NAILS" deleteLitersPerSecond="200"/>
 		</sellingStation>
 
