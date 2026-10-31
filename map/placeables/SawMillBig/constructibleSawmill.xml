@@ -81,7 +81,7 @@
 	<infoTrigger triggerNode="infoTrigger" />
 
 	<triggerMarkers>
-		<triggerMarker node="woodTrigger"								adjustToGround="true"	filename="markerIcons/woodUnloadZone.i3d" />
+		<triggerMarker node="woodTriggerMarker"							adjustToGround="true"	filename="markerIcons/woodUnloadZone.i3d" />
 		<triggerMarker node="woodActivationTriggerMarker"				adjustToGround="true"	filename="markerIcons/woodUnloadTrigger.i3d" />
 		<triggerMarker node="playerTriggerMarker"						adjustToGround="true"	filename="$data/shared/assets/marker/markerIconWrench.i3d" />
 		<triggerMarker node="ConstructibleUnloadTrigger"				adjustToGround="true"	filename="markerIcons/markerIconStroyka.i3d" />
@@ -507,6 +507,7 @@
 
 		<!-- ТРИГГЕРЫ -->
 		<i3dMapping id="woodTrigger" node="0>5|0" />
+		<i3dMapping id="woodTriggerMarker" node="0>5|2" />
 		<i3dMapping id="woodActivationTriggerMarker" node="0>5|1|0" />
 		<i3dMapping id="infoTrigger" node="0>6|0" />
 		<i3dMapping id="playerTriggerMarker" node="0>6|1|0" />

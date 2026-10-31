@@ -31,7 +31,7 @@
     <File fileId="169" filename="textures/mapDirtSA_diffuse.dds"/>
     <File fileId="202" filename="textures/pallet_diffuse.dds"/>
     <File fileId="182" filename="textures/paraChoqueLanterna_mask.dds"/>
-    <File fileId="229" filename="textures/passportSawmill.dds"/>
+    <File fileId="228" filename="textures/passportSawmill.dds"/>
     <File fileId="199" filename="textures/plowSoilPieces_diffuse.dds"/>
     <File fileId="198" filename="textures/trailerGranelWood_mask.png"/>
     <File fileId="201" filename="textures/trailerGranel_mask.dds"/>
@@ -98,9 +98,9 @@
     <File fileId="118" filename="$data/maps/mapUS/textures/concreteDark_diffuse.png"/>
     <File fileId="119" filename="$data/maps/mapUS/textures/concreteDark_normal.png"/>
     <File fileId="120" filename="$data/maps/mapUS/textures/concreteDark_specular.png"/>
-    <File fileId="226" filename="$data/maps/mapUS/textures/props/connectedPylons_diffuse.png"/>
-    <File fileId="227" filename="$data/maps/mapUS/textures/props/connectedPylons_normal.png"/>
-    <File fileId="228" filename="$data/maps/mapUS/textures/props/connectedPylons_specular.png"/>
+    <File fileId="225" filename="$data/maps/mapUS/textures/props/connectedPylons_diffuse.png"/>
+    <File fileId="226" filename="$data/maps/mapUS/textures/props/connectedPylons_normal.png"/>
+    <File fileId="227" filename="$data/maps/mapUS/textures/props/connectedPylons_specular.png"/>
     <File fileId="121" filename="$data/maps/mapUS/textures/props/electricConnetionDecals_diffuse.png"/>
     <File fileId="115" filename="$data/maps/mapUS/textures/props/electricalBoxSet_diffuse.png"/>
     <File fileId="116" filename="$data/maps/mapUS/textures/props/electricalBoxSet_normal.png"/>
@@ -160,7 +160,6 @@
     <File fileId="56" filename="$data/shared/assets/assetLibraryDecals_diffuse.png"/>
     <File fileId="57" filename="$data/shared/assets/assetLibraryDecals_normal.png"/>
     <File fileId="58" filename="$data/shared/assets/assetLibraryDecals_vmask.png"/>
-    <File fileId="225" filename="$data/shared/assets/marker/markerIconPallet.i3d"/>
     <File fileId="19" filename="$data/shared/clearGlass_diffuse.dds"/>
     <File fileId="53" filename="$data/shared/default_normal.png"/>
     <File fileId="103" filename="$data/shared/default_specular.png"/>
@@ -321,9 +320,9 @@
       <Glossmap fileId="120"/>
     </Material>
     <Material name="connectedPylons_mat" materialId="21" customShaderId="4">
-      <Texture fileId="226"/>
-      <Normalmap fileId="227"/>
-      <Glossmap fileId="228"/>
+      <Texture fileId="225"/>
+      <Normalmap fileId="226"/>
+      <Glossmap fileId="227"/>
     </Material>
     <Material name="decals_mat" materialId="22" alphaBlending="true" customShaderId="22" customShaderVariation="vmaskUV2">
       <Texture fileId="213"/>
@@ -991,7 +990,7 @@
       <Texture fileId="111"/>
     </Material>
     <Material name="UnnamedMaterial" materialId="117">
-      <Texture fileId="229"/>
+      <Texture fileId="228"/>
     </Material>
     <Material name="UnnamedMaterial" materialId="118">
       <Texture fileId="62"/>
@@ -3519,6 +3518,7 @@
         <Shape name="woodActivationTrigger" translation="-0.611163 1.227 7.03264" shapeId="216" static="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x110000" nodeId="2204" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="24">
           <TransformGroup name="woodActivationTriggerMarker" translation="-1e-06 0.024792 0" nodeId="2205"/>
         </Shape>
+        <TransformGroup name="woodTriggerMarker" translation="-0.484536 3.00442 -0.646261" rotation="8.65142e-06 -90 0" nodeId="2638"/>
       </TransformGroup>
       <TransformGroup name="productionPoint" translation="0 0.525034 0" rotation="5.00896e-06 -4.07111e-12 -5.00896e-06" nodeId="2206">
         <Shape name="infoTrigger" translation="9.46123 2 -2.26883" rotation="-4.07111e-13 -0 3.55908e-19" scale="1.31359 1 0.569428" shapeId="217" static="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x100000" nodeId="2207" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="24"/>
@@ -3587,9 +3587,7 @@
         <TransformGroup name="warningStripes" translation="3 7.43294e-14 7" nodeId="2250">
           <Shape name="warningStripes01" translation="-0.000422 0 0" shapeId="222" clipDistance="100" nodeId="2251" castsShadows="false" receiveShadows="true" nonRenderable="true" terrainDecal="true" materialIds="121"/>
         </TransformGroup>
-        <Shape name="palletTrigger" translation="3 2 7" shapeId="223" kinematic="true" compound="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x10000" nodeId="2252" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="24">
-          <ReferenceNode name="markerIconPallet" translation="0 -2 0" rotation="6.43643e-13 -7.09788e-28 6.31839e-14" referenceId="225" nodeId="2259"/>
-        </Shape>
+        <Shape name="palletTrigger" translation="3 2 7" shapeId="223" kinematic="true" compound="true" trigger="true" collisionFilterGroup="0x20000000" collisionFilterMask="0x10000" nodeId="2252" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="24"/>
         <TransformGroup name="unloadTriggerMarker" translation="3 0 7" nodeId="2262"/>
         <TransformGroup name="unloadTriggerAINode" translation="3 0 7" rotation="0 -90 0" nodeId="2263"/>
         <TransformGroup name="connectedPylonsBlockade_PREFAB" lockedgroup="true" translation="7.89663 3.8147e-06 4.64631" rotation="-1.22133e-12 -8.14223e-13 8.14222e-13" scale="1 1 1.05" nodeId="2264">
