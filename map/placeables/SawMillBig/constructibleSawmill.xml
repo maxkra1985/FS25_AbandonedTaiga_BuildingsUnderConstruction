@@ -81,9 +81,10 @@
 	<infoTrigger triggerNode="infoTrigger" />
 
 	<triggerMarkers>
-		<triggerMarker node="woodTrigger"								adjustToGround="true"	filename="$data/shared/assets/marker/markerIconUnload.i3d" />
-		<triggerMarker node="woodActivationTriggerMarker"				adjustToGround="true"	filename="$data/shared/assets/marker/markerIconExclamationMark.i3d" />
+		<triggerMarker node="woodTrigger"								adjustToGround="true"	filename="markerIcons/woodUnloadZone.i3d" />
+		<triggerMarker node="woodActivationTriggerMarker"				adjustToGround="true"	filename="markerIcons/woodUnloadTrigger.i3d" />
 		<triggerMarker node="playerTriggerMarker"						adjustToGround="true"	filename="$data/shared/assets/marker/markerIconWrench.i3d" />
+		<triggerMarker node="ConstructibleUnloadTrigger"				adjustToGround="true"	filename="markerIcons/markerIconStroyka.i3d" />
 	</triggerMarkers>
 
 	<hotspots>
@@ -590,6 +591,7 @@
 
 		<!-- Constructible sellingStation - загрузка материалов для строительства лесопилки -->
 		<i3dMapping id="ConstructiblePalletTrigger" node="0>7|1" />
+		<i3dMapping id="ConstructibleUnloadTrigger" node="0>7|2" />
 		<i3dMapping id="ConstructibleUnloadTriggerAINode" node="0>7|3" />
 
 	</i3dMappings>
