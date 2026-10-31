@@ -10,7 +10,7 @@
 		<functions>
 			<function>$l10n_function_spices</function>
 		</functions>
-		<image>map/placeables/FarmMeatIndustry/pallets/pokupka/store_spicesBagsPallet.png</image>
+		<image>map/placeables/FarmMeatIndustry/pallets/pokupka/store_spicesBagsPallet.dds</image>
 		<price>1500</price>
 		<lifetime>10</lifetime>
 		<allowLeasing>false</allowLeasing>

@@ -8,32 +8,32 @@
   <Files>
     <File fileId="255" filename="MonomixProductionWorkshop_passport.dds"/>
     <File fileId="74" filename="textures/GIANTS Engine 8_mask.dds"/>
-    <File fileId="205" filename="textures/ads.dds"/>
+    <File fileId="205" filename="../textures/ads.dds"/>
     <File fileId="127" filename="textures/black.dds"/>
-    <File fileId="174" filename="textures/gateGroove_diffuse.dds"/>
-    <File fileId="175" filename="textures/gateGroove_normal.dds"/>
-    <File fileId="176" filename="textures/gateGroove_specular.dds"/>
-    <File fileId="171" filename="textures/gateMetal_diffuse.dds"/>
-    <File fileId="172" filename="textures/gateMetal_normal.dds"/>
-    <File fileId="173" filename="textures/gateMetal_specular.dds"/>
-    <File fileId="177" filename="textures/gateWood01_diffuse.dds"/>
-    <File fileId="178" filename="textures/gateWood01_normal.dds"/>
-    <File fileId="179" filename="textures/gateWood01_specular.dds"/>
-    <File fileId="180" filename="textures/gateWood02_diffuse.dds"/>
-    <File fileId="181" filename="textures/gateWood02_normal.dds"/>
-    <File fileId="182" filename="textures/gateWood02_specular.dds"/>
-    <File fileId="183" filename="textures/gateWood03_diffuse.dds"/>
-    <File fileId="184" filename="textures/gateWood03_normal.dds"/>
-    <File fileId="185" filename="textures/gateWood03_specular.dds"/>
-    <File fileId="186" filename="textures/gateWood04_diffuse.dds"/>
-    <File fileId="187" filename="textures/gateWood04_normal.dds"/>
-    <File fileId="188" filename="textures/gateWood04_specular.dds"/>
+    <File fileId="174" filename="../textures/gateGroove_diffuse.dds"/>
+    <File fileId="175" filename="../textures/gateGroove_normal.dds"/>
+    <File fileId="176" filename="../textures/gateGroove_specular.dds"/>
+    <File fileId="171" filename="../textures/gateMetal_diffuse.dds"/>
+    <File fileId="172" filename="../textures/gateMetal_normal.dds"/>
+    <File fileId="173" filename="../textures/gateMetal_specular.dds"/>
+    <File fileId="177" filename="../textures/gateWood01_diffuse.dds"/>
+    <File fileId="178" filename="../textures/gateWood01_normal.dds"/>
+    <File fileId="179" filename="../textures/gateWood01_specular.dds"/>
+    <File fileId="180" filename="../textures/gateWood02_diffuse.dds"/>
+    <File fileId="181" filename="../textures/gateWood02_normal.dds"/>
+    <File fileId="182" filename="../textures/gateWood01_specular.dds"/>
+    <File fileId="183" filename="../textures/gateWood03_diffuse.dds"/>
+    <File fileId="184" filename="../textures/gateWood03_normal.dds"/>
+    <File fileId="185" filename="../textures/gateWood01_specular.dds"/>
+    <File fileId="186" filename="../textures/gateWood04_diffuse.dds"/>
+    <File fileId="187" filename="../textures/gateWood04_normal.dds"/>
+    <File fileId="188" filename="../textures/gateWood01_specular.dds"/>
     <File fileId="257" filename="textures/hay_static_diffuse.dds"/>
     <File fileId="259" filename="textures/hay_static_gloss.dds"/>
     <File fileId="258" filename="textures/hay_static_normal.dds"/>
     <File fileId="82" filename="textures/kuhnIT26_normal.dds"/>
     <File fileId="83" filename="textures/kuhnIT26_vmask.dds"/>
-    <File fileId="80" filename="textures/logos.png"/>
+    <File fileId="80" filename="textures/logos.dds"/>
     <File fileId="224" filename="textures/monoMixSign_diffuse.dds"/>
     <File fileId="226" filename="textures/monoMixSign_gloss.dds"/>
     <File fileId="225" filename="textures/monoMixSign_normal.dds"/>

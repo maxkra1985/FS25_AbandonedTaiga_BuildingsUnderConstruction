@@ -21,22 +21,22 @@
     <File fileId="111" filename="textures/infoDryingChamber.dds"/>
     <File fileId="70" filename="textures/infoWarning.dds"/>
     <File fileId="10" filename="textures/info_storageWoodProduction.dds"/>
-    <File fileId="89" filename="textures/jenzHE700Belt_normal.png"/>
-    <File fileId="90" filename="textures/jenzHE700Belt_specular.png"/>
-    <File fileId="91" filename="textures/jenzHE700Side_diffuse.png"/>
-    <File fileId="92" filename="textures/jenzHE700Side_normal.png"/>
-    <File fileId="93" filename="textures/jenzHE700Side_specular.png"/>
-    <File fileId="87" filename="textures/jenzHE700_normal.png"/>
-    <File fileId="88" filename="textures/jenzHE700_specular.png"/>
+    <File fileId="89" filename="textures/jenzHE700Belt_normal.dds"/>
+    <File fileId="90" filename="textures/jenzHE700Belt_specular.dds"/>
+    <File fileId="91" filename="textures/jenzHE700Side_diffuse.dds"/>
+    <File fileId="92" filename="textures/jenzHE700Side_normal.dds"/>
+    <File fileId="93" filename="textures/jenzHE700Side_specular.dds"/>
+    <File fileId="87" filename="textures/jenzHE700_normal.dds"/>
+    <File fileId="88" filename="textures/jenzHE700_specular.dds"/>
     <File fileId="169" filename="textures/mapDirtSA_diffuse.dds"/>
     <File fileId="202" filename="textures/pallet_diffuse.dds"/>
     <File fileId="182" filename="textures/paraChoqueLanterna_mask.dds"/>
     <File fileId="228" filename="textures/passportSawmill.dds"/>
     <File fileId="199" filename="textures/plowSoilPieces_diffuse.dds"/>
-    <File fileId="198" filename="textures/trailerGranelWood_mask.png"/>
+    <File fileId="198" filename="textures/trailerGranelWood_mask.dds"/>
     <File fileId="201" filename="textures/trailerGranel_mask.dds"/>
     <File fileId="183" filename="textures/trailerParts_mask.dds"/>
-    <File fileId="178" filename="textures/truck001_mask.png"/>
+    <File fileId="178" filename="textures/truck001_mask.dds"/>
     <File fileId="193" filename="textures/truck002_mask.dds"/>
     <File fileId="188" filename="textures/truckGranelWood_mask.dds"/>
     <File fileId="190" filename="textures/truckGranel_mask.dds"/>

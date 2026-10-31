@@ -10,24 +10,24 @@
     <File fileId="26" filename="textures/Boards2_diffuse.dds"/>
     <File fileId="33" filename="textures/Boards2_height.dds"/>
     <File fileId="27" filename="textures/Boards2_normal.dds"/>
-    <File fileId="47" filename="textures/bucketWood02_diffuse.png"/>
-    <File fileId="48" filename="textures/bucketWood02_normal.png"/>
-    <File fileId="49" filename="textures/bucketWood02_specular.png"/>
-    <File fileId="53" filename="textures/buildingBricksAndBags_diffuse.png"/>
-    <File fileId="54" filename="textures/buildingBricksAndBags_normal.png"/>
+    <File fileId="47" filename="textures/bucketWood02_diffuse.dds"/>
+    <File fileId="48" filename="textures/bucketWood02_normal.dds"/>
+    <File fileId="49" filename="textures/bucketWood02_specular.dds"/>
+    <File fileId="53" filename="textures/buildingBricksAndBags_diffuse.dds"/>
+    <File fileId="54" filename="textures/buildingBricksAndBags_normal.dds"/>
     <File fileId="25" filename="textures/eternit_albedo.dds"/>
     <File fileId="24" filename="textures/eternit_normal.dds"/>
-    <File fileId="6" filename="textures/fencesDE_diffuse.png"/>
-    <File fileId="7" filename="textures/fencesDE_normal.png"/>
-    <File fileId="8" filename="textures/fencesDE_specular.png"/>
-    <File fileId="15" filename="textures/industrialWallLight_diffuse.png"/>
-    <File fileId="16" filename="textures/industrialWallLight_normal.png"/>
-    <File fileId="17" filename="textures/industrialWallLight_specular.png"/>
-    <File fileId="22" filename="textures/lightWarm_emissive.png"/>
+    <File fileId="6" filename="textures/fencesDE_diffuse.dds"/>
+    <File fileId="7" filename="textures/fencesDE_normal.dds"/>
+    <File fileId="8" filename="textures/fencesDE_specular.dds"/>
+    <File fileId="15" filename="textures/industrialWallLight_diffuse.dds"/>
+    <File fileId="16" filename="textures/industrialWallLight_normal.dds"/>
+    <File fileId="17" filename="textures/industrialWallLight_specular.dds"/>
+    <File fileId="22" filename="textures/lightWarm_emissive.dds"/>
     <File fileId="34" filename="textures/pigEnclosure_diffuse.dds"/>
-    <File fileId="44" filename="textures/shovelGreen_diffuse.png"/>
-    <File fileId="45" filename="textures/shovelGreen_normal.png"/>
-    <File fileId="46" filename="textures/shovelGreen_specular.png"/>
+    <File fileId="44" filename="textures/shovelGreen_diffuse.dds"/>
+    <File fileId="45" filename="textures/shovelGreen_normal.dds"/>
+    <File fileId="46" filename="textures/shovelGreen_specular.dds"/>
     <File fileId="43" filename="textures/straw0111111_diffuse.dds"/>
     <File fileId="12" filename="textures/woodPlanks512_diffuse.dds"/>
     <File fileId="23" filename="../textures/DeskiBig.dds"/>

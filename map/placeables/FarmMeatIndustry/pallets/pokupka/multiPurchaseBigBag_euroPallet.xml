@@ -10,7 +10,7 @@
 		<functions>
 			<function>$l10n_function_euroPallet</function>
 		</functions>
-		<image>map/placeables/FarmMeatIndustry/pallets/pokupka/store_euroPallet.png</image>
+		<image>map/placeables/FarmMeatIndustry/pallets/pokupka/store_euroPallet.dds</image>
 		<price>500</price>
 		<lifetime>10</lifetime>
 		<allowLeasing>false</allowLeasing>

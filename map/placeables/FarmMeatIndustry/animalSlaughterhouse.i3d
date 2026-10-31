@@ -7,51 +7,51 @@
 
   <Files>
     <File fileId="309" filename="pasportAnimalSlaughterhouse.dds"/>
-    <File fileId="115" filename="textures/alpsRoadFence02_diffuse.png"/>
-    <File fileId="116" filename="textures/alpsRoadFence02_normal.png"/>
-    <File fileId="117" filename="textures/alpsRoadFence02_specular.png"/>
-    <File fileId="247" filename="textures/bucketGalvanized_diffuse.png"/>
-    <File fileId="248" filename="textures/bucketGalvanized_normal.png"/>
-    <File fileId="249" filename="textures/bucketGalvanized_specular.png"/>
-    <File fileId="244" filename="textures/bucketPlasticBlue_diffuse.png"/>
-    <File fileId="245" filename="textures/bucketPlasticBlue_normal.png"/>
-    <File fileId="246" filename="textures/bucketPlasticBlue_specular.png"/>
+    <File fileId="115" filename="textures/alpsRoadFence02_diffuse.dds"/>
+    <File fileId="116" filename="textures/alpsRoadFence02_normal.dds"/>
+    <File fileId="117" filename="textures/alpsRoadFence02_specular.dds"/>
+    <File fileId="247" filename="textures/bucketGalvanized_diffuse.dds"/>
+    <File fileId="248" filename="textures/bucketGalvanized_normal.dds"/>
+    <File fileId="249" filename="textures/bucketGalvanized_specular.dds"/>
+    <File fileId="244" filename="textures/bucketPlasticBlue_diffuse.dds"/>
+    <File fileId="245" filename="textures/bucketPlasticBlue_normal.dds"/>
+    <File fileId="246" filename="textures/bucketPlasticBlue_specular.dds"/>
     <File fileId="257" filename="textures/butcheryDetails01_diffuse.dds"/>
     <File fileId="219" filename="textures/butcheryDetails02_diffuse.dds"/>
     <File fileId="258" filename="textures/butcheryDetails03_diffuse.dds"/>
     <File fileId="259" filename="textures/butcheryDetails04_diffuse.dds"/>
     <File fileId="260" filename="textures/butcheryDetails05_diffuse.dds"/>
-    <File fileId="140" filename="textures/cabinetWorkbench_diffuse.png"/>
-    <File fileId="141" filename="textures/cabinetWorkbench_normal.png"/>
-    <File fileId="142" filename="textures/cabinetWorkbench_specular.png"/>
+    <File fileId="140" filename="textures/cabinetWorkbench_diffuse.dds"/>
+    <File fileId="141" filename="textures/cabinetWorkbench_normal.dds"/>
+    <File fileId="142" filename="textures/cabinetWorkbench_specular.dds"/>
     <File fileId="237" filename="textures/defaultPlastic_specular.dds"/>
-    <File fileId="152" filename="textures/gardenHoseHolder01_diffuse.png"/>
-    <File fileId="165" filename="textures/infrastructureMargins_diffuse.png"/>
-    <File fileId="166" filename="textures/infrastructureMargins_normal.png"/>
-    <File fileId="167" filename="textures/infrastructureMargins_specular.png"/>
+    <File fileId="152" filename="textures/gardenHoseHolder01_diffuse.dds"/>
+    <File fileId="165" filename="textures/infrastructureMargins_diffuse.dds"/>
+    <File fileId="166" filename="textures/infrastructureMargins_normal.dds"/>
+    <File fileId="167" filename="textures/infrastructureMargins_specular.dds"/>
     <File fileId="269" filename="textures/meat_diffuse.dds"/>
     <File fileId="270" filename="textures/meat_normal.dds"/>
     <File fileId="271" filename="textures/meat_specular.dds"/>
-    <File fileId="118" filename="textures/metalShelves_diffuse.png"/>
-    <File fileId="119" filename="textures/metalShelves_normal.png"/>
-    <File fileId="120" filename="textures/metalShelves_specular.png"/>
+    <File fileId="118" filename="textures/metalShelves_diffuse.dds"/>
+    <File fileId="119" filename="textures/metalShelves_normal.dds"/>
+    <File fileId="120" filename="textures/metalShelves_specular.dds"/>
     <File fileId="81" filename="textures/objekti/electrical_diffuse.dds"/>
     <File fileId="82" filename="textures/objekti/electrical_normal.dds"/>
     <File fileId="233" filename="textures/oldFarmBarn_diffuse.dds"/>
     <File fileId="234" filename="textures/oldFarmBarn_normal.dds"/>
     <File fileId="235" filename="textures/oldFarmBarn_specular.dds"/>
-    <File fileId="241" filename="textures/plasticBox_diffuse.png"/>
-    <File fileId="242" filename="textures/plasticBox_normal.png"/>
-    <File fileId="243" filename="textures/plasticBox_specular.png"/>
-    <File fileId="238" filename="textures/plasticCrates_diffuse.png"/>
-    <File fileId="239" filename="textures/plasticCrates_normal.png"/>
-    <File fileId="240" filename="textures/plasticCrates_specular.png"/>
-    <File fileId="266" filename="textures/sign_front_diffuse.png"/>
-    <File fileId="268" filename="textures/sign_front_gloss.png"/>
-    <File fileId="267" filename="textures/sign_front_normal.png"/>
+    <File fileId="241" filename="textures/plasticBox_diffuse.dds"/>
+    <File fileId="242" filename="textures/plasticBox_normal.dds"/>
+    <File fileId="243" filename="textures/plasticBox_specular.dds"/>
+    <File fileId="238" filename="textures/plasticCrates_diffuse.dds"/>
+    <File fileId="239" filename="textures/plasticCrates_normal.dds"/>
+    <File fileId="240" filename="textures/plasticCrates_specular.dds"/>
+    <File fileId="266" filename="textures/sign_front_diffuse.dds"/>
+    <File fileId="268" filename="textures/sign_front_gloss.dds"/>
+    <File fileId="267" filename="textures/sign_front_normal.dds"/>
     <File fileId="149" filename="textures/sucklingPigHolder_diffuse.dds"/>
     <File fileId="150" filename="textures/sucklingPigHolder_normal.dds"/>
-    <File fileId="236" filename="textures/verticalBlind_diffuse.png"/>
+    <File fileId="236" filename="textures/verticalBlind_diffuse.dds"/>
     <File fileId="215" filename="../textures/AC3.dds"/>
     <File fileId="220" filename="../textures/Calvier1.dds"/>
     <File fileId="56" filename="../textures/DeskiOld1024.dds"/>

@@ -10,25 +10,25 @@
     <File fileId="18" filename="shaders/vehicleShader.xml"/>
     <File fileId="14" filename="textures/Lamps_Albedo.dds"/>
     <File fileId="15" filename="textures/Lamps_Normal.dds"/>
-    <File fileId="199" filename="textures/ads.dds"/>
-    <File fileId="171" filename="textures/gateGroove_diffuse.dds"/>
-    <File fileId="172" filename="textures/gateGroove_normal.dds"/>
-    <File fileId="173" filename="textures/gateGroove_specular.dds"/>
-    <File fileId="168" filename="textures/gateMetal_diffuse.dds"/>
-    <File fileId="169" filename="textures/gateMetal_normal.dds"/>
-    <File fileId="170" filename="textures/gateMetal_specular.dds"/>
-    <File fileId="174" filename="textures/gateWood01_diffuse.dds"/>
-    <File fileId="175" filename="textures/gateWood01_normal.dds"/>
-    <File fileId="176" filename="textures/gateWood01_specular.dds"/>
-    <File fileId="177" filename="textures/gateWood02_diffuse.dds"/>
-    <File fileId="178" filename="textures/gateWood02_normal.dds"/>
-    <File fileId="179" filename="textures/gateWood02_specular.dds"/>
-    <File fileId="180" filename="textures/gateWood03_diffuse.dds"/>
-    <File fileId="181" filename="textures/gateWood03_normal.dds"/>
-    <File fileId="182" filename="textures/gateWood03_specular.dds"/>
-    <File fileId="183" filename="textures/gateWood04_diffuse.dds"/>
-    <File fileId="184" filename="textures/gateWood04_normal.dds"/>
-    <File fileId="185" filename="textures/gateWood04_specular.dds"/>
+    <File fileId="199" filename="../textures/ads.dds"/>
+    <File fileId="171" filename="../textures/gateGroove_diffuse.dds"/>
+    <File fileId="172" filename="../textures/gateGroove_normal.dds"/>
+    <File fileId="173" filename="../textures/gateGroove_specular.dds"/>
+    <File fileId="168" filename="../textures/gateMetal_diffuse.dds"/>
+    <File fileId="169" filename="../textures/gateMetal_normal.dds"/>
+    <File fileId="170" filename="../textures/gateMetal_specular.dds"/>
+    <File fileId="174" filename="../textures/gateWood01_diffuse.dds"/>
+    <File fileId="175" filename="../textures/gateWood01_normal.dds"/>
+    <File fileId="176" filename="../textures/gateWood01_specular.dds"/>
+    <File fileId="177" filename="../textures/gateWood02_diffuse.dds"/>
+    <File fileId="178" filename="../textures/gateWood02_normal.dds"/>
+    <File fileId="179" filename="../textures/gateWood01_specular.dds"/>
+    <File fileId="180" filename="../textures/gateWood03_diffuse.dds"/>
+    <File fileId="181" filename="../textures/gateWood03_normal.dds"/>
+    <File fileId="182" filename="../textures/gateWood01_specular.dds"/>
+    <File fileId="183" filename="../textures/gateWood04_diffuse.dds"/>
+    <File fileId="184" filename="../textures/gateWood04_normal.dds"/>
+    <File fileId="185" filename="../textures/gateWood01_specular.dds"/>
     <File fileId="219" filename="textures/milkProcessingSign_diffuse.dds"/>
     <File fileId="221" filename="textures/milkProcessingSign_gloss.dds"/>
     <File fileId="220" filename="textures/milkProcessingSign_normal.dds"/>
@@ -105,17 +105,17 @@
     <File fileId="228" filename="../textures/woodenShippingCrates_diffuse.dds"/>
     <File fileId="229" filename="../textures/woodenShippingCrates_normal.dds"/>
     <File fileId="230" filename="../textures/woodenShippingCrates_specular.dds"/>
-    <File fileId="123" filename="../../textures/0_diffuse.dds"/>
-    <File fileId="125" filename="../../textures/0_gloss.dds"/>
-    <File fileId="124" filename="../../textures/0_normal.dds"/>
-    <File fileId="201" filename="../../textures/boisMenuiserie_diffuse.dds"/>
-    <File fileId="203" filename="../../textures/boisMenuiserie_gloss.dds"/>
-    <File fileId="202" filename="../../textures/boisMenuiserie_normal.dds"/>
-    <File fileId="132" filename="../../textures/boisPorte_diffuse.dds"/>
-    <File fileId="134" filename="../../textures/boisPorte_gloss.dds"/>
-    <File fileId="133" filename="../../textures/boisPorte_normal.dds"/>
-    <File fileId="204" filename="../../textures/livres_diffuse.dds"/>
-    <File fileId="126" filename="../../textures/recette1_diffuse.dds"/>
+    <File fileId="123" filename="../textures/0_diffuse.dds"/>
+    <File fileId="125" filename="../textures/0_gloss.dds"/>
+    <File fileId="124" filename="../textures/0_normal.dds"/>
+    <File fileId="201" filename="../textures/boisMenuiserie_diffuse.dds"/>
+    <File fileId="203" filename="../textures/boisMenuiserie_gloss.dds"/>
+    <File fileId="202" filename="../textures/boisMenuiserie_normal.dds"/>
+    <File fileId="132" filename="../textures/boisPorte_diffuse.dds"/>
+    <File fileId="134" filename="../textures/boisPorte_gloss.dds"/>
+    <File fileId="133" filename="../textures/boisPorte_normal.dds"/>
+    <File fileId="204" filename="../textures/livres_diffuse.dds"/>
+    <File fileId="126" filename="../textures/recette1_diffuse.dds"/>
     <File fileId="58" filename="$data/maps/mapAS/textures/props/cablesElectricity/cablesElectricity_diffuse.png"/>
     <File fileId="59" filename="$data/maps/mapAS/textures/props/cablesElectricity/cablesElectricity_normal.png"/>
     <File fileId="60" filename="$data/maps/mapAS/textures/props/cablesElectricity/cablesElectricity_specular.png"/>

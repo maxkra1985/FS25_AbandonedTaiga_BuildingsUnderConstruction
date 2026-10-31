@@ -4,8 +4,8 @@
 
   <Files>
     <File fileId="1" filename="buffaloButterBox_diffuse.dds" />
-    <File fileId="2" filename="butterBox_normal.dds" />
-    <File fileId="3" filename="butterBox_specular.dds" />
+    <File fileId="2" filename="../../../textures/butterBox_normal.dds" />
+    <File fileId="3" filename="../../../textures/butterBox_specular.dds" />
   </Files>
 
   <Materials>

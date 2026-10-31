@@ -17,8 +17,8 @@
     <File fileId="36" filename="textures/pipes_normal.dds"/>
     <File fileId="45" filename="textures/waterTrailer1_diffuse.dds"/>
     <File fileId="38" filename="textures/waterTrailer_diffuse.dds"/>
-    <File fileId="43" filename="textures/window_diffuse.png"/>
-    <File fileId="44" filename="textures/window_specular.png"/>
+    <File fileId="43" filename="textures/window_diffuse.dds"/>
+    <File fileId="44" filename="textures/window_specular.dds"/>
     <File fileId="50" filename="textures/woodTexture1024.dds"/>
     <File fileId="12" filename="../textures/DeskiBig.dds"/>
     <File fileId="11" filename="../textures/DeskiBig1024.dds"/>

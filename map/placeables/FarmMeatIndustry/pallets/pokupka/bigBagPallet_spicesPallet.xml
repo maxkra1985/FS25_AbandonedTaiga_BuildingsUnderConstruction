@@ -21,7 +21,7 @@
     <!-- ONLY FOR ICON GENERATION -->
     <storeData>
         <name>$l10n_fillType_Spices</name>
-        <image>map/placeables/FarmMeatIndustry/pallets/pokupka/store_spicesBagsPallet.png</image>
+        <image>map/placeables/FarmMeatIndustry/pallets/pokupka/store_spicesBagsPallet.dds</image>
         <brand>NONE</brand>
         <category>pallets</category>
         <vertexBufferMemoryUsage>0</vertexBufferMemoryUsage>
